@@ -13,6 +13,7 @@ suchgrime/
 ├── index.html      # Main HTML file
 ├── styles.css      # Stylesheet
 ├── script.js       # JavaScript functionality
+├── vercel.json     # Vercel deployment configuration
 └── README.md       # This file
 ```
 
@@ -22,6 +23,10 @@ suchgrime/
 - Smooth scrolling navigation
 - Modern, clean UI
 - Easy to customize
+
+## Deployment
+
+This project is configured for deployment on Vercel. See deployment instructions below.
 
 ## License
 
