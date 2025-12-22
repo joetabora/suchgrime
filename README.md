@@ -1,0 +1,29 @@
+# SuchGrime
+
+A modern, responsive website project.
+
+## Getting Started
+
+Simply open `index.html` in your web browser to view the website.
+
+## Project Structure
+
+```
+suchgrime/
+├── index.html      # Main HTML file
+├── styles.css      # Stylesheet
+├── script.js       # JavaScript functionality
+└── README.md       # This file
+```
+
+## Features
+
+- Responsive design
+- Smooth scrolling navigation
+- Modern, clean UI
+- Easy to customize
+
+## License
+
+All rights reserved.
+
