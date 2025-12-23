@@ -47,7 +47,7 @@ export default function Stats() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section className="py-20 bg-primary text-white overflow-hidden">
+    <section className="py-20 bg-neutral-100 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -64,10 +64,10 @@ export default function Stats() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="text-center"
             >
-              <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-2 bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+              <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-2 text-neutral-900">
                 <AnimatedNumber value={stat.number} suffix={stat.suffix} prefix={stat.prefix} />
               </div>
-              <div className="text-sm sm:text-base text-white/60 uppercase tracking-wider font-medium">
+              <div className="text-sm sm:text-base text-neutral-500 uppercase tracking-wider font-medium">
                 {stat.label}
               </div>
             </motion.div>
@@ -77,4 +77,3 @@ export default function Stats() {
     </section>
   )
 }
-

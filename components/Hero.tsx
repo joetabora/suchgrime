@@ -4,12 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import MagneticButton from './MagneticButton'
 
-const rotatingWords = [
-  { text: 'LAUNCH', color: 'text-accent' },
-  { text: 'GROW', color: 'text-accent-mint' },
-  { text: 'DOMINATE', color: 'text-accent-purple' },
-  { text: 'CONVERT', color: 'text-accent-yellow' },
-]
+const rotatingWords = ['LAUNCH', 'GROW', 'DOMINATE', 'CONVERT']
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -22,11 +17,20 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream">
-      {/* Animated background shapes */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+      {/* Subtle grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}
+      />
+
+      {/* Floating gradient orbs - subtle greys */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute w-[500px] h-[500px] rounded-full bg-accent/10 blur-3xl"
+          className="absolute w-[600px] h-[600px] rounded-full bg-neutral-200/30 blur-3xl"
           style={{ top: '10%', right: '-10%' }}
           animate={{
             scale: [1, 1.2, 1],
@@ -36,7 +40,7 @@ export default function Hero() {
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute w-[400px] h-[400px] rounded-full bg-accent-mint/10 blur-3xl"
+          className="absolute w-[400px] h-[400px] rounded-full bg-neutral-100/50 blur-3xl"
           style={{ bottom: '10%', left: '-5%' }}
           animate={{
             scale: [1, 1.1, 1],
@@ -45,24 +49,7 @@ export default function Hero() {
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         />
-        <motion.div
-          className="absolute w-[300px] h-[300px] rounded-full bg-accent-yellow/10 blur-3xl"
-          style={{ top: '40%', left: '30%' }}
-          animate={{
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
-        />
       </div>
-
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }}
-      />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,8 +61,8 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-full text-sm font-medium text-primary">
-              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-100 rounded-full text-sm font-medium text-neutral-600">
+              <span className="w-2 h-2 bg-neutral-400 rounded-full animate-pulse" />
               Milwaukee&apos;s Growth Partner
             </span>
           </motion.div>
@@ -88,8 +75,8 @@ export default function Hero() {
             className="mb-8"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-display font-bold leading-[0.95] tracking-tight">
-              <span className="block text-primary">We help</span>
-              <span className="block text-primary">businesses</span>
+              <span className="block text-neutral-900">We help</span>
+              <span className="block text-neutral-900">businesses</span>
               <span className="block relative h-[1.1em] overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -98,10 +85,10 @@ export default function Hero() {
                     animate={{ y: 0, opacity: 1, rotateX: 0 }}
                     exit={{ y: -60, opacity: 0, rotateX: 45 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className={`absolute left-0 ${rotatingWords[currentIndex].color}`}
+                    className="absolute left-0 text-neutral-400"
                     style={{ transformStyle: 'preserve-3d' }}
                   >
-                    {rotatingWords[currentIndex].text}
+                    {rotatingWords[currentIndex]}
                   </motion.span>
                 </AnimatePresence>
               </span>
@@ -113,10 +100,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl text-neutral-600 max-w-2xl mb-12 leading-relaxed"
+            className="text-xl sm:text-2xl text-neutral-500 max-w-2xl mb-12 leading-relaxed"
           >
             Web design, SEO, and marketing that actually works.{' '}
-            <span className="text-primary font-medium">No fluff, just results.</span>
+            <span className="text-neutral-900 font-medium">No fluff, just results.</span>
           </motion.p>
 
           {/* CTA Buttons */}
@@ -129,7 +116,7 @@ export default function Hero() {
             <MagneticButton
               as="a"
               href="/contact"
-              className="group px-8 py-4 bg-primary text-white font-semibold text-lg rounded-full hover:bg-primary-light transition-all duration-300 inline-flex items-center justify-center gap-2"
+              className="group px-8 py-4 bg-neutral-900 text-white font-semibold text-lg rounded-full hover:bg-neutral-800 transition-all duration-300 inline-flex items-center justify-center gap-2"
             >
               Let&apos;s Talk
               <motion.svg 
@@ -146,7 +133,7 @@ export default function Hero() {
             <MagneticButton
               as="a"
               href="#work"
-              className="px-8 py-4 bg-white text-primary font-semibold text-lg rounded-full border-2 border-neutral-200 hover:border-primary hover:bg-neutral-50 transition-all duration-300 inline-flex items-center justify-center"
+              className="px-8 py-4 bg-white text-neutral-900 font-semibold text-lg rounded-full border-2 border-neutral-200 hover:border-neutral-400 transition-all duration-300 inline-flex items-center justify-center"
             >
               See Our Work
             </MagneticButton>

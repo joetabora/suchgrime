@@ -8,12 +8,6 @@
 :root {
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
   --font-inter: 'Inter', sans-serif;
-  
-  /* Accent colors */
-  --accent: #FF4D4D;
-  --accent-mint: #4ECDC4;
-  --accent-yellow: #FFE566;
-  --accent-purple: #7C3AED;
 }
 
 * {
@@ -33,45 +27,6 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Accent text colors */
-.text-accent {
-  color: var(--accent);
-}
-
-.text-accent-mint {
-  color: var(--accent-mint);
-}
-
-.text-accent-yellow {
-  color: var(--accent-yellow);
-}
-
-.text-accent-purple {
-  color: var(--accent-purple);
-}
-
-/* Accent backgrounds */
-.bg-accent {
-  background-color: var(--accent);
-}
-
-.bg-accent-mint {
-  background-color: var(--accent-mint);
-}
-
-.bg-accent-yellow {
-  background-color: var(--accent-yellow);
-}
-
-.bg-accent-purple {
-  background-color: var(--accent-purple);
-}
-
-/* Cream background */
-.bg-cream {
-  background-color: #FDF8F3;
 }
 
 /* Subtle text effects */
@@ -110,20 +65,15 @@ body {
   background: #999;
 }
 
-/* Selection - use accent color */
+/* Selection */
 ::selection {
-  background: var(--accent);
+  background: #171717;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: var(--accent);
+  background: #171717;
   color: #fff;
-}
-
-/* Radial gradient for cursor glow */
-.bg-gradient-radial {
-  background: radial-gradient(circle, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 50%, var(--tw-gradient-to) 100%);
 }
 
 /* Magnetic element cursor */
@@ -152,24 +102,4 @@ body {
 .reveal-up.revealed {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Hover card glow */
-.hover-glow {
-  position: relative;
-}
-
-.hover-glow::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 77, 77, 0.1) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.hover-glow:hover::before {
-  opacity: 1;
 }

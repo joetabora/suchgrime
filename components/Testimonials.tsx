@@ -5,22 +5,19 @@ import { useRef, useState, useEffect } from 'react'
 
 const testimonials = [
   {
-    quote: "SuchGrime completely transformed our online presence. Our traffic is up 300% and our leads have doubled. They're not just a vendor—they're a growth partner.",
+    quote: "SuchGrime completely transformed our online presence. Our traffic is up 300% and our leads have doubled. They are not just a vendor—they are a growth partner.",
     name: "Mike Richardson",
     title: "Owner, Richardson Auto",
-    image: null,
   },
   {
     quote: "I was skeptical about investing in a new website, but the ROI has been incredible. Within 3 months we were ranking on page 1 for our target keywords.",
     name: "Sarah Chen",
     title: "Founder, Chen Consulting",
-    image: null,
   },
   {
     quote: "The team at SuchGrime actually listens and delivers. No BS, no endless meetings—just results. Our e-commerce sales increased 150% after the redesign.",
     name: "David Park",
     title: "CEO, Park Fitness",
-    image: null,
   },
 ]
 
@@ -37,7 +34,7 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <section className="py-24 sm:py-32 bg-primary text-white overflow-hidden">
+    <section className="py-24 sm:py-32 bg-neutral-900 text-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -53,7 +50,7 @@ export default function Testimonials() {
             transition={{ delay: 0.2, type: 'spring' }}
             className="mb-8"
           >
-            <svg className="w-16 h-16 mx-auto text-white/20" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-16 h-16 mx-auto text-neutral-700" fill="currentColor" viewBox="0 0 24 24">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
           </motion.div>
@@ -69,14 +66,14 @@ export default function Testimonials() {
                 transition={{ duration: 0.5 }}
                 className="absolute inset-0 flex flex-col items-center justify-center"
               >
-                <p className="text-2xl sm:text-3xl md:text-4xl font-light leading-relaxed mb-8 text-white/90">
+                <p className="text-2xl sm:text-3xl md:text-4xl font-light leading-relaxed mb-8 text-neutral-300">
                   &ldquo;{testimonials[currentIndex].quote}&rdquo;
                 </p>
                 <div>
                   <p className="text-lg font-semibold text-white">
                     {testimonials[currentIndex].name}
                   </p>
-                  <p className="text-white/60">
+                  <p className="text-neutral-500">
                     {testimonials[currentIndex].title}
                   </p>
                 </div>
@@ -93,7 +90,7 @@ export default function Testimonials() {
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex 
                     ? 'bg-white w-8' 
-                    : 'bg-white/30 hover:bg-white/50'
+                    : 'bg-neutral-700 hover:bg-neutral-600'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

@@ -6,44 +6,43 @@ import Link from 'next/link'
 
 const projects = [
   {
-    title: "Joe's Used Harleys",
+    title: "Joe&apos;s Used Harleys",
     category: 'E-commerce • Web Design',
-    color: 'from-orange-500 to-red-600',
+    gradient: 'from-neutral-800 to-neutral-900',
     url: 'https://joesusedharleys.com',
   },
   {
     title: 'Milwaukee SaaS',
     category: 'Web App • UI/UX',
-    color: 'from-blue-500 to-purple-600',
+    gradient: 'from-neutral-700 to-neutral-800',
     url: '#',
   },
   {
     title: 'Local Restaurant',
     category: 'Branding • Website',
-    color: 'from-green-500 to-teal-600',
+    gradient: 'from-neutral-600 to-neutral-700',
     url: '#',
   },
   {
     title: 'Real Estate Agency',
     category: 'SEO • Web Design',
-    color: 'from-pink-500 to-rose-600',
+    gradient: 'from-neutral-500 to-neutral-600',
     url: '#',
   },
   {
     title: 'Tech Startup',
     category: 'Brand Launch',
-    color: 'from-violet-500 to-indigo-600',
+    gradient: 'from-neutral-800 to-neutral-900',
     url: '#',
   },
   {
     title: 'Fitness Brand',
     category: 'E-commerce • Marketing',
-    color: 'from-amber-500 to-orange-600',
+    gradient: 'from-neutral-700 to-neutral-800',
     url: '#',
   },
 ]
 
-// Double the projects for infinite scroll effect
 const allProjects = [...projects, ...projects]
 
 export default function WorkShowcase() {
@@ -51,7 +50,7 @@ export default function WorkShowcase() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="work" className="py-24 sm:py-32 bg-cream overflow-hidden">
+    <section id="work" className="py-24 sm:py-32 bg-neutral-50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <motion.div
           ref={ref}
@@ -61,16 +60,16 @@ export default function WorkShowcase() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
         >
           <div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-neutral-900 mb-4">
               Our Work
             </h2>
-            <p className="text-xl text-neutral-600 max-w-xl">
+            <p className="text-xl text-neutral-500 max-w-xl">
               Real results for real businesses. Here&apos;s a taste of what we do.
             </p>
           </div>
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all group"
+            className="inline-flex items-center gap-2 text-neutral-900 font-semibold hover:gap-3 transition-all group"
           >
             View all projects
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,25 +100,19 @@ export default function WorkShowcase() {
               target={project.url.startsWith('http') ? '_blank' : undefined}
               className="group flex-shrink-0 w-[350px] sm:w-[400px] md:w-[450px]"
             >
-              <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br ${project.color}`}>
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+              <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br ${project.gradient}`}>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 
-                {/* Content */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
                   <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.4 }}
                     className="transform group-hover:-translate-y-2 transition-transform duration-300"
                   >
-                    <p className="text-white/80 text-sm mb-1">{project.category}</p>
+                    <p className="text-white/60 text-sm mb-1">{project.category}</p>
                     <h3 className="text-white text-2xl font-display font-bold">{project.title}</h3>
                   </motion.div>
                 </div>
 
-                {/* Arrow indicator */}
-                <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -151,11 +144,11 @@ export default function WorkShowcase() {
               target={project.url.startsWith('http') ? '_blank' : undefined}
               className="group flex-shrink-0 w-[300px] sm:w-[350px] md:w-[400px]"
             >
-              <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br ${project.color}`}>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+              <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br ${project.gradient}`}>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
                   <div className="transform group-hover:-translate-y-2 transition-transform duration-300">
-                    <p className="text-white/80 text-sm mb-1">{project.category}</p>
+                    <p className="text-white/60 text-sm mb-1">{project.category}</p>
                     <h3 className="text-white text-xl font-display font-bold">{project.title}</h3>
                   </div>
                 </div>
@@ -167,4 +160,3 @@ export default function WorkShowcase() {
     </section>
   )
 }
-

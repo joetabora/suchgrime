@@ -9,11 +9,11 @@ export default function FinalCTA() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section className="py-24 sm:py-32 bg-cream relative overflow-hidden">
+    <section className="py-24 sm:py-32 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          className="absolute w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl"
+          className="absolute w-[600px] h-[600px] rounded-full bg-neutral-100 blur-3xl"
           style={{ top: '-20%', right: '-10%' }}
           animate={{
             scale: [1, 1.1, 1],
@@ -31,18 +31,9 @@ export default function FinalCTA() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : { scale: 0 }}
-            transition={{ delay: 0.2, type: 'spring' }}
-            className="text-6xl mb-8"
-          >
-            🤝
-          </motion.div>
-
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-primary mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-neutral-900 mb-6 leading-tight">
             Great brands<br />
-            <span className="text-accent">don&apos;t just happen.</span>
+            <span className="text-neutral-400">don&apos;t just happen.</span>
           </h2>
 
           <p className="text-xl sm:text-2xl text-neutral-600 mb-4 font-medium">
@@ -58,7 +49,7 @@ export default function FinalCTA() {
             <MagneticButton
               as="a"
               href="/contact"
-              className="group px-10 py-5 bg-primary text-white font-bold text-lg rounded-full hover:bg-primary-light transition-all duration-300 inline-flex items-center gap-3"
+              className="group px-10 py-5 bg-neutral-900 text-white font-bold text-lg rounded-full hover:bg-neutral-800 transition-all duration-300 inline-flex items-center gap-3"
             >
               Let&apos;s Chat
               <motion.span
@@ -70,7 +61,7 @@ export default function FinalCTA() {
             </MagneticButton>
             <a 
               href="mailto:hello@suchgrime.com"
-              className="text-neutral-500 hover:text-primary transition-colors font-medium"
+              className="text-neutral-500 hover:text-neutral-900 transition-colors font-medium"
             >
               or email hello@suchgrime.com
             </a>
@@ -80,4 +71,3 @@ export default function FinalCTA() {
     </section>
   )
 }
-
