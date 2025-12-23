@@ -60,7 +60,7 @@ export default function PortfolioPage() {
             className="text-center mb-16"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-distressed distressed-text mb-6 text-grime-purple neon-glow-purple">
-              Sites that don't suck.
+              Sites that don&apos;t suck.
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Real projects. Real results. Milwaukee businesses crushing it online.

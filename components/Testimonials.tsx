@@ -51,7 +51,7 @@ export default function Testimonials() {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 className="brutal-border p-8 bg-grime-charcoal"
               >
-                <div className="text-4xl mb-4 text-grime-green">"</div>
+                <div className="text-4xl mb-4 text-grime-green">&quot;</div>
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed">{testimonial.quote}</p>
                 <div className="border-t border-grime-charcoal pt-4">
                   <div className="font-bold text-white">{testimonial.author}</div>

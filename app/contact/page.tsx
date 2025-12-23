@@ -40,10 +40,10 @@ export default function ContactPage() {
             className="text-center mb-16"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-distressed distressed-text mb-6 text-grime-green neon-glow-green">
-              Let's Build Something Badass
+              Let&apos;s Build Something Badass
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Ready to dominate Google? Get your free site audit and let's talk.
+              Ready to dominate Google? Get your free site audit and let&apos;s talk.
             </p>
           </motion.div>
 

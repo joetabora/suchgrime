@@ -18,7 +18,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 font-distressed distressed-text text-grime-red neon-glow-red">
-            We're not your polished agency.
+            We&apos;re not your polished agency.
           </h2>
 
           <div className="max-w-4xl space-y-6 text-lg sm:text-xl text-gray-300 leading-relaxed">

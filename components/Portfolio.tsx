@@ -46,7 +46,7 @@ export default function Portfolio() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-12 font-distressed distressed-text text-center text-grime-purple neon-glow-purple">
-            Sites that don't suck.
+            Sites that don&apos;t suck.
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
