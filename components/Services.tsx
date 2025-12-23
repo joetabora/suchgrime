@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import TiltCard from './TiltCard'
 
 const services = [
   {
@@ -56,13 +57,14 @@ export default function Services() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="group p-8 bg-neutral-50 border border-neutral-200 hover:border-primary transition-all duration-300"
               >
-                <div className="text-4xl font-display font-bold text-neutral-300 mb-4 group-hover:text-primary transition-colors">
-                  {service.icon}
-                </div>
-                <h3 className="text-2xl font-display font-bold mb-4 text-primary">{service.title}</h3>
-                <p className="text-neutral-600 leading-relaxed">{service.description}</p>
+                <TiltCard className="group p-8 bg-neutral-50 border border-neutral-200 hover:border-primary hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="text-4xl font-display font-bold text-neutral-300 mb-4 group-hover:text-primary transition-colors">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-2xl font-display font-bold mb-4 text-primary">{service.title}</h3>
+                  <p className="text-neutral-600 leading-relaxed">{service.description}</p>
+                </TiltCard>
               </motion.div>
             ))}
           </div>

@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
+import PageLoader from '@/components/PageLoader'
+import CustomCursor from '@/components/CustomCursor'
+import ScrollProgress from '@/components/ScrollProgress'
+import NoiseOverlay from '@/components/NoiseOverlay'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -62,6 +66,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+        <PageLoader />
+        <ScrollProgress />
+        <CustomCursor />
+        <NoiseOverlay />
         <Navigation />
         {children}
       </body>

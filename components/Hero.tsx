@@ -1,9 +1,36 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import MagneticButton from './MagneticButton'
+
+// Text scramble animation for the title
+const titleVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.03,
+      delayChildren: 0.3,
+    },
+  },
+}
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 40, rotateX: -40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+}
 
 export default function Hero() {
+  const title = 'SuchGrime'
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Subtle background pattern */}
@@ -12,6 +39,45 @@ export default function Hero() {
           backgroundImage: 'radial-gradient(circle at 1px 1px, #000 1px, transparent 0)',
           backgroundSize: '40px 40px'
         }} />
+      </div>
+
+      {/* Floating gradient orbs - subtle on white */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute w-[600px] h-[600px] rounded-full opacity-[0.03]"
+          style={{
+            background: 'radial-gradient(circle, #000 0%, transparent 70%)',
+            top: '-200px',
+            left: '-200px',
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        <motion.div
+          className="absolute w-[500px] h-[500px] rounded-full opacity-[0.02]"
+          style={{
+            background: 'radial-gradient(circle, #000 0%, transparent 70%)',
+            bottom: '-150px',
+            right: '-150px',
+          }}
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 5,
+          }}
+        />
       </div>
 
       {/* Content */}
@@ -33,13 +99,23 @@ export default function Hero() {
             </span>
           </motion.div>
 
+          {/* Animated title with character-by-character reveal */}
           <motion.h1
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-8 text-primary leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            variants={titleVariants}
+            initial="hidden"
+            animate="visible"
           >
-            SuchGrime
+            {title.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                variants={letterVariants}
+                className="inline-block"
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </motion.h1>
 
           <motion.p
@@ -66,21 +142,23 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
           >
-            <Link
+            <MagneticButton
+              as="a"
               href="/contact"
-              className="group px-8 py-4 bg-primary text-white font-medium text-base hover:bg-neutral-900 transition-all duration-300 inline-flex items-center"
+              className="group px-8 py-4 bg-primary text-white font-medium text-base hover:bg-neutral-800 transition-all duration-300 inline-flex items-center"
             >
               Get Free Site Audit
               <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </Link>
-            <Link
+            </MagneticButton>
+            <MagneticButton
+              as="a"
               href="/portfolio"
               className="px-8 py-4 border border-neutral-300 text-primary font-medium text-base hover:border-primary hover:bg-neutral-50 transition-all duration-300"
             >
               View Our Work
-            </Link>
+            </MagneticButton>
           </motion.div>
         </motion.div>
       </div>
