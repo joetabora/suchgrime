@@ -87,10 +87,10 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-8"
           >
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[10rem] font-display leading-[0.7] tracking-wide">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[10rem] font-display leading-[0.85] tracking-wide">
               <span className="block text-neutral-900">WE HELP</span>
               <span className="block text-neutral-900">BUSINESSES</span>
-              <span className="block relative h-[1.1em] overflow-hidden">
+              <span className="block relative h-[1em] overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={currentIndex}
