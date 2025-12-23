@@ -117,6 +117,26 @@ export default function Services() {
               </motion.div>
             ))}
           </div>
+
+          {/* Budget flexibility note */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="mt-12 text-center max-w-2xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-neutral-200 rounded-full mb-4">
+              <svg className="w-5 h-5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-sm font-medium text-neutral-600">Flexible Pricing</span>
+            </div>
+            <p className="text-neutral-500">
+              These prices are general estimates to give you a starting point. Every project is unique, 
+              and we&apos;re happy to work with most budgets. <a href="#contact" className="text-neutral-900 font-medium hover:underline">Let&apos;s chat</a> about 
+              what works for you.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </section>
