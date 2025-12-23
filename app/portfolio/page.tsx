@@ -6,28 +6,28 @@ import Link from 'next/link'
 const projects = [
   {
     title: 'Milwaukee Plumbing Co.',
-    description: 'Complete website refresh and local SEO domination. Doubled leads in 3 months.',
+    description: 'Complete website refresh and local SEO optimization. Doubled leads in 3 months.',
     category: 'Website Refresh + SEO',
     results: ['2x leads', 'Ranked #1 for 5 keywords', '40% conversion increase'],
     image: '/api/placeholder/800/600',
   },
   {
     title: 'Brew City Auto Repair',
-    description: 'E-commerce integration for parts sales. Modern design meets industrial grit.',
+    description: 'E-commerce integration for parts sales. Modern design meets industrial precision.',
     category: 'E-commerce Build',
     results: ['40% revenue increase', '500+ products cataloged', 'Mobile-first design'],
     image: '/api/placeholder/800/600',
   },
   {
     title: 'Lakefront Landscaping',
-    description: 'Ranked #1 for "landscaping Milwaukee" within 6 months. Lead gen machine.',
+    description: 'Ranked #1 for "landscaping Milwaukee" within 6 months. Lead generation machine.',
     category: 'SEO Domination',
     results: ['#1 Google ranking', '300% organic traffic', 'Local pack dominance'],
     image: '/api/placeholder/800/600',
   },
   {
     title: 'Rust Belt Manufacturing',
-    description: 'Complete B2B site overhaul. Modern design meets industrial grit.',
+    description: 'Complete B2B site overhaul. Modern design meets industrial precision.',
     category: 'Full Redesign',
     results: ['50% bounce rate reduction', '3x form submissions', 'Enterprise features'],
     image: '/api/placeholder/800/600',
@@ -50,7 +50,7 @@ const projects = [
 
 export default function PortfolioPage() {
   return (
-    <main className="pt-20">
+    <main className="pt-20 bg-white">
       <section className="py-24 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -59,11 +59,11 @@ export default function PortfolioPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-distressed distressed-text mb-6 text-grime-purple neon-glow-purple">
-              Sites that don&apos;t suck.
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-bold mb-6 text-primary">
+              Portfolio
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Real projects. Real results. Milwaukee businesses crushing it online.
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+              Real projects. Real results. Milwaukee businesses achieving measurable growth online.
             </p>
           </motion.div>
 
@@ -74,20 +74,23 @@ export default function PortfolioPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="brutal-border bg-grime-charcoal overflow-hidden group"
+                className="bg-neutral-50 border border-neutral-200 overflow-hidden group hover:border-primary transition-all duration-300"
               >
-                <div className="relative h-64 bg-gradient-to-br from-grime-charcoal to-grime-black flex items-center justify-center">
-                  <div className="absolute inset-0 bg-grime-green/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="text-6xl opacity-20">💀</div>
+                <div className="relative h-64 bg-neutral-100 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 to-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="text-4xl text-neutral-300">—</div>
                 </div>
                 <div className="p-6">
-                  <div className="text-sm text-grime-green mb-2">{project.category}</div>
-                  <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-                  <p className="text-gray-400 mb-4">{project.description}</p>
+                  <div className="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-3">{project.category}</div>
+                  <h3 className="text-xl font-display font-bold mb-3 text-primary">{project.title}</h3>
+                  <p className="text-sm text-neutral-600 mb-4">{project.description}</p>
                   <ul className="space-y-1 mb-4">
                     {project.results.map((result, idx) => (
-                      <li key={idx} className="text-sm text-grime-green">
-                        ✓ {result}
+                      <li key={idx} className="text-xs text-neutral-500 flex items-center">
+                        <svg className="w-3 h-3 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {result}
                       </li>
                     ))}
                   </ul>
@@ -99,9 +102,12 @@ export default function PortfolioPage() {
           <div className="text-center mt-16">
             <Link
               href="/contact"
-              className="inline-block px-8 py-4 bg-grime-green text-grime-black font-bold text-lg hover:bg-grime-green/80 transition-all brutal-border"
+              className="inline-flex items-center px-8 py-4 bg-primary text-white font-medium hover:bg-neutral-900 transition-all duration-300"
             >
               Get Your Project Started
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 
@@ -8,14 +8,20 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['300', '400', '500', '600', '700'],
+})
+
 export const metadata: Metadata = {
-  title: 'SuchGrime - Raw Design. Ruthless SEO. Milwaukee-Built.',
-  description: 'We drag your outdated site out of the gutter and make it dominate Google. Raw design. Ruthless SEO. Milwaukee-built for small businesses that want to win.',
+  title: 'SuchGrime - Professional Web Design & SEO | Milwaukee',
+  description: 'Transform outdated websites into high-performing digital assets. Professional design, strategic SEO, and measurable results for Milwaukee businesses.',
   keywords: 'web design Milwaukee, SEO Milwaukee, website redesign, e-commerce Milwaukee, small business SEO',
   authors: [{ name: 'SuchGrime' }],
   openGraph: {
-    title: 'SuchGrime - Raw Design. Ruthless SEO.',
-    description: 'Milwaukee-based web design and SEO agency that refreshes outdated sites and crushes Google rankings.',
+    title: 'SuchGrime - Professional Web Design & SEO',
+    description: 'Milwaukee-based web design and SEO agency delivering measurable results for businesses.',
     type: 'website',
     locale: 'en_US',
   },
@@ -34,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -55,7 +61,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <Navigation />
         {children}
       </body>

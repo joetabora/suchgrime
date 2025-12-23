@@ -5,90 +5,81 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Layers */}
-      <div className="absolute inset-0 z-0">
-        {/* Base concrete texture */}
-        <div className="absolute inset-0 bg-gradient-to-br from-grime-black via-grime-charcoal to-grime-black" />
-        
-        {/* Grunge overlays */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 right-10 w-96 h-96 bg-grime-red/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-grime-purple/10 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-grime-green/5 rounded-full blur-3xl" />
-        </div>
-
-        {/* Dripping paint effect */}
-        <div className="absolute inset-0 opacity-10">
-          <svg className="w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none">
-            <path
-              d="M0,200 Q300,150 600,200 T1200,200 L1200,800 L0,800 Z"
-              fill="url(#drip-gradient)"
-              opacity="0.3"
-            />
-            <defs>
-              <linearGradient id="drip-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#00ff41" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#ff0044" stopOpacity="0.1" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 z-0 opacity-[0.02]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, #000 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="max-w-5xl mx-auto text-center"
         >
-          <motion.h1
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-distressed mb-6 distressed-text"
-            data-text="SUCH GRIME"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="mb-8"
           >
-            SUCH GRIME
+            <span className="text-sm font-medium text-neutral-500 uppercase tracking-wider">
+              Milwaukee Web Design & SEO
+            </span>
+          </motion.div>
+
+          <motion.h1
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-8 text-primary leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            SuchGrime
           </motion.h1>
 
           <motion.p
-            className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-grime-green neon-glow-green max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
+            className="text-xl sm:text-2xl md:text-3xl font-light mb-6 text-neutral-700 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
           >
-            We drag your outdated site out of the gutter<br className="hidden sm:block" /> and make it dominate Google.
+            We transform outdated websites into high-performing digital assets that dominate search rankings.
           </motion.p>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl mb-12 text-gray-300 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
+            className="text-base sm:text-lg mb-12 text-neutral-600 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
           >
-            Raw design. Ruthless SEO. Milwaukee-built for small businesses that want to win.
+            Professional design. Strategic SEO. Built in Milwaukee for businesses that demand results.
           </motion.p>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
           >
             <Link
               href="/contact"
-              className="group relative px-8 py-4 bg-grime-green text-grime-black font-bold text-lg brutal-border hover:glitch transition-all"
+              className="group px-8 py-4 bg-primary text-white font-medium text-base hover:bg-neutral-900 transition-all duration-300 inline-flex items-center"
             >
-              <span className="relative z-10">Get a Free Site Audit</span>
-              <div className="absolute inset-0 bg-grime-green/80 opacity-0 group-hover:opacity-100 transition-opacity" />
+              Get Free Site Audit
+              <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
             <Link
               href="/portfolio"
-              className="group px-8 py-4 border-3 border-grime-green text-grime-green font-bold text-lg hover:bg-grime-green hover:text-grime-black transition-all brutal-border"
+              className="px-8 py-4 border border-neutral-300 text-primary font-medium text-base hover:border-primary hover:bg-neutral-50 transition-all duration-300"
             >
-              See Our Work
+              View Our Work
             </Link>
           </motion.div>
         </motion.div>
@@ -96,21 +87,20 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-grime-green rounded-full flex justify-center"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="flex flex-col items-center"
         >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-3 bg-grime-green rounded-full mt-2"
-          />
+          <span className="text-xs text-neutral-400 mb-2 uppercase tracking-wider">Scroll</span>
+          <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </motion.div>
       </motion.div>
     </section>

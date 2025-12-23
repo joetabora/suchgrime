@@ -19,7 +19,7 @@ export default function ContactPage() {
     e.preventDefault()
     // Handle form submission here
     console.log('Form submitted:', formData)
-    alert('Thanks! We\'ll get back to you ASAP.')
+    alert('Thanks! We&apos;ll get back to you ASAP.')
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -30,7 +30,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="pt-20">
+    <main className="pt-20 bg-white">
       <section className="py-24 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -39,11 +39,11 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-distressed distressed-text mb-6 text-grime-green neon-glow-green">
-              Let&apos;s Build Something Badass
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-bold mb-6 text-primary">
+              Let&apos;s Work Together
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Ready to dominate Google? Get your free site audit and let&apos;s talk.
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+              Ready to transform your digital presence? Get your free site audit and let&apos;s discuss your project.
             </p>
           </motion.div>
 
@@ -54,42 +54,48 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <div className="brutal-border p-8 bg-grime-charcoal mb-6">
-                <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-                <div className="space-y-4">
+              <div className="p-8 bg-neutral-50 border border-neutral-200 mb-6">
+                <h2 className="text-2xl font-display font-bold mb-6 text-primary">Get in Touch</h2>
+                <div className="space-y-6">
                   <div>
-                    <div className="text-sm text-grime-green mb-1">Location</div>
-                    <div className="text-gray-300">Milwaukee, Wisconsin</div>
+                    <div className="text-sm font-medium text-neutral-500 mb-1">Location</div>
+                    <div className="text-neutral-700">Milwaukee, Wisconsin</div>
                   </div>
                   <div>
-                    <div className="text-sm text-grime-green mb-1">Email</div>
-                    <a href="mailto:hello@suchgrime.com" className="text-gray-300 hover:text-grime-green transition-colors">
+                    <div className="text-sm font-medium text-neutral-500 mb-1">Email</div>
+                    <a href="mailto:hello@suchgrime.com" className="text-neutral-700 hover:text-primary transition-colors">
                       hello@suchgrime.com
                     </a>
                   </div>
                   <div>
-                    <div className="text-sm text-grime-green mb-1">Phone</div>
-                    <a href="tel:+14145554743" className="text-gray-300 hover:text-grime-green transition-colors">
+                    <div className="text-sm font-medium text-neutral-500 mb-1">Phone</div>
+                    <a href="tel:+14145554743" className="text-neutral-700 hover:text-primary transition-colors">
                       (414) 555-GRIME
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="brutal-border p-8 bg-grime-charcoal">
-                <h3 className="text-xl font-bold mb-4">What to Expect</h3>
-                <ul className="space-y-3 text-gray-300">
+              <div className="p-8 bg-neutral-50 border border-neutral-200">
+                <h3 className="text-xl font-display font-bold mb-4 text-primary">What to Expect</h3>
+                <ul className="space-y-4 text-neutral-600">
                   <li className="flex items-start">
-                    <span className="text-grime-green mr-2">✓</span>
+                    <svg className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                     <span>Free site audit within 48 hours</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-grime-green mr-2">✓</span>
+                    <svg className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                     <span>Custom proposal tailored to your business</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-grime-green mr-2">✓</span>
-                    <span>No BS. Straight talk about what works.</span>
+                    <svg className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Transparent communication throughout the process</span>
                   </li>
                 </ul>
               </div>
@@ -101,9 +107,9 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              <form onSubmit={handleSubmit} className="brutal-border p-8 bg-grime-charcoal space-y-6">
+              <form onSubmit={handleSubmit} className="p-8 bg-neutral-50 border border-neutral-200 space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-bold mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium mb-2 text-neutral-700">
                     Name *
                   </label>
                   <input
@@ -113,12 +119,12 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-grime-black border-2 border-grime-charcoal text-white focus:border-grime-green focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 text-neutral-900 focus:border-primary focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-bold mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-neutral-700">
                     Email *
                   </label>
                   <input
@@ -128,12 +134,12 @@ export default function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-grime-black border-2 border-grime-charcoal text-white focus:border-grime-green focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 text-neutral-900 focus:border-primary focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-bold mb-2">
+                  <label htmlFor="company" className="block text-sm font-medium mb-2 text-neutral-700">
                     Company
                   </label>
                   <input
@@ -142,12 +148,12 @@ export default function ContactPage() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-grime-black border-2 border-grime-charcoal text-white focus:border-grime-green focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 text-neutral-900 focus:border-primary focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-bold mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium mb-2 text-neutral-700">
                     Phone
                   </label>
                   <input
@@ -156,12 +162,12 @@ export default function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-grime-black border-2 border-grime-charcoal text-white focus:border-grime-green focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 text-neutral-900 focus:border-primary focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="projectType" className="block text-sm font-bold mb-2">
+                  <label htmlFor="projectType" className="block text-sm font-medium mb-2 text-neutral-700">
                     Project Type
                   </label>
                   <select
@@ -169,7 +175,7 @@ export default function ContactPage() {
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-grime-black border-2 border-grime-charcoal text-white focus:border-grime-green focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 text-neutral-900 focus:border-primary focus:outline-none transition-colors"
                   >
                     <option value="">Select...</option>
                     <option value="refresh">Website Refresh</option>
@@ -181,7 +187,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-bold mb-2">
+                  <label htmlFor="budget" className="block text-sm font-medium mb-2 text-neutral-700">
                     Budget Range
                   </label>
                   <select
@@ -189,7 +195,7 @@ export default function ContactPage() {
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-grime-black border-2 border-grime-charcoal text-white focus:border-grime-green focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 text-neutral-900 focus:border-primary focus:outline-none transition-colors"
                   >
                     <option value="">Select...</option>
                     <option value="2k-4k">$2k - $4k</option>
@@ -200,7 +206,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-bold mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-neutral-700">
                     Tell us about your project *
                   </label>
                   <textarea
@@ -210,13 +216,13 @@ export default function ContactPage() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-grime-black border-2 border-grime-charcoal text-white focus:border-grime-green focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-white border border-neutral-300 text-neutral-900 focus:border-primary focus:outline-none transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 bg-grime-green text-grime-black font-bold text-lg hover:bg-grime-green/80 transition-all brutal-border"
+                  className="w-full px-8 py-4 bg-primary text-white font-medium text-base hover:bg-neutral-900 transition-all duration-300"
                 >
                   Get Free Site Audit
                 </button>

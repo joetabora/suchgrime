@@ -8,7 +8,7 @@ import Link from 'next/link'
 const projects = [
   {
     title: 'Milwaukee Plumbing Co.',
-    description: 'Doubled leads in 3 months with a complete refresh and local SEO domination.',
+    description: 'Complete website refresh and local SEO optimization. Doubled leads in 3 months.',
     category: 'Website Refresh + SEO',
     image: '/api/placeholder/600/400',
   },
@@ -20,13 +20,13 @@ const projects = [
   },
   {
     title: 'Lakefront Landscaping',
-    description: 'Ranked #1 for "landscaping Milwaukee" within 6 months. Lead gen machine.',
+    description: 'Ranked #1 for "landscaping Milwaukee" within 6 months. Lead generation machine.',
     category: 'SEO Domination',
     image: '/api/placeholder/600/450',
   },
   {
     title: 'Rust Belt Manufacturing',
-    description: 'Complete B2B site overhaul. Modern design meets industrial grit.',
+    description: 'Complete B2B site overhaul. Modern design meets industrial precision.',
     category: 'Full Redesign',
     image: '/api/placeholder/600/400',
   },
@@ -37,7 +37,7 @@ export default function Portfolio() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="portfolio" className="py-24 sm:py-32 relative paper-tear">
+    <section id="portfolio" className="py-24 sm:py-32 relative bg-neutral-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -45,32 +45,40 @@ export default function Portfolio() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-12 font-distressed distressed-text text-center text-grime-purple neon-glow-purple">
-            Sites that don&apos;t suck.
-          </h2>
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-6 text-primary">
+              Portfolio
+            </h2>
+            <p className="text-lg text-neutral-600">
+              Real projects. Real results. Milwaukee businesses achieving measurable growth online.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="brutal-border bg-grime-charcoal overflow-hidden group"
+                className="group bg-white border border-neutral-200 overflow-hidden hover:border-primary transition-all duration-300"
               >
-                <div className="relative h-64 bg-gradient-to-br from-grime-charcoal to-grime-black flex items-center justify-center">
-                  <div className="absolute inset-0 bg-grime-green/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="text-6xl opacity-20">💀</div>
+                <div className="relative h-64 bg-neutral-100 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 to-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="text-4xl text-neutral-300">—</div>
                 </div>
-                <div className="p-6">
-                  <div className="text-sm text-grime-green mb-2">{project.category}</div>
-                  <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-                  <p className="text-gray-400 mb-4">{project.description}</p>
+                <div className="p-8">
+                  <div className="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-3">{project.category}</div>
+                  <h3 className="text-2xl font-display font-bold mb-3 text-primary">{project.title}</h3>
+                  <p className="text-neutral-600 mb-6">{project.description}</p>
                   <Link
                     href="/portfolio"
-                    className="inline-block text-grime-green font-bold hover:text-grime-green/80 transition-colors"
+                    className="inline-flex items-center text-primary font-medium hover:underline group"
                   >
-                    View Case Study →
+                    View Case Study
+                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </Link>
                 </div>
               </motion.div>
@@ -80,9 +88,12 @@ export default function Portfolio() {
           <div className="text-center mt-12">
             <Link
               href="/portfolio"
-              className="inline-block px-8 py-4 border-3 border-grime-green text-grime-green font-bold text-lg hover:bg-grime-green hover:text-grime-black transition-all brutal-border"
+              className="inline-flex items-center px-8 py-4 border border-neutral-300 text-primary font-medium hover:border-primary hover:bg-neutral-50 transition-all duration-300"
             >
               View Full Portfolio
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         </motion.div>

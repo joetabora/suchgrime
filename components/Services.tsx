@@ -2,42 +2,37 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 
 const services = [
   {
     title: 'Website Refreshes',
-    description: 'Transform your outdated site into a conversion machine. Modern design meets brutal performance.',
-    icon: '💀',
-    color: 'green',
+    description: 'Transform outdated sites into modern, conversion-focused experiences. Clean design meets strategic functionality.',
+    icon: '01',
   },
   {
     title: 'Initial SEO Setup',
-    description: 'Technical audits, keyword strategy, on-page optimization. We set the foundation for domination.',
-    icon: '⚡',
-    color: 'red',
+    description: 'Technical audits, keyword strategy, and on-page optimization. We establish the foundation for search dominance.',
+    icon: '02',
   },
   {
     title: 'E-commerce Builds',
-    description: 'Full-featured online stores that convert. Payment integration, inventory management, the works.',
-    icon: '🔥',
-    color: 'purple',
+    description: 'Full-featured online stores that convert. Payment integration, inventory management, and seamless user experiences.',
+    icon: '03',
   },
   {
     title: 'Monthly SEO Maintenance',
-    description: 'Ongoing optimization, content updates, link building. Keep your rankings climbing.',
-    icon: '📈',
-    color: 'green',
+    description: 'Ongoing optimization, content updates, and link building. Keep your rankings climbing month after month.',
+    icon: '04',
   },
 ]
 
 export default function Services() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="services" className="py-24 sm:py-32 relative">
+    <section id="services" className="py-24 sm:py-32 relative bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -45,36 +40,31 @@ export default function Services() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-12 font-distressed distressed-text text-center">
-            What We Do
-          </h2>
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-6 text-primary">
+              Services
+            </h2>
+            <p className="text-lg text-neutral-600">
+              Comprehensive digital solutions designed to elevate your online presence and drive measurable business results.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((service, index) => {
-              const colorClasses = {
-                green: 'border-grime-green hover:border-grime-green',
-                red: 'border-grime-red hover:border-grime-red',
-                purple: 'border-grime-purple hover:border-grime-purple',
-              }
-
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  className={`brutal-border p-8 bg-grime-charcoal cursor-pointer transition-all ${
-                    colorClasses[service.color as keyof typeof colorClasses]
-                  } ${hoveredIndex === index ? 'glitch' : ''}`}
-                >
-                  <div className="text-5xl mb-4">{service.icon}</div>
-                  <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{service.description}</p>
-                </motion.div>
-              )
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="group p-8 bg-neutral-50 border border-neutral-200 hover:border-primary transition-all duration-300"
+              >
+                <div className="text-4xl font-display font-bold text-neutral-300 mb-4 group-hover:text-primary transition-colors">
+                  {service.icon}
+                </div>
+                <h3 className="text-2xl font-display font-bold mb-4 text-primary">{service.title}</h3>
+                <p className="text-neutral-600 leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

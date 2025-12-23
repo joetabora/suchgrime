@@ -9,18 +9,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        grime: {
-          black: '#000000',
-          charcoal: '#111111',
-          green: '#00ff41',
-          red: '#ff0044',
-          purple: '#a800ff',
+        primary: {
+          DEFAULT: '#000000',
+          light: '#333333',
+          dark: '#000000',
+        },
+        accent: {
+          DEFAULT: '#0066FF',
+          light: '#3385FF',
+          dark: '#0052CC',
+        },
+        neutral: {
+          50: '#FAFAFA',
+          100: '#F5F5F5',
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
         },
       },
       fontFamily: {
-        distressed: ['var(--font-distressed)', 'serif'],
+        display: ['var(--font-display)', 'sans-serif'],
         sans: ['var(--font-inter)', 'sans-serif'],
-        brutal: ['var(--font-brutal)', 'sans-serif'],
       },
       animation: {
         'glitch': 'glitch 0.3s infinite',
