@@ -76,7 +76,7 @@ export default function Hero() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-full text-sm font-medium text-primary">
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-              Milwaukee's Growth Partner
+              Milwaukee&apos;s Growth Partner
             </span>
           </motion.div>
 

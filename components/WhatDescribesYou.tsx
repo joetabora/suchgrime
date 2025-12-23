@@ -69,7 +69,7 @@ export default function WhatDescribesYou() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.3 }}
             >
-              Click your situation. We've got you covered.
+              Click your situation. We&apos;ve got you covered.
             </motion.p>
           </div>
 
