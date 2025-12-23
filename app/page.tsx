@@ -1,10 +1,10 @@
 import Hero from '@/components/Hero'
 import Marquee from '@/components/Marquee'
-import About from '@/components/About'
-import Services from '@/components/Services'
-import Portfolio from '@/components/Portfolio'
+import Stats from '@/components/Stats'
+import WhatDescribesYou from '@/components/WhatDescribesYou'
+import WorkShowcase from '@/components/WorkShowcase'
 import Testimonials from '@/components/Testimonials'
-import Pricing from '@/components/Pricing'
+import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -12,11 +12,11 @@ export default function Home() {
     <main>
       <Hero />
       <Marquee />
-      <About />
-      <Services />
-      <Portfolio />
+      <Stats />
+      <WhatDescribesYou />
+      <WorkShowcase />
       <Testimonials />
-      <Pricing />
+      <FinalCTA />
       <Footer />
     </main>
   )

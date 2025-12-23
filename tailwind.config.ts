@@ -10,14 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#000000',
-          light: '#333333',
+          DEFAULT: '#0a0a0a',
+          light: '#1a1a1a',
           dark: '#000000',
         },
         accent: {
-          DEFAULT: '#0066FF',
-          light: '#3385FF',
-          dark: '#0052CC',
+          DEFAULT: '#FF4D4D', // Vibrant coral red
+          light: '#FF6B6B',
+          dark: '#E63946',
+          yellow: '#FFE566', // Energetic yellow
+          mint: '#4ECDC4', // Fresh mint
+          purple: '#7C3AED', // Electric purple
+        },
+        cream: {
+          DEFAULT: '#FDF8F3',
+          dark: '#F5EDE4',
         },
         neutral: {
           50: '#FAFAFA',
@@ -39,9 +46,13 @@ const config: Config = {
       animation: {
         'glitch': 'glitch 0.3s infinite',
         'grain': 'grain 0.5s steps(6) infinite',
-        'distress': 'distress 2s ease-in-out infinite',
         'fade-in': 'fadeIn 0.6s ease-out',
         'slide-up': 'slideUp 0.8s ease-out',
+        'text-rotate': 'textRotate 0.5s ease-in-out',
+        'marquee': 'marquee 30s linear infinite',
+        'marquee-reverse': 'marqueeReverse 30s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         glitch: {
@@ -54,19 +65,7 @@ const config: Config = {
         grain: {
           '0%': { transform: 'translate(0, 0)' },
           '10%': { transform: 'translate(-5%, -5%)' },
-          '20%': { transform: 'translate(-10%, 5%)' },
-          '30%': { transform: 'translate(5%, -10%)' },
-          '40%': { transform: 'translate(-5%, 15%)' },
-          '50%': { transform: 'translate(-10%, 5%)' },
-          '60%': { transform: 'translate(15%, 0%)' },
-          '70%': { transform: 'translate(0%, 15%)' },
-          '80%': { transform: 'translate(-15%, 10%)' },
-          '90%': { transform: 'translate(10%, 5%)' },
           '100%': { transform: 'translate(5%, 0)' },
-        },
-        distress: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.95' },
         },
         fadeIn: {
           '0%': { opacity: '0' },
@@ -75,6 +74,22 @@ const config: Config = {
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(30px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        textRotate: {
+          '0%': { opacity: '0', transform: 'translateY(20px) rotateX(-20deg)' },
+          '100%': { opacity: '1', transform: 'translateY(0) rotateX(0)' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        marqueeReverse: {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
         },
       },
       backgroundImage: {

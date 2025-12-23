@@ -8,6 +8,12 @@
 :root {
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
   --font-inter: 'Inter', sans-serif;
+  
+  /* Accent colors */
+  --accent: #FF4D4D;
+  --accent-mint: #4ECDC4;
+  --accent-yellow: #FFE566;
+  --accent-purple: #7C3AED;
 }
 
 * {
@@ -29,18 +35,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes grain {
-  0% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -5%); }
-  20% { transform: translate(-10%, 5%); }
-  30% { transform: translate(5%, -10%); }
-  40% { transform: translate(-5%, 15%); }
-  50% { transform: translate(-10%, 5%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(-15%, 10%); }
-  90% { transform: translate(10%, 5%); }
-  100% { transform: translate(5%, 0); }
+/* Accent text colors */
+.text-accent {
+  color: var(--accent);
+}
+
+.text-accent-mint {
+  color: var(--accent-mint);
+}
+
+.text-accent-yellow {
+  color: var(--accent-yellow);
+}
+
+.text-accent-purple {
+  color: var(--accent-purple);
+}
+
+/* Accent backgrounds */
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.bg-accent-mint {
+  background-color: var(--accent-mint);
+}
+
+.bg-accent-yellow {
+  background-color: var(--accent-yellow);
+}
+
+.bg-accent-purple {
+  background-color: var(--accent-purple);
+}
+
+/* Cream background */
+.bg-cream {
+  background-color: #FDF8F3;
 }
 
 /* Subtle text effects */
@@ -79,14 +110,14 @@ body {
   background: #999;
 }
 
-/* Selection */
+/* Selection - use accent color */
 ::selection {
-  background: #000;
+  background: var(--accent);
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #000;
+  background: var(--accent);
   color: #fff;
 }
 
@@ -123,10 +154,22 @@ body {
   transform: translateY(0);
 }
 
-/* Console styling easter egg */
-@media screen {
-  body::after {
-    content: '';
-    display: none;
-  }
+/* Hover card glow */
+.hover-glow {
+  position: relative;
+}
+
+.hover-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 77, 77, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hover-glow:hover::before {
+  opacity: 1;
 }

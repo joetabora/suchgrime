@@ -3,47 +3,47 @@
 import { motion } from 'framer-motion'
 
 const items = [
-  '✦ Award-Winning Design',
-  '✦ SEO Excellence',
-  '✦ Milwaukee Based',
-  '✦ 10+ Years Experience',
-  '✦ Data-Driven Results',
-  '✦ Custom Solutions',
-  '✦ Fast Turnaround',
-  '✦ Proven ROI',
+  { text: 'Web Design', emoji: '🎨' },
+  { text: 'SEO', emoji: '🔍' },
+  { text: 'E-commerce', emoji: '🛒' },
+  { text: 'Branding', emoji: '✨' },
+  { text: 'Marketing', emoji: '📈' },
+  { text: 'Strategy', emoji: '🎯' },
+  { text: 'Development', emoji: '⚡' },
+  { text: 'Results', emoji: '🚀' },
 ]
 
 export default function Marquee() {
-  // Duplicate items for seamless loop
-  const allItems = [...items, ...items]
+  const allItems = [...items, ...items, ...items]
 
   return (
-    <section className="py-8 bg-neutral-50 border-y border-neutral-200 overflow-hidden">
+    <section className="py-6 bg-accent overflow-hidden">
       <div 
         className="flex whitespace-nowrap"
         style={{
-          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
         }}
       >
         <motion.div
-          className="flex gap-12 items-center"
-          animate={{ x: ['0%', '-50%'] }}
+          className="flex items-center"
+          animate={{ x: ['0%', '-33.33%'] }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: 'loop',
-              duration: 25,
+              duration: 20,
               ease: 'linear',
             },
           }}
         >
           {allItems.map((item, i) => (
-            <div key={i} className="flex items-center gap-12">
-              <span className="text-sm font-medium text-neutral-500 uppercase tracking-wider hover:text-neutral-900 transition-colors cursor-default">
-                {item}
+            <div key={i} className="flex items-center">
+              <span className="text-white font-display font-bold text-lg sm:text-xl uppercase tracking-wide px-8 flex items-center gap-3">
+                <span>{item.emoji}</span>
+                {item.text}
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
+              <span className="text-white/40">•</span>
             </div>
           ))}
         </motion.div>
@@ -51,4 +51,3 @@ export default function Marquee() {
     </section>
   )
 }
-
