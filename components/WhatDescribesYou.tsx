@@ -35,6 +35,17 @@ export default function WhatDescribesYou() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, optionId: string) => {
+    if (hoveredId === optionId) {
+      const rect = e.currentTarget.getBoundingClientRect()
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      })
+    }
+  }
 
   return (
     <section className="py-24 sm:py-32 bg-white">
@@ -75,8 +86,18 @@ export default function WhatDescribesYou() {
                 transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
                 onMouseEnter={() => setHoveredId(option.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                className="group relative p-8 rounded-2xl border-2 border-neutral-200 hover:border-neutral-900 bg-white hover:bg-neutral-50 transition-all duration-300 cursor-pointer"
+                onMouseMove={(e) => handleMouseMove(e, option.id)}
+                className="group relative p-8 rounded-2xl border-2 border-neutral-200 hover:border-neutral-900 bg-white hover:bg-neutral-50 transition-all duration-300 cursor-pointer overflow-hidden"
               >
+                {/* Spotlight effect */}
+                {hoveredId === option.id && (
+                  <motion.div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(0,0,0,0.05), transparent 40%)`,
+                    }}
+                  />
+                )}
                 {/* Number */}
                 <span className="text-6xl font-display text-neutral-200 group-hover:text-neutral-300 transition-colors mb-4 block tracking-wider">
                   {option.icon}
@@ -113,7 +134,7 @@ export default function WhatDescribesYou() {
             <p className="text-neutral-400 mb-4">Not sure? That&apos;s okay.</p>
             <MagneticButton
               as="a"
-              href="/contact"
+              href="#contact"
               className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white font-semibold rounded-full hover:bg-neutral-800 transition-colors"
             >
               Let&apos;s figure it out together

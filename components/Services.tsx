@@ -79,8 +79,9 @@ export default function Services() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className={`relative p-8 bg-white border-2 transition-all duration-300 hover:border-neutral-900 ${
-                  tier.popular ? 'border-neutral-900' : 'border-neutral-200'
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className={`relative p-8 bg-white border-2 transition-all duration-300 hover:border-neutral-900 hover:shadow-xl ${
+                  tier.popular ? 'border-neutral-900 shadow-lg' : 'border-neutral-200'
                 }`}
               >
                 {tier.popular && (

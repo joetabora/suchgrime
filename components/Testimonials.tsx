@@ -34,8 +34,34 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <section className="py-24 sm:py-32 bg-neutral-900 text-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-neutral-900 text-white overflow-hidden relative">
+      {/* Floating abstract shapes */}
+      <motion.div
+        className="absolute top-20 left-10 w-32 h-32 border border-neutral-800 rounded-full"
+        animate={{
+          y: [0, -20, 0],
+          rotate: [0, 90, 0],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute bottom-32 right-16 w-24 h-24 border border-neutral-800"
+        animate={{
+          y: [0, 20, 0],
+          rotate: [0, -45, 0],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute top-1/3 right-10 w-16 h-16 bg-neutral-800 rounded-full blur-xl"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}

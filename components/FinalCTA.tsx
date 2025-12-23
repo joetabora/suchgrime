@@ -10,7 +10,7 @@ export default function FinalCTA() {
 
   return (
     <section className="py-24 sm:py-32 bg-white relative overflow-hidden">
-      {/* Background decoration */}
+      {/* Background decoration - Enhanced */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute w-[600px] h-[600px] rounded-full bg-neutral-100 blur-3xl"
@@ -20,6 +20,31 @@ export default function FinalCTA() {
             rotate: [0, 5, 0],
           }}
           transition={{ duration: 10, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute w-[400px] h-[400px] rounded-full bg-neutral-50 blur-2xl"
+          style={{ bottom: '-10%', left: '10%' }}
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, -10, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, delay: 2 }}
+        />
+        {/* Geometric elements */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-32 h-32 border border-neutral-200 rounded-full"
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/3 w-24 h-24 border-2 border-neutral-100"
+          animate={{
+            rotate: [0, -180, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
         />
       </div>
 

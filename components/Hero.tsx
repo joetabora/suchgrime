@@ -27,7 +27,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Floating gradient orbs - subtle greys */}
+      {/* Floating gradient orbs - subtle greys with enhanced parallax */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute w-[600px] h-[600px] rounded-full bg-neutral-200/30 blur-3xl"
@@ -48,6 +48,32 @@ export default function Hero() {
             y: [0, -30, 0],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        />
+        {/* Additional floating elements for depth */}
+        <motion.div
+          className="absolute w-[300px] h-[300px] rounded-full bg-neutral-300/20 blur-2xl"
+          style={{ top: '50%', left: '50%' }}
+          animate={{
+            scale: [1, 1.15, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-2 h-2 bg-neutral-400 rounded-full"
+          animate={{
+            y: [0, -10, 0],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute top-2/3 right-1/4 w-1 h-1 bg-neutral-300 rounded-full"
+          animate={{
+            y: [0, 15, 0],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{ duration: 4, repeat: Infinity, delay: 1 }}
         />
       </div>
 
@@ -149,3 +175,4 @@ export default function Hero() {
     </section>
   )
 }
+

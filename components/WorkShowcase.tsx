@@ -106,8 +106,8 @@ export default function WorkShowcase() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Project Image/Preview */}
               <motion.div
-                className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br ${project.gradient}`}
-                whileHover={{ scale: 1.02 }}
+                className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br ${project.gradient} shadow-lg`}
+                whileHover={{ scale: 1.02, boxShadow: '0 20px 60px -10px rgba(0,0,0,0.3)' }}
                 transition={{ duration: 0.3 }}
               >
                 {/* Decorative elements */}
