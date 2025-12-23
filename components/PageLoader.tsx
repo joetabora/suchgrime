@@ -46,8 +46,8 @@ export default function PageLoader() {
               transition={{ duration: 0.6 }}
               className="mb-8"
             >
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-neutral-900">
-                SuchGrime
+              <h1 className="text-5xl md:text-6xl font-display text-neutral-900 tracking-wider">
+                SUCHGRIME
               </h1>
             </motion.div>
             

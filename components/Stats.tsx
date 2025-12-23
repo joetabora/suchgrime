@@ -64,7 +64,7 @@ export default function Stats() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="text-center"
             >
-              <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-2 text-neutral-900">
+              <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display mb-2 text-neutral-900 tracking-wider">
                 <AnimatedNumber value={stat.number} suffix={stat.suffix} prefix={stat.prefix} />
               </div>
               <div className="text-sm sm:text-base text-neutral-500 uppercase tracking-wider font-medium">

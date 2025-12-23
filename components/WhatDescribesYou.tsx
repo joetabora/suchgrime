@@ -48,12 +48,12 @@ export default function WhatDescribesYou() {
           {/* Header */}
           <div className="text-center mb-16">
             <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-neutral-900 mb-6"
+              className="text-5xl sm:text-6xl md:text-7xl font-display text-neutral-900 mb-6 tracking-wide"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.2 }}
             >
-              What best describes you?
+              WHAT BEST DESCRIBES YOU?
             </motion.h2>
             <motion.p 
               className="text-xl text-neutral-500 max-w-2xl mx-auto"
@@ -78,12 +78,12 @@ export default function WhatDescribesYou() {
                 className="group relative p-8 rounded-2xl border-2 border-neutral-200 hover:border-neutral-900 bg-white hover:bg-neutral-50 transition-all duration-300 cursor-pointer"
               >
                 {/* Number */}
-                <span className="text-5xl font-display font-bold text-neutral-200 group-hover:text-neutral-300 transition-colors mb-4 block">
+                <span className="text-6xl font-display text-neutral-200 group-hover:text-neutral-300 transition-colors mb-4 block tracking-wider">
                   {option.icon}
                 </span>
 
                 {/* Title */}
-                <h3 className="text-2xl font-display font-bold mb-3 text-neutral-900 group-hover:translate-x-1 transition-transform">
+                <h3 className="text-2xl font-display mb-3 text-neutral-900 group-hover:translate-x-1 transition-transform tracking-wide uppercase">
                   {option.title}
                 </h3>
 

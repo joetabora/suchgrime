@@ -37,9 +37,9 @@ export default function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-display font-bold text-primary relative group">
-            SuchGrime
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
+          <Link href="/" className="text-3xl font-display text-neutral-900 tracking-wider relative group">
+            SUCHGRIME
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neutral-900 group-hover:w-full transition-all duration-300" />
           </Link>
 
           {/* Desktop Navigation */}

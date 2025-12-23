@@ -31,9 +31,9 @@ export default function FinalCTA() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-neutral-900 mb-6 leading-tight">
-            Great brands<br />
-            <span className="text-neutral-400">don&apos;t just happen.</span>
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display text-neutral-900 mb-6 leading-[0.9] tracking-wide">
+            GREAT BRANDS<br />
+            <span className="text-neutral-400">DON&apos;T JUST HAPPEN.</span>
           </h2>
 
           <p className="text-xl sm:text-2xl text-neutral-600 mb-4 font-medium">

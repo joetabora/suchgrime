@@ -60,8 +60,8 @@ export default function WorkShowcase() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
         >
           <div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-neutral-900 mb-4">
-              Our Work
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-display text-neutral-900 mb-4 tracking-wide">
+              OUR WORK
             </h2>
             <p className="text-xl text-neutral-500 max-w-xl">
               Real results for real businesses. Here&apos;s a taste of what we do.
@@ -108,7 +108,7 @@ export default function WorkShowcase() {
                     className="transform group-hover:-translate-y-2 transition-transform duration-300"
                   >
                     <p className="text-white/60 text-sm mb-1">{project.category}</p>
-                    <h3 className="text-white text-2xl font-display font-bold">{project.title}</h3>
+                    <h3 className="text-white text-2xl font-display tracking-wide">{project.title}</h3>
                   </motion.div>
                 </div>
 
@@ -149,7 +149,7 @@ export default function WorkShowcase() {
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
                   <div className="transform group-hover:-translate-y-2 transition-transform duration-300">
                     <p className="text-white/60 text-sm mb-1">{project.category}</p>
-                    <h3 className="text-white text-xl font-display font-bold">{project.title}</h3>
+                    <h3 className="text-white text-xl font-display tracking-wide">{project.title}</h3>
                   </div>
                 </div>
               </div>
