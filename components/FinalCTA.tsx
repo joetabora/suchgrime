@@ -42,7 +42,7 @@ export default function FinalCTA() {
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-primary mb-6 leading-tight">
             Great brands<br />
-            <span className="text-accent">don't just happen.</span>
+            <span className="text-accent">don&apos;t just happen.</span>
           </h2>
 
           <p className="text-xl sm:text-2xl text-neutral-600 mb-4 font-medium">
@@ -51,7 +51,7 @@ export default function FinalCTA() {
 
           <p className="text-lg text-neutral-500 mb-12 max-w-2xl mx-auto">
             Ready to stop blending in and start standing out? 
-            Let's talk about turning your business into the go-to choice in your market.
+            Let&apos;s talk about turning your business into the go-to choice in your market.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -60,7 +60,7 @@ export default function FinalCTA() {
               href="/contact"
               className="group px-10 py-5 bg-primary text-white font-bold text-lg rounded-full hover:bg-primary-light transition-all duration-300 inline-flex items-center gap-3"
             >
-              Let's Chat
+              Let&apos;s Chat
               <motion.span
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

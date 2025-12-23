@@ -65,7 +65,7 @@ export default function WorkShowcase() {
               Our Work
             </h2>
             <p className="text-xl text-neutral-600 max-w-xl">
-              Real results for real businesses. Here's a taste of what we do.
+              Real results for real businesses. Here&apos;s a taste of what we do.
             </p>
           </div>
           <Link

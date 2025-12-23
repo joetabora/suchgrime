@@ -115,8 +115,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl sm:text-2xl text-neutral-600 max-w-2xl mb-12 leading-relaxed"
           >
-            Web design, SEO, and marketing that actually works. 
-            <span className="text-primary font-medium"> No fluff, just results.</span>
+            Web design, SEO, and marketing that actually works.{' '}
+            <span className="text-primary font-medium">No fluff, just results.</span>
           </motion.p>
 
           {/* CTA Buttons */}
@@ -131,7 +131,7 @@ export default function Hero() {
               href="/contact"
               className="group px-8 py-4 bg-primary text-white font-semibold text-lg rounded-full hover:bg-primary-light transition-all duration-300 inline-flex items-center justify-center gap-2"
             >
-              Let's Talk
+              Let&apos;s Talk
               <motion.svg 
                 className="w-5 h-5" 
                 fill="none" 

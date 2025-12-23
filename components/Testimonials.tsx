@@ -70,7 +70,7 @@ export default function Testimonials() {
                 className="absolute inset-0 flex flex-col items-center justify-center"
               >
                 <p className="text-2xl sm:text-3xl md:text-4xl font-light leading-relaxed mb-8 text-white/90">
-                  "{testimonials[currentIndex].quote}"
+                  &ldquo;{testimonials[currentIndex].quote}&rdquo;
                 </p>
                 <div>
                   <p className="text-lg font-semibold text-white">

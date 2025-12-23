@@ -58,7 +58,7 @@ export default function Navigation() {
               href="/contact"
               className="px-6 py-2.5 bg-primary text-white font-semibold rounded-full hover:bg-primary-light transition-colors text-sm"
             >
-              Let's Talk
+              Let&apos;s Talk
             </Link>
           </div>
 
@@ -124,7 +124,7 @@ export default function Navigation() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block mt-4 px-6 py-3 bg-primary text-white font-semibold text-center rounded-full"
                 >
-                  Let's Talk
+                  Let&apos;s Talk
                 </Link>
               </motion.div>
             </div>

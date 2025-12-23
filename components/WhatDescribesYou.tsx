@@ -9,7 +9,7 @@ const options = [
     id: 'new-site',
     title: "I need a new website",
     icon: '🚀',
-    description: "You're starting fresh or your current site is beyond saving. We'll design and build a conversion machine from the ground up.",
+    description: "You are starting fresh or your current site is beyond saving. We will design and build a conversion machine from the ground up.",
     color: 'bg-accent/10 border-accent/20 hover:border-accent',
     accent: 'text-accent',
   },
@@ -17,15 +17,15 @@ const options = [
     id: 'refresh',
     title: "My site needs a refresh",
     icon: '✨',
-    description: "Your site works, but it's tired. We'll modernize your design, improve UX, and optimize for conversions without starting over.",
+    description: "Your site works, but it is tired. We will modernize your design, improve UX, and optimize for conversions without starting over.",
     color: 'bg-accent-mint/10 border-accent-mint/20 hover:border-accent-mint',
     accent: 'text-accent-mint',
   },
   {
     id: 'seo',
-    title: "I'm invisible on Google",
+    title: "I am invisible on Google",
     icon: '🔍',
-    description: "You exist, but nobody can find you. We'll audit your site, fix technical issues, and build a strategy to dominate search.",
+    description: "You exist, but nobody can find you. We will audit your site, fix technical issues, and build a strategy to dominate search.",
     color: 'bg-accent-purple/10 border-accent-purple/20 hover:border-accent-purple',
     accent: 'text-accent-purple',
   },
@@ -33,7 +33,7 @@ const options = [
     id: 'everything',
     title: "I need it all",
     icon: '⚡',
-    description: "You want the full package—design, development, SEO, and ongoing support. We'll be your complete digital growth partner.",
+    description: "You want the full package—design, development, SEO, and ongoing support. We will be your complete digital growth partner.",
     color: 'bg-accent-yellow/10 border-accent-yellow/20 hover:border-accent-yellow',
     accent: 'text-accent-yellow',
   },
@@ -133,13 +133,13 @@ export default function WhatDescribesYou() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.8 }}
           >
-            <p className="text-neutral-500 mb-4">Not sure? That's okay.</p>
+            <p className="text-neutral-500 mb-4">Not sure? That&apos;s okay.</p>
             <MagneticButton
               as="a"
               href="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-light transition-colors"
             >
-              Let's figure it out together
+              Let&apos;s figure it out together
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
