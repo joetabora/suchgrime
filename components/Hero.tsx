@@ -54,19 +54,6 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-100 rounded-full text-sm font-medium text-neutral-600">
-              <span className="w-2 h-2 bg-neutral-400 rounded-full animate-pulse" />
-              Milwaukee&apos;s Growth Partner
-            </span>
-          </motion.div>
-
           {/* Main heading with rotating text */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
