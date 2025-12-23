@@ -20,6 +20,20 @@ const projects = [
   },
   {
     id: 2,
+    title: 'Guerrilla Social Club',
+    subtitle: 'Web Design • Branding • Social Integration',
+    description: 'Bold digital presence for a creative social club. Clean design with strong brand identity and seamless social media integration.',
+    url: 'https://guerrillasocialclub.com',
+    stats: [
+      { label: 'Social Engagement', value: '2.5x' },
+      { label: 'Bounce Rate', value: '-40%' },
+      { label: 'Session Duration', value: '+85%' },
+    ],
+    features: ['Brand-forward design', 'Social media integration', 'Event showcase', 'Community features'],
+    gradient: 'from-neutral-600 via-neutral-700 to-neutral-800',
+  },
+  {
+    id: 3,
     title: 'SuchGrime',
     subtitle: 'Brand Identity • Web Design • Development',
     description: 'Our own digital presence. A showcase of modern web design with smooth animations, custom cursor effects, and conversion-focused layout.',
@@ -73,7 +87,7 @@ export default function WorkShowcase() {
             </button>
           ))}
           <div className="px-6 py-3 bg-neutral-50 text-neutral-400 font-display text-lg tracking-wide whitespace-nowrap border-2 border-dashed border-neutral-200">
-            03 — Your Project?
+            04 — Your Project?
           </div>
         </div>
 
