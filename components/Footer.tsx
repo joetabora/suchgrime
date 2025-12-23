@@ -31,12 +31,11 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-display font-bold mb-4 text-white/80 uppercase text-sm tracking-wider">Services</h4>
+            <h4 className="font-display font-bold mb-4 text-white/80 uppercase text-sm tracking-wider">Quick Links</h4>
             <ul className="space-y-3 text-white/60">
-              <li><Link href="#" className="hover:text-white transition-colors">Web Design</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">SEO</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">E-commerce</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Marketing</Link></li>
+              <li><a href="#work" className="hover:text-white transition-colors">Work</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
+              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
 

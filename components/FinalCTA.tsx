@@ -48,7 +48,7 @@ export default function FinalCTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <MagneticButton
               as="a"
-              href="/contact"
+              href="#contact"
               className="group px-10 py-5 bg-neutral-900 text-white font-bold text-lg rounded-full hover:bg-neutral-800 transition-all duration-300 inline-flex items-center gap-3"
             >
               Let&apos;s Chat

@@ -2,11 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +19,37 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Handle smooth scrolling for hash links
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If it's a hash link
+    if (href.startsWith('#')) {
+      e.preventDefault()
+      
+      // If we're not on the homepage, navigate there first
+      if (!isHomePage) {
+        window.location.href = '/' + href
+        return
+      }
+      
+      // Smooth scroll to the section
+      const element = document.querySelector(href)
+      if (element) {
+        const offset = 80 // Account for fixed nav height
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: 'smooth'
+        })
+      }
+      
+      setIsMobileMenuOpen(false)
+    }
+  }
+
   const navLinks = [
     { href: '#work', label: 'Work' },
     { href: '#services', label: 'Services' },
-    { href: '/portfolio', label: 'Portfolio' },
-    { href: '/contact', label: 'Contact' },
+    { href: '#contact', label: 'Contact' },
   ]
 
   return (
@@ -45,27 +74,29 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-neutral-600 hover:text-primary transition-colors relative group"
+                href={isHomePage ? link.href : '/' + link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors relative group cursor-pointer"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
-              </Link>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neutral-900 group-hover:w-full transition-all duration-300" />
+              </a>
             ))}
-            <Link
-              href="/contact"
-              className="px-6 py-2.5 bg-primary text-white font-semibold rounded-full hover:bg-primary-light transition-colors text-sm"
+            <a
+              href={isHomePage ? '#contact' : '/#contact'}
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="px-6 py-2.5 bg-neutral-900 text-white font-semibold rounded-full hover:bg-neutral-800 transition-colors text-sm cursor-pointer"
             >
               Let&apos;s Talk
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-primary p-2 relative w-10 h-10"
+            className="md:hidden text-neutral-900 p-2 relative w-10 h-10"
             aria-label="Toggle menu"
           >
             <span
@@ -105,27 +136,27 @@ export default function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-lg font-medium text-neutral-700 hover:text-primary transition-colors py-2"
+                  <a
+                    href={isHomePage ? link.href : '/' + link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="block text-lg font-medium text-neutral-700 hover:text-neutral-900 transition-colors py-2 cursor-pointer"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.3 }}
               >
-                <Link
-                  href="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block mt-4 px-6 py-3 bg-primary text-white font-semibold text-center rounded-full"
+                <a
+                  href={isHomePage ? '#contact' : '/#contact'}
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="block mt-4 px-6 py-3 bg-neutral-900 text-white font-semibold text-center rounded-full cursor-pointer"
                 >
                   Let&apos;s Talk
-                </Link>
+                </a>
               </motion.div>
             </div>
           </motion.div>

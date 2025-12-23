@@ -102,7 +102,7 @@ export default function Hero() {
           >
             <MagneticButton
               as="a"
-              href="/contact"
+              href="#contact"
               className="group px-8 py-4 bg-neutral-900 text-white font-semibold text-lg rounded-full hover:bg-neutral-800 transition-all duration-300 inline-flex items-center justify-center gap-2"
             >
               Let&apos;s Talk
