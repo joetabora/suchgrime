@@ -17,14 +17,26 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError('')
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form')
+      }
+
       setIsSubmitted(true)
       setFormData({
         name: '',
@@ -35,7 +47,12 @@ export default function Contact() {
         budget: '',
         message: '',
       })
-    }, 1500)
+    } catch (err) {
+      setError('Something went wrong. Please try emailing us directly.')
+      console.error('Form submission error:', err)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -239,6 +256,12 @@ export default function Contact() {
                       className="w-full px-4 py-3 bg-white border border-neutral-300 text-neutral-900 focus:border-neutral-900 focus:outline-none transition-colors resize-none"
                     />
                   </div>
+
+                  {error && (
+                    <div className="p-4 bg-red-50 border border-red-200 rounded">
+                      <p className="text-red-600 text-sm">{error}</p>
+                    </div>
+                  )}
 
                   <button
                     type="submit"
