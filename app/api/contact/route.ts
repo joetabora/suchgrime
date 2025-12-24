@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     
     const result = await resend.emails.send({
       from: 'SuchGrime Contact <onboarding@resend.dev>',
-      to: 'suchgrime@guerrillasocialclub.com',
+      to: 'joetabora@gmail.com', // Changed to your verified email
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
