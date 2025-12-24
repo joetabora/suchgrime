@@ -19,9 +19,8 @@ export default function Navigation() {
   const navLinks = [
     { href: '#about', label: 'About' },
     { href: '#services', label: 'Services' },
-    { href: '/portfolio', label: 'Portfolio' },
+    { href: '#portfolio', label: 'Portfolio' },
     { href: '#pricing', label: 'Pricing' },
-    { href: '/contact', label: 'Contact' },
   ]
 
   return (
