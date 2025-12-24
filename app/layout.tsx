@@ -1,21 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter, Bebas_Neue } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
-import PageLoader from '@/components/PageLoader'
-import CustomCursor from '@/components/CustomCursor'
-import ScrollProgress from '@/components/ScrollProgress'
-import NoiseOverlay from '@/components/NoiseOverlay'
 
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
 })
 
-const bebasNeue = Bebas_Neue({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: '400',
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -44,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bebasNeue.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -65,11 +61,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${bebasNeue.variable} font-sans antialiased`}>
-        <PageLoader />
-        <ScrollProgress />
-        <CustomCursor />
-        <NoiseOverlay />
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <Navigation />
         {children}
       </body>
