@@ -49,6 +49,7 @@ export default function Navigation() {
   const navLinks = [
     { href: '#work', label: 'Work' },
     { href: '#services', label: 'Services' },
+    { href: '#influencer', label: 'Influencer' },
     { href: '#contact', label: 'Contact' },
   ]
 
