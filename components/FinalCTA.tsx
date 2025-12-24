@@ -85,10 +85,10 @@ export default function FinalCTA() {
               </motion.span>
             </MagneticButton>
             <a 
-              href="mailto:hello@suchgrime.com"
+              href="mailto:suchgrime@guerrillasocialclub.com"
               className="text-neutral-500 hover:text-neutral-900 transition-colors font-medium"
             >
-              or email hello@suchgrime.com
+              or email suchgrime@guerrillasocialclub.com
             </a>
           </div>
         </motion.div>

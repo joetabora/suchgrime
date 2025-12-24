@@ -44,8 +44,8 @@ export default function Footer() {
             <ul className="space-y-3 text-white/60">
               <li>Milwaukee, WI</li>
               <li>
-                <a href="mailto:hello@suchgrime.com" className="hover:text-white transition-colors">
-                  hello@suchgrime.com
+                <a href="mailto:suchgrime@guerrillasocialclub.com" className="hover:text-white transition-colors">
+                  suchgrime@guerrillasocialclub.com
                 </a>
               </li>
             </ul>
