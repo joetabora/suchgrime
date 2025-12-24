@@ -17,7 +17,11 @@ export async function POST(request: Request) {
     }
 
     // Send email using Resend
-    await resend.emails.send({
+    console.log('Attempting to send email...')
+    console.log('To:', 'suchgrime@guerrillasocialclub.com')
+    console.log('From:', email)
+    
+    const result = await resend.emails.send({
       from: 'SuchGrime Contact <onboarding@resend.dev>',
       to: 'suchgrime@guerrillasocialclub.com',
       replyTo: email,
@@ -49,8 +53,11 @@ export async function POST(request: Request) {
       `,
     })
 
+    console.log('Email sent successfully!')
+    console.log('Result:', result)
+
     return NextResponse.json(
-      { message: 'Form submitted successfully' },
+      { message: 'Form submitted successfully', emailId: result.data?.id },
       { status: 200 }
     )
   } catch (error) {
