@@ -247,7 +247,7 @@ export default function Portfolio() {
               Ready to build something remarkable?
             </h3>
             <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
-              Let's create a digital presence that doesn't just exist—it dominates.
+              Let&apos;s create a digital presence that doesn&apos;t just exist—it dominates.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
