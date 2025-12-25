@@ -22,7 +22,7 @@ const bebasNeue = Bebas_Neue({
 
 export const metadata: Metadata = {
   title: 'Milwaukee Web Design & SEO Agency | SuchGrime – Dominate Local Search Rankings',
-  description: 'Professional website refreshes and SEO for Milwaukee small businesses. Transparent pricing starting at $2k. AI-powered builds with Cursor. Free site audit available.',
+  description: 'Professional website refreshes and SEO for Milwaukee small businesses. Transparent pricing starting at $2k. AI-powered builds. Free site audit.',
   keywords: 'web design Milwaukee, SEO Milwaukee, website redesign, local SEO, Milwaukee web developer, small business websites, e-commerce Milwaukee, AI web development',
   authors: [{ name: 'SuchGrime' }],
   openGraph: {
