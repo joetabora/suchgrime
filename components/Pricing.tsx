@@ -56,8 +56,15 @@ export default function Pricing() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="pricing" className="py-24 sm:py-32 relative bg-neutral-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-24 sm:py-32 relative bg-neutral-50 overflow-hidden">
+      {/* Concrete texture overlay */}
+      <div className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'400\' height=\'400\' viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'concreteFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'5\' seed=\'2\'/%3E%3CfeColorMatrix type=\'saturate\' values=\'0\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23concreteFilter)\'/%3E%3C/svg%3E")',
+        }}
+      />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}

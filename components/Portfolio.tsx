@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const projects = [
   {
@@ -15,6 +16,8 @@ const projects = [
     link: 'https://guerrillasocialclub.com',
     isExternal: true,
     status: 'Live',
+    mockupUrl: '/mockups/guerrilla-mockup.jpg',
+    mockupAlt: 'Guerrilla Social Club website on laptop - AI-powered experimental platform',
   },
   {
     title: 'SuchGrime.com',
@@ -25,6 +28,8 @@ const projects = [
     link: '#about',
     isExternal: false,
     status: 'Live',
+    mockupUrl: '/mockups/suchgrime-mockup.jpg',
+    mockupAlt: 'SuchGrime website hero section on multiple devices',
   },
   {
     title: 'Milwaukee Service Business',
@@ -35,6 +40,8 @@ const projects = [
     link: '#contact',
     isExternal: false,
     status: 'In Progress',
+    mockupUrl: '/mockups/coming-soon-mockup.jpg',
+    mockupAlt: 'Coming soon - Milwaukee client project website mockup',
   },
 ]
 
@@ -91,40 +98,69 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
       />
       
       {/* Content */}
-      <div className="relative p-8 h-full flex flex-col">
-        {/* Header */}
-        <div className="mb-6">
-          <div className="flex items-start justify-between mb-4">
-            <div className="space-y-2">
-              <div className="text-xs font-medium text-neutral-500 uppercase tracking-[0.15em]">
-                {project.category}
-              </div>
-              <div className="inline-block px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-neutral-900 text-white">
-                {project.status}
+      <div className="relative h-full flex flex-col">
+        {/* Mockup Image */}
+        <div className="relative h-64 bg-neutral-900 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-900" />
+          <Image
+            src={project.mockupUrl}
+            alt={project.mockupAlt}
+            fill
+            className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          {/* Coming soon overlay for placeholder */}
+          {project.status === 'In Progress' && (
+            <div className="absolute inset-0 bg-neutral-900/80 flex items-center justify-center">
+              <div className="text-center">
+                <div className="text-3xl font-bebas tracking-wider text-white mb-2">COMING SOON</div>
+                <div className="text-sm text-neutral-400">Milwaukee Client Project</div>
               </div>
             </div>
-            <motion.div
-              className="w-10 h-10 border-2 border-neutral-900 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
-            >
-              <svg className="w-4 h-4 text-neutral-900 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {project.isExternal ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                )}
-              </svg>
-            </motion.div>
-          </div>
-          
-          <h3 className="text-2xl sm:text-3xl font-display font-bold mb-4 text-primary leading-tight">
-            {project.title}
-          </h3>
-          
-          <p className="text-neutral-700 leading-relaxed text-sm">
-            {project.description}
-          </p>
+          )}
+          {/* Subtle scan line effect */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none"
+            style={{
+              background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)',
+            }}
+          />
         </div>
+
+        {/* Text Content */}
+        <div className="p-8 flex-1 flex flex-col">
+          {/* Header */}
+          <div className="mb-6">
+            <div className="flex items-start justify-between mb-4">
+              <div className="space-y-2">
+                <div className="text-xs font-medium text-neutral-500 uppercase tracking-[0.15em]">
+                  {project.category}
+                </div>
+                <div className="inline-block px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-neutral-900 text-white">
+                  {project.status}
+                </div>
+              </div>
+              <motion.div
+                className="w-10 h-10 border-2 border-neutral-900 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+              >
+                <svg className="w-4 h-4 text-neutral-900 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {project.isExternal ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  )}
+                </svg>
+              </motion.div>
+            </div>
+            
+            <h3 className="text-2xl sm:text-3xl font-display font-bold mb-4 text-primary leading-tight">
+              {project.title}
+            </h3>
+            
+            <p className="text-neutral-700 leading-relaxed text-sm">
+              {project.description}
+            </p>
+          </div>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6">

@@ -6,8 +6,16 @@ import Link from 'next/link'
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+      {/* Industrial concrete texture overlay */}
+      <div className="absolute inset-0 z-0 opacity-[0.04]" 
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'200\' height=\'200\' viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
+          backgroundSize: '200px 200px',
+        }}
+      />
+      
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.02]">
+      <div className="absolute inset-0 z-0 opacity-[0.015]">
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, #000 1px, transparent 0)',
           backgroundSize: '40px 40px'
