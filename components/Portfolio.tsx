@@ -203,13 +203,14 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
             </motion.svg>
           </Link>
         </div>
-        </div>
+      </div>
 
-        {/* Bottom accent bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-neutral-900 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-      </motion.div>
-    )
-  }
+      {/* Bottom accent bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-neutral-900 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+    </div>
+    </motion.div>
+  )
+}
 
 export default function Portfolio() {
   const ref = useRef(null)
