@@ -106,6 +106,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
             src={project.mockupUrl}
             alt={project.mockupAlt}
             fill
+            unoptimized
             className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
