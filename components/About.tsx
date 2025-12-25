@@ -100,7 +100,6 @@ export default function About() {
                     width={600}
                     height={600}
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                    priority
                   />
                   {/* Grain overlay on photo */}
                   <div className="absolute inset-0 opacity-10 mix-blend-multiply pointer-events-none"

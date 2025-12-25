@@ -105,6 +105,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
           <img
             src={project.mockupUrl}
             alt={project.mockupAlt}
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
           />
           {/* Coming soon overlay for placeholder */}
