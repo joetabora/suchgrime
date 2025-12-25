@@ -16,7 +16,7 @@ const projects = [
     isExternal: true,
     status: 'Live',
     mockupUrl: '/gsc.PNG',
-    mockupAlt: 'Guerrilla Social Club website - AI-powered experimental platform',
+    mockupAlt: 'Guerrilla Social Club AI-powered platform – fully autonomous Cursor build by SuchGrime Milwaukee web design agency',
   },
   {
     title: 'SuchGrime.com',
@@ -28,7 +28,7 @@ const projects = [
     isExternal: false,
     status: 'Live',
     mockupUrl: '/SG.PNG',
-    mockupAlt: 'SuchGrime website - Milwaukee web design and SEO agency',
+    mockupAlt: 'SuchGrime.com agency website – Milwaukee web design and SEO showcase built with AI-powered development',
   },
   {
     title: 'Milwaukee Service Business',
@@ -40,7 +40,7 @@ const projects = [
     isExternal: false,
     status: 'In Progress',
     mockupUrl: '/mockups/coming-soon-mockup.jpg',
-    mockupAlt: 'Coming soon - Milwaukee client project website mockup',
+    mockupAlt: 'Upcoming Milwaukee client website refresh project - professional web design and local SEO services',
   },
 ]
 

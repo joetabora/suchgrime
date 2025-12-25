@@ -1,0 +1,13 @@
+# robots.txt for SuchGrime.com
+# Milwaukee Web Design & SEO Agency
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://suchgrime.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
