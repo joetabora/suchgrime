@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function Footer() {
   return (
     <footer className="border-t border-neutral-200 py-16 bg-white">
@@ -18,34 +20,29 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-neutral-600">
               <li>Milwaukee, Wisconsin</li>
               <li>
-                <a href="mailto:hello@suchgrime.com" className="hover:text-primary transition-colors">
-                  hello@suchgrime.com
+                <a href="mailto:suchgrime@guerrillasocialclub.com" className="hover:text-primary transition-colors">
+                  suchgrime@guerrillasocialclub.com
                 </a>
               </li>
               <li>
-                <a href="tel:+14145554743" className="hover:text-primary transition-colors">
-                  (414) 555-GRIME
+                <a href="tel:+14144396211" className="hover:text-primary transition-colors">
+                  (414) 439-6211
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-display font-bold mb-4 text-primary">Connect</h4>
+            <h4 className="font-display font-bold mb-4 text-primary">Legal</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-neutral-600 hover:text-primary transition-colors">
-                  LinkedIn
-                </a>
+                <Link href="/privacy-policy" className="text-neutral-600 hover:text-primary transition-colors">
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-neutral-600 hover:text-primary transition-colors">
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-neutral-600 hover:text-primary transition-colors">
-                  Instagram
-                </a>
+                <Link href="/terms-of-service" className="text-neutral-600 hover:text-primary transition-colors">
+                  Terms of Service
+                </Link>
               </li>
             </ul>
           </div>

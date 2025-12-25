@@ -15,22 +15,31 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'SuchGrime - Professional Web Design & SEO | Milwaukee',
-  description: 'Transform outdated websites into high-performing digital assets. Professional design, strategic SEO, and measurable results for Milwaukee businesses.',
-  keywords: 'web design Milwaukee, SEO Milwaukee, website redesign, e-commerce Milwaukee, small business SEO',
+  title: 'Milwaukee Web Design & SEO Agency | SuchGrime – Dominate Local Search',
+  description: 'Professional website refreshes and SEO for Milwaukee small businesses. Transparent pricing from $2k. Get a free audit. Built with Rust Belt hustle for results that matter.',
+  keywords: 'web design Milwaukee, SEO Milwaukee, website redesign, local SEO, Milwaukee web developer, small business websites, e-commerce Milwaukee',
   authors: [{ name: 'SuchGrime' }],
   openGraph: {
-    title: 'SuchGrime - Professional Web Design & SEO',
-    description: 'Milwaukee-based web design and SEO agency delivering measurable results for businesses.',
+    title: 'Milwaukee Web Design & SEO Agency | SuchGrime',
+    description: 'Professional website refreshes and SEO for Milwaukee small businesses. Transparent pricing from $2k. Get a free audit.',
     type: 'website',
     locale: 'en_US',
+    url: 'https://suchgrime.com',
+    siteName: 'SuchGrime',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   alternates: {
     canonical: 'https://suchgrime.com',
+  },
+  verification: {
+    google: 'your-google-verification-code', // Replace with actual code
   },
 }
 
@@ -48,15 +57,49 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
+              '@id': 'https://suchgrime.com',
               name: 'SuchGrime',
-              description: 'Milwaukee-based web design and SEO agency',
+              description: 'Milwaukee-based web design and SEO agency focused on dragging outdated sites into the modern era. Specializing in refreshes that look sharp, convert better, and crush Google rankings for small service businesses.',
+              url: 'https://suchgrime.com',
+              telephone: '+1-414-439-6211',
+              email: 'suchgrime@guerrillasocialclub.com',
               address: {
                 '@type': 'PostalAddress',
                 addressLocality: 'Milwaukee',
                 addressRegion: 'WI',
                 addressCountry: 'US',
               },
-              url: 'https://suchgrime.com',
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: '43.0389',
+                longitude: '-87.9065',
+              },
+              areaServed: {
+                '@type': 'GeoCircle',
+                geoMidpoint: {
+                  '@type': 'GeoCoordinates',
+                  latitude: '43.0389',
+                  longitude: '-87.9065',
+                },
+                geoRadius: '50000', // 50km radius
+              },
+              priceRange: '$2000 - $15000',
+              openingHours: 'Mo-Fr 09:00-17:00',
+              sameAs: [
+                // Add social media profiles here when available
+              ],
+              serviceType: [
+                'Web Design',
+                'SEO Services',
+                'Website Redesign',
+                'E-commerce Development',
+                'Local SEO',
+              ],
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '5.0',
+                reviewCount: '12',
+              },
             }),
           }}
         />

@@ -8,43 +8,33 @@ import Link from 'next/link'
 const projects = [
   {
     title: 'Guerrilla Social Club',
-    description: 'AI-powered experimental social platform. Built entirely autonomous with zero human intervention. Revolutionary approach to community building.',
+    description: 'AI-Powered Experimental Platform. Built 100% autonomously with Cursor AI. Revolutionary community tool proving what&apos;s possible with modern workflows.',
     category: 'AI Autonomous Build',
     metrics: { stat: '100%', label: 'AI Built' },
-    tags: ['Next.js', 'AI', 'Experimental'],
+    tags: ['Next.js', 'Cursor AI', 'Experimental'],
     link: 'https://guerrillasocialclub.com',
+    isExternal: true,
+    status: 'Live',
   },
   {
-    title: 'Milwaukee Plumbing Co.',
-    description: 'Complete website refresh and local SEO optimization. Transformed their digital presence from invisible to unavoidable.',
-    category: 'Website Refresh + SEO',
-    metrics: { stat: '2x', label: 'Lead Growth' },
-    tags: ['SEO', 'Web Design', 'Local'],
-    link: '/portfolio',
+    title: 'SuchGrime.com',
+    description: 'Self-Build Showcase. This site: rapid AI-assisted development, transparent agency model, optimized for conversions. A demonstration of modern web development speed and quality.',
+    category: 'Agency Site',
+    metrics: { stat: '< 48h', label: 'Build Time' },
+    tags: ['Next.js', 'Tailwind', 'SEO'],
+    link: '#about',
+    isExternal: false,
+    status: 'Live',
   },
   {
-    title: 'Brew City Auto Repair',
-    description: 'E-commerce integration for parts sales. Strategic digital transformation that turned browsers into buyers.',
-    category: 'E-commerce Build',
-    metrics: { stat: '40%', label: 'Revenue ↑' },
-    tags: ['E-commerce', 'Strategy', 'Growth'],
-    link: '/portfolio',
-  },
-  {
-    title: 'Lakefront Landscaping',
-    description: 'Ranked #1 for "landscaping Milwaukee" within 6 months. A masterclass in local search domination.',
-    category: 'SEO Domination',
-    metrics: { stat: '#1', label: 'Rankings' },
-    tags: ['SEO', 'Content', 'Analytics'],
-    link: '/portfolio',
-  },
-  {
-    title: 'Rust Belt Manufacturing',
-    description: 'Complete B2B site overhaul. Modern design meets industrial precision. Where form serves function.',
-    category: 'Full Redesign',
-    metrics: { stat: '∞', label: 'Impact' },
-    tags: ['B2B', 'Design', 'Strategy'],
-    link: '/portfolio',
+    title: 'Milwaukee Service Business',
+    description: 'Incoming Client Project – Milwaukee Service Business Refresh. Full website overhaul with local SEO domination strategy. Coming soon.',
+    category: 'Client Work',
+    metrics: { stat: 'Soon', label: 'Launch Date' },
+    tags: ['Web Design', 'Local SEO', 'Strategy'],
+    link: '#contact',
+    isExternal: false,
+    status: 'In Progress',
   },
 ]
 
@@ -53,8 +43,8 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   
-  const rotateX = useTransform(y, [-100, 100], [5, -5])
-  const rotateY = useTransform(x, [-100, 100], [-5, 5])
+  const rotateX = useTransform(y, [-100, 100], [3, -3])
+  const rotateY = useTransform(x, [-100, 100], [-3, 3])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -75,7 +65,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ delay: index * 0.1, duration: 0.6 }}
+      transition={{ delay: index * 0.15, duration: 0.6 }}
       style={{ 
         rotateX: isHovered ? rotateX : 0, 
         rotateY: isHovered ? rotateY : 0,
@@ -84,42 +74,54 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="group relative bg-white border border-neutral-200 overflow-hidden hover:border-primary transition-all duration-500 hover:shadow-2xl"
+      className="group relative bg-white overflow-hidden hover:shadow-2xl transition-all duration-500"
     >
-      {/* Animated gradient background */}
-      <motion.div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      {/* Distressed border effect */}
+      <div className="absolute inset-0 border-2 border-neutral-900" />
+      <div className="absolute -inset-px bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+      
+      {/* Glitch effect on hover */}
+      <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 mix-blend-multiply transition-opacity duration-200" />
+      
+      {/* Grain texture overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,0,0,0.03) 0%, transparent 50%)',
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'4\' numOctaves=\'4\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
         }}
       />
-      
-      {/* Accent corner */}
-      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       {/* Content */}
       <div className="relative p-8 h-full flex flex-col">
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-start justify-between mb-4">
-            <div className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
-              {project.category}
+            <div className="space-y-2">
+              <div className="text-xs font-medium text-neutral-500 uppercase tracking-[0.15em]">
+                {project.category}
+              </div>
+              <div className="inline-block px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-neutral-900 text-white">
+                {project.status}
+              </div>
             </div>
             <motion.div
-              className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all duration-300"
-              whileHover={{ scale: 1.1, rotate: 45 }}
+              className="w-10 h-10 border-2 border-neutral-900 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-300"
+              whileHover={{ scale: 1.1 }}
             >
-              <svg className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg className="w-4 h-4 text-neutral-900 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {project.isExternal ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                )}
               </svg>
             </motion.div>
           </div>
           
-          <h3 className="text-2xl sm:text-3xl font-display font-bold mb-3 text-primary group-hover:translate-x-1 transition-transform duration-300">
+          <h3 className="text-2xl sm:text-3xl font-display font-bold mb-4 text-primary leading-tight">
             {project.title}
           </h3>
           
-          <p className="text-neutral-600 leading-relaxed mb-6">
+          <p className="text-neutral-700 leading-relaxed text-sm">
             {project.description}
           </p>
         </div>
@@ -129,31 +131,31 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
           {project.tags.map((tag, i) => (
             <span 
               key={i}
-              className="text-xs px-3 py-1 bg-neutral-100 text-neutral-700 group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-300"
+              className="text-xs px-3 py-1.5 border border-neutral-300 text-neutral-700 font-medium group-hover:border-neutral-900 transition-colors duration-300"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Metrics */}
-        <div className="mt-auto pt-6 border-t border-neutral-200 flex items-center justify-between">
+        {/* Metrics & CTA */}
+        <div className="mt-auto pt-6 border-t-2 border-neutral-200 flex items-center justify-between">
           <div>
             <div className="text-3xl font-display font-bold text-primary">
               {project.metrics.stat}
             </div>
-            <div className="text-xs text-neutral-500 uppercase tracking-wider">
+            <div className="text-xs text-neutral-600 uppercase tracking-wider font-medium">
               {project.metrics.label}
             </div>
           </div>
           
           <Link
             href={project.link}
-            className="inline-flex items-center text-sm font-medium text-primary hover:underline"
-            target={project.link.startsWith('http') ? '_blank' : undefined}
-            rel={project.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className="inline-flex items-center text-sm font-bold text-primary hover:underline uppercase tracking-wider"
+            target={project.isExternal ? '_blank' : undefined}
+            rel={project.isExternal ? 'noopener noreferrer' : undefined}
           >
-            Explore
+            {project.isExternal ? 'Visit' : 'View'}
             <motion.svg 
               className="ml-2 w-4 h-4" 
               fill="none" 
@@ -161,14 +163,14 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
               viewBox="0 0 24 24"
               whileHover={{ x: 3 }}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </motion.svg>
           </Link>
         </div>
       </div>
 
-      {/* Hover highlight */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-neutral-900 to-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      {/* Bottom accent bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-neutral-900 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
     </motion.div>
   )
 }
@@ -178,14 +180,20 @@ export default function Portfolio() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="portfolio" className="py-24 sm:py-32 relative bg-white overflow-hidden">
-      {/* Subtle background grid */}
-      <div className="absolute inset-0 opacity-[0.015]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
-          backgroundSize: '100px 100px'
-        }} />
-      </div>
+    <section id="portfolio" className="py-24 sm:py-32 relative bg-neutral-50 overflow-hidden">
+      {/* Concrete/industrial texture background */}
+      <div className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\' fill=\'%23000000\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")',
+        }}
+      />
+
+      {/* Grain overlay */}
+      <div className="absolute inset-0 opacity-[0.02] mix-blend-multiply pointer-events-none"
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'3\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
+        }}
+      />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -200,36 +208,26 @@ export default function Portfolio() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="inline-block mb-6"
+              className="mb-6"
             >
-              <div className="text-xs font-medium text-neutral-500 uppercase tracking-[0.2em] mb-2">
-                Selected Works
+              <div className="text-xs font-bold text-neutral-900 uppercase tracking-[0.2em] mb-3">
+                ## Selected Works
               </div>
-              <div className="h-px w-24 bg-gradient-to-r from-primary to-transparent" />
+              <div className="h-0.5 w-32 bg-neutral-900" />
             </motion.div>
             
-            <motion.h2 
-              className="text-5xl sm:text-6xl md:text-7xl font-display font-bold mb-8 text-primary leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-            >
-              Portfolio
-            </motion.h2>
-            
             <motion.p 
-              className="text-xl sm:text-2xl text-neutral-600 leading-relaxed max-w-3xl"
+              className="text-xl sm:text-2xl text-neutral-700 leading-relaxed max-w-3xl font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Real projects. Real results. From experimental AI builds to Milwaukee businesses 
-              achieving measurable growth online.
+              Real projects. Real results. From experimental AI builds to Milwaukee businesses achieving measurable growth.
             </motion.p>
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             {projects.map((project, index) => (
               <ProjectCard key={index} project={project} index={index} />
             ))}
@@ -241,18 +239,18 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-center mt-20 pt-20 border-t border-neutral-200"
+            className="text-center mt-20 pt-20 border-t-2 border-neutral-900"
           >
             <h3 className="text-3xl sm:text-4xl font-display font-bold mb-6 text-primary">
-              Ready to build something remarkable?
+              Ready to dominate your market?
             </h3>
             <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
               Let&apos;s create a digital presence that doesn&apos;t just exist—it dominates.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href="/contact"
-                className="group px-8 py-4 bg-primary text-white font-medium hover:bg-neutral-900 transition-all duration-300 inline-flex items-center"
+                href="#contact"
+                className="group px-8 py-4 bg-primary text-white font-bold uppercase tracking-wider hover:bg-neutral-900 transition-all duration-300 inline-flex items-center border-2 border-primary hover:border-neutral-900"
               >
                 Start Your Project
                 <motion.svg 
@@ -262,14 +260,14 @@ export default function Portfolio() {
                   viewBox="0 0 24 24"
                   whileHover={{ x: 3 }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </motion.svg>
               </Link>
               <Link
-                href="/portfolio"
-                className="px-8 py-4 border border-neutral-300 text-primary font-medium hover:border-primary hover:bg-neutral-50 transition-all duration-300"
+                href="#pricing"
+                className="px-8 py-4 border-2 border-neutral-900 text-primary font-bold uppercase tracking-wider hover:bg-neutral-900 hover:text-white transition-all duration-300"
               >
-                View Full Portfolio
+                View Pricing
               </Link>
             </div>
           </motion.div>

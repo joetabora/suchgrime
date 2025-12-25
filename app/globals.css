@@ -29,8 +29,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Grain filter for industrial Milwaukee feel */
 @keyframes grain {
-  0% { transform: translate(0, 0); }
+  0%, 100% { transform: translate(0, 0); }
   10% { transform: translate(-5%, -5%); }
   20% { transform: translate(-10%, 5%); }
   30% { transform: translate(5%, -10%); }
@@ -40,7 +41,41 @@ body {
   70% { transform: translate(0%, 15%); }
   80% { transform: translate(-15%, 10%); }
   90% { transform: translate(10%, 5%); }
-  100% { transform: translate(5%, 0); }
+}
+
+/* Subtle grain overlay utility */
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  animation: grain 8s steps(10) infinite;
+}
+
+/* Distressed border effect */
+.distressed-border {
+  position: relative;
+}
+
+.distressed-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, rgba(0,0,0,0.1) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Concrete texture background utility */
+.concrete-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23000000' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 /* Subtle text effects */
@@ -51,7 +86,7 @@ body {
   background-clip: text;
 }
 
-/* Clean borders */
+/* Clean borders with industrial edge */
 .border-subtle {
   border: 1px solid rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -59,6 +94,33 @@ body {
 
 .border-subtle:hover {
   border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Distressed paper edge effect */
+.paper-edge {
+  position: relative;
+}
+
+.paper-edge::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-image: linear-gradient(90deg, 
+    rgba(0,0,0,0.1) 0%, 
+    transparent 10%, 
+    rgba(0,0,0,0.05) 20%, 
+    transparent 30%,
+    rgba(0,0,0,0.1) 40%,
+    transparent 50%,
+    rgba(0,0,0,0.05) 60%,
+    transparent 70%,
+    rgba(0,0,0,0.1) 80%,
+    transparent 90%,
+    rgba(0,0,0,0.05) 100%
+  );
 }
 
 /* Scrollbar styling */
@@ -88,4 +150,18 @@ body {
 ::-moz-selection {
   background: #000;
   color: #fff;
+}
+
+/* Subtle glitch effect on hover for specific elements */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s ease-in-out;
 }
