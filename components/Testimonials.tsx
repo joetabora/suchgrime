@@ -39,7 +39,7 @@ export default function Testimonials() {
           transition={{ duration: 0.8 }}
         >
           <div className="max-w-3xl mb-16">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-6 text-primary">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bebas tracking-wider mb-6 text-primary">
               Results
             </h2>
             <p className="text-lg text-neutral-600">

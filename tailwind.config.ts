@@ -35,6 +35,7 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-display)', 'sans-serif'],
         sans: ['var(--font-inter)', 'sans-serif'],
+        bebas: ['var(--font-bebas)', 'Impact', 'sans-serif'],
       },
       animation: {
         'glitch': 'glitch 0.3s infinite',

@@ -21,6 +21,7 @@ export default function Navigation() {
     { href: '#services', label: 'Services' },
     { href: '#portfolio', label: 'Portfolio' },
     { href: '#pricing', label: 'Pricing' },
+    { href: '#contact', label: 'Contact' },
   ]
 
   return (
@@ -33,7 +34,7 @@ export default function Navigation() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="text-xl font-display font-bold text-primary">
+          <Link href="/" className="text-2xl font-bebas tracking-wider text-primary">
             SuchGrime
           </Link>
 
@@ -50,7 +51,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href="#contact"
               className="px-6 py-2 bg-primary text-white font-medium hover:bg-neutral-900 transition-colors text-sm"
             >
               Get Audit
@@ -105,7 +106,7 @@ export default function Navigation() {
                 </Link>
               ))}
               <Link
-                href="/contact"
+                href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block mt-4 px-6 py-3 bg-primary text-white font-medium text-center"
               >

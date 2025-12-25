@@ -71,7 +71,7 @@ export default function Contact() {
             </motion.div>
             
             <motion.h2 
-              className="text-5xl sm:text-6xl md:text-7xl font-display font-bold mb-8 text-primary leading-tight"
+              className="text-5xl sm:text-6xl md:text-7xl font-bebas tracking-wider mb-8 text-primary leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.3, duration: 0.8 }}

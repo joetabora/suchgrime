@@ -40,7 +40,7 @@ export default function About() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="mb-16"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bebas tracking-wider text-primary mb-4">
               Milwaukee-Built. Results-Driven.
             </h2>
           </motion.div>
