@@ -16,8 +16,8 @@ const projects = [
     link: 'https://guerrillasocialclub.com',
     isExternal: true,
     status: 'Live',
-    mockupUrl: '/mockups/guerrilla-mockup.jpg',
-    mockupAlt: 'Guerrilla Social Club website on laptop - AI-powered experimental platform',
+    mockupUrl: '/gsc.png',
+    mockupAlt: 'Guerrilla Social Club website - AI-powered experimental platform',
   },
   {
     title: 'SuchGrime.com',
@@ -28,8 +28,8 @@ const projects = [
     link: '#about',
     isExternal: false,
     status: 'Live',
-    mockupUrl: '/mockups/suchgrime-mockup.jpg',
-    mockupAlt: 'SuchGrime website hero section on multiple devices',
+    mockupUrl: '/sg.png',
+    mockupAlt: 'SuchGrime website - Milwaukee web design and SEO agency',
   },
   {
     title: 'Milwaukee Service Business',
