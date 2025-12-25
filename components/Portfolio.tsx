@@ -4,7 +4,6 @@ import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 const projects = [
   {
@@ -102,13 +101,11 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
         {/* Mockup Image */}
         <div className="relative h-64 bg-neutral-900 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-900" />
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={project.mockupUrl}
             alt={project.mockupAlt}
-            fill
-            unoptimized
-            className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
           />
           {/* Coming soon overlay for placeholder */}
           {project.status === 'In Progress' && (

@@ -88,8 +88,8 @@ export default function Pricing() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                className={`relative p-8 bg-white border transition-all duration-300 hover:shadow-xl ${
-                  tier.popular ? 'border-2 border-primary' : 'border-neutral-200 hover:border-primary'
+                className={`relative p-8 bg-white border-2 transition-all duration-300 hover:shadow-xl hover:border-primary ${
+                  tier.popular ? 'border-neutral-300' : 'border-neutral-200'
                 }`}
               >
                 {tier.popular && (
