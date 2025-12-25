@@ -118,6 +118,27 @@ export default function Pricing() {
               </motion.div>
             ))}
           </div>
+
+          {/* Flexible budget message */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-center mt-16 pt-12 border-t border-neutral-200"
+          >
+            <p className="text-xl text-neutral-700 max-w-2xl mx-auto leading-relaxed">
+              <strong className="text-primary">We can work with any size business with any size budget.</strong> Every project is unique – let&apos;s discuss your specific needs and create a custom solution that fits.
+            </p>
+            <Link
+              href="#contact"
+              className="inline-flex items-center mt-6 text-primary font-medium hover:underline"
+            >
+              Get in touch for a custom quote
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>
