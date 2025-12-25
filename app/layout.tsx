@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     canonical: 'https://suchgrime.com',
   },
   verification: {
-    google: 'your-google-verification-code', // Replace with actual code
+    google: 'lQSXfNdoUXjQ3_liJsYT7gZ5tGvqlkrxhimKGZIRUhU',
   },
 }
 
