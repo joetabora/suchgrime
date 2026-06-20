@@ -1,0 +1,93 @@
+export const shop = {
+  name: "Block & Blade",
+  tagline: "Sharp cuts. City soul.",
+  heroHeadline: "WHERE THE BLOCK GETS SHARP",
+  heroSubtext:
+    "Premium fades, crisp lineups, and old-school hospitality — right where the city meets the mirror.",
+  about: {
+    story:
+      "Born on a corner in 2018, Block & Blade started as two chairs and a dream. Today we're the neighborhood spot where executives, artists, and everyday legends sit side by side. No pretension — just precision cuts, real conversation, and a vibe that feels like home.",
+    stats: [
+      { label: "Est.", value: "2018" },
+      { label: "Master Barbers", value: "4" },
+      { label: "Cuts & Counting", value: "12k+" },
+      { label: "Avg. Rating", value: "4.9★" },
+    ],
+  },
+  marqueePhrases: [
+    "FADES",
+    "LINEUPS",
+    "BEARDS",
+    "HOT TOWEL",
+    "COMMUNITY",
+    "CITY SOUL",
+    "SHARP",
+    "WALK-INS WELCOME",
+  ],
+  services: [
+    { name: "Classic Cut", duration: "30 min", price: 35, description: "Scissor and clipper work tailored to your style." },
+    { name: "Skin Fade", duration: "45 min", price: 45, description: "Seamless gradient fade — low, mid, or high." },
+    { name: "Beard Sculpt", duration: "25 min", price: 25, description: "Shape, line, and condition for a sharp finish." },
+    { name: "Hot Towel Shave", duration: "40 min", price: 40, description: "Straight razor, hot lather, zero rush." },
+    { name: "Kids Cut", duration: "25 min", price: 25, description: "Patient, fun cuts for the next generation." },
+    { name: "Design Work", duration: "60 min", price: 55, description: "Custom parts, patterns, and artistic line work." },
+    { name: "Cut + Beard Combo", duration: "55 min", price: 60, description: "Full head and beard service — our most popular." },
+    { name: "Gray Blending", duration: "35 min", price: 30, description: "Natural color blend for a refreshed look." },
+  ],
+  team: [
+    {
+      name: 'Marcus "Fade King" Rivera',
+      specialty: "Skin Fades & Design Work",
+      bio: "15 years in the chair. If it blends, Marcus built it.",
+      image: "https://images.unsplash.com/photo-1503951914875-452162b0f3d1?w=400&h=500&fit=crop&grayscale",
+    },
+    {
+      name: "Devon Cole",
+      specialty: "Classic Cuts & Hot Towel",
+      bio: "Old-school technique with a modern eye for detail.",
+      image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=500&fit=crop&grayscale",
+    },
+    {
+      name: "Aisha Thompson",
+      specialty: "Beard Sculpt & Kids Cuts",
+      bio: "Precision lines and patience — especially with the little ones.",
+      image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=500&fit=crop&grayscale",
+    },
+    {
+      name: "Jaylen Ortiz",
+      specialty: "Lineups & Textured Styles",
+      bio: "Crisp edges and creative texture — every cut is a statement.",
+      image: "https://images.unsplash.com/photo-1622286342621-4bd786c244f8?w=400&h=500&fit=crop&grayscale",
+    },
+  ],
+  gallery: [
+    { caption: "Low skin fade", image: "https://images.unsplash.com/photo-1622286342621-4bd786c244f8?w=600&h=800&fit=crop&grayscale", span: "tall" as const },
+    { caption: "Beard lineup", image: "https://images.unsplash.com/photo-1503951914875-452162b0f3d1?w=600&h=400&fit=crop&grayscale", span: "wide" as const },
+    { caption: "Mid fade", image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&h=600&fit=crop&grayscale", span: "default" as const },
+    { caption: "Design part", image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&h=600&fit=crop&grayscale", span: "default" as const },
+    { caption: "Hot towel shave", image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&h=800&fit=crop&grayscale", span: "tall" as const },
+    { caption: "Textured crop", image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&h=400&fit=crop&grayscale", span: "wide" as const },
+  ],
+  location: {
+    address: "2847 Westside Ave, Suite 12",
+    city: "Metro City, MC 10012",
+    phone: "(555) 847-0420",
+    email: "hello@blockandblade.co",
+    instagram: "@blockandblade",
+    note: "Walk-ins welcome · Appointments preferred",
+    hours: [
+      { day: "Monday", time: "Closed" },
+      { day: "Tuesday – Friday", time: "9:00 AM – 7:00 PM" },
+      { day: "Saturday", time: "8:00 AM – 6:00 PM" },
+      { day: "Sunday", time: "10:00 AM – 4:00 PM" },
+    ],
+    mapEmbed: "https://www.openstreetmap.org/export/embed.html?bbox=-73.995%2C40.728%2C-73.985%2C40.735&layer=mapnik&marker=40.7315%2C-73.9900",
+  },
+  navLinks: [
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Team", href: "#team" },
+    { label: "Gallery", href: "#gallery" },
+    { label: "Visit", href: "#visit" },
+  ],
+} as const
