@@ -1,0 +1,42 @@
+---
+title: "Core Web Vitals Checklist for 95+ Lighthouse Scores"
+description: "A practical checklist for hitting Performance, SEO, and Accessibility scores above 95 on modern React sites."
+date: "2025-04-02"
+author: "SuchGrime"
+tags: ["Performance", "SEO", "Next.js"]
+published: true
+---
+
+Google's Core Web Vitals directly affect search rankings and user trust. Here's how we consistently hit Lighthouse scores above 95.
+
+## Largest Contentful Paint (LCP)
+
+- Use `next/image` with priority on hero images
+- Self-host fonts with `next/font` — no render-blocking Google Fonts CSS
+- Server-render above-the-fold content with React Server Components
+
+## Cumulative Layout Shift (CLS)
+
+- Always set explicit width and height on images
+- Reserve space for dynamic content with min-height containers
+- Avoid injecting banners or ads above existing content
+
+## Interaction to Next Paint (INP)
+
+- Keep client JavaScript minimal on marketing pages
+- Lazy-load Framer Motion and heavy demo routes
+- Split client islands only where interactivity is required
+
+## SEO fundamentals
+
+- Generate metadata with canonical URLs and Open Graph tags
+- Add structured schema: Organization, Service, Article, LocalBusiness
+- Ship XML sitemaps and RSS feeds for blog content
+
+## Accessibility
+
+- Semantic HTML landmarks (`main`, `nav`, `footer`)
+- Skip links and visible focus states
+- Respect `prefers-reduced-motion` for animations
+
+Every SuchGrime project ships with this checklist built in from day one.

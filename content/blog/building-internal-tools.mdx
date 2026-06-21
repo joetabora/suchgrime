@@ -1,0 +1,28 @@
+---
+title: "Building Internal Tools That Teams Actually Use"
+description: "Lessons from Parlor Desk — our live booking admin demo — on designing ops tools people adopt."
+date: "2025-06-01"
+author: "SuchGrime"
+tags: ["Internal Apps", "CRUD", "Case Study"]
+published: true
+---
+
+Internal tools fail when they're harder to use than the spreadsheet they replace. Parlor Desk, our live booking admin demo, follows a few principles that keep adoption high.
+
+## Match the mental model
+
+Barbers, tattoo shops, and salons think in appointments, clients, and status — not database rows. The UI mirrors how staff already talk about their day.
+
+## Status workflows over delete buttons
+
+Canceling an appointment (soft delete) preserves history. Permanent delete exists but requires confirmation. Ops teams need audit trails.
+
+## Dashboard first
+
+Today's count, pending confirmations, and upcoming list answer the first question every morning: "What's on the schedule?"
+
+## Persist and perform
+
+Client-side persistence demos real behavior without backend setup. Production builds swap in PostgreSQL with the same data model.
+
+Try the live demo at [Parlor Desk](/work/parlor-desk) or read about our [business automation services](/services/business-automation).

@@ -1,72 +1,93 @@
-# SuchGrime Web Parlor
+# SuchGrime
 
-Urban web design studio site with live portfolio demos — built with Vite, React, TypeScript, Tailwind CSS, and Framer Motion.
+Premium web development and business automation agency site — built with Next.js 15, TypeScript, Tailwind CSS, shadcn/ui, MDX blog, and Neon PostgreSQL.
 
 ## Routes
 
 | Route | Description |
 |-------|-------------|
-| `/` | SuchGrime Web Parlor agency homepage |
-| `/work/block-and-blade` | Block & Blade Barbershop live demo |
-| `/work/deadset-ink` | Deadset Ink tattoo parlor live demo |
-| `/work/parlor-desk` | Parlor Desk booking admin app demo (dashboard, appointments, clients) |
+| `/` | Agency homepage (brutalist poster layout) |
+| `/services` | Service overview |
+| `/services/[slug]` | Service detail pages with FAQ + schema |
+| `/work` | Portfolio index |
+| `/work/block-and-blade` | Barber marketing demo |
+| `/work/deadset-ink` | Tattoo parlor demo |
+| `/work/parlor-desk` | Booking admin app demo |
+| `/blog` | MDX blog listing |
+| `/blog/[slug]` | Blog articles |
+| `/contact` | Contact form (persists to Postgres) |
+| `/sitemap.xml` | Dynamic XML sitemap |
+| `/robots.txt` | Crawler rules |
+| `/feed.xml` | RSS 2.0 feed |
 
 ## Getting started
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+Open [http://localhost:3000](http://localhost:3000).
+
+## Environment variables
+
+| Variable | Description |
+|----------|-------------|
+| `DATABASE_URL` | Neon Postgres connection string |
+| `NEXT_PUBLIC_SITE_URL` | Production URL (e.g. `https://suchgrime.com`) |
+
+Contact form submissions save to Postgres when `DATABASE_URL` is set. Without it, the API still returns success (graceful dev mode).
+
+## Database
+
+```bash
+npm run db:generate   # Generate migrations from schema
+npm run db:migrate    # Apply migrations
+npm run db:studio     # Open Drizzle Studio
+```
+
+Schema: `lib/db/schema.ts` — `contact_inquiries`, `newsletter_subscribers`
 
 ## Build
 
 ```bash
 npm run build
-npm run preview
+npm run start
 ```
 
 ## Project structure
 
 ```
-src/
-├── data/
-│   ├── parlor.ts              # Agency content, services, work items
-│   ├── shop.ts                # Block & Blade barber demo content
-│   ├── studio.ts              # Deadset Ink tattoo demo content
-│   └── booking-desk.ts        # Parlor Desk types, seed data, services
-├── hooks/
-│   └── useBookingStore.tsx    # localStorage CRUD + client derivation
-├── pages/
-│   ├── AgencyHomePage.tsx     # Agency homepage
-│   ├── BlockAndBladePage.tsx  # Barber demo page
-│   ├── DeadsetInkPage.tsx     # Tattoo demo page
-│   └── ParlorDeskPage.tsx     # Booking admin app demo
-├── components/
-│   ├── DemoBanner.tsx         # Shared back-to-parlor strip
-│   ├── parlor/                # Agency site components
-│   ├── parlor-desk/           # Booking admin app components
-│   ├── block-and-blade/       # Barber demo components
-│   └── deadset-ink/           # Tattoo demo components
-└── layouts/
-    └── SiteLayout.tsx         # Shared layout (noise, motion, a11y)
+app/                  # Next.js App Router pages
+components/
+  agency/             # Homepage brutalist UI
+  demos/              # Portfolio demo apps
+  seo/                # JSON-LD, breadcrumbs
+  ui/                 # shadcn/ui components
+content/blog/         # MDX blog posts
+lib/
+  site-config.ts      # Agency content
+  seo/                # Metadata + schema builders
+  blog/               # MDX post loader
+  db/                 # Drizzle + Neon
+hooks/                # Client hooks (booking store)
+public/               # Static assets
 ```
 
-## Parlor Desk persistence
+## SEO features
 
-The booking admin demo stores appointments in `localStorage` under the key `parlor-desk-appointments`. On first visit, seed data is loaded automatically. Add, edit, cancel, and delete operations persist across page refreshes.
+- `generateMetadata` with canonical URLs and Open Graph tags
+- JSON-LD: Organization, WebSite, LocalBusiness, Service, Article, SoftwareApplication, BreadcrumbList
+- Dynamic XML sitemap and RSS feed
+- Static generation for blog and service pages
 
 ## Deployment
 
-This is a client-side SPA. For production hosting, configure SPA fallback so all routes serve `index.html`:
-
-- **Netlify:** `public/_redirects` is included
-- **Vercel:** `vercel.json` is included
+Deploy to Vercel with `DATABASE_URL` and `NEXT_PUBLIC_SITE_URL` set. Next.js handles routing — no SPA fallback needed.
 
 ## Customization
 
-- Agency copy and services: [`src/data/parlor.ts`](src/data/parlor.ts)
-- Barber demo content: [`src/data/shop.ts`](src/data/shop.ts)
-- Tattoo demo content: [`src/data/studio.ts`](src/data/studio.ts)
-- Booking admin demo: [`src/data/booking-desk.ts`](src/data/booking-desk.ts)
+- Agency copy: [`lib/site-config.ts`](lib/site-config.ts)
+- Blog posts: [`content/blog/`](content/blog/)
+- Demo content: [`lib/demos/`](lib/demos/)
