@@ -79,13 +79,23 @@ export function buildPseoJsonLd(
       return {
         ...base,
         "@type": "LocalBusiness",
-        areaServed: page.title,
+        areaServed: page.tags?.includes("Wisconsin")
+          ? { "@type": "City", name: `${page.title}, WI` }
+          : page.title,
         email: siteConfig.contact.email,
         address: {
           "@type": "PostalAddress",
           addressLocality: page.title,
+          addressRegion: page.tags?.includes("Wisconsin") ? "WI" : undefined,
           addressCountry: "US",
         },
+        ...(page.geo && {
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: page.geo.latitude,
+            longitude: page.geo.longitude,
+          },
+        }),
       }
     default:
       return { ...base, "@type": "WebPage" }

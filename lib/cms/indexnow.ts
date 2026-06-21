@@ -34,7 +34,7 @@ export function urlsForContentEntry(collection: string, slug: string): string[] 
     paths.push("/blog", "/feed.xml")
   }
   if (collection === "locations" || collection === "industries") {
-    paths.push("/solutions")
+    paths.push("/solutions", "/wisconsin")
   }
   return paths
 }

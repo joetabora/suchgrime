@@ -1,6 +1,7 @@
-/** Top entities for footer and cross-linking — updated as content scales */
+/** Top entities for footer and cross-linking — Wisconsin-first, then national */
 export const footerCollections = [
   { label: "Services", href: "/services" },
+  { label: "Wisconsin", href: "/wisconsin" },
   { label: "Locations", href: "/locations" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
@@ -12,12 +13,12 @@ export const footerCollections = [
 ] as const
 
 export const footerTopLocations = [
-  { label: "Chicago", href: "/locations/chicago" },
-  { label: "New York", href: "/locations/new-york" },
-  { label: "Los Angeles", href: "/locations/los-angeles" },
-  { label: "Austin", href: "/locations/austin" },
-  { label: "Denver", href: "/locations/denver" },
-  { label: "Seattle", href: "/locations/seattle" },
+  { label: "Milwaukee", href: "/locations/milwaukee" },
+  { label: "Madison", href: "/locations/madison" },
+  { label: "Green Bay", href: "/locations/green-bay" },
+  { label: "Kenosha", href: "/locations/kenosha" },
+  { label: "Racine", href: "/locations/racine" },
+  { label: "All Wisconsin", href: "/wisconsin" },
 ] as const
 
 export const footerTopIndustries = [
@@ -31,4 +32,14 @@ export const footerTopServices = [
   { label: "Web Development", href: "/services/web-development" },
   { label: "Business Automation", href: "/services/business-automation" },
   { label: "E-commerce & Booking", href: "/services/ecommerce-booking" },
+] as const
+
+/** Wisconsin cities for cross-linking blocks */
+export const wisconsinHubLinks = [
+  { label: "Milwaukee", href: "/locations/milwaukee" },
+  { label: "Madison", href: "/locations/madison" },
+  { label: "Green Bay", href: "/locations/green-bay" },
+  { label: "Appleton", href: "/locations/appleton" },
+  { label: "Kenosha", href: "/locations/kenosha" },
+  { label: "Waukesha", href: "/locations/waukesha" },
 ] as const

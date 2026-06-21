@@ -2,6 +2,22 @@ import type { PseoPage } from "../types"
 
 export const resources: PseoPage[] = [
   {
+    slug: "wisconsin-local-seo-playbook",
+    title: "Wisconsin Local SEO Playbook",
+    description: "How Wisconsin businesses rank locally — city pages, schema, and internal linking from a Milwaukee agency.",
+    intro:
+      "Wisconsin buyers search by city and service — 'web developer Milwaukee', 'Madison booking system', 'Green Bay automation'. This playbook covers the architecture SuchGrime uses to capture that intent statewide.",
+    features: [
+      "Milwaukee NAP & LocalBusiness schema",
+      "City × service matrix pages",
+      "Wisconsin hub internal linking",
+      "FAQ and Service schema per market",
+    ],
+    body: "Start with a Wisconsin hub (/wisconsin), link every city page from HTML navigation, and build service matrix URLs with unique copy — not duplicate titles. Layer LocalBusiness and Service schema, then track city + service queries in Search Console.",
+    tags: ["SEO", "Local", "Wisconsin"],
+    date: "2025-06-15",
+  },
+  {
     slug: "programmatic-seo-guide",
     title: "Programmatic SEO Guide",
     description: "How to scale indexable pages with templates, structured data, and clean URL architecture.",

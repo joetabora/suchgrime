@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge"
 import type { PseoCollectionId, PseoPage, ResolvedPseoPage } from "@/lib/pseo/types"
 import { buildPseoFaqSchema, buildPseoJsonLd } from "@/lib/pseo/schema"
 import { getAllPagesForCollection, getCollectionConfig } from "@/lib/pseo/registry"
+import { getWisconsinLocations } from "@/lib/pseo/content/locations"
+import { wisconsinHubLinks } from "@/lib/seo/site-links"
 
 interface ProgramDetailProps {
   resolved: ResolvedPseoPage
@@ -224,6 +226,7 @@ function buildCrossLinks(
     []
 
   if (collectionId === "locations" && !page.isMatrix) {
+    const isWi = page.tags?.includes("Wisconsin")
     blocks.push({
       title: "Industries we serve",
       items: ctx.industries.slice(0, 4).map((i) => ({
@@ -232,12 +235,33 @@ function buildCrossLinks(
         description: i.description,
       })),
     })
+    if (isWi) {
+      blocks.push({
+        title: "Explore Wisconsin",
+        items: [
+          { href: "/wisconsin", label: "Wisconsin hub", description: "All Wisconsin markets and service combinations" },
+          ...wisconsinHubLinks
+            .filter((l) => !l.href.endsWith(page.slug))
+            .slice(0, 5)
+            .map((l) => ({ href: l.href, label: l.label })),
+        ],
+      })
+    }
   }
 
   if (collectionId === "industries" && !page.isMatrix) {
+    const wiLocs = getWisconsinLocations().slice(0, 4)
     blocks.push({
-      title: "Top markets",
-      items: ctx.locations.slice(0, 4).map((l) => ({
+      title: "Wisconsin markets",
+      items: wiLocs.map((l) => ({
+        href: `/locations/${l.slug}`,
+        label: `${l.title}, WI`,
+        description: l.description,
+      })),
+    })
+    blocks.push({
+      title: "National markets",
+      items: ctx.locations.filter((l) => !l.tags?.includes("Wisconsin")).slice(0, 4).map((l) => ({
         href: `/locations/${l.slug}`,
         label: l.title,
         description: l.description,
@@ -258,9 +282,17 @@ function buildCrossLinks(
 
   if (collectionId === "services") {
     const locConfig = getCollectionConfig("locations")
+    const wiLocs = getWisconsinLocations().slice(0, 4)
     blocks.push({
-      title: "Popular markets for this service",
-      items: ctx.locations.slice(0, 6).map((l) => ({
+      title: "Wisconsin markets for this service",
+      items: wiLocs.map((l) => ({
+        href: `${locConfig.path}/${l.slug}/${page.slug}`,
+        label: `${page.title} in ${l.title}, WI`,
+      })),
+    })
+    blocks.push({
+      title: "National markets for this service",
+      items: ctx.locations.filter((l) => !l.tags?.includes("Wisconsin")).slice(0, 4).map((l) => ({
         href: `${locConfig.path}/${l.slug}/${page.slug}`,
         label: `${page.title} in ${l.title}`,
       })),

@@ -11,6 +11,7 @@ export function organizationSchema() {
     description: siteConfig.description,
     email: siteConfig.contact.email,
     sameAs: siteConfig.sameAs,
+    areaServed: { "@type": "State", name: "Wisconsin" },
   }
 }
 
@@ -57,7 +58,10 @@ export function localBusinessSchema() {
       latitude: geo.latitude,
       longitude: geo.longitude,
     },
-    areaServed: { "@type": "Country", name: "United States" },
+    areaServed: [
+      { "@type": "State", name: "Wisconsin" },
+      { "@type": "Country", name: "United States" },
+    ],
     sameAs: siteConfig.sameAs,
   }
 }

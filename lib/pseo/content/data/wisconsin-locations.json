@@ -1,0 +1,352 @@
+[
+  {
+    "slug": "milwaukee",
+    "title": "Milwaukee",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Milwaukee web development and business automation agency for Wisconsin brands.",
+    "intro": "SuchGrime is headquartered in Milwaukee — we build fast, SEO-ready websites and automation systems for Brew City businesses, from Third Ward startups to established operators across Southeast Wisconsin.",
+    "geo": { "latitude": 43.0389, "longitude": -87.9065 },
+    "keywords": ["web development agency milwaukee", "milwaukee web design", "milwaukee business automation", "website developer milwaukee wi"]
+  },
+  {
+    "slug": "madison",
+    "title": "Madison",
+    "state": "WI",
+    "region": "Madison Metro",
+    "description": "Web development and business automation agency serving Madison, Wisconsin businesses.",
+    "intro": "SuchGrime builds high-performance websites and workflow automation for Madison brands — from Capitol Square startups to Dane County service businesses scaling their digital presence.",
+    "geo": { "latitude": 43.0731, "longitude": -89.4012 },
+    "keywords": ["web development madison wi", "madison web agency", "madison business automation", "website design madison wisconsin"]
+  },
+  {
+    "slug": "green-bay",
+    "title": "Green Bay",
+    "state": "WI",
+    "region": "Fox Valley",
+    "description": "Web development and business automation agency serving Green Bay, Wisconsin businesses.",
+    "intro": "SuchGrime delivers SEO-ready websites and automation for Green Bay operators — helping Northeast Wisconsin businesses compete with polished Next.js builds and streamlined internal workflows.",
+    "geo": { "latitude": 44.5133, "longitude": -88.0133 },
+    "keywords": ["web development green bay wi", "green bay web design", "green bay business automation"]
+  },
+  {
+    "slug": "kenosha",
+    "title": "Kenosha",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Kenosha, Wisconsin businesses.",
+    "intro": "SuchGrime builds conversion-focused websites and booking automation for Kenosha businesses along the I-94 corridor — mobile-first, fast, and built to rank locally.",
+    "geo": { "latitude": 42.5847, "longitude": -87.8212 },
+    "keywords": ["web development kenosha wi", "kenosha web agency", "kenosha website design"]
+  },
+  {
+    "slug": "racine",
+    "title": "Racine",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Racine, Wisconsin businesses.",
+    "intro": "SuchGrime helps Racine businesses launch modern websites and automate repetitive ops — from manufacturing suppliers to local service brands along Lake Michigan.",
+    "geo": { "latitude": 42.7261, "longitude": -87.7829 },
+    "keywords": ["web development racine wi", "racine web design", "racine business automation"]
+  },
+  {
+    "slug": "appleton",
+    "title": "Appleton",
+    "state": "WI",
+    "region": "Fox Valley",
+    "description": "Web development and business automation agency serving Appleton, Wisconsin businesses.",
+    "intro": "SuchGrime partners with Appleton and Fox Cities businesses on Next.js websites, booking flows, and CRM automation — engineered for local search and long-term growth.",
+    "geo": { "latitude": 44.2619, "longitude": -88.4154 },
+    "keywords": ["web development appleton wi", "appleton web agency", "fox cities website design"]
+  },
+  {
+    "slug": "waukesha",
+    "title": "Waukesha",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Waukesha, Wisconsin businesses.",
+    "intro": "SuchGrime builds websites and automation systems for Waukesha County operators — from Waukesha manufacturers to suburban service businesses needing faster lead capture.",
+    "geo": { "latitude": 43.0117, "longitude": -88.2315 },
+    "keywords": ["web development waukesha wi", "waukesha web design", "waukesha county web agency"]
+  },
+  {
+    "slug": "oshkosh",
+    "title": "Oshkosh",
+    "state": "WI",
+    "region": "Fox Valley",
+    "description": "Web development and business automation agency serving Oshkosh, Wisconsin businesses.",
+    "intro": "SuchGrime delivers performance-tuned websites and workflow automation for Oshkosh businesses — built for Wisconsin buyers who search by city and service.",
+    "geo": { "latitude": 44.0247, "longitude": -88.5426 },
+    "keywords": ["web development oshkosh wi", "oshkosh web agency", "oshkosh website design"]
+  },
+  {
+    "slug": "eau-claire",
+    "title": "Eau Claire",
+    "state": "WI",
+    "region": "Western Wisconsin",
+    "description": "Web development and business automation agency serving Eau Claire, Wisconsin businesses.",
+    "intro": "SuchGrime builds SEO-ready sites and automation for Eau Claire and Chippewa Valley businesses — helping Western Wisconsin operators modernize without enterprise overhead.",
+    "geo": { "latitude": 44.8113, "longitude": -91.4985 },
+    "keywords": ["web development eau claire wi", "eau claire web design", "chippewa valley web agency"]
+  },
+  {
+    "slug": "janesville",
+    "title": "Janesville",
+    "state": "WI",
+    "region": "Madison Metro",
+    "description": "Web development and business automation agency serving Janesville, Wisconsin businesses.",
+    "intro": "SuchGrime helps Janesville businesses launch polished websites and automate booking, intake, and follow-up — tailored for Rock County's manufacturing and service economy.",
+    "geo": { "latitude": 42.6828, "longitude": -89.0187 },
+    "keywords": ["web development janesville wi", "janesville web agency", "rock county website design"]
+  },
+  {
+    "slug": "la-crosse",
+    "title": "La Crosse",
+    "state": "WI",
+    "region": "Western Wisconsin",
+    "description": "Web development and business automation agency serving La Crosse, Wisconsin businesses.",
+    "intro": "SuchGrime partners with La Crosse businesses on fast Next.js sites and automation — from healthcare clinics to hospitality brands along the Mississippi River.",
+    "geo": { "latitude": 43.8014, "longitude": -91.2396 },
+    "keywords": ["web development la crosse wi", "la crosse web design", "la crosse business automation"]
+  },
+  {
+    "slug": "sheboygan",
+    "title": "Sheboygan",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Sheboygan, Wisconsin businesses.",
+    "intro": "SuchGrime builds websites and workflow systems for Sheboygan manufacturers, retailers, and service businesses — optimized for local SEO and Core Web Vitals.",
+    "geo": { "latitude": 43.7508, "longitude": -87.7145 },
+    "keywords": ["web development sheboygan wi", "sheboygan web agency", "sheboygan website design"]
+  },
+  {
+    "slug": "wausau",
+    "title": "Wausau",
+    "state": "WI",
+    "region": "Northern Wisconsin",
+    "description": "Web development and business automation agency serving Wausau, Wisconsin businesses.",
+    "intro": "SuchGrime delivers modern websites and automation for Wausau and Central Wisconsin operators — helping regional brands compete with enterprise-grade digital infrastructure.",
+    "geo": { "latitude": 44.9591, "longitude": -89.6301 },
+    "keywords": ["web development wausau wi", "wausau web design", "central wisconsin web agency"]
+  },
+  {
+    "slug": "wauwatosa",
+    "title": "Wauwatosa",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Wauwatosa, Wisconsin businesses.",
+    "intro": "SuchGrime builds conversion-focused websites for Wauwatosa businesses in the Milwaukee metro — from Mayfair corridor retailers to professional services firms.",
+    "geo": { "latitude": 43.0495, "longitude": -88.0076 },
+    "keywords": ["web development wauwatosa wi", "wauwatosa web design", "milwaukee metro web agency"]
+  },
+  {
+    "slug": "brookfield",
+    "title": "Brookfield",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Brookfield, Wisconsin businesses.",
+    "intro": "SuchGrime partners with Brookfield and Waukesha County businesses on premium Next.js sites, booking systems, and CRM-connected automation.",
+    "geo": { "latitude": 43.0606, "longitude": -88.1065 },
+    "keywords": ["web development brookfield wi", "brookfield web agency", "waukesha county website design"]
+  },
+  {
+    "slug": "new-berlin",
+    "title": "New Berlin",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving New Berlin, Wisconsin businesses.",
+    "intro": "SuchGrime helps New Berlin businesses launch SEO-ready websites and automate intake, scheduling, and follow-up workflows.",
+    "geo": { "latitude": 42.9764, "longitude": -88.1084 },
+    "keywords": ["web development new berlin wi", "new berlin web design", "new berlin business automation"]
+  },
+  {
+    "slug": "fond-du-lac",
+    "title": "Fond du Lac",
+    "state": "WI",
+    "region": "Fox Valley",
+    "description": "Web development and business automation agency serving Fond du Lac, Wisconsin businesses.",
+    "intro": "SuchGrime builds fast websites and automation for Fond du Lac operators — from lakeshore hospitality to regional manufacturing and distribution.",
+    "geo": { "latitude": 43.773, "longitude": -88.447 },
+    "keywords": ["web development fond du lac wi", "fond du lac web agency", "fond du lac website design"]
+  },
+  {
+    "slug": "west-allis",
+    "title": "West Allis",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving West Allis, Wisconsin businesses.",
+    "intro": "SuchGrime delivers websites and workflow automation for West Allis businesses — mobile-first builds tuned for Milwaukee metro local search.",
+    "geo": { "latitude": 43.0167, "longitude": -88.007 },
+    "keywords": ["web development west allis wi", "west allis web design", "milwaukee web agency"]
+  },
+  {
+    "slug": "oak-creek",
+    "title": "Oak Creek",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Oak Creek, Wisconsin businesses.",
+    "intro": "SuchGrime builds SEO-ready sites and booking automation for Oak Creek service businesses and South Milwaukee corridor operators.",
+    "geo": { "latitude": 42.8859, "longitude": -87.8631 },
+    "keywords": ["web development oak creek wi", "oak creek web design", "south milwaukee web agency"]
+  },
+  {
+    "slug": "sun-prairie",
+    "title": "Sun Prairie",
+    "state": "WI",
+    "region": "Madison Metro",
+    "description": "Web development and business automation agency serving Sun Prairie, Wisconsin businesses.",
+    "intro": "SuchGrime partners with Sun Prairie businesses on modern websites and automation — helping fast-growing Dane County suburbs capture more qualified leads online.",
+    "geo": { "latitude": 43.1836, "longitude": -89.2132 },
+    "keywords": ["web development sun prairie wi", "sun prairie web design", "dane county web agency"]
+  },
+  {
+    "slug": "menomonee-falls",
+    "title": "Menomonee Falls",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Menomonee Falls, Wisconsin businesses.",
+    "intro": "SuchGrime builds high-performance websites and internal tools for Menomonee Falls businesses — from retail to professional services in Waukesha County.",
+    "geo": { "latitude": 43.1789, "longitude": -88.1173 },
+    "keywords": ["web development menomonee falls wi", "menomonee falls web agency"]
+  },
+  {
+    "slug": "fitchburg",
+    "title": "Fitchburg",
+    "state": "WI",
+    "region": "Madison Metro",
+    "description": "Web development and business automation agency serving Fitchburg, Wisconsin businesses.",
+    "intro": "SuchGrime delivers Next.js websites and workflow automation for Fitchburg businesses — built for Madison metro search intent and conversion.",
+    "geo": { "latitude": 43.0022, "longitude": -89.4237 },
+    "keywords": ["web development fitchburg wi", "fitchburg web design", "madison metro web agency"]
+  },
+  {
+    "slug": "beloit",
+    "title": "Beloit",
+    "state": "WI",
+    "region": "Madison Metro",
+    "description": "Web development and business automation agency serving Beloit, Wisconsin businesses.",
+    "intro": "SuchGrime helps Beloit and Stateline Area businesses modernize with fast websites, booking flows, and automation that reduces manual admin work.",
+    "geo": { "latitude": 42.5083, "longitude": -89.0318 },
+    "keywords": ["web development beloit wi", "beloit web agency", "stateline web design"]
+  },
+  {
+    "slug": "manitowoc",
+    "title": "Manitowoc",
+    "state": "WI",
+    "region": "Fox Valley",
+    "description": "Web development and business automation agency serving Manitowoc, Wisconsin businesses.",
+    "intro": "SuchGrime builds websites and automation for Manitowoc businesses along Lake Michigan — from maritime industry suppliers to local service brands.",
+    "geo": { "latitude": 44.0886, "longitude": -87.6576 },
+    "keywords": ["web development manitowoc wi", "manitowoc web design", "manitowoc business automation"]
+  },
+  {
+    "slug": "de-pere",
+    "title": "De Pere",
+    "state": "WI",
+    "region": "Fox Valley",
+    "description": "Web development and business automation agency serving De Pere, Wisconsin businesses.",
+    "intro": "SuchGrime partners with De Pere and Green Bay metro businesses on SEO-ready websites and CRM-connected automation workflows.",
+    "geo": { "latitude": 44.4489, "longitude": -88.0604 },
+    "keywords": ["web development de pere wi", "de pere web agency", "green bay metro web design"]
+  },
+  {
+    "slug": "mequon",
+    "title": "Mequon",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Mequon, Wisconsin businesses.",
+    "intro": "SuchGrime builds premium websites and automation for Mequon professional services, healthcare, and retail businesses in Ozaukee County.",
+    "geo": { "latitude": 43.2214, "longitude": -87.9848 },
+    "keywords": ["web development mequon wi", "mequon web design", "ozaukee county web agency"]
+  },
+  {
+    "slug": "superior",
+    "title": "Superior",
+    "state": "WI",
+    "region": "Northern Wisconsin",
+    "description": "Web development and business automation agency serving Superior, Wisconsin businesses.",
+    "intro": "SuchGrime delivers modern websites and workflow automation for Superior and Twin Ports businesses — built for Northern Wisconsin local search.",
+    "geo": { "latitude": 46.7208, "longitude": -92.1041 },
+    "keywords": ["web development superior wi", "superior web design", "twin ports web agency"]
+  },
+  {
+    "slug": "stevens-point",
+    "title": "Stevens Point",
+    "state": "WI",
+    "region": "Northern Wisconsin",
+    "description": "Web development and business automation agency serving Stevens Point, Wisconsin businesses.",
+    "intro": "SuchGrime builds fast Next.js sites and automation for Stevens Point businesses — from UWSP-area startups to Central Wisconsin service operators.",
+    "geo": { "latitude": 44.5236, "longitude": -89.5746 },
+    "keywords": ["web development stevens point wi", "stevens point web agency", "central wisconsin website design"]
+  },
+  {
+    "slug": "muskego",
+    "title": "Muskego",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Muskego, Wisconsin businesses.",
+    "intro": "SuchGrime helps Muskego businesses launch polished websites and automate booking, intake, and client follow-up — tuned for Waukesha County search.",
+    "geo": { "latitude": 42.9058, "longitude": -88.1389 },
+    "keywords": ["web development muskego wi", "muskego web design", "waukesha county web agency"]
+  },
+  {
+    "slug": "watertown",
+    "title": "Watertown",
+    "state": "WI",
+    "region": "Madison Metro",
+    "description": "Web development and business automation agency serving Watertown, Wisconsin businesses.",
+    "intro": "SuchGrime partners with Watertown businesses on SEO-ready websites and automation — connecting manufacturing, retail, and service brands to more online leads.",
+    "geo": { "latitude": 43.1947, "longitude": -88.729 },
+    "keywords": ["web development watertown wi", "watertown web agency", "jefferson county web design"]
+  },
+  {
+    "slug": "middleton",
+    "title": "Middleton",
+    "state": "WI",
+    "region": "Madison Metro",
+    "description": "Web development and business automation agency serving Middleton, Wisconsin businesses.",
+    "intro": "SuchGrime builds conversion-focused websites for Middleton and West Madison businesses — mobile-first, schema-rich, and automation-ready.",
+    "geo": { "latitude": 43.0972, "longitude": -89.5043 },
+    "keywords": ["web development middleton wi", "middleton web design", "madison web agency"]
+  },
+  {
+    "slug": "neenah",
+    "title": "Neenah",
+    "state": "WI",
+    "region": "Fox Valley",
+    "description": "Web development and business automation agency serving Neenah, Wisconsin businesses.",
+    "intro": "SuchGrime delivers websites and workflow automation for Neenah and Fox Cities businesses — engineered for local SEO and operational efficiency.",
+    "geo": { "latitude": 44.1858, "longitude": -88.4626 },
+    "keywords": ["web development neenah wi", "neenah web agency", "fox cities website design"]
+  },
+  {
+    "slug": "mount-pleasant",
+    "title": "Mount Pleasant",
+    "state": "WI",
+    "region": "Southeast Wisconsin",
+    "description": "Web development and business automation agency serving Mount Pleasant, Wisconsin businesses.",
+    "intro": "SuchGrime builds SEO-ready sites and automation for Mount Pleasant and Racine County businesses — from logistics operators to local service brands.",
+    "geo": { "latitude": 42.6975, "longitude": -87.8762 },
+    "keywords": ["web development mount pleasant wi", "racine county web agency", "mount pleasant web design"]
+  },
+  {
+    "slug": "beaver-dam",
+    "title": "Beaver Dam",
+    "state": "WI",
+    "region": "Madison Metro",
+    "description": "Web development and business automation agency serving Beaver Dam, Wisconsin businesses.",
+    "intro": "SuchGrime helps Beaver Dam businesses launch modern websites and automate repetitive workflows — built for Dodge County local search and lead generation.",
+    "geo": { "latitude": 43.4578, "longitude": -88.8373 },
+    "keywords": ["web development beaver dam wi", "beaver dam web design", "dodge county web agency"]
+  },
+  {
+    "slug": "hudson",
+    "title": "Hudson",
+    "state": "WI",
+    "region": "Western Wisconsin",
+    "description": "Web development and business automation agency serving Hudson, Wisconsin businesses.",
+    "intro": "SuchGrime partners with Hudson and St. Croix Valley businesses on fast Next.js websites, booking systems, and CRM automation across Western Wisconsin.",
+    "geo": { "latitude": 44.9747, "longitude": -92.7569 },
+    "keywords": ["web development hudson wi", "hudson web agency", "st croix valley web design"]
+  }
+]

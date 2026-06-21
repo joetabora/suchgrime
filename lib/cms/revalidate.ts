@@ -36,6 +36,7 @@ export function revalidateContentEntry(collection: PseoCollectionId, slug: strin
   if (collection === "locations" || collection === "industries") {
     revalidateMatrixForParent(collection, slug)
     revalidatePath("/solutions")
+    revalidatePath("/wisconsin")
   }
 
   if (collection === "services") {
@@ -64,5 +65,6 @@ export function revalidateCollection(collection: PseoCollectionId) {
   }
   if (collection === "locations" || collection === "industries" || collection === "services") {
     revalidatePath("/solutions")
+    revalidatePath("/wisconsin")
   }
 }

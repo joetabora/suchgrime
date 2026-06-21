@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/seo/json-ld"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import type { PseoCollectionConfig, PseoPage } from "@/lib/pseo/types"
+import { WISCONSIN_SUBREGIONS } from "@/lib/pseo/content/locations"
 import { collectionPageSchema, itemListSchema } from "@/lib/seo/schemas/application"
 import { getSiteUrl } from "@/lib/utils"
 
@@ -15,10 +16,62 @@ interface ProgramIndexProps {
   pages: PseoPage[]
 }
 
+function LocationCard({
+  page,
+  collection,
+  matrixPages,
+}: {
+  page: PseoPage
+  collection: PseoCollectionConfig
+  matrixPages: PseoPage[]
+}) {
+  return (
+    <Card key={page.slug}>
+      <CardHeader>
+        {page.tags && (
+          <div className="mb-2 flex flex-wrap gap-2">
+            {page.tags.slice(0, 3).map((tag) => (
+              <Badge key={tag} variant="accent">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        )}
+        <CardTitle>
+          <Link href={`${collection.path}/${page.slug}`} className="hover:text-parlor-accent">
+            {page.title}
+          </Link>
+        </CardTitle>
+        <CardDescription>{page.description}</CardDescription>
+      </CardHeader>
+      {collection.matrixWithServices && (
+        <CardContent>
+          <p className="mb-2 text-xs uppercase tracking-wider text-muted">Services</p>
+          <ul className="space-y-1 text-sm">
+            {matrixPages
+              .filter((m) => m.parentSlug === page.slug)
+              .map((m) => (
+                <li key={m.slug}>
+                  <Link href={`${collection.path}/${m.slug}`} className="text-parlor-accent hover:underline">
+                    {m.title}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </CardContent>
+      )}
+    </Card>
+  )
+}
+
 export function ProgramIndex({ collection, pages }: ProgramIndexProps) {
   const basePages = pages.filter((p) => !p.isMatrix)
   const matrixPages = pages.filter((p) => p.isMatrix)
   const matrixPreview = matrixPages.slice(0, 12)
+
+  const wiPages = collection.id === "locations" ? basePages.filter((p) => p.tags?.includes("Wisconsin")) : []
+  const nationalPages =
+    collection.id === "locations" ? basePages.filter((p) => !p.tags?.includes("Wisconsin")) : basePages
 
   const itemList = itemListSchema(
     basePages.map((p) => ({
@@ -44,55 +97,97 @@ export function ProgramIndex({ collection, pages }: ProgramIndexProps) {
             {matrixPages.length > 0 && ` · ${matrixPages.length} service combinations`}
           </p>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {basePages.map((page) => (
-              <Card key={page.slug}>
-                <CardHeader>
-                  {page.tags && (
-                    <div className="mb-2 flex flex-wrap gap-2">
-                      {page.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="accent">
-                          {tag}
-                        </Badge>
+          {collection.id === "locations" && wiPages.length > 0 && (
+            <>
+              <div className="mt-8 flex items-center gap-4">
+                <Link href="/wisconsin" className="text-sm text-parlor-accent hover:underline">
+                  Wisconsin hub →
+                </Link>
+              </div>
+              {WISCONSIN_SUBREGIONS.map((subregion) => {
+                const regionPages = wiPages.filter((p) => p.tags?.includes(subregion))
+                if (regionPages.length === 0) return null
+                return (
+                  <section key={subregion} className="mt-12">
+                    <h2 className="font-display text-3xl tracking-wide">Wisconsin — {subregion}</h2>
+                    <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {regionPages.map((page) => (
+                        <LocationCard
+                          key={page.slug}
+                          page={page}
+                          collection={collection}
+                          matrixPages={matrixPages}
+                        />
                       ))}
                     </div>
-                  )}
-                  <CardTitle>
-                    <Link href={`${collection.path}/${page.slug}`} className="hover:text-parlor-accent">
-                      {page.title}
-                    </Link>
-                  </CardTitle>
-                  <CardDescription>{page.description}</CardDescription>
-                </CardHeader>
-                {collection.matrixWithServices && (
-                  <CardContent>
-                    <p className="mb-2 text-xs uppercase tracking-wider text-muted">Services</p>
-                    <ul className="space-y-1 text-sm">
-                      {matrixPages
-                        .filter((m) => m.parentSlug === page.slug)
-                        .map((m) => (
-                          <li key={m.slug}>
-                            <Link
-                              href={`${collection.path}/${m.slug}`}
-                              className="text-parlor-accent hover:underline"
-                            >
-                              {m.title}
-                            </Link>
-                          </li>
+                  </section>
+                )
+              })}
+            </>
+          )}
+
+          {collection.id === "locations" && nationalPages.length > 0 && (
+            <section className="mt-16 border-t border-white/10 pt-12">
+              <h2 className="font-display text-3xl tracking-wide">National markets</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {nationalPages.map((page) => (
+                  <LocationCard key={page.slug} page={page} collection={collection} matrixPages={matrixPages} />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {collection.id !== "locations" && (
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {basePages.map((page) => (
+                <Card key={page.slug}>
+                  <CardHeader>
+                    {page.tags && (
+                      <div className="mb-2 flex flex-wrap gap-2">
+                        {page.tags.slice(0, 3).map((tag) => (
+                          <Badge key={tag} variant="accent">
+                            {tag}
+                          </Badge>
                         ))}
-                    </ul>
-                  </CardContent>
-                )}
-                {page.href && (
-                  <CardContent>
-                    <Link href={page.href} className="text-sm text-parlor-accent hover:underline">
-                      View live demo →
-                    </Link>
-                  </CardContent>
-                )}
-              </Card>
-            ))}
-          </div>
+                      </div>
+                    )}
+                    <CardTitle>
+                      <Link href={`${collection.path}/${page.slug}`} className="hover:text-parlor-accent">
+                        {page.title}
+                      </Link>
+                    </CardTitle>
+                    <CardDescription>{page.description}</CardDescription>
+                  </CardHeader>
+                  {collection.matrixWithServices && (
+                    <CardContent>
+                      <p className="mb-2 text-xs uppercase tracking-wider text-muted">Services</p>
+                      <ul className="space-y-1 text-sm">
+                        {matrixPages
+                          .filter((m) => m.parentSlug === page.slug)
+                          .map((m) => (
+                            <li key={m.slug}>
+                              <Link
+                                href={`${collection.path}/${m.slug}`}
+                                className="text-parlor-accent hover:underline"
+                              >
+                                {m.title}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    </CardContent>
+                  )}
+                  {page.href && (
+                    <CardContent>
+                      <Link href={page.href} className="text-sm text-parlor-accent hover:underline">
+                        View live demo →
+                      </Link>
+                    </CardContent>
+                  )}
+                </Card>
+              ))}
+            </div>
+          )}
 
           {matrixPreview.length > 0 && (
             <section className="mt-16 border-t border-white/10 pt-12">

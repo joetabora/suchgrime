@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/seo/breadcrumbs"
 import { JsonLd } from "@/components/seo/json-ld"
 import { webPageSchema } from "@/lib/seo/schemas/application"
 import { buildMetadata } from "@/lib/seo/metadata"
+import { getWisconsinLocations } from "@/lib/pseo/content/locations"
 import { getAllPagesForCollection } from "@/lib/pseo/registry"
 
 export const metadata = buildMetadata({
@@ -24,7 +25,8 @@ export default async function SolutionsPage() {
 
   const baseServices = services.filter((p) => !p.isMatrix)
   const baseIndustries = industries.filter((p) => !p.isMatrix)
-  const baseLocations = locations.filter((p) => !p.isMatrix).slice(0, 12)
+  const wiLocations = getWisconsinLocations().slice(0, 8)
+  const baseLocations = locations.filter((p) => !p.isMatrix && !p.tags?.includes("Wisconsin")).slice(0, 8)
 
   return (
     <SiteShell>
@@ -72,7 +74,24 @@ export default async function SolutionsPage() {
           </section>
 
           <section className="mt-16 border-t border-white/10 pt-12">
-            <h2 className="font-display text-3xl tracking-wide">Top markets</h2>
+            <h2 className="font-display text-3xl tracking-wide">Wisconsin markets</h2>
+            <p className="mt-2 text-sm text-muted">SuchGrime is Milwaukee-based — explore our primary service area.</p>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {wiLocations.map((l) => (
+                <li key={l.slug}>
+                  <Link href={`/locations/${l.slug}`} className="block border border-white/10 p-4 hover:border-parlor-accent/50">
+                    <span className="font-medium">{l.title}, WI</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link href="/wisconsin" className="mt-4 inline-block text-sm text-parlor-accent hover:underline">
+              View all Wisconsin markets →
+            </Link>
+          </section>
+
+          <section className="mt-16 border-t border-white/10 pt-12">
+            <h2 className="font-display text-3xl tracking-wide">National markets</h2>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {baseLocations.map((l) => (
                 <li key={l.slug}>

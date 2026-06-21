@@ -22,7 +22,7 @@ export const pseoCollections: Record<PseoCollectionId, PseoCollectionConfig> = {
     singularLabel: "Location",
     path: "/locations",
     indexTitle: "Locations We Serve",
-    indexDescription: "Web development and business automation for cities across the United States.",
+    indexDescription: "Web development and business automation for Wisconsin and cities across the United States.",
     schemaType: "LocalBusiness",
     matrixWithServices: true,
     priority: 0.75,

@@ -11,14 +11,16 @@ import { buildMetadata } from "@/lib/seo/metadata"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata = buildMetadata({
-  title: `${siteConfig.name} — ${siteConfig.subtitle}`,
-  description: siteConfig.description,
+  title: `${siteConfig.name} — Web Development & Automation in Wisconsin`,
+  description:
+    "Milwaukee-based web development and business automation agency serving Wisconsin — custom Next.js sites, booking systems, and workflow automation for brands that move fast.",
   path: "/",
   keywords: [
+    "web development agency milwaukee",
+    "wisconsin business automation",
+    "milwaukee web design",
+    "Next.js development wisconsin",
     "web development agency",
-    "business automation",
-    "Next.js development",
-    "programmatic SEO",
     siteConfig.name,
   ],
 })

@@ -4,13 +4,13 @@ export const siteConfig = {
   domain: "suchgrime.com",
   tagline: "Premium web craft and automation for brands that move fast.",
   description:
-    "SuchGrime is a premium web development and business automation agency building fast, accessible websites, internal tools, and workflow systems for brands that refuse to blend in.",
+    "SuchGrime is a Milwaukee-based web development and business automation agency building fast, accessible websites, internal tools, and workflow systems for Wisconsin brands and operators nationwide.",
   heroHeadline: "PREMIUM WEB CRAFT FOR BRANDS THAT DON'T DO BORING",
   heroSubtext:
-    "SuchGrime builds bold, high-performance websites and business automation — booking systems, dashboards, integrations, and internal tools that save time and drive revenue.",
+    "Based in Milwaukee, SuchGrime builds bold, high-performance websites and business automation for Wisconsin businesses — booking systems, dashboards, integrations, and internal tools that save time and drive revenue.",
   about: {
     story:
-      "We started as builders tired of cookie-cutter templates and disconnected tools. SuchGrime is a studio rooted in urban culture and engineering discipline — we bring raw creative energy to every pixel and every workflow. Local brands, startups, and operators who need sites and systems that actually work — that's our lane.",
+      "We started as builders tired of cookie-cutter templates and disconnected tools. SuchGrime is a Milwaukee studio rooted in urban culture and engineering discipline — we bring raw creative energy to every pixel and every workflow. Wisconsin brands, startups, and operators who need sites and systems that actually work — that's our lane.",
     stats: [
       { label: "Approach", value: "Full-Stack Ready" },
       { label: "Standard", value: "Mobile-First" },
@@ -176,9 +176,10 @@ export const siteConfig = {
     { step: "03", title: "Build", description: "Next.js + Tailwind, iterative polish, feedback loops until it's right." },
     { step: "04", title: "Ship", description: "Deploy, handoff, and support — your site and systems go live and stay sharp." },
   ],
+  serviceArea: "Wisconsin",
   contact: {
     email: "hello@suchgrime.com",
-    phone: "+1-312-555-0199",
+    phone: "+1-414-555-0199",
     note: "Currently accepting new projects",
     projectTypes: [
       "New Website",
@@ -205,12 +206,12 @@ export const siteConfig = {
   localBusiness: {
     address: {
       streetAddress: "Remote-first studio",
-      addressLocality: "Chicago",
-      addressRegion: "IL",
-      postalCode: "60601",
+      addressLocality: "Milwaukee",
+      addressRegion: "WI",
+      postalCode: "53202",
       addressCountry: "US",
     },
-    geo: { latitude: 41.8781, longitude: -87.6298 },
+    geo: { latitude: 43.0389, longitude: -87.9065 },
     priceRange: "$$",
   },
 } as const

@@ -36,6 +36,8 @@ export interface PseoPage {
   isMatrix?: boolean
   /** CMS updated timestamp for sitemap lastmod */
   lastModified?: string
+  /** Geo coordinates for location pages */
+  geo?: { latitude: number; longitude: number }
 }
 
 export interface PseoCollectionConfig {

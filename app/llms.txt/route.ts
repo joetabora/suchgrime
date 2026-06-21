@@ -9,6 +9,7 @@ export async function GET() {
 
 ## Primary pages
 - ${base}/
+- ${base}/wisconsin
 - ${base}/services
 - ${base}/locations
 - ${base}/industries
@@ -19,6 +20,9 @@ export async function GET() {
 - ${base}/blog
 - ${base}/solutions
 - ${base}/contact
+
+## Primary service area
+Wisconsin (headquartered in Milwaukee). National location pages also available.
 
 ## Content types
 - Programmatic SEO: locations × services and industries × services matrix pages

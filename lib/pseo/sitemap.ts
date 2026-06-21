@@ -2,12 +2,16 @@ import type { MetadataRoute } from "next"
 import { getSiteUrl } from "@/lib/utils"
 import { getAllCollectionIds, getAllPagesForCollection, getCollectionConfig } from "./registry"
 
-export async function getAllPseoSitemapEntries(): Promise<MetadataRoute.Sitemap> {
+const LOCATION_COLLECTIONS = new Set(["locations"])
+
+async function buildCollectionEntries(
+  ids: ReturnType<typeof getAllCollectionIds>,
+): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl()
   const now = new Date()
   const entries: MetadataRoute.Sitemap = []
 
-  for (const id of getAllCollectionIds()) {
+  for (const id of ids) {
     const config = getCollectionConfig(id)
     entries.push({
       url: `${base}${config.path}`,
@@ -32,6 +36,35 @@ export async function getAllPseoSitemapEntries(): Promise<MetadataRoute.Sitemap>
   }
 
   return entries
+}
+
+export async function getCoreSitemapEntries(): Promise<MetadataRoute.Sitemap> {
+  const base = getSiteUrl()
+  const now = new Date()
+  return [
+    { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/work`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/solutions`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/wisconsin`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+  ]
+}
+
+export async function getLocationsSitemapEntries(): Promise<MetadataRoute.Sitemap> {
+  return buildCollectionEntries(getAllCollectionIds().filter((id) => LOCATION_COLLECTIONS.has(id)))
+}
+
+export async function getContentSitemapEntries(): Promise<MetadataRoute.Sitemap> {
+  return buildCollectionEntries(getAllCollectionIds().filter((id) => !LOCATION_COLLECTIONS.has(id)))
+}
+
+/** @deprecated Use split sitemap helpers — kept for backwards compatibility */
+export async function getAllPseoSitemapEntries(): Promise<MetadataRoute.Sitemap> {
+  const [locations, content] = await Promise.all([
+    getLocationsSitemapEntries(),
+    getContentSitemapEntries(),
+  ])
+  return [...locations, ...content]
 }
 
 export async function getPseoPageCount(): Promise<number> {
