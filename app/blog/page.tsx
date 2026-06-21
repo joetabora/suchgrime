@@ -18,8 +18,8 @@ export const metadata = buildMetadata({
 
 export const revalidate = 3600
 
-export default function BlogPage() {
-  const posts = getAllPosts()
+export default async function BlogPage() {
+  const posts = await getAllPosts()
 
   return (
     <SiteShell>

@@ -11,17 +11,20 @@ import { buildMetadata } from "@/lib/seo/metadata"
 import { articleSchema } from "@/lib/seo/schemas/article"
 import { JsonLd } from "@/components/seo/json-ld"
 
+export const revalidate = 3600
+
 interface Props {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }))
+  const slugs = await getAllSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = await getPostBySlug(slug)
   if (!post) return {}
   return buildMetadata({
     title: post.title,
@@ -35,7 +38,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = await getPostBySlug(slug)
   if (!post) notFound()
 
   return (

@@ -1,12 +1,18 @@
 import type { PseoCollectionConfig, PseoCollectionId, PseoPage } from "./types"
 import { locations } from "./content/locations"
 import { industries } from "./content/industries"
-import { services } from "./content/services"
+import { services as staticServices } from "./content/services"
 import { caseStudies } from "./content/case-studies"
 import { softwareProducts } from "./content/software"
 import { resources } from "./content/resources"
-import { getAllPosts } from "@/lib/blog/get-posts"
 import { buildMatrixPages } from "./matrix"
+import {
+  countPublishedEntries,
+  getPublishedBlogPosts,
+  getPublishedPseoPages,
+} from "@/lib/cms/content"
+import { entryToPseoPage } from "@/lib/cms/mapper"
+import { getAllPostsFromFiles } from "@/lib/blog/get-posts"
 
 export const pseoCollections: Record<PseoCollectionId, PseoCollectionConfig> = {
   locations: {
@@ -90,17 +96,17 @@ export const pseoCollections: Record<PseoCollectionId, PseoCollectionConfig> = {
   },
 }
 
-const basePages: Record<Exclude<PseoCollectionId, "blog">, PseoPage[]> = {
+const staticBasePages: Record<Exclude<PseoCollectionId, "blog">, PseoPage[]> = {
   locations,
   industries,
-  services,
+  services: staticServices,
   "case-studies": caseStudies,
   software: softwareProducts,
   resources,
 }
 
-function blogAsPseoPages(): PseoPage[] {
-  return getAllPosts().map((post) => ({
+function blogFromFiles(): PseoPage[] {
+  return getAllPostsFromFiles().map((post) => ({
     slug: post.slug,
     title: post.title,
     description: post.description,
@@ -112,34 +118,69 @@ function blogAsPseoPages(): PseoPage[] {
   }))
 }
 
+function getStaticBasePages(collection: Exclude<PseoCollectionId, "blog">): PseoPage[] {
+  return staticBasePages[collection].filter((p) => p.published !== false)
+}
+
+async function getBasePages(collection: Exclude<PseoCollectionId, "blog">): Promise<PseoPage[]> {
+  const dbCount = await countPublishedEntries(collection)
+  if (dbCount > 0) {
+    return getPublishedPseoPages(collection)
+  }
+  return getStaticBasePages(collection)
+}
+
+async function getBlogPages(): Promise<PseoPage[]> {
+  const dbCount = await countPublishedEntries("blog")
+  if (dbCount > 0) {
+    const posts = await getPublishedBlogPosts()
+    return posts.map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      intro: post.description,
+      tags: post.tags,
+      date: post.date,
+      published: post.published,
+      image: post.image,
+    }))
+  }
+  return blogFromFiles()
+}
+
 export function getCollectionConfig(id: PseoCollectionId): PseoCollectionConfig {
   return pseoCollections[id]
 }
 
-export function getBasePages(collection: Exclude<PseoCollectionId, "blog">): PseoPage[] {
-  return basePages[collection].filter((p) => p.published !== false)
-}
+export async function getAllPagesForCollection(collection: PseoCollectionId): Promise<PseoPage[]> {
+  if (collection === "blog") return getBlogPages()
 
-export function getAllPagesForCollection(collection: PseoCollectionId): PseoPage[] {
-  if (collection === "blog") return blogAsPseoPages()
-  const pages = getBasePages(collection)
+  const pages = await getBasePages(collection)
   const config = pseoCollections[collection]
+
   if (config.matrixWithServices) {
-    return [...pages, ...buildMatrixPages(collection, pages, services)]
+    const servicePages = await getBasePages("services")
+    return [...pages, ...buildMatrixPages(collection, pages, servicePages)]
   }
+
   return pages
 }
 
-export function getPageBySlug(collection: PseoCollectionId, slug: string): PseoPage | undefined {
-  return getAllPagesForCollection(collection).find((p) => p.slug === slug)
+export async function getPageBySlug(
+  collection: PseoCollectionId,
+  slug: string,
+): Promise<PseoPage | undefined> {
+  const pages = await getAllPagesForCollection(collection)
+  return pages.find((p) => p.slug === slug)
 }
 
-export function getMatrixPage(
+export async function getMatrixPage(
   parentCollection: "locations" | "industries",
   parentSlug: string,
   serviceSlug: string,
-): PseoPage | undefined {
-  return getAllPagesForCollection(parentCollection).find(
+): Promise<PseoPage | undefined> {
+  const pages = await getAllPagesForCollection(parentCollection)
+  return pages.find(
     (p) => p.isMatrix && p.parentSlug === parentSlug && p.serviceSlug === serviceSlug,
   )
 }
@@ -153,3 +194,5 @@ export function getMatrixParentCollections(): Array<"locations" | "industries"> 
     (id) => pseoCollections[id].matrixWithServices,
   )
 }
+
+export { entryToPseoPage }

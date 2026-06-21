@@ -2,6 +2,11 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import type { BlogPost, BlogPostMeta } from "./types"
+import {
+  getAllPublishedBlogSlugs,
+  getPublishedBlogPostBySlug,
+  getPublishedBlogPosts,
+} from "@/lib/cms/content"
 
 const BLOG_DIR = path.join(process.cwd(), "content/blog")
 
@@ -19,7 +24,7 @@ function parseMeta(slug: string, data: Record<string, unknown>, content: string)
   }
 }
 
-export function getAllPosts(): BlogPostMeta[] {
+export function getAllPostsFromFiles(): BlogPostMeta[] {
   if (!fs.existsSync(BLOG_DIR)) return []
 
   return fs
@@ -37,7 +42,7 @@ export function getAllPosts(): BlogPostMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
-export function getPostBySlug(slug: string): BlogPost | null {
+function getPostBySlugFromFiles(slug: string): BlogPost | null {
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`)
   if (!fs.existsSync(filePath)) return null
 
@@ -48,6 +53,24 @@ export function getPostBySlug(slug: string): BlogPost | null {
   return post
 }
 
-export function getAllSlugs(): string[] {
-  return getAllPosts().map((p) => p.slug)
+function getAllSlugsFromFiles(): string[] {
+  return getAllPostsFromFiles().map((p) => p.slug)
+}
+
+export async function getAllPosts(): Promise<BlogPostMeta[]> {
+  const dbPosts = await getPublishedBlogPosts()
+  if (dbPosts.length > 0) return dbPosts
+  return getAllPostsFromFiles()
+}
+
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  const dbPost = await getPublishedBlogPostBySlug(slug)
+  if (dbPost) return dbPost
+  return getPostBySlugFromFiles(slug)
+}
+
+export async function getAllSlugs(): Promise<string[]> {
+  const dbSlugs = await getAllPublishedBlogSlugs()
+  if (dbSlugs.length > 0) return dbSlugs
+  return getAllSlugsFromFiles()
 }

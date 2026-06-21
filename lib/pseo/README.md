@@ -75,3 +75,30 @@ export const locations: PseoPage[] = locationsJson
 ```
 
 Run `npm run build` — Next.js SSG generates all static params automatically.
+
+## CMS dashboard
+
+Content is managed via the internal CMS at `/admin` (password-protected). Published entries are stored in Postgres (`content_entries` table) and served on the public site with ISR + on-demand revalidation.
+
+### Setup
+
+1. Set env vars (see `.env.example`): `CMS_ADMIN_EMAIL`, `CMS_ADMIN_PASSWORD`, `CMS_SESSION_SECRET`
+2. Run migration: `npm run db:migrate`
+3. Seed existing static/MDX content: `npm run cms:seed`
+
+### Workflow
+
+- Create and edit locations, industries, services, case studies, software, resources, and blog posts from `/admin`
+- FAQs and features are embedded on each page form
+- Matrix pages (location/industry × service) auto-generate when parent entities and services are published
+- Static files in `lib/pseo/content/` and `content/blog/` remain as fallback when the DB is empty
+
+### Files
+
+```
+lib/cms/           # Auth, CRUD, validators, seed
+app/admin/         # Dashboard routes
+app/api/cms/       # Protected API
+components/cms/    # Admin UI
+middleware.ts      # Protects /admin and /api/cms
+```

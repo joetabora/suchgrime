@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { getAllPseoSitemapEntries } from "@/lib/pseo/sitemap"
 import { getSiteUrl } from "@/lib/utils"
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl()
   const now = new Date()
 
@@ -12,5 +12,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ]
 
-  return [...coreRoutes, ...getAllPseoSitemapEntries()]
+  return [...coreRoutes, ...(await getAllPseoSitemapEntries())]
 }

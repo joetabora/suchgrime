@@ -1,0 +1,23 @@
+CREATE TABLE "content_entries" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"collection" text NOT NULL,
+	"slug" text NOT NULL,
+	"title" text NOT NULL,
+	"description" text NOT NULL,
+	"intro" text NOT NULL,
+	"headline" text,
+	"body" text,
+	"author" text,
+	"href" text,
+	"image" text,
+	"features" jsonb DEFAULT '[]'::jsonb,
+	"faqs" jsonb DEFAULT '[]'::jsonb,
+	"tags" jsonb DEFAULT '[]'::jsonb,
+	"keywords" jsonb DEFAULT '[]'::jsonb,
+	"date" text,
+	"published" boolean DEFAULT false NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	"published_at" timestamp,
+	CONSTRAINT "content_entries_collection_slug_unique" UNIQUE("collection","slug")
+);

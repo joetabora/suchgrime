@@ -1,7 +1,5 @@
 import type { PseoCollectionId, PseoPage } from "./types"
-import { services } from "./content/services"
-import { locations } from "./content/locations"
-import { industries } from "./content/industries"
+import { getAllPagesForCollection } from "./registry"
 
 /**
  * Generates programmatic combination pages: parent entity × service.
@@ -10,7 +8,7 @@ import { industries } from "./content/industries"
 export function buildMatrixPages(
   parentCollection: PseoCollectionId,
   parents: PseoPage[],
-  serviceList: PseoPage[] = services,
+  serviceList: PseoPage[],
 ): PseoPage[] {
   const matrix: PseoPage[] = []
 
@@ -18,6 +16,8 @@ export function buildMatrixPages(
     if (parent.isMatrix) continue
 
     for (const service of serviceList) {
+      if (service.isMatrix) continue
+
       const parentLabel = parent.title
       const serviceLabel = service.title
 
@@ -56,9 +56,14 @@ export function buildMatrixPages(
   return matrix
 }
 
-export function getMatrixStaticParams(parentCollection: "locations" | "industries") {
-  const parents = parentCollection === "locations" ? locations : industries
-  return buildMatrixPages(parentCollection, parents, services).map((p) => ({
+export async function getMatrixStaticParams(parentCollection: "locations" | "industries") {
+  const pages = await getAllPagesForCollection(parentCollection)
+  const services = await getAllPagesForCollection("services")
+  return buildMatrixPages(
+    parentCollection,
+    pages.filter((p) => !p.isMatrix),
+    services.filter((p) => !p.isMatrix),
+  ).map((p) => ({
     slug: p.parentSlug!,
     serviceSlug: p.serviceSlug!,
   }))

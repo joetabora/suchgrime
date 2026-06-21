@@ -1,4 +1,5 @@
-import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core"
+import { boolean, jsonb, pgTable, serial, text, timestamp, unique } from "drizzle-orm/pg-core"
+import type { PseoFaq } from "@/lib/pseo/types"
 
 export const contactInquiries = pgTable("contact_inquiries", {
   id: serial("id").primaryKey(),
@@ -14,3 +15,33 @@ export const newsletterSubscribers = pgTable("newsletter_subscribers", {
   email: text("email").notNull().unique(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 })
+
+export const contentEntries = pgTable(
+  "content_entries",
+  {
+    id: serial("id").primaryKey(),
+    collection: text("collection").notNull(),
+    slug: text("slug").notNull(),
+    title: text("title").notNull(),
+    description: text("description").notNull(),
+    intro: text("intro").notNull(),
+    headline: text("headline"),
+    body: text("body"),
+    author: text("author"),
+    href: text("href"),
+    image: text("image"),
+    features: jsonb("features").$type<string[]>().default([]),
+    faqs: jsonb("faqs").$type<PseoFaq[]>().default([]),
+    tags: jsonb("tags").$type<string[]>().default([]),
+    keywords: jsonb("keywords").$type<string[]>().default([]),
+    date: text("date"),
+    published: boolean("published").default(false).notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+    publishedAt: timestamp("published_at"),
+  },
+  (table) => [unique().on(table.collection, table.slug)],
+)
+
+export type ContentEntry = typeof contentEntries.$inferSelect
+export type NewContentEntry = typeof contentEntries.$inferInsert

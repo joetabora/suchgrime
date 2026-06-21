@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site-config"
 import { getSiteUrl } from "@/lib/utils"
 
 export async function GET() {
-  const posts = getAllPosts()
+  const posts = await getAllPosts()
   const base = getSiteUrl()
 
   const items = posts

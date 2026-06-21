@@ -13,12 +13,13 @@ interface ProgramDetailProps {
   resolved: ResolvedPseoPage
 }
 
-export function ProgramDetail({ resolved }: ProgramDetailProps) {
+export async function ProgramDetail({ resolved }: ProgramDetailProps) {
   const { page, collection, breadcrumbs, canonicalPath } = resolved
   const faqSchema = buildPseoFaqSchema(page)
   const jsonLd = buildPseoJsonLd(page, collection, canonicalPath)
 
-  const related = getAllPagesForCollection(collection.id)
+  const allPages = await getAllPagesForCollection(collection.id)
+  const related = allPages
     .filter((p) => !p.isMatrix && p.slug !== page.slug && !page.isMatrix)
     .slice(0, 4)
 

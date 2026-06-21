@@ -12,14 +12,15 @@ import { getMatrixStaticParams } from "@/lib/pseo/matrix"
 import { ProgramIndex } from "@/components/pseo/program-index"
 import { ProgramDetail } from "@/components/pseo/program-detail"
 
+export const pseoRevalidate = 3600
+
 type SlugParams = { params: Promise<{ slug: string }> }
 type MatrixParams = { params: Promise<{ slug: string; serviceSlug: string }> }
 
 export function createPseoIndexPage(collectionId: PseoCollectionId) {
-  const collection = getCollectionConfig(collectionId)
-  const pages = getAllPagesForCollection(collectionId)
-
-  return function PseoIndexPage() {
+  return async function PseoIndexPage() {
+    const collection = getCollectionConfig(collectionId)
+    const pages = await getAllPagesForCollection(collectionId)
     return <ProgramIndex collection={collection} pages={pages} />
   }
 }
@@ -37,16 +38,16 @@ export function createPseoDetailPage(collectionId: PseoCollectionId) {
   return async function PseoDetailPage({ params }: SlugParams) {
     const { slug } = await params
     if (slug.includes("/")) notFound()
-    const resolved = resolvePage(collectionId, slug)
+    const resolved = await resolvePage(collectionId, slug)
     if (!resolved) notFound()
-    return <ProgramDetail resolved={resolved} />
+    return await ProgramDetail({ resolved })
   }
 }
 
 export function createPseoDetailMetadata(collectionId: PseoCollectionId) {
   return async function generateMetadata({ params }: SlugParams): Promise<Metadata> {
     const { slug } = await params
-    const page = getPageBySlug(collectionId, slug)
+    const page = await getPageBySlug(collectionId, slug)
     if (!page) return {}
     const collection = getCollectionConfig(collectionId)
     return buildMetadata({
@@ -61,26 +62,25 @@ export function createPseoDetailMetadata(collectionId: PseoCollectionId) {
 }
 
 export function createPseoDetailStaticParams(collectionId: PseoCollectionId) {
-  return function generateStaticParams() {
-    return getAllPagesForCollection(collectionId)
-      .filter((p) => !p.isMatrix)
-      .map((p) => ({ slug: p.slug }))
+  return async function generateStaticParams() {
+    const pages = await getAllPagesForCollection(collectionId)
+    return pages.filter((p) => !p.isMatrix).map((p) => ({ slug: p.slug }))
   }
 }
 
 export function createPseoMatrixPage(parentCollection: "locations" | "industries") {
   return async function PseoMatrixPage({ params }: MatrixParams) {
     const { slug, serviceSlug } = await params
-    const resolved = resolveMatrixPage(parentCollection, slug, serviceSlug)
+    const resolved = await resolveMatrixPage(parentCollection, slug, serviceSlug)
     if (!resolved) notFound()
-    return <ProgramDetail resolved={resolved} />
+    return await ProgramDetail({ resolved })
   }
 }
 
 export function createPseoMatrixMetadata(parentCollection: "locations" | "industries") {
   return async function generateMetadata({ params }: MatrixParams): Promise<Metadata> {
     const { slug, serviceSlug } = await params
-    const resolved = resolveMatrixPage(parentCollection, slug, serviceSlug)
+    const resolved = await resolveMatrixPage(parentCollection, slug, serviceSlug)
     if (!resolved) return {}
     return buildMetadata({
       title: resolved.page.title,
@@ -92,7 +92,7 @@ export function createPseoMatrixMetadata(parentCollection: "locations" | "indust
 }
 
 export function createPseoMatrixStaticParams(parentCollection: "locations" | "industries") {
-  return function generateStaticParams() {
+  return async function generateStaticParams() {
     return getMatrixStaticParams(parentCollection)
   }
 }

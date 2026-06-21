@@ -1,9 +1,12 @@
 import type { PseoCollectionId, ResolvedPseoPage } from "./types"
 import { getCollectionConfig, getPageBySlug } from "./registry"
 
-export function resolvePage(collectionId: PseoCollectionId, slug: string): ResolvedPseoPage | null {
+export async function resolvePage(
+  collectionId: PseoCollectionId,
+  slug: string,
+): Promise<ResolvedPseoPage | null> {
   const collection = getCollectionConfig(collectionId)
-  const page = getPageBySlug(collectionId, slug)
+  const page = await getPageBySlug(collectionId, slug)
   if (!page) return null
 
   const canonicalPath = `${collection.path}/${page.slug}`
@@ -14,11 +17,11 @@ export function resolvePage(collectionId: PseoCollectionId, slug: string): Resol
   ]
 
   if (page.isMatrix && page.parentSlug && page.serviceSlug) {
-    const parent = getPageBySlug(collectionId, page.parentSlug)
+    const parent = await getPageBySlug(collectionId, page.parentSlug)
     if (parent && !parent.isMatrix) {
       breadcrumbs.push({ name: parent.title, path: `${collection.path}/${parent.slug}` })
     }
-    const service = getPageBySlug("services", page.serviceSlug)
+    const service = await getPageBySlug("services", page.serviceSlug)
     if (service) {
       breadcrumbs.push({ name: service.title, path: `/services/${service.slug}` })
     }
@@ -29,11 +32,11 @@ export function resolvePage(collectionId: PseoCollectionId, slug: string): Resol
   return { page, collection, breadcrumbs, canonicalPath }
 }
 
-export function resolveMatrixPage(
+export async function resolveMatrixPage(
   parentCollection: "locations" | "industries",
   parentSlug: string,
   serviceSlug: string,
-): ResolvedPseoPage | null {
+): Promise<ResolvedPseoPage | null> {
   const matrixSlug = `${parentSlug}/${serviceSlug}`
   return resolvePage(parentCollection, matrixSlug)
 }
