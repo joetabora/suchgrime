@@ -18,7 +18,7 @@ export function Gallery() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-label mb-3">// Gallery</p>
+          <p className="text-label mb-3">{"// Gallery"}</p>
           <h2 className="font-display text-5xl tracking-wide md:text-6xl">
             THE WORK
           </h2>

@@ -12,7 +12,7 @@ export function Team() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-label mb-3">// The Crew</p>
+          <p className="text-label mb-3">{"// The Crew"}</p>
           <h2 className="font-display text-5xl tracking-wide md:text-6xl">
             MASTER BARBER
           </h2>

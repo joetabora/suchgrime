@@ -39,13 +39,13 @@ export function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-label mb-3">// Book</p>
+            <p className="text-label mb-3">{"// Book"}</p>
             <h2 className="font-display text-5xl tracking-wide md:text-6xl">
               GET IN THE CHAIR
             </h2>
             <p className="mt-4 max-w-md text-muted">
-              Send us a message and we'll get back to you within a few hours.
-              Prefer to call? We're here.
+              Send us a message and we&apos;ll get back to you within a few hours.
+              Prefer to call? We&apos;re here.
             </p>
             <a
               href={`tel:${shop.location.phone.replace(/\D/g, "")}`}
@@ -153,7 +153,7 @@ export function Contact() {
                   role="status"
                 >
                   <CheckCircle className="h-5 w-5 shrink-0 text-accent" />
-                  Thanks! We'll be in touch soon to confirm your appointment.
+                  Thanks! We&apos;ll be in touch soon to confirm your appointment.
                 </motion.div>
               )}
             </AnimatePresence>

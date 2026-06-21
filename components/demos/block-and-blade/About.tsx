@@ -14,7 +14,7 @@ export function About() {
     <section id="about" className="bg-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div {...fadeUp}>
-          <p className="text-label mb-3">// About</p>
+          <p className="text-label mb-3">{"// About"}</p>
           <h2 className="font-display text-5xl tracking-wide md:text-6xl">
             BUILT ON THE BLOCK
           </h2>

@@ -48,7 +48,7 @@ export function VisitContact() {
               the chair
             </h2>
             <p className="mt-4 max-w-md text-muted">
-              {studio.location.note}. Tell us your idea — we'll schedule a consult.
+              {studio.location.note}. Tell us your idea — we&apos;ll schedule a consult.
             </p>
 
             <form onSubmit={handleSubmit} noValidate className="mt-10 space-y-5">
@@ -130,7 +130,7 @@ export function VisitContact() {
                   role="status"
                 >
                   <CheckCircle className="h-5 w-5 shrink-0 text-ink-accent" />
-                  Thanks! We'll reach out to schedule your consult.
+                  Thanks! We&apos;ll reach out to schedule your consult.
                 </motion.div>
               )}
             </AnimatePresence>

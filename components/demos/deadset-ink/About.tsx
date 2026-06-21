@@ -27,7 +27,7 @@ export function About() {
               <span className="text-ink-accent">the basement</span>
             </h2>
             <blockquote className="mt-10 border-l-4 border-ink-neon pl-6 text-xl leading-relaxed text-text md:text-2xl">
-              "{studio.about.story.split(".")[0]}."
+              &ldquo;{studio.about.story.split(".")[0]}.&rdquo;
             </blockquote>
             <p className="mt-6 max-w-lg text-muted">{studio.about.story}</p>
           </motion.div>

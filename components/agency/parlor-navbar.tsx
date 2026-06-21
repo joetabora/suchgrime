@@ -56,12 +56,12 @@ export function ParlorNavbar() {
           </ul>
 
           <div className="flex items-stretch">
-            <a
+            <Link
               href="/#contact"
               className="hidden items-center bg-parlor-accent px-8 text-sm font-semibold uppercase tracking-wider text-text transition-colors hover:bg-parlor-accent/80 lg:flex"
             >
               Start a Project
-            </a>
+            </Link>
             <button
               type="button"
               className="flex min-h-[56px] min-w-[56px] items-center justify-center border-l border-white/10 px-6 lg:hidden"
@@ -105,13 +105,13 @@ export function ParlorNavbar() {
               </li>
             ))}
           </ul>
-          <a
+          <Link
             href="/#contact"
             onClick={closeMenu}
             className="block border-t border-white/10 bg-parlor-accent py-6 text-center font-display text-2xl tracking-wider text-text"
           >
             START A PROJECT
-          </a>
+          </Link>
         </div>
       )}
     </>
