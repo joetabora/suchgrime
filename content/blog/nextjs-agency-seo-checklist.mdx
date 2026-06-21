@@ -1,0 +1,28 @@
+---
+title: "Next.js Agency SEO Checklist for 2025"
+description: "Metadata, JSON-LD, ISR, Core Web Vitals, and programmatic routes — the technical SEO stack we ship on every build."
+date: "2025-06-10"
+author: "SuchGrime"
+tags: ["Next.js", "SEO", "Performance"]
+published: true
+---
+
+Agency sites on Next.js App Router can outperform WordPress on speed and crawlability — if SEO is engineered in, not bolted on.
+
+## Metadata and canonicals
+
+Centralize `buildMetadata()` for titles, descriptions, Open Graph, Twitter cards, and canonical URLs. Every indexable route should override defaults.
+
+## Structured data
+
+Ship Organization, WebSite, Service, FAQPage, Article, and BreadcrumbList JSON-LD. Matrix service pages deserve Service schema with `areaServed`.
+
+## Rendering strategy
+
+Use static generation for stable pages and ISR for CMS content. On publish, call `revalidatePath` and optionally IndexNow for faster discovery.
+
+## Performance
+
+Optimize LCP with `next/image`, font loading, and minimal client JS on landing pages. Core Web Vitals still correlate with rankings and conversion.
+
+See our [Core Web Vitals checklist](/blog/core-web-vitals-checklist) and [web development services](/services/web-development).

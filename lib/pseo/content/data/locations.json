@@ -1,0 +1,574 @@
+[
+  {
+    "slug": "chicago",
+    "title": "Chicago",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Chicago businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Chicago brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 41.8781,
+      "longitude": -87.6298
+    }
+  },
+  {
+    "slug": "new-york",
+    "title": "New York",
+    "region": "Northeast",
+    "description": "Web development and business automation agency serving New York businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for New York brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 40.7128,
+      "longitude": -74.006
+    }
+  },
+  {
+    "slug": "los-angeles",
+    "title": "Los Angeles",
+    "region": "West",
+    "description": "Web development and business automation agency serving Los Angeles businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Los Angeles brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    }
+  },
+  {
+    "slug": "houston",
+    "title": "Houston",
+    "region": "South",
+    "description": "Web development and business automation agency serving Houston businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Houston brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 29.7604,
+      "longitude": -95.3698
+    }
+  },
+  {
+    "slug": "phoenix",
+    "title": "Phoenix",
+    "region": "West",
+    "description": "Web development and business automation agency serving Phoenix businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Phoenix brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 33.4484,
+      "longitude": -112.074
+    }
+  },
+  {
+    "slug": "philadelphia",
+    "title": "Philadelphia",
+    "region": "Northeast",
+    "description": "Web development and business automation agency serving Philadelphia businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Philadelphia brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 39.9526,
+      "longitude": -75.1652
+    }
+  },
+  {
+    "slug": "san-antonio",
+    "title": "San Antonio",
+    "region": "South",
+    "description": "Web development and business automation agency serving San Antonio businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for San Antonio brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 29.4241,
+      "longitude": -98.4936
+    }
+  },
+  {
+    "slug": "san-diego",
+    "title": "San Diego",
+    "region": "West",
+    "description": "Web development and business automation agency serving San Diego businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for San Diego brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 32.7157,
+      "longitude": -117.1611
+    }
+  },
+  {
+    "slug": "dallas",
+    "title": "Dallas",
+    "region": "South",
+    "description": "Web development and business automation agency serving Dallas businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Dallas brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 32.7767,
+      "longitude": -96.797
+    }
+  },
+  {
+    "slug": "austin",
+    "title": "Austin",
+    "region": "South",
+    "description": "Web development and business automation agency serving Austin businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Austin brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 30.2672,
+      "longitude": -97.7431
+    }
+  },
+  {
+    "slug": "jacksonville",
+    "title": "Jacksonville",
+    "region": "South",
+    "description": "Web development and business automation agency serving Jacksonville businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Jacksonville brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 30.3322,
+      "longitude": -81.6557
+    }
+  },
+  {
+    "slug": "fort-worth",
+    "title": "Fort Worth",
+    "region": "South",
+    "description": "Web development and business automation agency serving Fort Worth businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Fort Worth brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 32.7555,
+      "longitude": -97.3308
+    }
+  },
+  {
+    "slug": "columbus",
+    "title": "Columbus",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Columbus businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Columbus brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 39.9612,
+      "longitude": -82.9988
+    }
+  },
+  {
+    "slug": "charlotte",
+    "title": "Charlotte",
+    "region": "South",
+    "description": "Web development and business automation agency serving Charlotte businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Charlotte brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 35.2271,
+      "longitude": -80.8431
+    }
+  },
+  {
+    "slug": "san-francisco",
+    "title": "San Francisco",
+    "region": "West",
+    "description": "Web development and business automation agency serving San Francisco businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for San Francisco brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    }
+  },
+  {
+    "slug": "indianapolis",
+    "title": "Indianapolis",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Indianapolis businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Indianapolis brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 39.7684,
+      "longitude": -86.1581
+    }
+  },
+  {
+    "slug": "seattle",
+    "title": "Seattle",
+    "region": "West",
+    "description": "Web development and business automation agency serving Seattle businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Seattle brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 47.6062,
+      "longitude": -122.3321
+    }
+  },
+  {
+    "slug": "denver",
+    "title": "Denver",
+    "region": "West",
+    "description": "Web development and business automation agency serving Denver businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Denver brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 39.7392,
+      "longitude": -104.9903
+    }
+  },
+  {
+    "slug": "washington-dc",
+    "title": "Washington DC",
+    "region": "Northeast",
+    "description": "Web development and business automation agency serving Washington DC businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Washington DC brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 38.9072,
+      "longitude": -77.0369
+    }
+  },
+  {
+    "slug": "boston",
+    "title": "Boston",
+    "region": "Northeast",
+    "description": "Web development and business automation agency serving Boston businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Boston brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 42.3601,
+      "longitude": -71.0589
+    }
+  },
+  {
+    "slug": "nashville",
+    "title": "Nashville",
+    "region": "South",
+    "description": "Web development and business automation agency serving Nashville businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Nashville brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 36.1627,
+      "longitude": -86.7816
+    }
+  },
+  {
+    "slug": "detroit",
+    "title": "Detroit",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Detroit businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Detroit brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 42.3314,
+      "longitude": -83.0458
+    }
+  },
+  {
+    "slug": "portland",
+    "title": "Portland",
+    "region": "West",
+    "description": "Web development and business automation agency serving Portland businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Portland brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 45.5152,
+      "longitude": -122.6784
+    }
+  },
+  {
+    "slug": "las-vegas",
+    "title": "Las Vegas",
+    "region": "West",
+    "description": "Web development and business automation agency serving Las Vegas businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Las Vegas brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 36.1699,
+      "longitude": -115.1398
+    }
+  },
+  {
+    "slug": "memphis",
+    "title": "Memphis",
+    "region": "South",
+    "description": "Web development and business automation agency serving Memphis businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Memphis brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 35.1495,
+      "longitude": -90.049
+    }
+  },
+  {
+    "slug": "louisville",
+    "title": "Louisville",
+    "region": "South",
+    "description": "Web development and business automation agency serving Louisville businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Louisville brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 38.2527,
+      "longitude": -85.7585
+    }
+  },
+  {
+    "slug": "baltimore",
+    "title": "Baltimore",
+    "region": "Northeast",
+    "description": "Web development and business automation agency serving Baltimore businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Baltimore brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 39.2904,
+      "longitude": -76.6122
+    }
+  },
+  {
+    "slug": "milwaukee",
+    "title": "Milwaukee",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Milwaukee businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Milwaukee brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 43.0389,
+      "longitude": -87.9065
+    }
+  },
+  {
+    "slug": "albuquerque",
+    "title": "Albuquerque",
+    "region": "West",
+    "description": "Web development and business automation agency serving Albuquerque businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Albuquerque brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 35.0844,
+      "longitude": -106.6504
+    }
+  },
+  {
+    "slug": "tucson",
+    "title": "Tucson",
+    "region": "West",
+    "description": "Web development and business automation agency serving Tucson businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Tucson brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 32.2226,
+      "longitude": -110.9747
+    }
+  },
+  {
+    "slug": "fresno",
+    "title": "Fresno",
+    "region": "West",
+    "description": "Web development and business automation agency serving Fresno businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Fresno brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 36.7378,
+      "longitude": -119.7871
+    }
+  },
+  {
+    "slug": "sacramento",
+    "title": "Sacramento",
+    "region": "West",
+    "description": "Web development and business automation agency serving Sacramento businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Sacramento brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 38.5816,
+      "longitude": -121.4944
+    }
+  },
+  {
+    "slug": "kansas-city",
+    "title": "Kansas City",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Kansas City businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Kansas City brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 39.0997,
+      "longitude": -94.5786
+    }
+  },
+  {
+    "slug": "atlanta",
+    "title": "Atlanta",
+    "region": "South",
+    "description": "Web development and business automation agency serving Atlanta businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Atlanta brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 33.749,
+      "longitude": -84.388
+    }
+  },
+  {
+    "slug": "miami",
+    "title": "Miami",
+    "region": "South",
+    "description": "Web development and business automation agency serving Miami businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Miami brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 25.7617,
+      "longitude": -80.1918
+    }
+  },
+  {
+    "slug": "raleigh",
+    "title": "Raleigh",
+    "region": "South",
+    "description": "Web development and business automation agency serving Raleigh businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Raleigh brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 35.7796,
+      "longitude": -78.6382
+    }
+  },
+  {
+    "slug": "omaha",
+    "title": "Omaha",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Omaha businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Omaha brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 41.2565,
+      "longitude": -95.9345
+    }
+  },
+  {
+    "slug": "cleveland",
+    "title": "Cleveland",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Cleveland businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Cleveland brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 41.4993,
+      "longitude": -81.6944
+    }
+  },
+  {
+    "slug": "minneapolis",
+    "title": "Minneapolis",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Minneapolis businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Minneapolis brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 44.9778,
+      "longitude": -93.265
+    }
+  },
+  {
+    "slug": "tulsa",
+    "title": "Tulsa",
+    "region": "South",
+    "description": "Web development and business automation agency serving Tulsa businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Tulsa brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 36.154,
+      "longitude": -95.9928
+    }
+  },
+  {
+    "slug": "oakland",
+    "title": "Oakland",
+    "region": "West",
+    "description": "Web development and business automation agency serving Oakland businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Oakland brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 37.8044,
+      "longitude": -122.2712
+    }
+  },
+  {
+    "slug": "tampa",
+    "title": "Tampa",
+    "region": "South",
+    "description": "Web development and business automation agency serving Tampa businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Tampa brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 27.9506,
+      "longitude": -82.4572
+    }
+  },
+  {
+    "slug": "pittsburgh",
+    "title": "Pittsburgh",
+    "region": "Northeast",
+    "description": "Web development and business automation agency serving Pittsburgh businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Pittsburgh brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 40.4406,
+      "longitude": -79.9959
+    }
+  },
+  {
+    "slug": "cincinnati",
+    "title": "Cincinnati",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving Cincinnati businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Cincinnati brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 39.1031,
+      "longitude": -84.512
+    }
+  },
+  {
+    "slug": "orlando",
+    "title": "Orlando",
+    "region": "South",
+    "description": "Web development and business automation agency serving Orlando businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Orlando brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 28.5383,
+      "longitude": -81.3792
+    }
+  },
+  {
+    "slug": "st-louis",
+    "title": "St. Louis",
+    "region": "Midwest",
+    "description": "Web development and business automation agency serving St. Louis businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for St. Louis brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 38.627,
+      "longitude": -90.1994
+    }
+  },
+  {
+    "slug": "salt-lake-city",
+    "title": "Salt Lake City",
+    "region": "West",
+    "description": "Web development and business automation agency serving Salt Lake City businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Salt Lake City brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 40.7608,
+      "longitude": -111.891
+    }
+  },
+  {
+    "slug": "san-jose",
+    "title": "San Jose",
+    "region": "West",
+    "description": "Web development and business automation agency serving San Jose businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for San Jose brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 37.3382,
+      "longitude": -121.8863
+    }
+  },
+  {
+    "slug": "richmond",
+    "title": "Richmond",
+    "region": "South",
+    "description": "Web development and business automation agency serving Richmond businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Richmond brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 37.5407,
+      "longitude": -77.436
+    }
+  },
+  {
+    "slug": "buffalo",
+    "title": "Buffalo",
+    "region": "Northeast",
+    "description": "Web development and business automation agency serving Buffalo businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Buffalo brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 42.8864,
+      "longitude": -78.8784
+    }
+  },
+  {
+    "slug": "boise",
+    "title": "Boise",
+    "region": "West",
+    "description": "Web development and business automation agency serving Boise businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Boise brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 43.615,
+      "longitude": -116.2023
+    }
+  },
+  {
+    "slug": "honolulu",
+    "title": "Honolulu",
+    "region": "West",
+    "description": "Web development and business automation agency serving Honolulu businesses.",
+    "intro": "SuchGrime builds fast, SEO-ready websites and automation systems for Honolulu brands — from local service businesses to growth-stage operators.",
+    "geo": {
+      "latitude": 21.3069,
+      "longitude": -157.8583
+    }
+  }
+]

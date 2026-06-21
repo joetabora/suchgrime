@@ -4,6 +4,7 @@ import { contentEntries, type ContentEntry, type NewContentEntry } from "@/lib/d
 import type { PseoCollectionId } from "@/lib/pseo/types"
 import { entryToPseoPage, entryToBlogPost, entryToBlogMeta } from "./mapper"
 import { revalidateContentEntry } from "./revalidate"
+import { pingIndexNow, urlsForContentEntry } from "./indexnow"
 import type { ContentEntryInput, ContentEntryUpdate } from "./validators"
 
 export async function listEntries(
@@ -81,6 +82,7 @@ export async function createEntry(input: ContentEntryInput): Promise<ContentEntr
   const entry = rows[0]
   if (entry?.published) {
     revalidateContentEntry(input.collection as PseoCollectionId, entry.slug)
+    void pingIndexNow(urlsForContentEntry(input.collection, entry.slug))
   }
   return entry ?? null
 }
@@ -150,6 +152,9 @@ export async function publishEntry(id: number): Promise<ContentEntry | null> {
   const entry = rows[0]
   if (entry) {
     revalidateContentEntry(entry.collection as PseoCollectionId, entry.slug)
+    if (entry.published) {
+      void pingIndexNow(urlsForContentEntry(entry.collection, entry.slug))
+    }
   }
   return entry ?? null
 }

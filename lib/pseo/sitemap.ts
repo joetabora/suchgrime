@@ -20,7 +20,11 @@ export async function getAllPseoSitemapEntries(): Promise<MetadataRoute.Sitemap>
     for (const page of pages) {
       entries.push({
         url: `${base}${config.path}/${page.slug}`,
-        lastModified: page.date ? new Date(page.date) : now,
+        lastModified: page.lastModified
+          ? new Date(page.lastModified)
+          : page.date
+            ? new Date(page.date)
+            : now,
         changeFrequency: config.changeFrequency,
         priority: page.isMatrix ? config.priority - 0.1 : config.priority - 0.05,
       })

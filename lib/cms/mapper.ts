@@ -22,6 +22,7 @@ export function entryToPseoPage(entry: ContentEntry): PseoPage {
     image: entry.image ?? undefined,
     date: entry.date ?? undefined,
     published: entry.published,
+    lastModified: entry.updatedAt.toISOString(),
   }
 }
 

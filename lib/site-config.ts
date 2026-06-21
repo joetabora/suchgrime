@@ -178,6 +178,7 @@ export const siteConfig = {
   ],
   contact: {
     email: "hello@suchgrime.com",
+    phone: "+1-312-555-0199",
     note: "Currently accepting new projects",
     projectTypes: [
       "New Website",
@@ -190,22 +191,26 @@ export const siteConfig = {
     ],
   },
   navLinks: [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Work", href: "#work" },
-    { label: "Process", href: "#process" },
+    { label: "About", href: "/#about" },
+    { label: "Services", href: "/services" },
+    { label: "Work", href: "/work" },
+    { label: "Locations", href: "/locations" },
     { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/contact" },
+  ],
+  sameAs: [
+    "https://github.com/joetabora",
+    "https://suchgrime.com",
   ],
   localBusiness: {
     address: {
-      streetAddress: "",
-      addressLocality: "",
-      addressRegion: "",
-      postalCode: "",
+      streetAddress: "Remote-first studio",
+      addressLocality: "Chicago",
+      addressRegion: "IL",
+      postalCode: "60601",
       addressCountry: "US",
     },
-    geo: { latitude: 0, longitude: 0 },
+    geo: { latitude: 41.8781, longitude: -87.6298 },
     priceRange: "$$",
   },
 } as const

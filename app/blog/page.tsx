@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { getAllPosts } from "@/lib/blog/get-posts"
 import { buildMetadata } from "@/lib/seo/metadata"
-import { collectionPageSchema } from "@/lib/seo/schemas/application"
+import { collectionPageSchema, blogSchema } from "@/lib/seo/schemas/application"
 import { JsonLd } from "@/components/seo/json-ld"
 
 export const metadata = buildMetadata({
@@ -27,11 +27,18 @@ export default async function BlogPage() {
         <ParlorNavbar />
         <main id="main" className="mx-auto max-w-[1400px] border-x border-white/10 px-6 py-16 md:px-12">
           <JsonLd
-            data={collectionPageSchema(
-              "Blog",
-              "Insights on web development, business automation, and performance from the SuchGrime team.",
-              "/blog",
-            )}
+            data={[
+              collectionPageSchema(
+                "Blog",
+                "Insights on web development, business automation, and performance from the SuchGrime team.",
+                "/blog",
+              ),
+              blogSchema(
+                "Blog",
+                "Insights on web development, business automation, and performance from the SuchGrime team.",
+                "/blog",
+              ),
+            ]}
           />
           <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]} />
           <p className="text-label mb-2">Insights</p>

@@ -7,10 +7,10 @@ export function organizationSchema() {
     "@type": "Organization",
     name: siteConfig.name,
     url: getSiteUrl(),
-    logo: `${getSiteUrl()}/favicon.svg`,
+    logo: `${getSiteUrl()}/opengraph-image`,
     description: siteConfig.description,
     email: siteConfig.contact.email,
-    sameAs: [],
+    sameAs: siteConfig.sameAs,
   }
 }
 
@@ -22,10 +22,19 @@ export function websiteSchema() {
     url: getSiteUrl(),
     description: siteConfig.description,
     publisher: { "@type": "Organization", name: siteConfig.name },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${getSiteUrl()}/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   }
 }
 
 export function localBusinessSchema() {
+  const { address, geo, priceRange } = siteConfig.localBusiness
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -33,7 +42,22 @@ export function localBusinessSchema() {
     description: siteConfig.description,
     url: getSiteUrl(),
     email: siteConfig.contact.email,
-    priceRange: siteConfig.localBusiness.priceRange,
+    telephone: siteConfig.contact.phone,
+    priceRange,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: address.streetAddress,
+      addressLocality: address.addressLocality,
+      addressRegion: address.addressRegion,
+      postalCode: address.postalCode,
+      addressCountry: address.addressCountry,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: geo.latitude,
+      longitude: geo.longitude,
+    },
     areaServed: { "@type": "Country", name: "United States" },
+    sameAs: siteConfig.sameAs,
   }
 }

@@ -1,6 +1,7 @@
 import type { PseoPage } from "../types"
+import { enrichIndustry } from "./industry-helpers"
 
-export const industries: PseoPage[] = [
+const rawIndustries: PseoPage[] = [
   {
     slug: "healthcare",
     title: "Healthcare",
@@ -8,7 +9,7 @@ export const industries: PseoPage[] = [
     intro:
       "Patient-friendly websites, secure intake flows, and appointment automation — built for healthcare operators who need compliance-minded UX without sacrificing speed.",
     features: ["Appointment booking flows", "HIPAA-aware form patterns", "Provider directory pages", "Patient intake automation"],
-    keywords: ["healthcare web development", "medical practice website", "clinic automation"],
+    keywords: ["healthcare web development", "medical practice website", "clinic automation", "HIPAA website design"],
   },
   {
     slug: "legal",
@@ -17,7 +18,7 @@ export const industries: PseoPage[] = [
     intro:
       "Trust-building sites with clear practice-area architecture, intake forms, and CRM wiring so your firm captures and qualifies leads consistently.",
     features: ["Practice area landing pages", "Consultation request flows", "CRM integration", "Programmatic SEO for local search"],
-    keywords: ["law firm web development", "legal website design", "attorney marketing site"],
+    keywords: ["law firm web development", "legal website design", "attorney marketing site", "law firm SEO"],
   },
   {
     slug: "home-services",
@@ -26,7 +27,7 @@ export const industries: PseoPage[] = [
     intro:
       "Service-area pages, click-to-call UX, and booking automation that help home service businesses dominate local search.",
     features: ["Service area programmatic pages", "Quote request forms", "Dispatch workflow hooks", "Review & trust modules"],
-    keywords: ["home services website", "contractor web development"],
+    keywords: ["home services website", "contractor web development", "HVAC website design"],
   },
   {
     slug: "restaurants",
@@ -62,7 +63,7 @@ export const industries: PseoPage[] = [
     intro:
       "Product storytelling, checkout optimization, and inventory-adjacent workflows — from launch-day landing pages to full storefront builds.",
     features: ["Shopify & headless patterns", "Checkout UX", "Product SEO templates", "Order notification flows"],
-    keywords: ["ecommerce web development", "retail website agency"],
+    keywords: ["ecommerce web development", "retail website agency", "Shopify development agency"],
   },
   {
     slug: "professional-services",
@@ -71,6 +72,8 @@ export const industries: PseoPage[] = [
     intro:
       "Authority-building sites with case study architecture, resource hubs, and CRM-connected intake — built for firms that sell expertise.",
     features: ["Case study templates", "Resource & blog hubs", "Proposal intake flows", "Client portal patterns"],
-    keywords: ["B2B web development", "consulting firm website"],
+    keywords: ["B2B web development", "consulting firm website", "agency website design"],
   },
 ]
+
+export const industries: PseoPage[] = rawIndustries.map(enrichIndustry)

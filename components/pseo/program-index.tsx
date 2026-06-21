@@ -7,7 +7,8 @@ import { JsonLd } from "@/components/seo/json-ld"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import type { PseoCollectionConfig, PseoPage } from "@/lib/pseo/types"
-import { collectionPageSchema } from "@/lib/seo/schemas/application"
+import { collectionPageSchema, itemListSchema } from "@/lib/seo/schemas/application"
+import { getSiteUrl } from "@/lib/utils"
 
 interface ProgramIndexProps {
   collection: PseoCollectionConfig
@@ -16,6 +17,15 @@ interface ProgramIndexProps {
 
 export function ProgramIndex({ collection, pages }: ProgramIndexProps) {
   const basePages = pages.filter((p) => !p.isMatrix)
+  const matrixPages = pages.filter((p) => p.isMatrix)
+  const matrixPreview = matrixPages.slice(0, 12)
+
+  const itemList = itemListSchema(
+    basePages.map((p) => ({
+      name: p.title,
+      url: `${getSiteUrl()}${collection.path}/${p.slug}`,
+    })),
+  )
 
   return (
     <SiteShell>
@@ -23,13 +33,16 @@ export function ProgramIndex({ collection, pages }: ProgramIndexProps) {
         <ParlorNavbar />
         <main id="main" className="mx-auto max-w-[1400px] border-x border-white/10 px-6 py-16 md:px-12">
           <JsonLd
-            data={collectionPageSchema(collection.indexTitle, collection.indexDescription, collection.path)}
+            data={[collectionPageSchema(collection.indexTitle, collection.indexDescription, collection.path), itemList]}
           />
           <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: collection.label, path: collection.path }]} />
           <p className="text-label mb-2">{collection.label}</p>
           <h1 className="font-display text-6xl tracking-wide md:text-8xl">{collection.indexTitle.toUpperCase()}</h1>
           <p className="mt-4 max-w-2xl text-muted">{collection.indexDescription}</p>
-          <p className="mt-2 font-mono text-xs text-muted">{basePages.length} pages · programmatic SEO</p>
+          <p className="mt-2 font-mono text-xs text-muted">
+            {basePages.length} pages
+            {matrixPages.length > 0 && ` · ${matrixPages.length} service combinations`}
+          </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {basePages.map((page) => (
@@ -51,6 +64,25 @@ export function ProgramIndex({ collection, pages }: ProgramIndexProps) {
                   </CardTitle>
                   <CardDescription>{page.description}</CardDescription>
                 </CardHeader>
+                {collection.matrixWithServices && (
+                  <CardContent>
+                    <p className="mb-2 text-xs uppercase tracking-wider text-muted">Services</p>
+                    <ul className="space-y-1 text-sm">
+                      {matrixPages
+                        .filter((m) => m.parentSlug === page.slug)
+                        .map((m) => (
+                          <li key={m.slug}>
+                            <Link
+                              href={`${collection.path}/${m.slug}`}
+                              className="text-parlor-accent hover:underline"
+                            >
+                              {m.title}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  </CardContent>
+                )}
                 {page.href && (
                   <CardContent>
                     <Link href={page.href} className="text-sm text-parlor-accent hover:underline">
@@ -61,6 +93,34 @@ export function ProgramIndex({ collection, pages }: ProgramIndexProps) {
               </Card>
             ))}
           </div>
+
+          {matrixPreview.length > 0 && (
+            <section className="mt-16 border-t border-white/10 pt-12">
+              <h2 className="font-display text-3xl tracking-wide">Service combinations</h2>
+              <p className="mt-2 max-w-2xl text-sm text-muted">
+                Programmatic pages targeting service + {collection.id === "locations" ? "city" : "industry"} search
+                intent.
+              </p>
+              <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {matrixPreview.map((m) => (
+                  <li key={m.slug}>
+                    <Link
+                      href={`${collection.path}/${m.slug}`}
+                      className="block border border-white/10 p-4 text-sm transition-colors hover:border-parlor-accent/50"
+                    >
+                      <span className="font-medium text-text">{m.title}</span>
+                      <span className="mt-1 block text-muted line-clamp-2">{m.description}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {matrixPages.length > matrixPreview.length && (
+                <p className="mt-4 font-mono text-xs text-muted">
+                  + {matrixPages.length - matrixPreview.length} more combinations indexed in sitemap
+                </p>
+              )}
+            </section>
+          )}
         </main>
         <ParlorFooter />
       </div>

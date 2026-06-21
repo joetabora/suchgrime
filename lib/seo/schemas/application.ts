@@ -42,3 +42,46 @@ export function webPageSchema(name: string, description: string, path: string) {
     url: `${getSiteUrl()}${path}`,
   }
 }
+
+export function itemListSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  }
+}
+
+export function blogSchema(name: string, description: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name,
+    description,
+    url: `${getSiteUrl()}${path}`,
+    publisher: {
+      "@type": "Organization",
+      name: "SuchGrime",
+      url: getSiteUrl(),
+    },
+  }
+}
+
+export function definedTermSchema(name: string, description: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name,
+    description,
+    url: `${getSiteUrl()}${path}`,
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      name: "SuchGrime Web & SEO Glossary",
+      url: `${getSiteUrl()}/glossary`,
+    },
+  }
+}

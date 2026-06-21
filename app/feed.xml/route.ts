@@ -14,6 +14,8 @@ export async function GET() {
       <link>${base}/blog/${post.slug}</link>
       <guid isPermaLink="true">${base}/blog/${post.slug}</guid>
       <description><![CDATA[${post.description}]]></description>
+      <author>${post.author}</author>
+      ${post.tags.map((tag) => `<category>${tag}</category>`).join("\n      ")}
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     </item>`,
     )

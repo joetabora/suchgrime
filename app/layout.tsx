@@ -25,6 +25,8 @@ const oswald = Oswald({
   display: "swap",
 })
 
+const ogImage = `${getSiteUrl()}/opengraph-image`
+
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
@@ -45,13 +47,18 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — ${siteConfig.subtitle}`,
     description: siteConfig.description,
     url: getSiteUrl(),
+    images: [{ url: ogImage, width: 1200, height: 630, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.subtitle}`,
     description: siteConfig.description,
+    images: [ogImage],
   },
   robots: { index: true, follow: true },
+  ...(process.env.GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
+  }),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

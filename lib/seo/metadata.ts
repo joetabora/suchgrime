@@ -17,7 +17,7 @@ export interface PageMetaInput {
 
 export function buildMetadata(input: PageMetaInput): Metadata {
   const url = `${getSiteUrl()}${input.path}`
-  const ogImage = input.ogImage ?? `${getSiteUrl()}/og-default.png`
+  const ogImage = input.ogImage ?? `${getSiteUrl()}/opengraph-image`
 
   return {
     title: input.title,

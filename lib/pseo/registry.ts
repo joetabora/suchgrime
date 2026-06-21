@@ -5,6 +5,7 @@ import { services as staticServices } from "./content/services"
 import { caseStudies } from "./content/case-studies"
 import { softwareProducts } from "./content/software"
 import { resources } from "./content/resources"
+import { glossaryTerms } from "./content/glossary"
 import { buildMatrixPages } from "./matrix"
 import {
   countPublishedEntries,
@@ -94,6 +95,17 @@ export const pseoCollections: Record<PseoCollectionId, PseoCollectionConfig> = {
     priority: 0.7,
     changeFrequency: "weekly",
   },
+  glossary: {
+    id: "glossary",
+    label: "Glossary",
+    singularLabel: "Term",
+    path: "/glossary",
+    indexTitle: "Web & SEO Glossary",
+    indexDescription: "Definitions for programmatic SEO, Core Web Vitals, automation, and modern web development.",
+    schemaType: "Article",
+    priority: 0.6,
+    changeFrequency: "monthly",
+  },
 }
 
 const staticBasePages: Record<Exclude<PseoCollectionId, "blog">, PseoPage[]> = {
@@ -103,6 +115,7 @@ const staticBasePages: Record<Exclude<PseoCollectionId, "blog">, PseoPage[]> = {
   "case-studies": caseStudies,
   software: softwareProducts,
   resources,
+  glossary: glossaryTerms,
 }
 
 function blogFromFiles(): PseoPage[] {

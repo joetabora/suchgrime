@@ -1,6 +1,30 @@
 import { siteConfig } from "@/lib/site-config"
 import type { PseoPage } from "../types"
 
+const serviceKeywords: Record<string, string[]> = {
+  "web-development": [
+    "custom Next.js development",
+    "React web development agency",
+    "performance-focused website design",
+    "Core Web Vitals optimization",
+    "SuchGrime web development",
+  ],
+  "business-automation": [
+    "business automation agency",
+    "workflow automation for small business",
+    "internal tools development",
+    "Zapier integration services",
+    "custom admin dashboard development",
+  ],
+  "ecommerce-booking": [
+    "ecommerce website development",
+    "online booking system development",
+    "appointment scheduling website",
+    "Stripe checkout integration",
+    "conversion-focused booking flows",
+  ],
+}
+
 /** Canonical service pages — single source synced with site-config */
 export const services: PseoPage[] = siteConfig.servicePages.map((s) => ({
   slug: s.slug,
@@ -9,7 +33,7 @@ export const services: PseoPage[] = siteConfig.servicePages.map((s) => ({
   intro: s.longDescription,
   features: [...s.features],
   faqs: [...s.faqs],
-  keywords: [s.title, "SuchGrime", "web agency"],
+  keywords: serviceKeywords[s.slug] ?? [s.title, "SuchGrime", "web agency"],
 }))
 
 export function getServiceBySlug(slug: string) {

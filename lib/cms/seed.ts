@@ -10,6 +10,7 @@ import { services } from "@/lib/pseo/content/services"
 import { caseStudies } from "@/lib/pseo/content/case-studies"
 import { softwareProducts } from "@/lib/pseo/content/software"
 import { resources } from "@/lib/pseo/content/resources"
+import { glossaryTerms } from "@/lib/pseo/content/glossary"
 import { pseoPageToEntryInput } from "./mapper"
 import type { PseoCollectionId } from "@/lib/pseo/types"
 
@@ -25,6 +26,7 @@ const STATIC_COLLECTIONS: Array<{
   { collection: "case-studies", pages: caseStudies },
   { collection: "software", pages: softwareProducts },
   { collection: "resources", pages: resources },
+  { collection: "glossary", pages: glossaryTerms },
 ]
 
 async function upsertEntry(input: ReturnType<typeof pseoPageToEntryInput>) {

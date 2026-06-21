@@ -8,6 +8,7 @@ export const CMS_COLLECTIONS: PseoCollectionId[] = [
   "software",
   "resources",
   "blog",
+  "glossary",
 ]
 
 export function isCmsCollection(value: string): value is PseoCollectionId {
@@ -22,4 +23,5 @@ export const CMS_COLLECTION_LABELS: Record<PseoCollectionId, string> = {
   software: "Software",
   resources: "Resources",
   blog: "Blog",
+  glossary: "Glossary",
 }

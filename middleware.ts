@@ -15,6 +15,13 @@ async function verifyToken(token: string): Promise<boolean> {
 }
 
 export async function middleware(request: NextRequest) {
+  const host = request.headers.get("host")
+  if (host?.startsWith("www.")) {
+    const url = request.nextUrl.clone()
+    url.host = host.slice(4)
+    return NextResponse.redirect(url, 301)
+  }
+
   const { pathname } = request.nextUrl
 
   const isAdminRoute = pathname.startsWith("/admin") && pathname !== "/admin/login"
@@ -39,5 +46,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/cms/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|txt)$).*)"],
 }

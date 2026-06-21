@@ -7,14 +7,26 @@ import { ParlorServices } from "@/components/agency/parlor-services"
 import { ParlorProcess } from "@/components/agency/parlor-process"
 import { ParlorContact } from "@/components/agency/parlor-contact"
 import { ParlorFooter } from "@/components/agency/parlor-footer"
-import { JsonLd } from "@/components/seo/json-ld"
-import { localBusinessSchema } from "@/lib/seo/schemas/organization"
+import { buildMetadata } from "@/lib/seo/metadata"
+import { siteConfig } from "@/lib/site-config"
+
+export const metadata = buildMetadata({
+  title: `${siteConfig.name} — ${siteConfig.subtitle}`,
+  description: siteConfig.description,
+  path: "/",
+  keywords: [
+    "web development agency",
+    "business automation",
+    "Next.js development",
+    "programmatic SEO",
+    siteConfig.name,
+  ],
+})
 
 export default function HomePage() {
   return (
     <SiteShell>
       <div className="suchgrime-parlor min-h-screen">
-        <JsonLd data={localBusinessSchema()} />
         <ParlorNavbar />
         <main id="main">
           <ParlorHero />

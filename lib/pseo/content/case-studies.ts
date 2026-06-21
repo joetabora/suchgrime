@@ -1,6 +1,12 @@
 import { siteConfig } from "@/lib/site-config"
 import type { PseoPage } from "../types"
 
+const industryTags: Record<string, string[]> = {
+  "block-and-blade": ["home-services", "restaurants"],
+  "deadset-ink": ["professional-services"],
+  "parlor-desk": ["professional-services", "home-services"],
+}
+
 export const caseStudies: PseoPage[] = siteConfig.work
   .filter((w) => w.live)
   .map((w) => ({
@@ -8,7 +14,7 @@ export const caseStudies: PseoPage[] = siteConfig.work
     title: w.title,
     description: w.description,
     intro: w.description,
-    tags: [...w.tags],
+    tags: [...w.tags, ...(industryTags[w.slug] ?? [])],
     href: w.href,
     image: w.image || undefined,
     features: [

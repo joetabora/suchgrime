@@ -6,6 +6,7 @@ export type PseoCollectionId =
   | "software"
   | "resources"
   | "blog"
+  | "glossary"
 
 export interface PseoFaq {
   q: string
@@ -33,6 +34,8 @@ export interface PseoPage {
   serviceSlug?: string
   /** Marks programmatic combination pages */
   isMatrix?: boolean
+  /** CMS updated timestamp for sitemap lastmod */
+  lastModified?: string
 }
 
 export interface PseoCollectionConfig {

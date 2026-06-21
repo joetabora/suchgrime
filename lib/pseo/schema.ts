@@ -16,6 +16,28 @@ export function buildPseoJsonLd(
     description: page.description,
   }
 
+  if (page.isMatrix) {
+    const areaName =
+      page.parentSlug && collection.id === "locations"
+        ? page.title.split(" in ").pop() ?? page.title
+        : page.title.split(" in ").pop() ?? page.title
+
+    return {
+      ...base,
+      "@type": "Service",
+      serviceType: page.title,
+      provider: {
+        "@type": "Organization",
+        name: siteConfig.name,
+        url: getSiteUrl(),
+      },
+      areaServed: {
+        "@type": collection.id === "locations" ? "City" : "AdministrativeArea",
+        name: areaName,
+      },
+    }
+  }
+
   switch (collection.schemaType) {
     case "Service":
       return {
@@ -50,15 +72,20 @@ export function buildPseoJsonLd(
         publisher: {
           "@type": "Organization",
           name: siteConfig.name,
-          logo: { "@type": "ImageObject", url: `${getSiteUrl()}/favicon.svg` },
+          logo: { "@type": "ImageObject", url: `${getSiteUrl()}/opengraph-image` },
         },
       }
     case "LocalBusiness":
       return {
         ...base,
-        "@type": "ProfessionalService",
+        "@type": "LocalBusiness",
         areaServed: page.title,
         email: siteConfig.contact.email,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: page.title,
+          addressCountry: "US",
+        },
       }
     default:
       return { ...base, "@type": "WebPage" }
