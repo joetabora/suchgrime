@@ -11,7 +11,7 @@ export function ClientsView() {
 
   if (clients.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-white/15 p-12 text-center">
+      <div className="glass glass-border rounded-lg border border-dashed p-12 text-center backdrop-blur-sm">
         <p className="text-sm text-muted">
           No clients yet — they appear automatically from appointments.
         </p>
@@ -20,10 +20,10 @@ export function ClientsView() {
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-white/10">
+    <div className="glass glass-border overflow-x-auto rounded-lg border backdrop-blur-sm">
       <table className="w-full min-w-[560px] text-sm">
         <thead>
-          <tr className="border-b border-white/10 bg-surface text-left">
+          <tr className="border-b border-white/10 bg-white/[0.03] text-left">
             <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-muted">
               Name
             </th>

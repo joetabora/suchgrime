@@ -9,6 +9,16 @@ export function getServiceMarketingPath(slug: string): string {
   return serviceMarketingPaths[slug] ?? `/services/${slug}`
 }
 
+/**
+ * Service slugs whose dedicated pillar page is the canonical SEO target.
+ * Prevents the `/services/[slug]` pSEO page from cannibalizing the richer
+ * marketing pillar for the same topic.
+ */
+export const serviceCanonicalOverrides: Record<string, string> = {
+  "custom-software": "/custom-software",
+  "ai-automation": "/ai-automation",
+}
+
 /** Top entities for footer and cross-linking — Wisconsin-first, then national */
 export const footerCollections = [
   { label: "Custom Software", href: "/custom-software" },

@@ -11,6 +11,7 @@ import { resolveMatrixPage, resolvePage } from "@/lib/pseo/resolve"
 import { getMatrixStaticParams } from "@/lib/pseo/matrix"
 import { ProgramIndex } from "@/components/pseo/program-index"
 import { ProgramDetail } from "@/components/pseo/program-detail"
+import { serviceCanonicalOverrides } from "@/lib/seo/site-links"
 
 export const pseoRevalidate = 3600
 
@@ -50,10 +51,13 @@ export function createPseoDetailMetadata(collectionId: PseoCollectionId) {
     const page = await getPageBySlug(collectionId, slug)
     if (!page) return {}
     const collection = getCollectionConfig(collectionId)
+    const canonicalPath =
+      collectionId === "services" ? serviceCanonicalOverrides[slug] : undefined
     return buildMetadata({
       title: page.title,
       description: page.description,
       path: `${collection.path}/${slug}`,
+      canonicalPath,
       keywords: page.keywords,
       ogType: collection.schemaType === "Article" ? "article" : "website",
       publishedTime: page.date,

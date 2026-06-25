@@ -17,9 +17,17 @@ interface SidebarProps {
 export function Sidebar({ pathname }: SidebarProps) {
   return (
     <aside className="fixed bottom-0 left-0 top-9 z-40 flex w-60 flex-col border-r border-white/10 bg-desk-sidebar">
-      <div className="border-b border-white/10 px-5 py-6">
-        <p className="font-semibold text-text">{desk.name}</p>
-        <p className="mt-0.5 text-xs italic text-muted">{desk.tagline}</p>
+      <div className="flex items-center gap-3 border-b border-white/10 px-5 py-6">
+        <span
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-desk-accent to-violet font-display text-sm text-white"
+          aria-hidden="true"
+        >
+          {desk.name.charAt(0)}
+        </span>
+        <div>
+          <p className="font-semibold text-text">{desk.name}</p>
+          <p className="mt-0.5 text-xs italic text-muted">{desk.tagline}</p>
+        </div>
       </div>
 
       <nav className="flex-1 space-y-1 p-3">
@@ -43,7 +51,12 @@ export function Sidebar({ pathname }: SidebarProps) {
       </nav>
 
       <div className="border-t border-white/10 px-5 py-4">
-        <p className="font-mono text-[10px] uppercase tracking-wider text-muted">Powered by SuchGrime</p>
+        <Link
+          href="/"
+          className="font-mono text-[10px] uppercase tracking-wider text-muted transition-colors hover:text-desk-accent"
+        >
+          Powered by SuchGrime
+        </Link>
       </div>
     </aside>
   )

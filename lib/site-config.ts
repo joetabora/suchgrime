@@ -453,7 +453,7 @@ export const siteConfig = {
     ],
   },
   navLinks: [
-    { label: "Services", href: "/#services" },
+    { label: "Services", href: "/services" },
     { label: "Work", href: "/work" },
     { label: "About", href: "/about" },
     { label: "Case Studies", href: "/case-studies" },

@@ -32,7 +32,7 @@ export function DashboardView() {
         </div>
 
         {todayUpcoming.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-white/15 p-8 text-center">
+          <div className="glass glass-border rounded-lg border border-dashed p-8 text-center backdrop-blur-sm">
             <p className="text-sm text-muted">No appointments scheduled for today.</p>
             <button
               type="button"
@@ -43,10 +43,10 @@ export function DashboardView() {
             </button>
           </div>
         ) : (
-          <div className="overflow-hidden rounded-lg border border-white/10">
+          <div className="glass glass-border overflow-hidden rounded-lg border backdrop-blur-sm">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/10 bg-surface text-left">
+                <tr className="border-b border-white/10 bg-white/[0.03] text-left">
                   <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-muted">Time</th>
                   <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-muted">Client</th>
                   <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-muted">Service</th>

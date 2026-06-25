@@ -6,6 +6,8 @@ export interface PageMetaInput {
   title: string
   description: string
   path: string
+  /** Override the canonical URL (defaults to `path`). Use to consolidate overlapping pages. */
+  canonicalPath?: string
   keywords?: string[]
   ogImage?: string
   ogType?: "website" | "article"
@@ -17,6 +19,7 @@ export interface PageMetaInput {
 
 export function buildMetadata(input: PageMetaInput): Metadata {
   const url = `${getSiteUrl()}${input.path}`
+  const canonicalUrl = `${getSiteUrl()}${input.canonicalPath ?? input.path}`
   const ogImage = input.ogImage ?? `${getSiteUrl()}/opengraph-image`
 
   return {
@@ -28,7 +31,7 @@ export function buildMetadata(input: PageMetaInput): Metadata {
       "Next.js agency",
       siteConfig.name,
     ],
-    alternates: { canonical: url },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title: `${input.title} | ${siteConfig.name}`,
       description: input.description,
