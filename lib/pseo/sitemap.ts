@@ -47,6 +47,8 @@ export async function getCoreSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/solutions`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/wisconsin`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/custom-software`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/ai-automation`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
   ]
 }
 

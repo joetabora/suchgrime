@@ -1,26 +1,39 @@
 import { SiteShell } from "@/components/layout/site-shell"
 import { ParlorNavbar } from "@/components/agency/parlor-navbar"
-import { ParlorHero } from "@/components/agency/parlor-hero"
-import { ParlorWork } from "@/components/agency/parlor-work"
-import { ParlorAbout } from "@/components/agency/parlor-about"
-import { ParlorServices } from "@/components/agency/parlor-services"
-import { ParlorProcess } from "@/components/agency/parlor-process"
-import { ParlorContact } from "@/components/agency/parlor-contact"
 import { ParlorFooter } from "@/components/agency/parlor-footer"
+import { JsonLd } from "@/components/seo/json-ld"
+import { HomeHero } from "@/components/marketing/home/home-hero"
+import { HomeProcess } from "@/components/marketing/home/home-process"
+import { HomeServices } from "@/components/marketing/home/home-services"
+import { HomeSpreadsheet } from "@/components/marketing/home/home-spreadsheet"
+import { HomeProjects } from "@/components/marketing/home/home-projects"
+import { HomeAutomation } from "@/components/marketing/home/home-automation"
+import { HomeWhyCustom } from "@/components/marketing/home/home-why-custom"
+import { HomeWebsites } from "@/components/marketing/home/home-websites"
+import { HomeFaq } from "@/components/marketing/home/home-faq"
+import { HomeCta } from "@/components/marketing/home/home-cta"
 import { buildMetadata } from "@/lib/seo/metadata"
+import { faqSchema } from "@/lib/seo/schemas/faq"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata = buildMetadata({
-  title: `${siteConfig.name} — Web Development & Automation in Wisconsin`,
+  title: `${siteConfig.name} — Custom Software, AI Automation & Business Systems in Wisconsin`,
   description:
-    "Milwaukee-based web development and business automation agency serving Wisconsin — custom Next.js sites, booking systems, and workflow automation for brands that move fast.",
+    "Custom business applications, AI automation, internal dashboards, customer portals, and high-performance websites for Wisconsin businesses. Stop forcing your business to fit someone else's software.",
   path: "/",
   keywords: [
-    "web development agency milwaukee",
-    "wisconsin business automation",
+    "custom software development wisconsin",
+    "business automation wisconsin",
+    "custom business applications",
+    "AI automation services",
+    "client portal development",
+    "internal dashboard development",
+    "milwaukee software development",
+    "small business software development",
+    "custom CRM development",
+    "business process automation",
     "milwaukee web design",
-    "Next.js development wisconsin",
-    "web development agency",
+    "wisconsin web development",
     siteConfig.name,
   ],
 })
@@ -30,13 +43,18 @@ export default function HomePage() {
     <SiteShell>
       <div className="suchgrime-parlor min-h-screen">
         <ParlorNavbar />
+        <JsonLd data={faqSchema(siteConfig.homeFaqs)} />
         <main id="main">
-          <ParlorHero />
-          <ParlorWork />
-          <ParlorAbout />
-          <ParlorServices />
-          <ParlorProcess />
-          <ParlorContact />
+          <HomeHero />
+          <HomeProcess />
+          <HomeServices />
+          <HomeSpreadsheet />
+          <HomeProjects />
+          <HomeAutomation />
+          <HomeWhyCustom />
+          <HomeWebsites />
+          <HomeFaq />
+          <HomeCta />
         </main>
         <ParlorFooter />
       </div>

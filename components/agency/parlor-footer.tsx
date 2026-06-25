@@ -17,12 +17,20 @@ export function ParlorFooter() {
               {siteConfig.name.toUpperCase()}
             </p>
             <p className="mt-2 max-w-sm text-sm text-muted">{siteConfig.description}</p>
-            <Link
-              href="/contact"
-              className="mt-4 inline-block text-sm text-parlor-accent hover:underline"
-            >
-              Start a project →
-            </Link>
+            <div className="mt-4 flex flex-wrap gap-4 text-sm">
+              <Link
+                href="/contact"
+                className="text-tech hover:underline"
+              >
+                {siteConfig.primaryCta} →
+              </Link>
+              <Link href="/custom-software" className="text-muted hover:text-tech">
+                Custom Software
+              </Link>
+              <Link href="/ai-automation" className="text-muted hover:text-tech">
+                AI Automation
+              </Link>
+            </div>
           </div>
 
           <div>
@@ -30,7 +38,7 @@ export function ParlorFooter() {
             <ul className="space-y-2 text-sm">
               {footerCollections.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-muted hover:text-parlor-accent">
+                  <Link href={link.href} className="text-muted hover:text-tech">
                     {link.label}
                   </Link>
                 </li>
@@ -43,7 +51,7 @@ export function ParlorFooter() {
             <ul className="space-y-2 text-sm">
               {footerTopLocations.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-muted hover:text-parlor-accent">
+                  <Link href={link.href} className="text-muted hover:text-tech">
                     {link.label}
                   </Link>
                 </li>
@@ -56,14 +64,14 @@ export function ParlorFooter() {
             <ul className="space-y-2 text-sm">
               {footerTopIndustries.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-muted hover:text-parlor-accent">
+                  <Link href={link.href} className="text-muted hover:text-tech">
                     {link.label}
                   </Link>
                 </li>
               ))}
               {footerTopServices.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-muted hover:text-parlor-accent">
+                  <Link href={link.href} className="text-muted hover:text-tech">
                     {link.label}
                   </Link>
                 </li>
@@ -75,7 +83,7 @@ export function ParlorFooter() {
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-muted md:flex-row">
           <p className="font-mono text-[10px] uppercase tracking-widest">{siteConfig.domain}</p>
           <p className="font-mono text-[10px] uppercase tracking-widest">
-            © {new Date().getFullYear()} · Built with the stack we ship
+            © {new Date().getFullYear()} · Built in Wisconsin · Systems that run businesses
           </p>
         </div>
       </div>

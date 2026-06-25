@@ -38,6 +38,10 @@
   --font-display: var(--font-bebas), sans-serif;
   --font-body: var(--font-dm-sans), sans-serif;
   --font-ink-display: var(--font-oswald), sans-serif;
+  --color-tech: #38bdf8;
+  --color-violet: #8b5cf6;
+  --color-glass: rgba(255, 255, 255, 0.04);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
@@ -104,6 +108,29 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  .glass {
+    background: var(--color-glass);
+  }
+
+  .glass-border {
+    border-color: var(--color-glass-border);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-tech) 50%, var(--color-violet) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .grid-glow {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent),
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 64px 64px, 64px 64px;
   }
 }
 

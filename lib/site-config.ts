@@ -1,84 +1,278 @@
 export const siteConfig = {
   name: "SuchGrime",
-  subtitle: "Web Development & Business Automation",
+  subtitle: "Business Systems & Custom Software",
   domain: "suchgrime.com",
-  tagline: "Premium web craft and automation for brands that move fast.",
+  tagline:
+    "Custom Apps, AI Automation, Websites, and Business Systems Built Around How You Actually Work.",
   description:
-    "SuchGrime is a Milwaukee-based web development and business automation agency building fast, accessible websites, internal tools, and workflow systems for Wisconsin brands and operators nationwide.",
-  heroHeadline: "PREMIUM WEB CRAFT FOR BRANDS THAT DON'T DO BORING",
+    "SuchGrime builds custom business applications, AI automation, internal dashboards, customer portals, and high-performance websites for Wisconsin businesses and operators nationwide. We help small companies operate like much larger ones.",
+  heroHeadline: "Stop Forcing Your Business To Fit Someone Else's Software",
   heroSubtext:
-    "Based in Milwaukee, SuchGrime builds bold, high-performance websites and business automation for Wisconsin businesses — booking systems, dashboards, integrations, and internal tools that save time and drive revenue.",
+    "Most businesses waste time trying to adapt to software that was never built for them. We create custom business tools, internal dashboards, customer portals, automation systems, websites, and AI-powered workflows that save time, reduce manual work, and help companies scale. Built in Wisconsin. Designed for real-world businesses.",
+  primaryCta: "Book A Strategy Call",
+  secondaryCta: "Explore Our Work",
   about: {
     story:
-      "We started as builders tired of cookie-cutter templates and disconnected tools. SuchGrime is a Milwaukee studio rooted in urban culture and engineering discipline — we bring raw creative energy to every pixel and every workflow. Wisconsin brands, startups, and operators who need sites and systems that actually work — that's our lane.",
+      "We started as builders tired of watching businesses duct-tape spreadsheets, emails, and off-the-shelf software together. SuchGrime is a Wisconsin studio that engineers custom systems — internal dashboards, customer portals, automation pipelines, and high-performance websites — so operators can focus on growth instead of manual work.",
     stats: [
-      { label: "Approach", value: "Full-Stack Ready" },
-      { label: "Standard", value: "Mobile-First" },
-      { label: "Focus", value: "Performance" },
+      { label: "Focus", value: "Custom Systems" },
+      { label: "Stack", value: "Next.js + AI" },
+      { label: "Standard", value: "Performance-First" },
       { label: "Built-In", value: "A11y + SEO" },
     ],
   },
   marqueePhrases: [
+    "CUSTOM SOFTWARE",
+    "AI AUTOMATION",
+    "INTERNAL DASHBOARDS",
+    "CUSTOMER PORTALS",
+    "WORKFLOW AUTOMATION",
     "NEXT.JS",
-    "REACT",
-    "TAILWIND",
     "POSTGRES",
-    "AUTOMATION",
-    "UI/UX",
-    "RESPONSIVE",
-    "ACCESSIBLE",
-    "TYPESCRIPT",
-    "DEPLOY",
+    "CRM SYSTEMS",
+    "BUSINESS SYSTEMS",
+    "DATA SYNC",
+  ],
+  pillars: [
+    {
+      title: "Custom Business Applications",
+      description:
+        "Internal dashboards, customer portals, employee tools, scheduling systems, inventory management, CRMs, and lead tracking platforms built for how you actually operate.",
+      href: "/custom-software",
+      examples: [
+        "Internal Dashboards",
+        "Customer Portals",
+        "Employee Tools",
+        "Scheduling Systems",
+        "Inventory Management",
+        "CRM Solutions",
+      ],
+    },
+    {
+      title: "AI & Automation",
+      description:
+        "Lead routing, automated follow-up, CRM automation, AI assistants, workflow automation, data synchronization, and reporting automation that eliminates manual work.",
+      href: "/ai-automation",
+      examples: [
+        "Lead Routing",
+        "Automated Follow-Up",
+        "CRM Automation",
+        "AI Assistants",
+        "Workflow Automation",
+        "Reporting Automation",
+      ],
+    },
+    {
+      title: "Professional Websites",
+      description:
+        "Business websites, e-commerce, SEO foundations, landing pages, performance optimization, and redesigns engineered for conversion and long-term growth.",
+      href: "/services/web-development",
+      examples: [
+        "Business Websites",
+        "E-Commerce",
+        "SEO Foundations",
+        "Landing Pages",
+        "Performance Optimization",
+        "Website Redesigns",
+      ],
+    },
+    {
+      title: "Ongoing Growth & Support",
+      description:
+        "Hosting, maintenance, SEO, analytics, content systems, and feature expansion so your systems keep pace with your business.",
+      href: "/contact",
+      examples: [
+        "Hosting",
+        "Maintenance",
+        "SEO",
+        "Analytics",
+        "Content Systems",
+        "Feature Expansion",
+      ],
+    },
+  ],
+  spreadsheetSystems: [
+    { label: "Vendor Management", from: "Spreadsheet", to: "Vendor Portal" },
+    { label: "Event Registration", from: "Email Chain", to: "Registration System" },
+    { label: "Employee Scheduling", from: "Text Messages", to: "Scheduling App" },
+    { label: "Appointment Tracking", from: "Sticky Notes", to: "Booking Dashboard" },
+    { label: "Customer Management", from: "Scattered CRM", to: "Unified CRM" },
+    { label: "Reporting Dashboards", from: "Manual Reports", to: "Live Analytics" },
+    { label: "Inventory Tracking", from: "Paper Logs", to: "Inventory System" },
+  ],
+  automationExamples: [
+    {
+      title: "Lead Intake → CRM → Follow-Up",
+      description: "Form submissions route to the right rep, trigger automated follow-up sequences, and sync to your CRM without manual data entry.",
+      nodes: ["Web Form", "Lead Router", "CRM", "Email Sequence"],
+    },
+    {
+      title: "Booking → Calendar → Notifications",
+      description: "Customers book online, calendars update in real time, and staff receive instant notifications — no phone tag required.",
+      nodes: ["Booking Page", "Calendar Sync", "Staff Alerts", "Client Portal"],
+    },
+    {
+      title: "Data Sync → Dashboard → Reports",
+      description: "Disconnected tools sync into one source of truth with automated reporting dashboards your team actually uses.",
+      nodes: ["Data Sources", "Sync Engine", "Dashboard", "Auto Reports"],
+    },
+  ],
+  whyCustom: {
+    headline: "Why Custom Software",
+    points: [
+      {
+        title: "Built Around Your Workflow",
+        description:
+          "Generic software forces you to change how you work. Custom systems adapt to your processes, terminology, and team structure from day one.",
+      },
+      {
+        title: "Own Your Data & Process",
+        description:
+          "No vendor lock-in, no per-seat pricing surprises. Your systems, your data, your rules — engineered to scale with your business.",
+      },
+      {
+        title: "Replace Manual Work",
+        description:
+          "Every hour spent copying data between spreadsheets is an hour not spent growing. Automation and custom tools eliminate the repetitive work holding you back.",
+      },
+      {
+        title: "Operate Like A Larger Company",
+        description:
+          "Enterprise-grade dashboards, portals, and automation — without enterprise complexity or cost. Small businesses deserve systems that punch above their weight.",
+      },
+    ],
+  },
+  websiteServices: {
+    headline: "Websites That Work As Hard As Your Systems",
+    description:
+      "High-performance websites are the front door to your business. We build them with the same engineering discipline as our custom software — fast, accessible, SEO-ready, and designed to convert.",
+    items: [
+      "Business Websites",
+      "E-Commerce",
+      "SEO Foundations",
+      "Landing Pages",
+      "Performance Optimization",
+      "Website Redesigns",
+    ],
+  },
+  homeFaqs: [
+    {
+      q: "What types of businesses do you work with?",
+      a: "We work with small business owners, contractors, service businesses, dealerships, restaurants, event companies, manufacturers, and local retailers — especially those that have outgrown spreadsheets and generic software.",
+    },
+    {
+      q: "Do you only build websites?",
+      a: "No. While we build high-performance websites, our core focus is custom business systems — internal dashboards, customer portals, automation pipelines, and AI-powered workflows that help businesses operate more efficiently.",
+    },
+    {
+      q: "How is custom software different from off-the-shelf tools?",
+      a: "Off-the-shelf software is built for everyone, which means it's built for no one specifically. Custom software is engineered around your exact workflow, data, and team — eliminating workarounds and manual processes.",
+    },
+    {
+      q: "Can you automate our existing tools?",
+      a: "Yes. We integrate with most SaaS platforms via APIs, webhooks, and automation platforms like Zapier and Make — or we build custom connectors when off-the-shelf integrations fall short.",
+    },
+    {
+      q: "Where are you located?",
+      a: "We're based in Wisconsin and serve businesses statewide and nationwide. We work remotely with clients across the US.",
+    },
+    {
+      q: "What does a strategy call include?",
+      a: "We review your current workflows, identify manual bottlenecks, and outline what custom systems or automation could look like for your business — no obligation, no sales pressure.",
+    },
+  ],
+  featuredProjects: [
+    {
+      slug: "parlor-desk",
+      title: "Parlor Desk",
+      category: "Internal Booking Admin",
+      description:
+        "Custom booking admin for service businesses — appointment CRUD, client tracking, status workflows, and dashboard stats. A live demo of the internal tools we build.",
+      href: "/work/parlor-desk",
+      tags: ["Custom App", "Dashboard", "Booking"],
+      kind: "app" as const,
+    },
+    {
+      slug: "liveque",
+      title: "LiveQue",
+      category: "Customer Appointment Display",
+      description:
+        "Customer-facing appointment display platform that gives waiting customers real-time queue visibility and reduces front-desk friction for service businesses.",
+      href: "/case-studies",
+      tags: ["Customer Portal", "Real-Time", "Service Business"],
+      kind: "capability" as const,
+    },
+    {
+      slug: "harley-events",
+      title: "Harley Event Management",
+      category: "Event Management Systems",
+      description:
+        "Custom event management tools for dealership and event operations — registration, scheduling, vendor coordination, and attendee tracking built for complex event workflows.",
+      href: "/case-studies",
+      tags: ["Event Platform", "Registration", "Dealership"],
+      kind: "capability" as const,
+    },
+    {
+      slug: "block-and-blade",
+      title: "Block & Blade",
+      category: "Business Website",
+      description:
+        "High-performance barbershop website with bold typography, scroll-driven sections, and conversion-focused contact flows.",
+      href: "/work/block-and-blade",
+      tags: ["Website", "Next.js", "Performance"],
+      kind: "site" as const,
+    },
   ],
   serviceGroups: [
     {
-      title: "Design & Frontend",
+      title: "Custom Applications",
       items: [
-        { name: "Custom React & Next.js Websites", description: "Marketing sites, landing pages, and multi-route experiences built for your brand." },
-        { name: "UI/UX Design", description: "Interactive prototypes, wireframes, and polished visual direction." },
-        { name: "Tailwind Design Systems", description: "Reusable tokens, components, and consistent styling at scale." },
-        { name: "Motion & Micro-interactions", description: "Framer Motion animations that feel alive, not distracting." },
-        { name: "Responsive Layouts", description: "Mobile-first builds that look sharp on every screen size." },
+        { name: "Internal Dashboards", description: "Ops tools, admin panels, and reporting views your team actually uses." },
+        { name: "Customer Portals", description: "Self-service portals for bookings, orders, and account management." },
+        { name: "CRM & Lead Tracking", description: "Custom CRMs built around your sales process, not someone else's." },
+        { name: "Scheduling Systems", description: "Appointment booking, employee scheduling, and resource management." },
+        { name: "Inventory Management", description: "Track stock, vendors, and orders without spreadsheet chaos." },
       ],
     },
     {
-      title: "Engineering & Integration",
-      items: [
-        { name: "TypeScript & Modern JS", description: "Type-safe, maintainable codebases built for growth." },
-        { name: "API Integration", description: "REST endpoints, third-party services, and data wiring." },
-        { name: "Forms & Workflows", description: "Validation, multi-step flows, and client-side UX patterns." },
-        { name: "E-commerce & Booking", description: "Checkout flows, appointment systems, and conversion paths." },
-        { name: "CMS & Headless Content", description: "MDX blogs, content models, and headless CMS setup." },
-      ],
-    },
-    {
-      title: "Business Automation",
+      title: "AI & Automation",
       items: [
         { name: "Workflow Automation", description: "Zapier, Make, and custom triggers that eliminate manual work." },
-        { name: "Internal Dashboards", description: "Booking admin, CRM views, and ops tools your team actually uses." },
-        { name: "CRM & Booking Wiring", description: "Connect forms, calendars, and notifications into one flow." },
-        { name: "Data Pipelines", description: "PostgreSQL-backed systems with reliable sync and reporting." },
-        { name: "Process Optimization", description: "Audit, redesign, and automate repetitive business tasks." },
+        { name: "AI Assistants", description: "Intelligent assistants for customer support, lead qualification, and internal ops." },
+        { name: "Lead Routing", description: "Automatic lead assignment, scoring, and follow-up sequences." },
+        { name: "Data Synchronization", description: "Keep tools in sync — no more copy-pasting between systems." },
+        { name: "Reporting Automation", description: "Automated dashboards and reports delivered on schedule." },
       ],
     },
     {
-      title: "Launch & Quality",
+      title: "Websites & Growth",
       items: [
-        { name: "Performance Optimization", description: "Core Web Vitals, lazy loading, and bundle tuning." },
+        { name: "Business Websites", description: "Marketing sites, landing pages, and multi-route experiences." },
+        { name: "E-commerce & Booking", description: "Checkout flows, appointment systems, and conversion paths." },
         { name: "SEO & Structured Data", description: "Metadata, schema markup, sitemaps, and crawl-friendly architecture." },
-        { name: "Accessibility", description: "WCAG-minded patterns, keyboard nav, and screen reader support." },
+        { name: "Performance Optimization", description: "Core Web Vitals, lazy loading, and bundle tuning." },
+        { name: "Ongoing Support", description: "Hosting, maintenance, analytics, and feature expansion." },
+      ],
+    },
+    {
+      title: "Engineering",
+      items: [
+        { name: "Next.js & TypeScript", description: "Type-safe, maintainable codebases built for growth." },
+        { name: "API Integration", description: "REST endpoints, third-party services, and data wiring." },
+        { name: "PostgreSQL Systems", description: "Reliable data backends with sync and reporting." },
+        { name: "CMS & Content", description: "MDX blogs, content models, and headless CMS setup." },
         { name: "Deployment", description: "Vercel, Netlify, or custom hosting — production-ready handoff." },
-        { name: "Git & CI-Ready Structure", description: "Clean repos, linting, and workflows your team can extend." },
       ],
     },
   ],
   servicePages: [
     {
       slug: "web-development",
-      title: "Web Development",
-      description: "Custom Next.js and React websites engineered for performance, SEO, and conversion.",
+      title: "Professional Websites & Web Applications",
+      description:
+        "High-performance business websites, e-commerce, and web applications engineered for conversion, SEO, and long-term growth.",
       longDescription:
-        "We build premium marketing sites, landing pages, and web applications with Next.js, TypeScript, and Tailwind CSS. Every project is mobile-first, accessibility-minded, and optimized for Core Web Vitals and long-term SEO growth.",
+        "We build premium marketing sites, landing pages, and web applications with Next.js, TypeScript, and Tailwind CSS. Every project is mobile-first, accessibility-minded, and optimized for Core Web Vitals — the front door to your business, engineered with the same discipline as our custom software.",
       features: [
         "Next.js App Router architecture",
         "Server-side rendering and static generation",
@@ -93,16 +287,17 @@ export const siteConfig = {
     },
     {
       slug: "business-automation",
-      title: "Business Automation",
-      description: "Workflow automation, internal dashboards, and integrations that eliminate manual work.",
+      title: "AI & Business Automation",
+      description:
+        "AI assistants, workflow automation, CRM wiring, and custom integrations that eliminate manual work and connect your tools.",
       longDescription:
-        "From booking admin tools to CRM wiring and Zapier/Make automations, we connect your tools and build custom systems so your team spends less time on repetitive tasks and more time on growth.",
+        "From lead routing and automated follow-up to AI assistants and custom data pipelines, we connect your tools and build intelligent systems so your team spends less time on repetitive tasks and more time on growth.",
       features: [
+        "AI assistants and intelligent automation",
         "Custom internal apps and dashboards",
         "Zapier and Make workflow design",
         "PostgreSQL-backed data systems",
-        "Form-to-CRM pipelines",
-        "Booking and notification flows",
+        "Lead routing and notification flows",
       ],
       faqs: [
         { q: "Can you automate our existing tools?", a: "Yes — we integrate with most SaaS platforms via APIs, webhooks, and automation platforms." },
@@ -111,8 +306,9 @@ export const siteConfig = {
     },
     {
       slug: "ecommerce-booking",
-      title: "E-commerce & Booking",
-      description: "Checkout flows, appointment systems, and conversion paths that turn visitors into customers.",
+      title: "E-commerce & Booking Systems",
+      description:
+        "Checkout flows, appointment systems, and conversion paths that turn visitors into customers.",
       longDescription:
         "Whether you need an online store, a booking calendar, or a multi-step inquiry flow, we design and build conversion-focused experiences with clean UX and reliable backend wiring.",
       features: [
@@ -171,10 +367,10 @@ export const siteConfig = {
     },
   ],
   process: [
-    { step: "01", title: "Discover", description: "Goals, audience, workflows — we dig into what makes your brand and operations tick." },
-    { step: "02", title: "Design", description: "Layout, typography, automation map — the blueprint takes shape." },
-    { step: "03", title: "Build", description: "Next.js + Tailwind, iterative polish, feedback loops until it's right." },
-    { step: "04", title: "Ship", description: "Deploy, handoff, and support — your site and systems go live and stay sharp." },
+    { step: "01", title: "Discover", description: "Map your workflows, pain points, and goals — we dig into how your business actually operates." },
+    { step: "02", title: "Architect", description: "Design the system — data models, automation flows, UI wireframes, and integration map." },
+    { step: "03", title: "Build", description: "Next.js + TypeScript, iterative development, and feedback loops until it's right." },
+    { step: "04", title: "Deploy & Scale", description: "Launch, train your team, and expand features as your business grows." },
   ],
   serviceArea: "Wisconsin",
   contact: {
@@ -182,20 +378,19 @@ export const siteConfig = {
     phone: "+1-414-555-0199",
     note: "Currently accepting new projects",
     projectTypes: [
-      "New Website",
-      "Redesign",
-      "Landing Page",
-      "E-commerce",
-      "Web App",
+      "Custom Software",
+      "AI Automation",
+      "Internal Dashboard",
+      "Customer Portal",
+      "Website",
       "Business Automation",
       "Other",
     ],
   },
   navLinks: [
-    { label: "About", href: "/#about" },
-    { label: "Services", href: "/services" },
+    { label: "Services", href: "/#services" },
     { label: "Work", href: "/work" },
-    { label: "Locations", href: "/locations" },
+    { label: "Case Studies", href: "/case-studies" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],

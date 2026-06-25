@@ -1,0 +1,43 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { siteConfig } from "@/lib/site-config"
+import { SectionHeading } from "@/components/marketing/section-heading"
+import { WorkflowDiagram } from "@/components/marketing/workflow-diagram"
+
+export function HomeProcess() {
+  const processNodes = siteConfig.process.map((step) => step.title)
+
+  return (
+    <section className="border-b border-white/10 py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
+        <SectionHeading
+          label="How We Work"
+          title="A Trusted Process For Building Systems"
+          description="From workflow discovery to deployed software — we engineer systems that fit your business, not the other way around."
+        />
+
+        <div className="mt-12 hidden md:block">
+          <WorkflowDiagram nodes={processNodes} />
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {siteConfig.process.map((step, i) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="glass glass-border rounded-lg border p-6 backdrop-blur-sm"
+            >
+              <span className="font-mono text-sm text-tech">{step.step}</span>
+              <h3 className="mt-2 font-display text-2xl tracking-wide">{step.title}</h3>
+              <p className="mt-2 text-sm text-muted">{step.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
