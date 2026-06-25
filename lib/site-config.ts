@@ -10,7 +10,60 @@ export const siteConfig = {
   heroSubtext:
     "Most businesses waste time trying to adapt to software that was never built for them. We create custom business tools, internal dashboards, customer portals, automation systems, websites, and AI-powered workflows that save time, reduce manual work, and help companies scale. Built in Wisconsin. Designed for real-world businesses.",
   primaryCta: "Book A Strategy Call",
+  primaryCtaHref: "/strategy-call",
   secondaryCta: "Explore Our Work",
+  homeSections: {
+    hero: {
+      badge: "Built in Wisconsin · Systems for Real Businesses",
+    },
+    process: {
+      label: "How We Work",
+      title: "A Trusted Process For Building Systems",
+      description:
+        "From workflow discovery to deployed software — we engineer systems that fit your business, not the other way around.",
+    },
+    services: {
+      label: "What We Build",
+      title: "Systems That Run Your Business",
+      description:
+        "We don't just build websites. We engineer the custom software, automation, and web platforms that help small businesses operate like much larger companies.",
+    },
+    spreadsheet: {
+      label: "Replace The Spreadsheet",
+      title: "Your Business Deserves Better Than Duct Tape",
+      description:
+        "Most businesses operate critical functions using spreadsheets, emails, sticky notes, and disconnected software. We replace that chaos with systems built for how you actually work.",
+    },
+    projects: {
+      label: "Featured Projects",
+      title: "Systems We've Built",
+      description:
+        "From internal booking admin to customer-facing platforms and event management — real capabilities, real outcomes.",
+    },
+    automation: {
+      label: "Automation Examples",
+      title: "Workflows We Automate Every Day",
+      description:
+        "Real automation patterns we build for service businesses, contractors, and operators drowning in manual work.",
+    },
+    whyCustom: {
+      label: "Why Custom Software",
+      title: "Off-The-Shelf Wasn't Built For You",
+    },
+    faq: {
+      label: "FAQ",
+      title: "Common Questions",
+      description:
+        "Straight answers about custom software, automation, and how we work with businesses like yours.",
+    },
+    cta: {
+      label: "Ready to build?",
+      title: "Let's Design The Systems",
+      titleGradient: "Your Business Actually Needs",
+      description:
+        "Book a strategy call. We'll map your workflows, identify bottlenecks, and outline what custom software or automation could look like for your business.",
+    },
+  },
   about: {
     story:
       "We started as builders tired of watching businesses duct-tape spreadsheets, emails, and off-the-shelf software together. SuchGrime is a Wisconsin studio that engineers custom systems — internal dashboards, customer portals, automation pipelines, and high-performance websites — so operators can focus on growth instead of manual work.",
@@ -216,6 +269,7 @@ export const siteConfig = {
       description:
         "Custom booking admin for service businesses — appointment CRUD, client tracking, status workflows, and dashboard stats. A live demo of the internal tools we build.",
       href: "/work/parlor-desk",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
       tags: ["Custom App", "Dashboard", "Booking"],
       kind: "app" as const,
     },
@@ -226,6 +280,7 @@ export const siteConfig = {
       description:
         "Customer-facing appointment display platform that gives waiting customers real-time queue visibility and reduces front-desk friction for service businesses.",
       href: "/case-studies/liveque",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
       tags: ["Customer Portal", "Real-Time", "Service Business"],
       kind: "capability" as const,
     },
@@ -236,6 +291,7 @@ export const siteConfig = {
       description:
         "Custom event management tools for dealership and event operations — registration, scheduling, vendor coordination, and attendee tracking built for complex event workflows.",
       href: "/case-studies/harley-event-management",
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f39c4752?w=800&h=500&fit=crop",
       tags: ["Event Platform", "Registration", "Dealership"],
       kind: "capability" as const,
     },
@@ -246,6 +302,7 @@ export const siteConfig = {
       description:
         "High-performance barbershop website with bold typography, scroll-driven sections, and conversion-focused contact flows.",
       href: "/work/block-and-blade",
+      image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&h=500&fit=crop&grayscale",
       tags: ["Website", "Next.js", "Performance"],
       kind: "site" as const,
     },

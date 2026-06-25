@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { shop } from "@/lib/demos/shop"
 
@@ -29,10 +30,12 @@ export function Team() {
               className="group overflow-hidden border border-white/5 bg-surface"
             >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img
+                <Image
                   src={member.image}
                   alt={member.name}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
               </div>

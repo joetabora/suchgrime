@@ -10,8 +10,8 @@ export function HomeWhyCustom() {
     <section id="why" className="border-b border-white/10 bg-bg-elevated py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
         <SectionHeading
-          label={siteConfig.whyCustom.headline}
-          title="Small Businesses Deserve Enterprise-Grade Systems"
+          label={siteConfig.homeSections.whyCustom.label}
+          title={siteConfig.homeSections.whyCustom.title}
           description="Generic software forces you to adapt. Custom systems adapt to you — saving time, reducing errors, and helping you scale without adding headcount."
         />
 

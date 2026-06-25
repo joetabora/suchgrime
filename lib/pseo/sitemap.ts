@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 import { getSiteUrl } from "@/lib/utils"
 import { getAllCollectionIds, getAllPagesForCollection, getCollectionConfig } from "./registry"
+import { serviceCanonicalOverrides } from "@/lib/seo/site-links"
 
 const LOCATION_COLLECTIONS = new Set(["locations"])
 
@@ -22,6 +23,7 @@ async function buildCollectionEntries(
 
     const pages = await getAllPagesForCollection(id)
     for (const page of pages) {
+      if (id === "services" && serviceCanonicalOverrides[page.slug]) continue
       entries.push({
         url: `${base}${config.path}/${page.slug}`,
         lastModified: page.lastModified
@@ -51,6 +53,7 @@ export async function getCoreSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/ai-automation`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/web-design`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/strategy-call`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
   ]
 }
 

@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { studio } from "@/lib/demos/studio"
 
@@ -40,10 +41,12 @@ export function Team() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="relative aspect-[3/4] overflow-hidden md:aspect-[4/5]">
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
-                      className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                      fill
+                      className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
                 </div>

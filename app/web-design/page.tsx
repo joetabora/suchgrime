@@ -109,7 +109,7 @@ export default function WebDesignPage() {
 
           <div className="mt-16 flex flex-wrap gap-4 border-t border-white/10 pt-16">
             <Link
-              href="/contact"
+              href={siteConfig.primaryCtaHref}
               className="rounded-md bg-parlor-accent px-8 py-3 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
             >
               {siteConfig.primaryCta}

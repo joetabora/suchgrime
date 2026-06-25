@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Bebas_Neue, DM_Sans, Oswald } from "next/font/google"
 import { siteConfig } from "@/lib/site-config"
 import { organizationSchema, websiteSchema, localBusinessSchema } from "@/lib/seo/schemas/organization"
@@ -71,6 +73,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <JsonLd data={[organizationSchema(), websiteSchema(), localBusinessSchema()]} />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

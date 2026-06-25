@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { track } from "@vercel/analytics"
 import { CheckCircle, Mail } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 
@@ -34,7 +35,7 @@ export function ContactForm({ idPrefix = "parlor" }: ContactFormProps) {
     setLoading(true)
 
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -42,9 +43,18 @@ export function ContactForm({ idPrefix = "parlor" }: ContactFormProps) {
           email,
           projectType: data.get("projectType"),
           message: data.get("message"),
+          website: data.get("website") ?? "",
         }),
       })
+
+      if (!res.ok) {
+        const result = await res.json().catch(() => ({}))
+        setErrors({ form: result.error ?? "Something went wrong. Please try again." })
+        return
+      }
+
       setSubmitted(true)
+      track("contact_submitted")
       form.reset()
     } catch {
       setErrors({ form: "Something went wrong. Please try again." })
@@ -56,6 +66,14 @@ export function ContactForm({ idPrefix = "parlor" }: ContactFormProps) {
   return (
     <>
       <form onSubmit={handleSubmit} noValidate className="space-y-6">
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="absolute -left-[9999px] opacity-0"
+          aria-hidden="true"
+        />
         <div>
           <label htmlFor={`${idPrefix}-name`} className="mb-1.5 block font-mono text-xs uppercase tracking-widest text-muted">
             Name

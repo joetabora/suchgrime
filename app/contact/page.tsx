@@ -5,8 +5,6 @@ import { Breadcrumbs } from "@/components/seo/breadcrumbs"
 import { ContactForm } from "@/components/agency/parlor-contact"
 import { siteConfig } from "@/lib/site-config"
 import { buildMetadata } from "@/lib/seo/metadata"
-import { localBusinessSchema } from "@/lib/seo/schemas/organization"
-import { JsonLd } from "@/components/seo/json-ld"
 import { Mail, Phone } from "lucide-react"
 
 export const metadata = buildMetadata({
@@ -27,7 +25,6 @@ export default function ContactPage() {
   return (
     <SiteShell>
       <div className="suchgrime-parlor min-h-screen pt-[57px]">
-        <JsonLd data={localBusinessSchema()} />
         <ParlorNavbar />
         <main id="main" className="mx-auto max-w-[1400px] border-x border-white/10">
           <div className="px-6 py-12 md:px-12">

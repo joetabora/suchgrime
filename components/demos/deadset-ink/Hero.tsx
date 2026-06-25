@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import { studio } from "@/lib/demos/studio"
@@ -6,10 +7,13 @@ import { studio } from "@/lib/demos/studio"
 export function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col justify-end overflow-hidden">
-      <img
+      <Image
         src={studio.heroImage}
         alt=""
-        className="absolute inset-0 h-full w-full object-cover"
+        fill
+        className="object-cover"
+        sizes="100vw"
+        priority
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/70 to-bg/30" />

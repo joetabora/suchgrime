@@ -17,7 +17,7 @@ export function HomeHero() {
           transition={{ duration: 0.7 }}
         >
           <span className="mb-6 inline-block rounded-full border border-tech/30 bg-tech/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-tech">
-            Built in Wisconsin · Systems for Real Businesses
+            {siteConfig.homeSections.hero.badge}
           </span>
 
           <h1 className="max-w-5xl font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-wide">
@@ -32,7 +32,7 @@ export function HomeHero() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href="/contact"
+              href={siteConfig.primaryCtaHref}
               className="rounded-md bg-parlor-accent px-8 py-3.5 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
             >
               {siteConfig.primaryCta}

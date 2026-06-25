@@ -15,6 +15,13 @@
       "when": 1710000000001,
       "tag": "0001_content_entries",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1710000000002,
+      "tag": "0002_strategy_call_bookings",
+      "breakpoints": true
     }
   ]
 }

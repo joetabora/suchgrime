@@ -1,4 +1,4 @@
-import { boolean, jsonb, pgTable, serial, text, timestamp, unique } from "drizzle-orm/pg-core"
+import { boolean, jsonb, pgTable, serial, text, timestamp, unique, integer } from "drizzle-orm/pg-core"
 import type { PseoFaq } from "@/lib/pseo/types"
 
 export const contactInquiries = pgTable("contact_inquiries", {
@@ -15,6 +15,24 @@ export const newsletterSubscribers = pgTable("newsletter_subscribers", {
   email: text("email").notNull().unique(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 })
+
+export const strategyCallBookings = pgTable(
+  "strategy_call_bookings",
+  {
+    id: serial("id").primaryKey(),
+    name: text("name").notNull(),
+    email: text("email").notNull(),
+    company: text("company"),
+    phone: text("phone"),
+    projectType: text("project_type"),
+    notes: text("notes"),
+    slotStart: timestamp("slot_start", { withTimezone: true }).notNull(),
+    durationMin: integer("duration_min").notNull().default(30),
+    status: text("status").notNull().default("confirmed"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [unique().on(table.slotStart)],
+)
 
 export const contentEntries = pgTable(
   "content_entries",

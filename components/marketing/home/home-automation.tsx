@@ -11,9 +11,9 @@ export function HomeAutomation() {
     <section className="border-b border-white/10 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
         <SectionHeading
-          label="Automation Examples"
-          title="Workflows That Run While You Sleep"
-          description="Connected systems that route leads, sync data, trigger follow-ups, and deliver reports — without manual intervention."
+          label={siteConfig.homeSections.automation.label}
+          title={siteConfig.homeSections.automation.title}
+          description={siteConfig.homeSections.automation.description}
         />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-3">

@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { shop } from "@/lib/demos/shop"
 
@@ -34,10 +35,12 @@ export function Gallery() {
               transition={{ duration: 0.4, delay: i * 0.06 }}
               className={`group relative overflow-hidden ${spanClasses[item.span]}`}
             >
-              <img
+              <Image
                 src={item.image}
                 alt={item.caption}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <figcaption className="absolute inset-0 flex items-end bg-gradient-to-t from-bg/90 via-bg/20 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span className="font-display text-xl tracking-wide">{item.caption}</span>

@@ -157,7 +157,7 @@ export async function ProgramDetail({ resolved }: ProgramDetailProps) {
               </Link>
             )}
             <Link
-              href="/contact"
+              href={siteConfig.primaryCtaHref}
               className="glass glass-border inline-block rounded-md border px-8 py-4 font-display text-xl tracking-wider backdrop-blur-sm transition-colors hover:border-tech/40 hover:text-tech"
             >
               {siteConfig.primaryCta}
@@ -191,7 +191,7 @@ export async function ProgramDetail({ resolved }: ProgramDetailProps) {
                   href: getServiceMarketingPath(page.serviceSlug),
                   label: `${services.find((s) => s.slug === page.serviceSlug)?.title ?? page.serviceSlug} overview`,
                 },
-                { href: "/contact", label: siteConfig.primaryCta },
+                { href: siteConfig.primaryCtaHref, label: siteConfig.primaryCta },
               ]}
             />
           )}

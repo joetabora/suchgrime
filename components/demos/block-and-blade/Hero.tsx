@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowDown, MapPin } from "lucide-react"
 import { shop } from "@/lib/demos/shop"
@@ -43,10 +44,13 @@ export function Hero() {
           className="relative aspect-[4/5] overflow-hidden lg:aspect-auto lg:h-[70vh]"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-transparent to-gold/10" />
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&h=1000&fit=crop&grayscale"
             alt="Barber at work in urban shop"
-            className="h-full w-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
           <div className="absolute bottom-6 left-6 border-l-4 border-accent pl-4">

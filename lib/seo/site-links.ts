@@ -17,6 +17,7 @@ export function getServiceMarketingPath(slug: string): string {
 export const serviceCanonicalOverrides: Record<string, string> = {
   "custom-software": "/custom-software",
   "ai-automation": "/ai-automation",
+  "web-development": "/web-design",
 }
 
 /** Top entities for footer and cross-linking — Wisconsin-first, then national */

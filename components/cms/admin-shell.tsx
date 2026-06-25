@@ -30,6 +30,17 @@ export function AdminShell({ children, title, action }: AdminShellProps) {
           <p className="mt-1 font-mono text-xs text-muted">Content dashboard</p>
         </div>
         <nav className="p-3">
+          <Link
+            href="/admin/bookings"
+            className={cn(
+              "mb-1 block rounded px-3 py-2 text-sm transition-colors",
+              pathname === "/admin/bookings"
+                ? "bg-parlor-accent/20 text-parlor-accent"
+                : "text-muted hover:bg-white/5 hover:text-text",
+            )}
+          >
+            Strategy Call Bookings
+          </Link>
           {CMS_COLLECTIONS.map((collection) => {
             const href = `/admin/${collection}`
             const active = pathname === href || pathname.startsWith(`${href}/`)

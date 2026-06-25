@@ -115,7 +115,7 @@ export default async function ServicesPage() {
 
           <div className="mt-16 border-t border-white/10 pt-16">
             <Link
-              href="/contact"
+              href={siteConfig.primaryCtaHref}
               className="inline-block rounded-md bg-parlor-accent px-8 py-3 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
             >
               {siteConfig.primaryCta}

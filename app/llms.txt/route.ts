@@ -25,6 +25,7 @@ export async function GET() {
 - ${base}/blog
 - ${base}/solutions
 - ${base}/contact
+- ${base}/strategy-call
 
 ## Primary service area
 Wisconsin (headquartered in Milwaukee). National location pages also available.

@@ -12,9 +12,9 @@ export function HomeServices() {
     <section id="services" className="border-b border-white/10 bg-bg-elevated py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
         <SectionHeading
-          label="What We Build"
-          title="Systems That Run Your Business"
-          description="We don't just build websites. We engineer the custom software, automation, and web platforms that help small businesses operate like much larger companies."
+          label={siteConfig.homeSections.services.label}
+          title={siteConfig.homeSections.services.title}
+          description={siteConfig.homeSections.services.description}
         />
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">

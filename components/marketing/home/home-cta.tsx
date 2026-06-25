@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { siteConfig } from "@/lib/site-config"
+import { SectionHeading } from "@/components/marketing/section-heading"
+import { GradientText } from "@/components/marketing/gradient-text"
 
 export function HomeCta() {
   return (
@@ -15,18 +17,21 @@ export function HomeCta() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-label mb-4">Ready to build?</p>
-          <h2 className="font-display text-4xl tracking-wide md:text-6xl lg:text-7xl">
-            Let&apos;s Design The Systems
-            <br />
-            <span className="text-gradient">Your Business Actually Needs</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-muted">
-            Book a strategy call. We&apos;ll map your workflows, identify bottlenecks, and outline what custom software or automation could look like for your business.
-          </p>
+          <SectionHeading
+            align="center"
+            label={siteConfig.homeSections.cta.label}
+            title={
+              <>
+                {siteConfig.homeSections.cta.title}
+                <br />
+                <GradientText as="span">{siteConfig.homeSections.cta.titleGradient}</GradientText>
+              </>
+            }
+            description={siteConfig.homeSections.cta.description}
+          />
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
-              href="/contact"
+              href={siteConfig.primaryCtaHref}
               className="rounded-md bg-parlor-accent px-10 py-4 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
             >
               {siteConfig.primaryCta}

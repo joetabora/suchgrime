@@ -19,7 +19,7 @@ export function ParlorFooter() {
             <p className="mt-2 max-w-sm text-sm text-muted">{siteConfig.description}</p>
             <div className="mt-4 flex flex-wrap gap-4 text-sm">
               <Link
-                href="/contact"
+                href={siteConfig.primaryCtaHref}
                 className="text-tech hover:underline"
               >
                 {siteConfig.primaryCta} →

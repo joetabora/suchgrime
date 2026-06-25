@@ -51,7 +51,7 @@ export function ParlorNavbar() {
 
           <div className="flex items-stretch">
             <Link
-              href="/contact"
+              href={siteConfig.primaryCtaHref}
               className="hidden items-center bg-parlor-accent px-6 text-sm font-semibold uppercase tracking-wider text-text transition-colors hover:bg-parlor-accent/80 lg:flex"
             >
               {siteConfig.primaryCta}
@@ -101,7 +101,7 @@ export function ParlorNavbar() {
             ))}
           </ul>
           <Link
-            href="/contact"
+            href={siteConfig.primaryCtaHref}
             onClick={closeMenu}
             className="block border-t border-white/10 bg-parlor-accent py-6 text-center font-display text-2xl tracking-wider text-text"
           >
