@@ -286,12 +286,12 @@ export const siteConfig = {
     },
     {
       slug: "harley-event-management",
-      title: "Harley Event Management",
+      title: "Event Management Software",
       category: "Event Management Systems",
       description:
         "Custom event management tools for dealership and event operations — registration, scheduling, vendor coordination, and attendee tracking built for complex event workflows.",
       href: "/case-studies/harley-event-management",
-      image: "https://images.unsplash.com/photo-1505373877841-8d25f39c4752?w=800&h=500&fit=crop",
+      image: "/events.png",
       tags: ["Event Platform", "Registration", "Dealership"],
       kind: "capability" as const,
     },

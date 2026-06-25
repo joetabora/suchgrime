@@ -35,11 +35,11 @@ const capabilityStudies: PseoPage[] = [
   },
   {
     slug: "harley-event-management",
-    title: "Harley Event Management",
+    title: "Event Management Software",
     description:
       "Custom event management tools for dealership and event operations — registration, scheduling, vendor coordination, and attendee tracking.",
     intro:
-      "Harley event management projects include custom registration systems, vendor coordination tools, and attendee tracking built for complex dealership and event company workflows.",
+      "Event management software projects include custom registration systems, vendor coordination tools, and attendee tracking built for complex dealership and event company workflows.",
     tags: ["ecommerce", "professional-services", "custom-software"],
     features: [
       "Event registration systems",
