@@ -15,8 +15,9 @@ export function HomeHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
+          className="bracket-frame p-6 md:p-8"
         >
-          <span className="mb-6 inline-block rounded-full border border-tech/30 bg-tech/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-tech">
+          <span className="mb-6 inline-block rounded-full border border-purple/30 bg-purple/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-purple-bright">
             {siteConfig.homeSections.hero.badge}
           </span>
 
@@ -38,8 +39,8 @@ export function HomeHero() {
               {siteConfig.primaryCta}
             </Link>
             <Link
-              href="/work"
-              className="glass glass-border rounded-md border px-8 py-3.5 font-display text-xl tracking-wider backdrop-blur-sm transition-colors hover:border-tech/40 hover:text-tech"
+              href="#solutions"
+              className="glass glass-border rounded-md border px-8 py-3.5 font-display text-xl tracking-wider backdrop-blur-sm transition-colors hover:border-purple/40 hover:text-purple-bright"
             >
               {siteConfig.secondaryCta}
             </Link>

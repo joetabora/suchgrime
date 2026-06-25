@@ -3,13 +3,15 @@ import { ParlorNavbar } from "@/components/agency/parlor-navbar"
 import { ParlorFooter } from "@/components/agency/parlor-footer"
 import { JsonLd } from "@/components/seo/json-ld"
 import { HomeHero } from "@/components/marketing/home/home-hero"
-import { HomeProcess } from "@/components/marketing/home/home-process"
-import { HomeServices } from "@/components/marketing/home/home-services"
+import { HomePain } from "@/components/marketing/home/home-pain"
 import { HomeSpreadsheet } from "@/components/marketing/home/home-spreadsheet"
-import { HomeProjects } from "@/components/marketing/home/home-projects"
+import { HomeSolutions } from "@/components/marketing/home/home-solutions"
 import { HomeAutomation } from "@/components/marketing/home/home-automation"
-import { HomeWhyCustom } from "@/components/marketing/home/home-why-custom"
+import { HomeAboutJoe } from "@/components/marketing/home/home-about-joe"
+import { HomeProjects } from "@/components/marketing/home/home-projects"
 import { HomeWebsites } from "@/components/marketing/home/home-websites"
+import { HomeWhyCustom } from "@/components/marketing/home/home-why-custom"
+import { HomeProcess } from "@/components/marketing/home/home-process"
 import { HomeFaq } from "@/components/marketing/home/home-faq"
 import { HomeCta } from "@/components/marketing/home/home-cta"
 import { buildMetadata } from "@/lib/seo/metadata"
@@ -17,7 +19,7 @@ import { faqSchema } from "@/lib/seo/schemas/faq"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata = buildMetadata({
-  title: `${siteConfig.name} — Custom Software, AI Automation & Business Systems in Wisconsin`,
+  title: `${siteConfig.name} — Blue-Collar Business Technology in Wisconsin`,
   description:
     "Custom business applications, AI automation, internal dashboards, customer portals, and high-performance websites for Wisconsin businesses. Stop forcing your business to fit someone else's software.",
   path: "/",
@@ -35,6 +37,7 @@ export const metadata = buildMetadata({
     "small business software development",
     "custom CRM development",
     "business process automation",
+    "workflow automation",
     "milwaukee web design",
     "wisconsin web development",
     siteConfig.name,
@@ -49,13 +52,15 @@ export default function HomePage() {
         <JsonLd data={faqSchema(siteConfig.homeFaqs)} />
         <main id="main">
           <HomeHero />
-          <HomeProcess />
-          <HomeServices />
+          <HomePain />
           <HomeSpreadsheet />
-          <HomeProjects />
+          <HomeSolutions />
           <HomeAutomation />
-          <HomeWhyCustom />
+          <HomeAboutJoe />
+          <HomeProjects />
           <HomeWebsites />
+          <HomeWhyCustom />
+          <HomeProcess />
           <HomeFaq />
           <HomeCta />
         </main>

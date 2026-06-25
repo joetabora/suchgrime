@@ -8,25 +8,26 @@ import { WorkflowDiagram } from "@/components/marketing/workflow-diagram"
 
 export function HomeSpreadsheet() {
   return (
-    <section className="border-b border-white/10 py-24 md:py-32">
-      <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
+    <section className="relative border-b border-white/10 py-24 md:py-32">
+      <div className="absolute inset-0 blueprint-grid opacity-30" aria-hidden="true" />
+      <div className="relative mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.spreadsheet.label}
           title={siteConfig.homeSections.spreadsheet.title}
           description={siteConfig.homeSections.spreadsheet.description}
         />
 
-        <div className="mt-16 space-y-8">
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
           {siteConfig.spreadsheetSystems.map((system, i) => (
             <motion.div
               key={system.label}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <GlassCard>
-                <p className="mb-4 font-display text-xl tracking-wide text-text md:text-2xl">
+              <GlassCard variant="steel">
+                <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-purple/70">
                   {system.label}
                 </p>
                 <WorkflowDiagram

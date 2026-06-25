@@ -18,21 +18,21 @@ export function HomeProcess() {
           description={siteConfig.homeSections.process.description}
         />
 
-        <div className="mt-12 hidden md:block">
+        <div className="mt-12 hidden lg:block">
           <WorkflowDiagram nodes={processNodes} />
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {siteConfig.process.map((step, i) => (
             <motion.div
               key={step.step}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
             >
-              <GlassCard>
-                <span className="font-mono text-sm text-tech">{step.step}</span>
+              <GlassCard variant="steel" className="h-full">
+                <span className="font-mono text-sm text-purple">{step.step}</span>
                 <h3 className="mt-2 font-display text-2xl tracking-wide">{step.title}</h3>
                 <p className="mt-2 text-sm text-muted">{step.description}</p>
               </GlassCard>

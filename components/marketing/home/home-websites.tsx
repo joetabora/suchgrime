@@ -10,7 +10,7 @@ export function HomeWebsites() {
     <section className="border-b border-white/10 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
         <SectionHeading
-          label="Website Services"
+          label="Websites Still Matter"
           title={siteConfig.websiteServices.headline}
           description={siteConfig.websiteServices.description}
         />
@@ -33,7 +33,7 @@ export function HomeWebsites() {
         <div className="mt-10">
           <Link
             href="/web-design"
-            className="inline-flex items-center gap-2 text-tech hover:underline"
+            className="inline-flex items-center gap-2 text-purple hover:underline"
           >
             Explore web development services →
           </Link>

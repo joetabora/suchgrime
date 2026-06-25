@@ -22,7 +22,7 @@ function normalizeNodes(nodes: readonly (WorkflowNode | string)[] | WorkflowNode
 
 const variantStyles = {
   default: "border-white/15 bg-surface/80 text-text",
-  accent: "border-tech/40 bg-tech/10 text-tech",
+  accent: "border-purple/40 bg-purple/10 text-purple-bright",
   muted: "border-white/10 bg-white/[0.02] text-muted",
 }
 
@@ -64,12 +64,13 @@ export function WorkflowDiagram({
           </motion.div>
           {i < normalized.length - 1 && (
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.1 + 0.15 }}
+              transition={{ duration: 0.35, delay: i * 0.1 + 0.15 }}
+              style={{ transformOrigin: isHorizontal ? "left center" : "center top" }}
               className={cn(
-                "shrink-0 text-muted",
+                "shrink-0 text-purple/60",
                 isHorizontal ? "text-lg" : "rotate-90 text-lg",
               )}
               aria-hidden="true"

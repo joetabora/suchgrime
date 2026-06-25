@@ -1,6 +1,23 @@
 import { getSiteUrl } from "@/lib/utils"
 import { siteConfig } from "@/lib/site-config"
 
+export function founderSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.aboutJoe.name,
+    jobTitle: "Founder",
+    worksFor: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: getSiteUrl(),
+    },
+    description: siteConfig.aboutJoe.pullQuote,
+    image: `${getSiteUrl()}${siteConfig.aboutJoe.image}`,
+    url: `${getSiteUrl()}/about`,
+  }
+}
+
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
@@ -10,6 +27,12 @@ export function organizationSchema() {
     logo: `${getSiteUrl()}/opengraph-image`,
     description: siteConfig.description,
     email: siteConfig.contact.email,
+    founder: {
+      "@type": "Person",
+      name: siteConfig.aboutJoe.name,
+      jobTitle: "Founder",
+      image: `${getSiteUrl()}${siteConfig.aboutJoe.image}`,
+    },
     sameAs: siteConfig.sameAs,
     areaServed: { "@type": "State", name: "Wisconsin" },
   }
@@ -45,6 +68,10 @@ export function localBusinessSchema() {
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.phone,
     priceRange,
+    founder: {
+      "@type": "Person",
+      name: siteConfig.aboutJoe.name,
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: address.streetAddress,

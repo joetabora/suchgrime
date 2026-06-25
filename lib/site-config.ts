@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "SuchGrime",
-  subtitle: "Business Systems & Custom Software",
+  subtitle: "Blue-Collar Business Technology",
   domain: "suchgrime.com",
   tagline:
     "Custom Apps, AI Automation, Websites, and Business Systems Built Around How You Actually Work.",
@@ -11,22 +11,33 @@ export const siteConfig = {
     "Most businesses waste time trying to adapt to software that was never built for them. We create custom business tools, internal dashboards, customer portals, automation systems, websites, and AI-powered workflows that save time, reduce manual work, and help companies scale. Built in Wisconsin. Designed for real-world businesses.",
   primaryCta: "Book A Strategy Call",
   primaryCtaHref: "/strategy-call",
-  secondaryCta: "Explore Our Work",
+  secondaryCta: "See What's Possible",
   homeSections: {
     hero: {
       badge: "Built in Wisconsin · Systems for Real Businesses",
     },
     process: {
       label: "How We Work",
-      title: "A Trusted Process For Building Systems",
+      title: "A Practical Process For Building Systems",
       description:
-        "From workflow discovery to deployed software — we engineer systems that fit your business, not the other way around.",
+        "Collaborative, hands-on, and built around your real workflows — not a slide deck and a handoff.",
     },
-    services: {
-      label: "What We Build",
-      title: "Systems That Run Your Business",
+    pain: {
+      label: "Sound Familiar?",
+      title: "Does Any Of This Sound Familiar?",
       description:
-        "We don't just build websites. We engineer the custom software, automation, and web platforms that help small businesses operate like much larger companies.",
+        "Most business owners don't realize how much time and money these problems cost until someone maps them out.",
+      closingLine: "We Build The Missing Piece.",
+    },
+    solutions: {
+      label: "What We Build",
+      title: "Solutions We Build",
+      description:
+        "Custom systems that replace manual work, disconnected tools, and spreadsheets — built around how your business actually operates.",
+    },
+    aboutJoe: {
+      label: "About Joe",
+      title: "Built By An Operator, Not Just A Developer",
     },
     spreadsheet: {
       label: "Replace The Spreadsheet",
@@ -172,14 +183,111 @@ export const siteConfig = {
     },
   ],
   spreadsheetSystems: [
-    { label: "Vendor Management", from: "Spreadsheet", to: "Vendor Portal" },
-    { label: "Event Registration", from: "Email Chain", to: "Registration System" },
-    { label: "Employee Scheduling", from: "Text Messages", to: "Scheduling App" },
-    { label: "Appointment Tracking", from: "Sticky Notes", to: "Booking Dashboard" },
-    { label: "Customer Management", from: "Scattered CRM", to: "Unified CRM" },
-    { label: "Reporting Dashboards", from: "Manual Reports", to: "Live Analytics" },
-    { label: "Inventory Tracking", from: "Paper Logs", to: "Inventory System" },
+    { label: "Operations", from: "Spreadsheet", to: "Custom Dashboard" },
+    { label: "Vendor Coordination", from: "Email Chains", to: "Vendor Portal" },
+    { label: "Task Tracking", from: "Sticky Notes", to: "Task Management System" },
+    { label: "Lead Follow-Up", from: "Manual Follow-Up", to: "Automation" },
   ],
+  painPoints: [
+    "Customer information is scattered everywhere.",
+    "Employees constantly ask where things are.",
+    "Leads fall through the cracks.",
+    "You're entering the same information repeatedly.",
+    "Reporting takes hours.",
+    "Your business runs on spreadsheets.",
+    "You have software that almost works.",
+    "You rely on one employee who knows everything.",
+  ],
+  solutions: [
+    {
+      title: "Customer Portals",
+      outcome: "Let customers book, pay, and manage their account without calling your office.",
+      href: "/custom-software",
+    },
+    {
+      title: "Employee Dashboards",
+      outcome: "Give your team one place to see schedules, tasks, and daily operations.",
+      href: "/custom-software",
+    },
+    {
+      title: "Internal CRMs",
+      outcome: "Track leads, customers, and follow-ups the way your sales process actually works.",
+      href: "/custom-software",
+    },
+    {
+      title: "Lead Tracking Systems",
+      outcome: "Stop losing leads between forms, inboxes, and spreadsheets.",
+      href: "/custom-software",
+    },
+    {
+      title: "Scheduling Platforms",
+      outcome: "Replace phone tag and text-message scheduling with a system that runs itself.",
+      href: "/services/ecommerce-booking",
+    },
+    {
+      title: "Inventory Management",
+      outcome: "Know what you have, what you need, and what's on order — without a spreadsheet.",
+      href: "/custom-software",
+    },
+    {
+      title: "Vendor Management",
+      outcome: "Centralize vendor contacts, orders, and communication in one portal.",
+      href: "/custom-software",
+    },
+    {
+      title: "Event Management",
+      outcome: "Handle registration, scheduling, vendors, and attendees for complex events.",
+      href: "/case-studies/harley-event-management",
+    },
+    {
+      title: "Reporting Dashboards",
+      outcome: "See the numbers that matter without spending hours pulling reports.",
+      href: "/custom-software",
+    },
+    {
+      title: "Automation Systems",
+      outcome: "Eliminate repetitive data entry and connect the tools you already use.",
+      href: "/ai-automation",
+    },
+  ],
+  aboutJoe: {
+    headline: "Built By An Operator, Not Just A Developer",
+    name: "Joe",
+    image: "/me.jpeg",
+    pullQuote:
+      "I don't approach projects as a developer looking for something to build. I approach them as an operator looking for a problem to solve.",
+    backgroundAreas: [
+      "Marketing",
+      "Events",
+      "Community Building",
+      "Partnerships",
+      "Business Operations",
+      "Software Development",
+    ],
+    bio: `Hi, I'm Joe.
+
+I've spent my career helping businesses grow—not from a boardroom, but from the front lines.
+
+Before building custom software and business systems, I worked in marketing, events, community building, partnerships, and business operations. I've managed large-scale events, advertising budgets, websites, customer experiences, sponsorship programs, and the countless moving pieces that keep a business running.
+
+Along the way, I kept running into the same problem: the tools available never quite fit the way businesses actually work.
+
+Spreadsheets became databases. Sticky notes became workflows. Employees relied on tribal knowledge. Software solved part of the problem but created three more.
+
+So I started building better solutions.
+
+Today, I help businesses replace inefficient processes with custom software, automation, AI-powered workflows, and websites designed around the way they actually operate. Whether it's a customer portal, internal dashboard, lead management system, event platform, automation workflow, or a complete digital presence, my goal is always the same:
+
+Build tools that save time, eliminate friction, and help businesses grow.
+
+What makes SuchGrime different is simple: I don't approach projects as a developer looking for something to build. I approach them as an operator looking for a problem to solve.
+
+Because the best software isn't the most complicated.
+
+It's the software your team actually uses.
+
+If your business is stuck between spreadsheets, disconnected systems, and software that almost fits, let's build the missing piece together.`,
+  },
   automationExamples: [
     {
       title: "Lead Intake → CRM → Follow-Up",
@@ -223,9 +331,9 @@ export const siteConfig = {
     ],
   },
   websiteServices: {
-    headline: "Websites That Work As Hard As Your Systems",
+    headline: "Websites Are One Piece Of A Larger System",
     description:
-      "High-performance websites are the front door to your business. We build them with the same engineering discipline as our custom software — fast, accessible, SEO-ready, and designed to convert.",
+      "Yes, we build high-performance websites — but we also build everything behind them. Lead capture, automation, client portals, business systems, and workflows that make your website actually work for your business.",
     items: [
       "Business Websites",
       "E-Commerce",
@@ -237,20 +345,36 @@ export const siteConfig = {
   },
   homeFaqs: [
     {
+      q: "Can small businesses afford custom software?",
+      a: "Yes. Custom software is more attainable than most owners think — especially when you compare it to the cost of manual work, lost leads, and tools that almost fit. We scope projects around real ROI and start with focused systems that solve your biggest bottleneck first.",
+    },
+    {
+      q: "How much does a custom app cost?",
+      a: "It depends on scope. A focused internal dashboard or automation workflow might start in the low five figures. Larger systems with multiple integrations are scoped with clear milestones during your strategy call — so you know what you're getting before we build.",
+    },
+    {
+      q: "Can you improve existing systems instead of building from scratch?",
+      a: "Absolutely. We often connect, extend, or automate around tools you already use — adding custom dashboards, portals, or workflows on top of your current stack rather than replacing everything at once.",
+    },
+    {
       q: "What types of businesses do you work with?",
-      a: "We work with small business owners, contractors, service businesses, dealerships, restaurants, event companies, manufacturers, and local retailers — especially those that have outgrown spreadsheets and generic software.",
+      a: "Contractors, trades, dealerships, manufacturers, service businesses, event companies, restaurants, and local operators — especially those running critical operations on spreadsheets and manual processes.",
     },
     {
       q: "Do you only build websites?",
-      a: "No. While we build high-performance websites, our core focus is custom business systems — internal dashboards, customer portals, automation pipelines, and AI-powered workflows that help businesses operate more efficiently.",
+      a: "No. Websites are often the front door, but our core work is custom business systems — internal dashboards, customer portals, automation pipelines, and AI-powered workflows that help businesses operate more efficiently.",
     },
     {
       q: "How is custom software different from off-the-shelf tools?",
       a: "Off-the-shelf software is built for everyone, which means it's built for no one specifically. Custom software is engineered around your exact workflow, data, and team — eliminating workarounds and manual processes.",
     },
     {
-      q: "Can you automate our existing tools?",
-      a: "Yes. We integrate with most SaaS platforms via APIs, webhooks, and automation platforms like Zapier and Make — or we build custom connectors when off-the-shelf integrations fall short.",
+      q: "Can you integrate with software we already use?",
+      a: "Yes. We connect CRMs, calendars, payment processors, email tools, and custom APIs via webhooks, Zapier, Make, or custom connectors — so new systems work alongside what you already have.",
+    },
+    {
+      q: "How long does development take?",
+      a: "Focused tools often launch in 4–12 weeks. Larger systems with multiple integrations are scoped with clear milestones. We'll give you a realistic timeline during your strategy call based on your specific project.",
     },
     {
       q: "Where are you located?",
@@ -474,10 +598,11 @@ export const siteConfig = {
     },
   ],
   process: [
-    { step: "01", title: "Discover", description: "Map your workflows, pain points, and goals — we dig into how your business actually operates." },
-    { step: "02", title: "Architect", description: "Design the system — data models, automation flows, UI wireframes, and integration map." },
-    { step: "03", title: "Build", description: "Next.js + TypeScript, iterative development, and feedback loops until it's right." },
-    { step: "04", title: "Deploy & Scale", description: "Launch, train your team, and expand features as your business grows." },
+    { step: "01", title: "Discover", description: "Map your workflows, pain points, and goals — we dig into how your business actually operates, not how a slide deck says it should." },
+    { step: "02", title: "Design", description: "Wireframe the system — data models, user flows, automation logic, and integration map. You see what we're building before we write code." },
+    { step: "03", title: "Build", description: "Iterative development with regular check-ins. You see progress, give feedback, and we adjust as we go." },
+    { step: "04", title: "Launch", description: "Deploy, train your team, and make sure everything works in the real world — not just in a demo." },
+    { step: "05", title: "Optimize", description: "Expand features, refine workflows, and add automation as your business grows and your needs evolve." },
   ],
   serviceArea: "Wisconsin",
   contact: {
