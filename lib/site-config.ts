@@ -225,17 +225,17 @@ export const siteConfig = {
       category: "Customer Appointment Display",
       description:
         "Customer-facing appointment display platform that gives waiting customers real-time queue visibility and reduces front-desk friction for service businesses.",
-      href: "/case-studies",
+      href: "/case-studies/liveque",
       tags: ["Customer Portal", "Real-Time", "Service Business"],
       kind: "capability" as const,
     },
     {
-      slug: "harley-events",
+      slug: "harley-event-management",
       title: "Harley Event Management",
       category: "Event Management Systems",
       description:
         "Custom event management tools for dealership and event operations — registration, scheduling, vendor coordination, and attendee tracking built for complex event workflows.",
-      href: "/case-studies",
+      href: "/case-studies/harley-event-management",
       tags: ["Event Platform", "Registration", "Dealership"],
       kind: "capability" as const,
     },
@@ -348,6 +348,44 @@ export const siteConfig = {
       faqs: [
         { q: "Can you connect to our calendar?", a: "We integrate with Google Calendar, Calendly, and custom scheduling backends." },
         { q: "Do you support payments?", a: "Yes — Stripe and other payment providers can be wired into your checkout or booking flow." },
+      ],
+    },
+    {
+      slug: "custom-software",
+      title: "Custom Business Applications",
+      description:
+        "Internal dashboards, customer portals, CRMs, scheduling systems, and operational tools built around how your business actually works.",
+      longDescription:
+        "We engineer custom business applications — internal dashboards, customer portals, employee tools, inventory management, and lead tracking platforms — so you stop adapting to software that was never built for you.",
+      features: [
+        "Internal dashboards and admin panels",
+        "Customer and employee portals",
+        "Custom CRM and lead tracking",
+        "Scheduling and inventory systems",
+        "PostgreSQL-backed data architecture",
+      ],
+      faqs: [
+        { q: "What types of custom apps do you build?", a: "Internal dashboards, customer portals, CRMs, scheduling systems, inventory management, event platforms, and any operational tool your team needs." },
+        { q: "How is this different from off-the-shelf software?", a: "Custom software is built for your exact workflow, data, and team — eliminating workarounds and manual processes from day one." },
+      ],
+    },
+    {
+      slug: "ai-automation",
+      title: "AI & Automation Services",
+      description:
+        "Lead routing, automated follow-up, CRM automation, AI assistants, and workflow automation that eliminates manual work.",
+      longDescription:
+        "We build intelligent automation — lead routing, CRM wiring, AI assistants, data synchronization, and reporting pipelines — so your systems run while you focus on growth.",
+      features: [
+        "AI assistants and intelligent automation",
+        "Lead routing and automated follow-up",
+        "CRM and workflow automation",
+        "Data synchronization between tools",
+        "Automated reporting dashboards",
+      ],
+      faqs: [
+        { q: "Can you automate our existing tools?", a: "Yes — we integrate with most SaaS platforms via APIs, webhooks, Zapier, Make, or custom connectors." },
+        { q: "What's the difference between Zapier and custom automation?", a: "Zapier handles simple triggers. Custom automation handles complex logic, AI-powered decisions, and integrations off-the-shelf platforms can't support." },
       ],
     },
   ],

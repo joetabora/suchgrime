@@ -23,6 +23,22 @@ const serviceKeywords: Record<string, string[]> = {
     "Stripe checkout integration",
     "conversion-focused booking flows",
   ],
+  "custom-software": [
+    "custom software development wisconsin",
+    "small business software development",
+    "custom business applications",
+    "internal dashboard development",
+    "client portal development",
+    "custom CRM development",
+  ],
+  "ai-automation": [
+    "AI automation services",
+    "business process automation",
+    "workflow automation",
+    "CRM automation",
+    "custom workflow software",
+    "business automation wisconsin",
+  ],
 }
 
 /** Canonical service pages — single source synced with site-config */

@@ -9,11 +9,16 @@ export async function GET() {
 
 ## Primary pages
 - ${base}/
+- ${base}/about
+- ${base}/custom-software
+- ${base}/ai-automation
+- ${base}/web-design
 - ${base}/wisconsin
 - ${base}/services
 - ${base}/locations
 - ${base}/industries
 - ${base}/case-studies
+- ${base}/work
 - ${base}/software
 - ${base}/resources
 - ${base}/glossary
@@ -24,10 +29,16 @@ export async function GET() {
 ## Primary service area
 Wisconsin (headquartered in Milwaukee). National location pages also available.
 
+## Core services
+- Custom Business Applications
+- AI & Automation
+- Professional Websites & Web Applications
+- E-commerce & Booking Systems
+
 ## Content types
-- Programmatic SEO: locations × services and industries × services matrix pages
+- Programmatic SEO: locations × services and industries × services matrix pages (5 services)
 - CMS-managed blog, case studies, and resources
-- Glossary of web development and SEO terms
+- Glossary of web development, software, and SEO terms
 
 ## Contact
 - ${siteConfig.contact.email}

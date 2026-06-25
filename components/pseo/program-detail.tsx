@@ -4,12 +4,14 @@ import { ParlorNavbar } from "@/components/agency/parlor-navbar"
 import { ParlorFooter } from "@/components/agency/parlor-footer"
 import { Breadcrumbs } from "@/components/seo/breadcrumbs"
 import { JsonLd } from "@/components/seo/json-ld"
-import { Badge } from "@/components/ui/badge"
+import { GlassCard } from "@/components/marketing/glass-card"
+import { SectionHeading } from "@/components/marketing/section-heading"
 import type { PseoCollectionId, PseoPage, ResolvedPseoPage } from "@/lib/pseo/types"
 import { buildPseoFaqSchema, buildPseoJsonLd } from "@/lib/pseo/schema"
 import { getAllPagesForCollection, getCollectionConfig } from "@/lib/pseo/registry"
 import { getWisconsinLocations } from "@/lib/pseo/content/locations"
-import { wisconsinHubLinks } from "@/lib/seo/site-links"
+import { getServiceMarketingPath, wisconsinHubLinks } from "@/lib/seo/site-links"
+import { siteConfig } from "@/lib/site-config"
 
 interface ProgramDetailProps {
   resolved: ResolvedPseoPage
@@ -29,14 +31,13 @@ function LinkGrid({
       <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
           <li key={item.href}>
-            <Link
-              href={item.href}
-              className="block border border-white/10 p-4 text-sm transition-colors hover:border-parlor-accent/50"
-            >
-              <span className="font-medium text-text">{item.label}</span>
-              {item.description && (
-                <span className="mt-1 block text-muted line-clamp-2">{item.description}</span>
-              )}
+            <Link href={item.href} className="group block h-full">
+              <GlassCard hover className="h-full">
+                <span className="font-medium text-text group-hover:text-tech">{item.label}</span>
+                {item.description && (
+                  <span className="mt-1 block text-sm text-muted line-clamp-2">{item.description}</span>
+                )}
+              </GlassCard>
             </Link>
           </li>
         ))}
@@ -95,17 +96,20 @@ export async function ProgramDetail({ resolved }: ProgramDetailProps) {
 
           {page.tags && (
             <div className="mb-4 flex flex-wrap gap-2">
-              {page.tags.map((tag) => (
-                <Badge key={tag} variant="accent">
+              {page.tags.slice(0, 6).map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted"
+                >
                   {tag}
-                </Badge>
+                </span>
               ))}
             </div>
           )}
 
           <p className="text-label mb-2">{collection.singularLabel}</p>
-          <h1 className="font-display text-5xl tracking-wide md:text-7xl">
-            {(page.headline ?? page.title).toUpperCase()}
+          <h1 className="font-display text-4xl tracking-wide md:text-6xl lg:text-7xl">
+            {page.headline ?? page.title}
           </h1>
           <p className="mt-6 max-w-3xl text-lg text-muted">{page.intro}</p>
 
@@ -120,8 +124,10 @@ export async function ProgramDetail({ resolved }: ProgramDetailProps) {
           {page.features && page.features.length > 0 && (
             <ul className="mt-10 grid gap-4 sm:grid-cols-2">
               {page.features.map((feature) => (
-                <li key={feature} className="border border-white/10 p-4 text-sm text-muted">
-                  {feature}
+                <li key={feature}>
+                  <GlassCard>
+                    <p className="text-sm text-muted">{feature}</p>
+                  </GlassCard>
                 </li>
               ))}
             </ul>
@@ -129,13 +135,13 @@ export async function ProgramDetail({ resolved }: ProgramDetailProps) {
 
           {page.faqs && page.faqs.length > 0 && (
             <section className="mt-16 border-t border-white/10 pt-12">
-              <h2 className="font-display text-3xl tracking-wide">FAQ</h2>
-              <div className="mt-6 space-y-6">
+              <SectionHeading label="FAQ" title="Common Questions" />
+              <div className="mt-8 space-y-4">
                 {page.faqs.map((faq) => (
-                  <div key={faq.q}>
-                    <h3 className="font-semibold text-text">{faq.q}</h3>
-                    <p className="mt-2 text-muted">{faq.a}</p>
-                  </div>
+                  <GlassCard key={faq.q}>
+                    <h3 className="font-medium text-text">{faq.q}</h3>
+                    <p className="mt-2 text-sm text-muted">{faq.a}</p>
+                  </GlassCard>
                 ))}
               </div>
             </section>
@@ -145,16 +151,16 @@ export async function ProgramDetail({ resolved }: ProgramDetailProps) {
             {page.href && (
               <Link
                 href={page.href}
-                className="inline-block bg-parlor-accent px-8 py-4 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
+                className="inline-block rounded-md bg-parlor-accent px-8 py-4 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
               >
                 VIEW LIVE DEMO
               </Link>
             )}
             <Link
               href="/contact"
-              className="inline-block border border-white/20 px-8 py-4 font-display text-xl tracking-wider transition-colors hover:border-parlor-accent hover:text-parlor-accent"
+              className="glass glass-border inline-block rounded-md border px-8 py-4 font-display text-xl tracking-wider backdrop-blur-sm transition-colors hover:border-tech/40 hover:text-tech"
             >
-              START A PROJECT
+              {siteConfig.primaryCta}
             </Link>
           </div>
 
@@ -182,10 +188,10 @@ export async function ProgramDetail({ resolved }: ProgramDetailProps) {
                   label: `All services in ${allPages.find((p) => p.slug === page.parentSlug)?.title ?? page.parentSlug}`,
                 },
                 {
-                  href: `/services/${page.serviceSlug}`,
+                  href: getServiceMarketingPath(page.serviceSlug),
                   label: `${services.find((s) => s.slug === page.serviceSlug)?.title ?? page.serviceSlug} overview`,
                 },
-                { href: "/contact", label: "Get a quote" },
+                { href: "/contact", label: siteConfig.primaryCta },
               ]}
             />
           )}
@@ -297,14 +303,21 @@ function buildCrossLinks(
         label: `${page.title} in ${l.title}`,
       })),
     })
+    const marketingPath = getServiceMarketingPath(page.slug)
+    if (marketingPath !== `/services/${page.slug}`) {
+      blocks.push({
+        title: "Learn more",
+        items: [{ href: marketingPath, label: `${page.title} overview` }],
+      })
+    }
   }
 
   if (collectionId === "case-studies") {
     blocks.push({
       title: "Explore solutions",
       items: [
-        ...ctx.services.slice(0, 2).map((s) => ({
-          href: `/services/${s.slug}`,
+        ...ctx.services.slice(0, 3).map((s) => ({
+          href: getServiceMarketingPath(s.slug),
           label: s.title,
           description: s.description,
         })),

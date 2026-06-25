@@ -1,3 +1,14 @@
+/** Map pSEO service slugs to primary marketing pillar pages */
+export const serviceMarketingPaths: Record<string, string> = {
+  "custom-software": "/custom-software",
+  "ai-automation": "/ai-automation",
+  "web-development": "/web-design",
+}
+
+export function getServiceMarketingPath(slug: string): string {
+  return serviceMarketingPaths[slug] ?? `/services/${slug}`
+}
+
 /** Top entities for footer and cross-linking — Wisconsin-first, then national */
 export const footerCollections = [
   { label: "Custom Software", href: "/custom-software" },
