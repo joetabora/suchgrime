@@ -9,6 +9,7 @@ import { GlassCard } from "@/components/marketing/glass-card"
 import { WorkflowDiagram } from "@/components/marketing/workflow-diagram"
 import { buildMetadata } from "@/lib/seo/metadata"
 import { faqSchema, serviceSchema } from "@/lib/seo/schemas/faq"
+import { wisconsinHubLinks } from "@/lib/seo/site-links"
 import { siteConfig } from "@/lib/site-config"
 
 const path = "/ai-automation"
@@ -49,8 +50,9 @@ export const metadata = buildMetadata({
     "AI assistants, lead routing, CRM automation, workflow automation, data synchronization, and reporting automation for Wisconsin businesses. Eliminate manual work and connect your tools.",
   path,
   keywords: [
-    "AI automation services",
+    "business automation milwaukee",
     "business automation wisconsin",
+    "AI automation services",
     "business process automation",
     "workflow automation",
     "CRM automation",
@@ -105,6 +107,26 @@ export default function AiAutomationPage() {
           </div>
 
           <section className="mt-20 border-t border-white/10 pt-16">
+            <SectionHeading
+              label="Wisconsin Markets"
+              title="Business Automation Across Wisconsin"
+              description="We build AI automation and workflow systems for operators in Milwaukee, Madison, Green Bay, and markets statewide."
+            />
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {wisconsinHubLinks.map((city) => (
+                <li key={city.href}>
+                  <Link href={`${city.href}/ai-automation`} className="group block">
+                    <GlassCard hover>
+                      <span className="font-medium group-hover:text-tech">{city.label}</span>
+                      <span className="mt-1 block text-sm text-muted">Business automation →</span>
+                    </GlassCard>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="mt-20 border-t border-white/10 pt-16">
             <SectionHeading label="FAQ" title="AI & Automation Questions" />
             <div className="mt-8 space-y-6">
               {faqs.map((faq) => (
@@ -123,8 +145,8 @@ export default function AiAutomationPage() {
             >
               {siteConfig.primaryCta}
             </Link>
-            <Link href="/services/business-automation" className="text-tech hover:underline">
-              Business automation services →
+            <Link href="/wisconsin" className="text-tech hover:underline">
+              Wisconsin markets →
             </Link>
             <Link href="/custom-software" className="text-muted hover:text-tech">
               Custom Software →

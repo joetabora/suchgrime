@@ -26,9 +26,9 @@ export function buildMetadata(input: PageMetaInput): Metadata {
     title: input.title,
     description: input.description,
     keywords: input.keywords ?? [
-      "web development",
+      "custom software development",
       "business automation",
-      "Next.js agency",
+      "small business app development",
       siteConfig.name,
     ],
     alternates: { canonical: canonicalUrl },

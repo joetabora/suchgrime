@@ -40,11 +40,11 @@ export default async function WisconsinPage() {
     })),
   )
 
-  const topMatrixLinks = [
-    { city: "milwaukee", label: "Milwaukee" },
-    { city: "madison", label: "Madison" },
-    { city: "green-bay", label: "Green Bay" },
-  ]
+  const topMatrixServices = [
+    { slug: "custom-software", label: "Custom Software" },
+    { slug: "ai-automation", label: "AI & Automation" },
+    { slug: "web-development", label: "Web Development" },
+  ] as const
 
   return (
     <SiteShell>
@@ -92,20 +92,24 @@ export default async function WisconsinPage() {
           <section className="mt-16 border-t border-white/10 pt-12">
             <h2 className="font-display text-3xl tracking-wide">Top Wisconsin markets</h2>
             <ul className="mt-6 grid gap-3 sm:grid-cols-3">
-              {topMatrixLinks.map(({ city, label }) => (
+              {[
+                { city: "milwaukee", label: "Milwaukee" },
+                { city: "madison", label: "Madison" },
+                { city: "green-bay", label: "Green Bay" },
+              ].map(({ city, label }) => (
                 <li key={city}>
                   <GlassCard>
                     <Link href={`/locations/${city}`} className="font-display text-xl tracking-wide hover:text-tech">
                       {label}
                     </Link>
                     <ul className="mt-3 space-y-1 text-sm text-muted">
-                      {services.slice(0, 3).map((s) => (
+                      {topMatrixServices.map((s) => (
                         <li key={s.slug}>
                           <Link
                             href={`/locations/${city}/${s.slug}`}
                             className="hover:text-tech"
                           >
-                            {s.title}
+                            {s.label}
                           </Link>
                         </li>
                       ))}

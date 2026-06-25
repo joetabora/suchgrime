@@ -351,63 +351,6 @@ export const siteConfig = {
   ],
   servicePages: [
     {
-      slug: "web-development",
-      title: "Professional Websites & Web Applications",
-      description:
-        "High-performance business websites, e-commerce, and web applications engineered for conversion, SEO, and long-term growth.",
-      longDescription:
-        "We build premium marketing sites, landing pages, and web applications with Next.js, TypeScript, and Tailwind CSS. Every project is mobile-first, accessibility-minded, and optimized for Core Web Vitals — the front door to your business, engineered with the same discipline as our custom software.",
-      features: [
-        "Next.js App Router architecture",
-        "Server-side rendering and static generation",
-        "Design systems with Tailwind CSS",
-        "Framer Motion micro-interactions",
-        "Lighthouse scores above 95",
-      ],
-      faqs: [
-        { q: "What stack do you use?", a: "Next.js 15, TypeScript, Tailwind CSS, and PostgreSQL when backend data is needed." },
-        { q: "Do you handle SEO?", a: "Yes — metadata, structured schema, sitemaps, and canonical URLs are built in from day one." },
-      ],
-    },
-    {
-      slug: "business-automation",
-      title: "AI & Business Automation",
-      description:
-        "AI assistants, workflow automation, CRM wiring, and custom integrations that eliminate manual work and connect your tools.",
-      longDescription:
-        "From lead routing and automated follow-up to AI assistants and custom data pipelines, we connect your tools and build intelligent systems so your team spends less time on repetitive tasks and more time on growth.",
-      features: [
-        "AI assistants and intelligent automation",
-        "Custom internal apps and dashboards",
-        "Zapier and Make workflow design",
-        "PostgreSQL-backed data systems",
-        "Lead routing and notification flows",
-      ],
-      faqs: [
-        { q: "Can you automate our existing tools?", a: "Yes — we integrate with most SaaS platforms via APIs, webhooks, and automation platforms." },
-        { q: "Do you build custom admin panels?", a: "Absolutely. Parlor Desk in our portfolio is a live demo of a booking admin we can tailor for your business." },
-      ],
-    },
-    {
-      slug: "ecommerce-booking",
-      title: "E-commerce & Booking Systems",
-      description:
-        "Checkout flows, appointment systems, and conversion paths that turn visitors into customers.",
-      longDescription:
-        "Whether you need an online store, a booking calendar, or a multi-step inquiry flow, we design and build conversion-focused experiences with clean UX and reliable backend wiring.",
-      features: [
-        "Appointment booking systems",
-        "E-commerce checkout flows",
-        "Payment and form integrations",
-        "Status workflows and notifications",
-        "Client tracking dashboards",
-      ],
-      faqs: [
-        { q: "Can you connect to our calendar?", a: "We integrate with Google Calendar, Calendly, and custom scheduling backends." },
-        { q: "Do you support payments?", a: "Yes — Stripe and other payment providers can be wired into your checkout or booking flow." },
-      ],
-    },
-    {
       slug: "custom-software",
       title: "Custom Business Applications",
       description:
@@ -430,19 +373,61 @@ export const siteConfig = {
       slug: "ai-automation",
       title: "AI & Automation Services",
       description:
-        "Lead routing, automated follow-up, CRM automation, AI assistants, and workflow automation that eliminates manual work.",
+        "AI assistants, workflow automation, CRM wiring, lead routing, and custom integrations that eliminate manual work and connect your tools.",
       longDescription:
-        "We build intelligent automation — lead routing, CRM wiring, AI assistants, data synchronization, and reporting pipelines — so your systems run while you focus on growth.",
+        "We build intelligent automation — lead routing, CRM wiring, AI assistants, Zapier and Make workflows, data synchronization, and reporting pipelines — so your systems run while you focus on growth.",
       features: [
         "AI assistants and intelligent automation",
         "Lead routing and automated follow-up",
         "CRM and workflow automation",
+        "Zapier and Make workflow design",
+        "Custom internal apps and dashboards",
         "Data synchronization between tools",
         "Automated reporting dashboards",
+        "PostgreSQL-backed data systems",
       ],
       faqs: [
         { q: "Can you automate our existing tools?", a: "Yes — we integrate with most SaaS platforms via APIs, webhooks, Zapier, Make, or custom connectors." },
         { q: "What's the difference between Zapier and custom automation?", a: "Zapier handles simple triggers. Custom automation handles complex logic, AI-powered decisions, and integrations off-the-shelf platforms can't support." },
+        { q: "Do you build custom admin panels?", a: "Absolutely. Parlor Desk in our portfolio is a live demo of a booking admin we can tailor for your business." },
+      ],
+    },
+    {
+      slug: "web-development",
+      title: "Professional Websites & Web Applications",
+      description:
+        "High-performance business websites, e-commerce, and web applications engineered for conversion, SEO, and long-term growth.",
+      longDescription:
+        "We build premium marketing sites, landing pages, and web applications with Next.js, TypeScript, and Tailwind CSS. Every project is mobile-first, accessibility-minded, and optimized for Core Web Vitals — the front door to your business, engineered with the same discipline as our custom software.",
+      features: [
+        "Next.js App Router architecture",
+        "Server-side rendering and static generation",
+        "Design systems with Tailwind CSS",
+        "Framer Motion micro-interactions",
+        "Lighthouse scores above 95",
+      ],
+      faqs: [
+        { q: "What stack do you use?", a: "Next.js 15, TypeScript, Tailwind CSS, and PostgreSQL when backend data is needed." },
+        { q: "Do you handle SEO?", a: "Yes — metadata, structured schema, sitemaps, and canonical URLs are built in from day one." },
+      ],
+    },
+    {
+      slug: "ecommerce-booking",
+      title: "E-commerce & Booking Systems",
+      description:
+        "Checkout flows, appointment systems, and conversion paths that turn visitors into customers.",
+      longDescription:
+        "Whether you need an online store, a booking calendar, or a multi-step inquiry flow, we design and build conversion-focused experiences with clean UX and reliable backend wiring.",
+      features: [
+        "Appointment booking systems",
+        "E-commerce checkout flows",
+        "Payment and form integrations",
+        "Status workflows and notifications",
+        "Client tracking dashboards",
+      ],
+      faqs: [
+        { q: "Can you connect to our calendar?", a: "We integrate with Google Calendar, Calendly, and custom scheduling backends." },
+        { q: "Do you support payments?", a: "Yes — Stripe and other payment providers can be wired into your checkout or booking flow." },
       ],
     },
   ],

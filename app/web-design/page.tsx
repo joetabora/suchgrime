@@ -17,26 +17,26 @@ const capabilities = siteConfig.websiteServices.items
 const faqs = [
   {
     q: "Do you build websites only, or full business systems?",
-    a: "Both. Websites are often the front door, but we also build the internal dashboards, customer portals, and automation behind them. Every web project is engineered with performance, SEO, and long-term scalability in mind.",
+    a: "Both. Websites are often the front door — the entry point that leads to custom dashboards, customer portals, and automation as your operations grow. Every web project is engineered with performance, SEO, and long-term scalability in mind.",
   },
   {
     q: "What makes your websites different from template agencies?",
-    a: "We use Next.js, TypeScript, and custom engineering — not WordPress themes or page builders. You get Core Web Vitals optimization, structured data, accessibility, and a codebase your team can extend.",
+    a: "We use Next.js, TypeScript, and custom engineering — not WordPress themes or page builders. You get Core Web Vitals optimization, structured data, accessibility, and a codebase your team can extend into custom software.",
   },
   {
     q: "Can you redesign an existing website?",
     a: "Yes. We handle full redesigns with content migration, SEO preservation, and performance improvements — often pairing a new site with automation or custom tools your team needs.",
   },
   {
-    q: "Do you handle SEO for Wisconsin and local markets?",
-    a: "Yes. We build technical SEO foundations — metadata, schema markup, sitemaps, and location-aware content structures — targeting both local Wisconsin searches and national visibility.",
+    q: "When should we move from a website to custom software?",
+    a: "When spreadsheets, manual data entry, or disconnected tools slow your team down. Many clients start with a website and escalate to custom applications or automation once lead volume and operations demand it.",
   },
 ]
 
 export const metadata = buildMetadata({
-  title: "Professional Web Design & Development — Wisconsin",
+  title: "Business Websites & Web Design — The Front Door to Your Systems",
   description:
-    "High-performance business websites, e-commerce, landing pages, and SEO foundations built with Next.js. Milwaukee and Wisconsin web development with engineering discipline.",
+    "High-performance business websites and landing pages built with Next.js — your entry point to custom software, automation, and internal tools. Milwaukee and Wisconsin web development with engineering discipline.",
   path,
   keywords: [
     "milwaukee web design",
@@ -66,9 +66,9 @@ export default function WebDesignPage() {
           <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Web Design", path }]} />
 
           <SectionHeading
-            label="Professional Websites"
-            title={siteConfig.websiteServices.headline}
-            description={siteConfig.websiteServices.description}
+            label="Your Front Door Online"
+            title="Websites That Open the Door to Custom Systems"
+            description="A high-performance website is often where the relationship starts — but many Wisconsin businesses quickly need custom dashboards, customer portals, and automation behind that front door. We build both."
             className="mt-8"
           />
 
@@ -79,6 +79,32 @@ export default function WebDesignPage() {
               </GlassCard>
             ))}
           </div>
+
+          <section className="mt-20 border-t border-white/10 pt-16">
+            <SectionHeading
+              label="Beyond the Website"
+              title="Ready to Scale Past a Marketing Site?"
+              description="When operations outgrow spreadsheets and manual workflows, we build the systems behind your website — custom software and automation engineered with the same Next.js stack."
+            />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <Link href="/custom-software" className="group block">
+                <GlassCard hover className="h-full">
+                  <h3 className="font-display text-xl tracking-wide group-hover:text-tech">Custom Software</h3>
+                  <p className="mt-2 text-sm text-muted">
+                    Internal dashboards, customer portals, CRMs, and operational tools built for how you work.
+                  </p>
+                </GlassCard>
+              </Link>
+              <Link href="/ai-automation" className="group block">
+                <GlassCard hover className="h-full">
+                  <h3 className="font-display text-xl tracking-wide group-hover:text-tech">AI & Automation</h3>
+                  <p className="mt-2 text-sm text-muted">
+                    Lead routing, CRM wiring, workflow automation, and AI assistants that eliminate manual work.
+                  </p>
+                </GlassCard>
+              </Link>
+            </div>
+          </section>
 
           <section className="mt-20 border-t border-white/10 pt-16">
             <SectionHeading
@@ -114,8 +140,11 @@ export default function WebDesignPage() {
             >
               {siteConfig.primaryCta}
             </Link>
-            <Link href="/services/web-development" className="text-tech hover:underline">
-              Web development services →
+            <Link href="/custom-software" className="text-tech hover:underline">
+              Custom software →
+            </Link>
+            <Link href="/ai-automation" className="text-tech hover:underline">
+              AI & automation →
             </Link>
             <Link href="/work" className="text-muted hover:text-tech">
               View portfolio →

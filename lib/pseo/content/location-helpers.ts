@@ -1,42 +1,32 @@
 import type { PseoFaq, PseoPage } from "../types"
 
-export interface LocationSeed {
-  slug: string
-  title: string
-  description: string
-  intro: string
-  region: string
-  state?: string
-  features?: string[]
-  keywords?: string[]
-  geo?: { latitude: number; longitude: number }
-}
-
 export function enrichLocation(raw: LocationSeed): PseoPage {
   if (raw.state === "WI") {
     return enrichWisconsinLocation(raw)
   }
 
   const city = raw.title
+  const cityLower = city.toLowerCase()
   return {
     slug: raw.slug,
     title: raw.title,
     description: raw.description,
-    headline: `${city} Web Development & Automation`,
+    headline: `${city} Custom Software & Automation`,
     intro: raw.intro,
-    body: `${raw.intro} We combine local market positioning with Next.js performance, structured SEO, and workflow automation so ${city} operators can compete on speed and visibility — not just aesthetics. Whether you need a marketing site, booking flow, or internal dashboard, SuchGrime ships production-ready builds tuned for Core Web Vitals and conversion.`,
+    body: `${raw.intro} We build custom business applications, workflow automation, and high-performance websites for ${city} operators — internal dashboards, customer portals, CRM wiring, and Next.js sites engineered for conversion and Core Web Vitals.`,
     features: raw.features ?? [
-      `Local SEO for ${city}`,
+      `Custom software for ${city}`,
+      "Workflow & AI automation",
       "Mobile-first Next.js builds",
-      "Booking & workflow automation",
       "Structured data & schema markup",
     ],
     faqs: defaultLocationFaqs(city),
     keywords: raw.keywords ?? [
-      `${city} web development`,
-      `${city} web agency`,
-      `${city} business automation`,
-      `${city} website design company`,
+      `${cityLower} custom software development`,
+      `${cityLower} business automation`,
+      `${cityLower} small business app development`,
+      `${cityLower} web development`,
+      `${cityLower} website design company`,
     ],
     tags: [raw.region, city],
     geo: raw.geo,
@@ -45,27 +35,29 @@ export function enrichLocation(raw: LocationSeed): PseoPage {
 
 function enrichWisconsinLocation(raw: LocationSeed): PseoPage {
   const city = raw.title
+  const cityLower = city.toLowerCase()
   const isMilwaukee = raw.slug === "milwaukee"
 
   return {
     slug: raw.slug,
     title: raw.title,
     description: raw.description,
-    headline: `${city}, WI Web Development & Automation`,
+    headline: `${city}, WI Custom Software & Automation`,
     intro: raw.intro,
-    body: `${raw.intro} Wisconsin businesses face a unique mix of manufacturing heritage, tight-knit local markets, and seasonal demand swings — we build Next.js sites and automation systems that help ${city} operators capture leads year-round. From LocalBusiness schema and city-specific landing pages to booking flows and CRM wiring, SuchGrime combines Milwaukee-rooted agency craft with engineering discipline. Whether you're a ${raw.region} service business, retailer, or B2B operator, we ship pages built to rank for "${city.toLowerCase()} + service" searches and convert traffic into booked work.`,
+    body: `${raw.intro} Wisconsin businesses face a unique mix of manufacturing heritage, tight-knit local markets, and seasonal demand swings — we build custom software, automation systems, and high-performance websites that help ${city} operators capture leads year-round. From internal dashboards and customer portals to workflow automation and LocalBusiness schema, SuchGrime combines Milwaukee-rooted engineering with systems that scale without adding headcount.`,
     features: raw.features ?? [
-      `Local SEO for ${city}, WI`,
+      `Custom software for ${city}, WI`,
+      "Business automation & AI workflows",
       "Wisconsin-focused content & schema",
-      "Booking & workflow automation",
       "Mobile-first Next.js builds",
     ],
     faqs: wisconsinLocationFaqs(city, isMilwaukee),
     keywords: raw.keywords ?? [
-      `${city.toLowerCase()} wi web development`,
-      `web development agency ${city.toLowerCase()} wi`,
-      `${city.toLowerCase()} business automation`,
-      `${city.toLowerCase()} website design wisconsin`,
+      `${cityLower} custom software development`,
+      `custom business software ${cityLower} wi`,
+      `${cityLower} business automation`,
+      `small business app development ${cityLower}`,
+      `${cityLower} wi web development`,
     ],
     tags: ["Wisconsin", raw.region, city],
     geo: raw.geo,
@@ -79,12 +71,12 @@ function defaultLocationFaqs(city: string): PseoFaq[] {
       a: `Yes. We partner with ${city} businesses nationwide and tailor every build to your market, service area, and operations — without requiring in-person meetings.`,
     },
     {
-      q: `How long does a typical ${city} website project take?`,
-      a: "Most marketing sites launch in 4–8 weeks depending on scope. Automation and booking integrations may extend timelines — we scope clearly upfront.",
+      q: `What custom software can you build for ${city} businesses?`,
+      a: `Internal dashboards, customer portals, CRMs, scheduling systems, inventory tools, and workflow automation — engineered around how your ${city} team actually operates.`,
     },
     {
-      q: `What makes SuchGrime different from other ${city} web agencies?`,
-      a: "We ship on Next.js with SEO and automation built in from day one — not bolted on after launch. Every project includes structured data, performance tuning, and CMS-ready architecture.",
+      q: `What makes SuchGrime different from other ${city} agencies?`,
+      a: "We engineer custom business systems and automation — not template sites. Every project includes structured data, performance tuning, and systems built to scale as you grow.",
     },
     {
       q: `Can you help with local SEO in ${city}?`,
@@ -110,6 +102,18 @@ function wisconsinLocationFaqs(city: string, isMilwaukee: boolean): PseoFaq[] {
         ]
       : []),
   ]
+}
+
+export interface LocationSeed {
+  slug: string
+  title: string
+  description: string
+  intro: string
+  region: string
+  state?: string
+  features?: string[]
+  keywords?: string[]
+  geo?: { latitude: number; longitude: number }
 }
 
 export const WISCONSIN_SUBREGIONS = [

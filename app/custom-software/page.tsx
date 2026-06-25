@@ -9,6 +9,7 @@ import { GlassCard } from "@/components/marketing/glass-card"
 import { WorkflowDiagram } from "@/components/marketing/workflow-diagram"
 import { buildMetadata } from "@/lib/seo/metadata"
 import { faqSchema, serviceSchema } from "@/lib/seo/schemas/faq"
+import { wisconsinHubLinks } from "@/lib/seo/site-links"
 import { siteConfig } from "@/lib/site-config"
 
 const path = "/custom-software"
@@ -49,13 +50,13 @@ export const metadata = buildMetadata({
     "Custom business applications, internal dashboards, customer portals, CRMs, and scheduling systems built for how your business actually works. Wisconsin-based, serving nationwide.",
   path,
   keywords: [
+    "custom business software wisconsin",
+    "small business app development",
     "custom software development wisconsin",
-    "small business software development",
     "custom business applications",
     "internal dashboard development",
     "client portal development",
     "custom CRM development",
-    "small business app development",
     "milwaukee software development",
     siteConfig.name,
   ],
@@ -102,6 +103,26 @@ export default function CustomSoftwarePage() {
               </GlassCard>
             ))}
           </div>
+
+          <section className="mt-20 border-t border-white/10 pt-16">
+            <SectionHeading
+              label="Wisconsin Markets"
+              title="Custom Software Across Wisconsin"
+              description="We build custom business applications for operators in Milwaukee, Madison, Green Bay, and markets statewide."
+            />
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {wisconsinHubLinks.map((city) => (
+                <li key={city.href}>
+                  <Link href={`${city.href}/custom-software`} className="group block">
+                    <GlassCard hover>
+                      <span className="font-medium group-hover:text-tech">{city.label}</span>
+                      <span className="mt-1 block text-sm text-muted">Custom software →</span>
+                    </GlassCard>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
 
           <section className="mt-20 border-t border-white/10 pt-16">
             <SectionHeading

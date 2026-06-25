@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 import { getSiteUrl } from "@/lib/utils"
 import { getAllCollectionIds, getAllPagesForCollection, getCollectionConfig } from "./registry"
 import { serviceCanonicalOverrides } from "@/lib/seo/site-links"
+import { highValueMatrixServices } from "./service-angles"
 
 const LOCATION_COLLECTIONS = new Set(["locations"])
 
@@ -24,6 +25,12 @@ async function buildCollectionEntries(
     const pages = await getAllPagesForCollection(id)
     for (const page of pages) {
       if (id === "services" && serviceCanonicalOverrides[page.slug]) continue
+
+      let priority = page.isMatrix ? config.priority - 0.1 : config.priority - 0.05
+      if (page.isMatrix && page.serviceSlug && highValueMatrixServices.has(page.serviceSlug)) {
+        priority += 0.05
+      }
+
       entries.push({
         url: `${base}${config.path}/${page.slug}`,
         lastModified: page.lastModified
@@ -32,7 +39,7 @@ async function buildCollectionEntries(
             ? new Date(page.date)
             : now,
         changeFrequency: config.changeFrequency,
-        priority: page.isMatrix ? config.priority - 0.1 : config.priority - 0.05,
+        priority,
       })
     }
   }

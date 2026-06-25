@@ -26,7 +26,7 @@ export const glossaryTerms: PseoPage[] = [
     intro: "Automation connects forms, CRMs, calendars, and notifications so teams spend less time on data entry.",
     body: "Common automation patterns include lead routing, appointment reminders, invoice triggers, and dashboard reporting. Custom internal apps often outperform generic SaaS when workflows are unique to the business.",
     keywords: ["business automation", "workflow automation", "internal tools"],
-    href: "/services/business-automation",
+    href: "/ai-automation",
   },
   {
     slug: "local-seo",

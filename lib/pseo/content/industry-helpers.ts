@@ -2,29 +2,30 @@ import type { PseoFaq, PseoPage } from "../types"
 
 export function enrichIndustry(page: PseoPage): PseoPage {
   const industry = page.title
+  const industryLower = industry.toLowerCase()
   return {
     ...page,
-    headline: page.headline ?? `${industry} Web Development`,
+    headline: page.headline ?? `${industry} Custom Software & Automation`,
     body:
       page.body ??
-      `${page.intro} SuchGrime builds industry-specific websites and automation for ${industry.toLowerCase()} operators — with compliance-minded UX, conversion-focused architecture, and SEO patterns that match how your buyers search. From intake forms to CRM wiring, we reduce manual work while strengthening your digital presence.`,
+      `${page.intro} SuchGrime builds custom business applications and automation for ${industryLower} operators — internal dashboards, customer portals, workflow systems, and high-performance websites with compliance-minded UX and conversion-focused architecture. From intake forms to CRM wiring, we reduce manual work while strengthening your digital presence.`,
     faqs: page.faqs?.length
       ? page.faqs
       : [
           {
-            q: `What ${industry.toLowerCase()} website features do you build?`,
-            a: `We tailor features to ${industry.toLowerCase()} workflows — booking, intake, service pages, trust modules, and automation that matches how your team operates.`,
+            q: `What custom software do you build for ${industryLower} businesses?`,
+            a: `We tailor internal dashboards, customer portals, scheduling systems, and automation to ${industryLower} workflows — booking, intake, service pages, trust modules, and operational tools your team actually uses.`,
           },
           {
-            q: `Do you understand ${industry.toLowerCase()} compliance requirements?`,
+            q: `Do you understand ${industryLower} compliance requirements?`,
             a: "We implement secure form patterns, accessibility standards, and UX conventions common in regulated industries — and recommend legal review for compliance-specific requirements.",
           },
           {
-            q: `Can you integrate with our existing ${industry.toLowerCase()} tools?`,
-            a: "Yes. We wire CRMs, scheduling platforms, payment processors, and custom APIs so your site and ops stay connected.",
+            q: `Can you integrate with our existing ${industryLower} tools?`,
+            a: "Yes. We wire CRMs, scheduling platforms, payment processors, and custom APIs so your systems and operations stay connected.",
           },
           {
-            q: `How does SEO work for ${industry.toLowerCase()} businesses?`,
+            q: `How does SEO work for ${industryLower} businesses?`,
             a: "We build programmatic service and location pages, FAQ schema, and internal linking hubs so you capture long-tail searches across your service area.",
           },
         ],

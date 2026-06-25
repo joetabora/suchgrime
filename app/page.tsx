@@ -22,7 +22,10 @@ export const metadata = buildMetadata({
     "Custom business applications, AI automation, internal dashboards, customer portals, and high-performance websites for Wisconsin businesses. Stop forcing your business to fit someone else's software.",
   path: "/",
   keywords: [
+    "custom business software wisconsin",
     "custom software development wisconsin",
+    "small business app development",
+    "business automation milwaukee",
     "business automation wisconsin",
     "custom business applications",
     "AI automation services",

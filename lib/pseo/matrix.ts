@@ -1,5 +1,6 @@
 import type { PseoCollectionId, PseoPage } from "./types"
 import { getAllPagesForCollection } from "./registry"
+import { getServiceAngle } from "./service-angles"
 
 function isWisconsinLocation(parent: PseoPage): boolean {
   return parent.tags?.includes("Wisconsin") ?? false
@@ -20,18 +21,19 @@ export function buildMatrixPages(
     if (parent.isMatrix) continue
 
     const isWi = parentCollection === "locations" && isWisconsinLocation(parent)
+    const parentLabelText = parent.title
+    const parentLower = parentLabelText.toLowerCase()
+    const wiSuffix = isWi ? ", WI" : ""
 
     for (const service of serviceList) {
       if (service.isMatrix) continue
 
-      const parentLabelText = parent.title
       const serviceLabel = service.title
       const serviceLower = serviceLabel.toLowerCase()
-      const wiSuffix = isWi ? ", WI" : ""
+      const angle = getServiceAngle(service.slug)
 
-      const wiBodyExtra = isWi
-        ? ` Wisconsin's mix of manufacturing, healthcare, tourism, and tight-knit local markets means ${parentLabelText} businesses need sites that rank year-round — not just in peak season. SuchGrime is Milwaukee-based and serves operators statewide with ${serviceLower} built for Midwest buyers who search by city and service.`
-        : ""
+      const wiBodyExtra =
+        isWi && angle.wiBodyExtra ? ` ${angle.wiBodyExtra(parentLabelText, serviceLower)}` : ""
 
       const baseFaqs = [
         {
@@ -44,7 +46,12 @@ export function buildMatrixPages(
         },
         {
           q: `How long does ${serviceLower} take for a ${parentLabelText} business?`,
-          a: "Timelines vary by scope — marketing sites typically launch in 4–8 weeks. Automation and booking integrations are scoped separately with clear milestones.",
+          a:
+            service.slug === "custom-software"
+              ? "Focused internal tools often launch in 4–12 weeks. Larger systems with multiple integrations are scoped with clear milestones during your strategy call."
+              : service.slug === "ai-automation"
+                ? "Automation projects vary by complexity — simple workflow wiring may take 2–4 weeks; multi-system pipelines are scoped with clear milestones."
+                : "Marketing sites typically launch in 4–8 weeks. Automation and booking integrations are scoped separately with clear milestones.",
         },
         {
           q: `Can you help us rank for ${parentLabelText} ${serviceLower} searches?`,
@@ -52,7 +59,7 @@ export function buildMatrixPages(
         },
         {
           q: `Do you integrate with tools our ${parentLabelText} team already uses?`,
-          a: "We wire CRMs, scheduling platforms, payment processors, email tools, and custom APIs so your site and operations stay connected after launch.",
+          a: "We wire CRMs, scheduling platforms, payment processors, email tools, and custom APIs so your systems stay connected after launch.",
         },
         {
           q: `Why choose SuchGrime over a local ${parentLabelText} agency?`,
@@ -68,7 +75,7 @@ export function buildMatrixPages(
             },
             {
               q: `Can ${serviceLower} help Wisconsin small businesses reduce manual work?`,
-              a: `Absolutely. We scope ${serviceLower} around real ROI — fewer spreadsheet hours, faster lead response, and pages that convert ${parentLabelText} search traffic into booked work.`,
+              a: `Absolutely. We scope ${serviceLower} around real ROI — fewer spreadsheet hours, faster lead response, and systems that help ${parentLabelText} operators compete without adding headcount.`,
             },
           ]
         : []
@@ -80,9 +87,9 @@ export function buildMatrixPages(
         isMatrix: true,
         title: `${serviceLabel} in ${parentLabelText}${wiSuffix}`,
         headline: `${serviceLabel} for ${parentLabelText}${wiSuffix} Businesses`,
-        description: `${serviceLabel} for ${parentLabelText}${wiSuffix} businesses — custom software, business systems, automation, and high-performance websites from SuchGrime.`,
-        intro: `We help ${parentLabelText}${wiSuffix} businesses with ${serviceLower} — custom applications, workflow automation, internal dashboards, and web systems built around how you actually operate.`,
-        body: `${parentLabelText}${wiSuffix} operators face unique market pressure — visibility, operational efficiency, and systems that scale without adding headcount. Our ${serviceLower} engagements combine custom engineering with technical SEO foundations: fast Next.js architecture, schema markup, internal linking, and automation that eliminates manual work.${wiBodyExtra} ${parent.intro.slice(0, 180)}${parent.intro.length > 180 ? "…" : ""} We scope every project around measurable outcomes — fewer spreadsheet hours, faster lead response, and systems built to rank for ${parentLabelText} + ${serviceLower} searches.`,
+        description: angle.description(parentLabelText, serviceLabel, wiSuffix),
+        intro: angle.intro(parentLabelText, serviceLower, wiSuffix),
+        body: `${angle.body(parentLabelText, serviceLower, wiSuffix, parent.intro)}${wiBodyExtra}`,
         features: [
           ...((service.features ?? []).slice(0, 3)),
           `${parentLabelText}${wiSuffix}-specific positioning`,
@@ -91,16 +98,13 @@ export function buildMatrixPages(
         ],
         faqs: [...baseFaqs, ...wiFaqs],
         keywords: [
-          `${serviceLabel} ${parentLabelText}${wiSuffix}`,
-          `${parentLabelText} ${serviceLower}`,
-          `${parentLabelText}${wiSuffix} ${serviceLower} agency`,
-          `${serviceLower} company ${parentLabelText}`,
+          ...angle.keywords(parentLabelText, parentLower, serviceLabel, serviceLower, wiSuffix),
           ...(isWi
             ? [
-                `${parentLabelText.toLowerCase()} wi ${serviceLower}`,
-                `wisconsin ${serviceLower} ${parentLabelText.toLowerCase()}`,
+                `${parentLower} wi ${service.slug.replace(/-/g, " ")}`,
+                `wisconsin ${service.slug.replace(/-/g, " ")} ${parentLower}`,
               ]
-            : [`${parentLabelText} web agency`]),
+            : [`${parentLower} ${service.slug.replace(/-/g, " ")} company`]),
         ],
       })
     }

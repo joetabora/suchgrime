@@ -76,12 +76,35 @@ async function upsertEntry(input: ReturnType<typeof pseoPageToEntryInput>) {
   return "created"
 }
 
+async function pruneOrphanedEntries(
+  collection: Exclude<PseoCollectionId, "blog">,
+  validSlugs: Set<string>,
+): Promise<number> {
+  const db = getDb()
+  if (!db) throw new Error("DATABASE_URL is not configured")
+
+  const rows = await db
+    .select({ id: contentEntries.id, slug: contentEntries.slug })
+    .from(contentEntries)
+    .where(eq(contentEntries.collection, collection))
+
+  let deleted = 0
+  for (const row of rows) {
+    if (!validSlugs.has(row.slug)) {
+      await db.delete(contentEntries).where(eq(contentEntries.id, row.id))
+      deleted++
+    }
+  }
+  return deleted
+}
+
 export async function seedCmsContent() {
   const db = getDb()
   if (!db) throw new Error("DATABASE_URL is not configured")
 
   let created = 0
   let updated = 0
+  let deleted = 0
 
   for (const { collection, pages } of STATIC_COLLECTIONS) {
     for (const page of pages) {
@@ -89,6 +112,7 @@ export async function seedCmsContent() {
       if (result === "created") created++
       else updated++
     }
+    deleted += await pruneOrphanedEntries(collection, new Set(pages.map((p) => p.slug)))
   }
 
   if (fs.existsSync(BLOG_DIR)) {
@@ -122,5 +146,5 @@ export async function seedCmsContent() {
     }
   }
 
-  return { created, updated }
+  return { created, updated, deleted }
 }
