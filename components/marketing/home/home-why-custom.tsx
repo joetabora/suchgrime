@@ -8,8 +8,8 @@ import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomeWhyCustom() {
   return (
-    <section id="why" className="border-b border-white/8 bg-bg-elevated py-24 md:py-32 halftone">
-      <div className="relative mx-auto max-w-[1400px] px-6 md:px-12">
+    <section id="why" className="poster-section border-b border-white/10 bg-bg-elevated py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.whyCustom.label}
           title={siteConfig.homeSections.whyCustom.title}
@@ -20,13 +20,13 @@ export function HomeWhyCustom() {
           {siteConfig.whyCustom.points.map((point, i) => (
             <motion.div
               key={point.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={staggerDelay(i)}
             >
-              <GlassCard variant="pressed">
-                <h3 className="display-heading text-2xl text-text">{point.title}</h3>
+              <GlassCard>
+                <h3 className="font-display text-2xl tracking-wide text-text">{point.title}</h3>
                 <p className="mt-3 leading-relaxed text-muted">{point.description}</p>
               </GlassCard>
             </motion.div>

@@ -9,7 +9,7 @@ import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomeAutomation() {
   return (
-    <section className="border-b border-white/8 py-24 md:py-32">
+    <section className="poster-section border-b border-white/10 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.automation.label}
@@ -21,13 +21,13 @@ export function HomeAutomation() {
           {siteConfig.automationExamples.map((example, i) => (
             <motion.div
               key={example.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={staggerDelay(i)}
             >
-              <GlassCard variant="pressed" className="h-full">
-                <h3 className="display-heading text-xl text-text">{example.title}</h3>
+              <GlassCard className="h-full">
+                <h3 className="font-display text-2xl tracking-wide text-text">{example.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{example.description}</p>
                 <div className="mt-6">
                   <WorkflowDiagram nodes={example.nodes} direction="vertical" />

@@ -9,8 +9,8 @@ import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomeSpreadsheet() {
   return (
-    <section className="relative border-b border-white/8 py-24 md:py-32 paper-grain">
-      <div className="relative mx-auto max-w-[1400px] px-6 md:px-12">
+    <section className="poster-section border-b border-white/10 py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.spreadsheet.label}
           title={siteConfig.homeSections.spreadsheet.title}
@@ -21,12 +21,12 @@ export function HomeSpreadsheet() {
           {siteConfig.spreadsheetSystems.map((system, i) => (
             <motion.div
               key={system.label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={staggerDelay(i)}
             >
-              <GlassCard variant="pressed">
+              <GlassCard>
                 <p className="text-label mb-4">{system.label}</p>
                 <WorkflowDiagram
                   nodes={[

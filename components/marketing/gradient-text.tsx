@@ -8,5 +8,5 @@ interface GradientTextProps {
 }
 
 export function GradientText({ children, className, as: Tag = "span" }: GradientTextProps) {
-  return <Tag className={cn("text-gradient", className)}>{children}</Tag>
+  return <Tag className={cn("text-parlor-accent", className)}>{children}</Tag>
 }

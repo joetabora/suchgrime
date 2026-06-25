@@ -6,14 +6,13 @@ import { siteConfig } from "@/lib/site-config"
 import { SectionHeading } from "@/components/marketing/section-heading"
 import { GlassCard } from "@/components/marketing/glass-card"
 import { PortraitImage } from "@/components/marketing/portrait-image"
-import { Stamp } from "@/components/marketing/stamp"
-import { slideInLeft, staggerDelay } from "@/components/marketing/motion"
+import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomeAboutJoe() {
   const bioParagraphs = siteConfig.aboutJoe.bio.split("\n\n").filter(Boolean)
 
   return (
-    <section id="about-joe" className="border-b border-white/8 py-24 md:py-32 paper-grain">
+    <section id="about-joe" className="poster-section border-b border-white/10 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.aboutJoe.label}
@@ -21,25 +20,30 @@ export function HomeAboutJoe() {
         />
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(280px,360px)_1fr] lg:gap-16">
-          <motion.div {...slideInLeft} className="bracket-frame">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={staggerDelay(0)}
+          >
             <PortraitImage />
             <ul className="mt-6 flex flex-wrap gap-2">
               {siteConfig.aboutJoe.backgroundAreas.map((area) => (
                 <li key={area}>
-                  <Stamp rotate={area.length % 2 === 0 ? "left" : "right"}>{area}</Stamp>
+                  <span className="sticker">{area}</span>
                 </li>
               ))}
             </ul>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={staggerDelay(1)}
           >
-            <GlassCard variant="pressed" className="mb-8 border-l-2 border-l-purple">
-              <p className="font-quote text-xl leading-snug text-text md:text-2xl">
+            <GlassCard className="mb-8 border-l-2 border-l-parlor-accent">
+              <p className="font-display text-xl tracking-wide text-parlor-accent md:text-2xl">
                 &ldquo;{siteConfig.aboutJoe.pullQuote}&rdquo;
               </p>
             </GlassCard>
@@ -53,7 +57,7 @@ export function HomeAboutJoe() {
             <div className="mt-10">
               <Link
                 href={siteConfig.primaryCtaHref}
-                className="inline-block rounded-sm bg-parlor-accent px-8 py-3 text-base font-semibold text-text transition-colors hover:bg-parlor-accent/85"
+                className="inline-block bg-parlor-accent px-8 py-3 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
               >
                 {siteConfig.primaryCta}
               </Link>

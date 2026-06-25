@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { springGentle, staggerDelay } from "@/components/marketing/motion"
+import { staggerDelay } from "@/components/marketing/motion"
 
 export interface WorkflowNode {
   label: string
@@ -22,9 +22,9 @@ function normalizeNodes(nodes: readonly (WorkflowNode | string)[] | WorkflowNode
 }
 
 const variantStyles = {
-  default: "border-white/12 bg-surface/80 text-text",
-  accent: "border-purple/35 bg-purple/10 text-purple-bright",
-  muted: "border-white/8 bg-white/[0.02] text-muted line-through decoration-purple/30",
+  default: "border-white/12 bg-surface text-text",
+  accent: "border-parlor-accent/50 bg-parlor-accent/10 text-parlor-accent",
+  muted: "border-white/10 bg-bg text-muted line-through decoration-parlor-accent/30",
 }
 
 export function WorkflowDiagram({
@@ -52,32 +52,27 @@ export function WorkflowDiagram({
           )}
         >
           <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.97 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={staggerDelay(i)}
             className={cn(
-              "rounded-sm border px-4 py-2.5 font-mono text-[11px] uppercase tracking-wider",
+              "border px-4 py-2.5 font-mono text-[11px] uppercase tracking-wider",
               variantStyles[node.variant ?? "default"],
             )}
           >
             {node.label}
           </motion.div>
           {i < normalized.length - 1 && (
-            <motion.span
-              initial={{ opacity: 0, scaleX: 0 }}
-              whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ ...springGentle, delay: i * 0.08 + 0.1 }}
-              style={{ transformOrigin: isHorizontal ? "left center" : "center top" }}
+            <span
               className={cn(
-                "shrink-0 font-display text-purple/50",
+                "shrink-0 font-display text-parlor-accent/50",
                 isHorizontal ? "text-base" : "rotate-90 text-base",
               )}
               aria-hidden="true"
             >
               →
-            </motion.span>
+            </span>
           )}
         </div>
       ))}

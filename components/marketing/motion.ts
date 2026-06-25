@@ -43,10 +43,3 @@ export const slideInLeft = {
 export function staggerDelay(index: number, base = 0.06) {
   return { ...springGentle, delay: index * base }
 }
-
-export const inkDraw = {
-  initial: { pathLength: 0, opacity: 0 },
-  whileInView: { pathLength: 1, opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
-}

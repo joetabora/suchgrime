@@ -5,13 +5,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import { SectionHeading } from "@/components/marketing/section-heading"
-import { springGentle } from "@/components/marketing/motion"
 
 export function HomeFaq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="border-b border-white/8 bg-bg-elevated py-24 md:py-32">
+    <section className="poster-section border-b border-white/10 bg-bg-elevated py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.faq.label}
@@ -19,7 +18,7 @@ export function HomeFaq() {
           description={siteConfig.homeSections.faq.description}
         />
 
-        <div className="mt-12 divide-y divide-white/8 border border-white/8">
+        <div className="mt-12 divide-y divide-white/10 border border-white/10">
           {siteConfig.homeFaqs.map((faq, i) => {
             const isOpen = openIndex === i
             const panelId = `faq-panel-${i}`
@@ -36,7 +35,7 @@ export function HomeFaq() {
                 >
                   <span className="font-medium text-text">{faq.q}</span>
                   <ChevronDown
-                    className={`h-5 w-5 shrink-0 text-purple/60 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    className={`h-5 w-5 shrink-0 text-parlor-accent/60 transition-transform ${isOpen ? "rotate-180" : ""}`}
                     aria-hidden="true"
                   />
                 </button>
@@ -49,7 +48,7 @@ export function HomeFaq() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={springGentle}
+                      transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
                       <p className="px-6 pb-5 leading-relaxed text-muted">{faq.a}</p>

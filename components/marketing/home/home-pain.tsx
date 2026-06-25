@@ -8,9 +8,8 @@ import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomePain() {
   return (
-    <section className="relative border-b border-white/8 py-24 md:py-32">
-      <div className="absolute inset-0 halftone opacity-40" aria-hidden="true" />
-      <div className="relative mx-auto max-w-[1400px] px-6 md:px-12">
+    <section className="poster-section border-b border-white/10 py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.pain.label}
           title={siteConfig.homeSections.pain.title}
@@ -21,12 +20,12 @@ export function HomePain() {
           {siteConfig.painPoints.map((point, i) => (
             <motion.div
               key={point}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={staggerDelay(i)}
             >
-              <GlassCard variant="pressed" className="h-full">
+              <GlassCard className="h-full">
                 <p className="text-sm leading-relaxed text-muted md:text-base">{point}</p>
               </GlassCard>
             </motion.div>
@@ -34,13 +33,13 @@ export function HomePain() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={staggerDelay(0)}
-          className="mt-16 border border-purple/20 bg-purple/5 px-8 py-10 text-center"
+          className="mt-16 border border-parlor-accent/30 bg-parlor-accent/10 px-8 py-10 text-center"
         >
-          <p className="display-heading text-3xl text-text letterpress md:text-4xl">
+          <p className="font-display text-3xl tracking-wide text-text md:text-4xl">
             {siteConfig.homeSections.pain.closingLine}
           </p>
         </motion.div>
