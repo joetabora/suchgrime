@@ -5,12 +5,12 @@ import { siteConfig } from "@/lib/site-config"
 import { SectionHeading } from "@/components/marketing/section-heading"
 import { GlassCard } from "@/components/marketing/glass-card"
 import { WorkflowDiagram } from "@/components/marketing/workflow-diagram"
+import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomeSpreadsheet() {
   return (
-    <section className="relative border-b border-white/10 py-24 md:py-32">
-      <div className="absolute inset-0 blueprint-grid opacity-30" aria-hidden="true" />
-      <div className="relative mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
+    <section className="relative border-b border-white/8 py-24 md:py-32 paper-grain">
+      <div className="relative mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.spreadsheet.label}
           title={siteConfig.homeSections.spreadsheet.title}
@@ -21,15 +21,13 @@ export function HomeSpreadsheet() {
           {siteConfig.spreadsheetSystems.map((system, i) => (
             <motion.div
               key={system.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              transition={staggerDelay(i)}
             >
-              <GlassCard variant="steel">
-                <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-purple/70">
-                  {system.label}
-                </p>
+              <GlassCard variant="pressed">
+                <p className="text-label mb-4">{system.label}</p>
                 <WorkflowDiagram
                   nodes={[
                     { label: system.from, variant: "muted" },

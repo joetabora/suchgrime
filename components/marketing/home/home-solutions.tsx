@@ -6,11 +6,12 @@ import { ArrowUpRight } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import { SectionHeading } from "@/components/marketing/section-heading"
 import { GlassCard } from "@/components/marketing/glass-card"
+import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomeSolutions() {
   return (
-    <section id="solutions" className="border-b border-white/10 bg-bg-elevated py-24 md:py-32">
-      <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
+    <section id="solutions" className="border-b border-white/8 bg-bg-elevated py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.solutions.label}
           title={siteConfig.homeSections.solutions.title}
@@ -24,13 +25,13 @@ export function HomeSolutions() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              whileHover={{ y: -4 }}
+              transition={staggerDelay(i, 0.04)}
+              whileHover={{ y: -3 }}
             >
               <Link href={solution.href} className="group block h-full">
-                <GlassCard variant="steel" hover className="flex h-full flex-col">
+                <GlassCard variant="pressed" hover className="flex h-full flex-col">
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="font-display text-lg tracking-wide group-hover:text-purple-bright">
+                    <h3 className="display-heading text-lg text-text group-hover:text-purple-bright">
                       {solution.title}
                     </h3>
                     <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-purple" />

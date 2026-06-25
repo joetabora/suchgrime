@@ -4,43 +4,45 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { siteConfig } from "@/lib/site-config"
 import { GradientText } from "@/components/marketing/gradient-text"
+import { Stamp } from "@/components/marketing/stamp"
+import { HandAnnotation } from "@/components/marketing/hand-annotation"
+import { springGentle } from "@/components/marketing/motion"
 
 export function HomeHero() {
   return (
-    <section className="relative flex min-h-screen flex-col border-b border-white/10 pt-[57px]">
-      <div className="absolute inset-0 grid-glow" aria-hidden="true" />
+    <section className="relative flex min-h-screen flex-col border-b border-white/8 pt-[57px]">
+      <div className="absolute inset-0 grid-glow paper-grain" aria-hidden="true" />
 
-      <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center border-x border-white/10 px-6 py-20 md:px-12">
+      <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-6 py-20 md:px-12 lg:pl-16">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="bracket-frame p-6 md:p-8"
+          transition={springGentle}
+          className="bracket-frame max-w-4xl py-8 pl-6 md:pl-10"
         >
-          <span className="mb-6 inline-block rounded-full border border-purple/30 bg-purple/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-purple-bright">
-            {siteConfig.homeSections.hero.badge}
-          </span>
+          <Stamp className="mb-8">{siteConfig.homeSections.hero.badge}</Stamp>
 
-          <h1 className="max-w-5xl font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.95] tracking-wide">
+          <h1 className="display-heading max-w-4xl text-[clamp(2.25rem,5.5vw,4.5rem)] text-text letterpress">
             {siteConfig.heroHeadline}
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg text-muted md:text-xl">
+          <p className="relative mt-8 max-w-2xl text-lg leading-relaxed md:text-xl">
             <GradientText as="span">{siteConfig.tagline}</GradientText>
+            <HandAnnotation kind="underline" className="opacity-80" />
           </p>
 
-          <p className="mt-4 max-w-2xl text-muted">{siteConfig.heroSubtext}</p>
+          <p className="mt-6 max-w-2xl leading-relaxed text-muted">{siteConfig.heroSubtext}</p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-12 flex flex-wrap gap-4">
             <Link
               href={siteConfig.primaryCtaHref}
-              className="rounded-md bg-parlor-accent px-8 py-3.5 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
+              className="rounded-sm bg-parlor-accent px-8 py-3.5 text-base font-semibold text-text transition-colors hover:bg-parlor-accent/85"
             >
               {siteConfig.primaryCta}
             </Link>
             <Link
               href="#solutions"
-              className="glass glass-border rounded-md border px-8 py-3.5 font-display text-xl tracking-wider backdrop-blur-sm transition-colors hover:border-purple/40 hover:text-purple-bright"
+              className="pressed-card rounded-sm border border-white/10 px-8 py-3.5 text-base font-semibold text-muted transition-colors hover:border-purple/30 hover:text-text"
             >
               {siteConfig.secondaryCta}
             </Link>
@@ -48,13 +50,14 @@ export function HomeHero() {
         </motion.div>
       </div>
 
-      <div className="relative border-t border-white/10">
-        <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 py-4 md:px-12">
+      <div className="relative border-t border-white/8">
+        <div className="mx-auto max-w-[1400px] px-6 py-5 md:px-12">
           <div className="flex flex-wrap gap-2">
-            {siteConfig.marqueePhrases.slice(0, 8).map((phrase) => (
+            {siteConfig.marqueePhrases.slice(0, 8).map((phrase, i) => (
               <span
                 key={phrase}
-                className="rounded-full border border-white/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-muted"
+                className="ink-stamp text-[10px]"
+                style={{ transform: `rotate(${i % 2 === 0 ? -1 : 1}deg)` }}
               >
                 {phrase}
               </span>

@@ -19,29 +19,29 @@ export function ParlorNavbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-bg/80 backdrop-blur-md">
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-white/8 bg-bg/85 backdrop-blur-md">
         <nav
-          className="mx-auto grid max-w-[1400px] grid-cols-[1fr_auto] items-stretch lg:grid-cols-[auto_1fr_auto]"
+          className="mx-auto flex max-w-[1400px] items-stretch justify-between px-4 md:px-8"
           aria-label="Main navigation"
         >
           <Link
             href="/"
-            className="flex flex-col justify-center border-r border-white/10 px-6 py-4 transition-colors hover:bg-white/[0.03]"
+            className="flex flex-col justify-center py-4 pr-6 transition-colors hover:opacity-80"
           >
-            <span className="font-display text-2xl leading-none tracking-wider">
-              {siteConfig.name.toUpperCase()}
+            <span className="display-heading text-2xl leading-none text-text">
+              {siteConfig.name}
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-tech">
+            <span className="mt-0.5 font-body text-[10px] font-semibold tracking-[0.14em] text-muted uppercase">
               {siteConfig.subtitle}
             </span>
           </Link>
 
-          <ul className="hidden items-stretch lg:flex">
+          <ul className="hidden items-center gap-1 lg:flex">
             {siteConfig.navLinks.map((link) => (
-              <li key={link.href} className="flex">
+              <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="flex items-center border-r border-white/10 px-5 text-sm font-medium uppercase tracking-wider text-muted transition-colors hover:bg-white/5 hover:text-text"
+                  className="rounded-sm px-4 py-2 text-sm font-medium text-muted transition-colors hover:bg-white/5 hover:text-text"
                 >
                   {link.label}
                 </Link>
@@ -49,16 +49,16 @@ export function ParlorNavbar() {
             ))}
           </ul>
 
-          <div className="flex items-stretch">
+          <div className="flex items-center gap-2">
             <Link
               href={siteConfig.primaryCtaHref}
-              className="hidden items-center bg-parlor-accent px-6 text-sm font-semibold uppercase tracking-wider text-text transition-colors hover:bg-parlor-accent/80 lg:flex"
+              className="hidden items-center rounded-sm bg-parlor-accent px-5 py-2.5 text-sm font-semibold text-text transition-colors hover:bg-parlor-accent/85 lg:flex"
             >
               {siteConfig.primaryCta}
             </Link>
             <button
               type="button"
-              className="flex min-h-[56px] min-w-[56px] items-center justify-center border-l border-white/10 px-6 lg:hidden"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-sm border border-white/10 lg:hidden"
               onClick={() => setMenuOpen(true)}
               aria-expanded={menuOpen}
               aria-label="Open menu"
@@ -70,13 +70,13 @@ export function ParlorNavbar() {
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-bg/95 backdrop-blur-lg">
-          <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
-            <span className="font-display text-3xl tracking-wider">SUCHGRIME</span>
+        <div className="fixed inset-0 z-50 flex flex-col bg-bg/97 backdrop-blur-lg paper-grain">
+          <div className="flex items-center justify-between border-b border-white/8 px-6 py-4">
+            <span className="display-heading text-3xl text-text">{siteConfig.name}</span>
             <button
               type="button"
               onClick={closeMenu}
-              className="flex min-h-11 min-w-11 items-center justify-center border border-white/10"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-sm border border-white/10"
               aria-label="Close menu"
             >
               <X className="h-5 w-5" />
@@ -84,17 +84,17 @@ export function ParlorNavbar() {
           </div>
           <ul className="flex flex-1 flex-col justify-center px-6">
             {siteConfig.navLinks.map((link, i) => (
-              <li key={link.href} className="border-b border-white/10">
+              <li key={link.href} className="border-b border-white/8">
                 <Link
                   href={link.href}
                   onClick={closeMenu}
                   className="flex items-baseline gap-4 py-6"
                 >
-                  <span className="font-mono text-sm text-tech">
+                  <span className="font-mono text-sm text-purple/60">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-display text-5xl tracking-wide md:text-7xl">
-                    {link.label.toUpperCase()}
+                  <span className="display-heading text-4xl text-text md:text-5xl">
+                    {link.label}
                   </span>
                 </Link>
               </li>
@@ -103,9 +103,9 @@ export function ParlorNavbar() {
           <Link
             href={siteConfig.primaryCtaHref}
             onClick={closeMenu}
-            className="block border-t border-white/10 bg-parlor-accent py-6 text-center font-display text-2xl tracking-wider text-text"
+            className="block border-t border-white/8 bg-parlor-accent py-6 text-center display-heading text-2xl text-text"
           >
-            {siteConfig.primaryCta.toUpperCase()}
+            {siteConfig.primaryCta}
           </Link>
         </div>
       )}

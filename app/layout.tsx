@@ -1,23 +1,23 @@
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Bebas_Neue, DM_Sans, Oswald } from "next/font/google"
+import { Fraunces, Hanken_Grotesk, Oswald } from "next/font/google"
 import { siteConfig } from "@/lib/site-config"
 import { organizationSchema, websiteSchema, localBusinessSchema } from "@/lib/seo/schemas/organization"
 import { JsonLd } from "@/components/seo/json-ld"
 import { getSiteUrl } from "@/lib/utils"
 import "./globals.css"
 
-const bebas = Bebas_Neue({
-  weight: "400",
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-bebas",
+  variable: "--font-fraunces",
   display: "swap",
+  axes: ["SOFT", "WONK", "opsz"],
 })
 
-const dmSans = DM_Sans({
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-hanken",
   display: "swap",
 })
 
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bebas.variable} ${dmSans.variable} ${oswald.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${hanken.variable} ${oswald.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <meta name="theme-color" content="#0c0c0c" />

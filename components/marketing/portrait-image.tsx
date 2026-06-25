@@ -18,17 +18,17 @@ export function PortraitImage({ className, priority = false }: PortraitImageProp
     return (
       <div
         className={cn(
-          "flex aspect-[4/5] w-full items-center justify-center rounded-lg border border-purple/30 bg-gradient-to-br from-bg-elevated to-purple/20",
+          "flex aspect-[4/5] w-full items-center justify-center rounded-sm border border-purple/30 bg-gradient-to-br from-bg-elevated to-purple/15",
           className,
         )}
       >
-        <span className="font-display text-6xl tracking-wide text-purple/60">{name.charAt(0)}</span>
+        <span className="display-heading text-6xl text-purple/50">{name.charAt(0)}</span>
       </div>
     )
   }
 
   return (
-    <div className={cn("relative aspect-[4/5] w-full overflow-hidden rounded-lg border border-white/10", className)}>
+    <div className={cn("duotone-grain relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-white/10", className)}>
       <Image
         src={image}
         alt={`${name}, founder of SuchGrime`}

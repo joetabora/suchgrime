@@ -4,11 +4,12 @@ import { motion } from "framer-motion"
 import { siteConfig } from "@/lib/site-config"
 import { SectionHeading } from "@/components/marketing/section-heading"
 import { GlassCard } from "@/components/marketing/glass-card"
+import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomeWhyCustom() {
   return (
-    <section id="why" className="border-b border-white/10 bg-bg-elevated py-24 md:py-32">
-      <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
+    <section id="why" className="border-b border-white/8 bg-bg-elevated py-24 md:py-32 halftone">
+      <div className="relative mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.whyCustom.label}
           title={siteConfig.homeSections.whyCustom.title}
@@ -22,11 +23,11 @@ export function HomeWhyCustom() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              transition={staggerDelay(i)}
             >
-              <GlassCard>
-                <h3 className="font-display text-2xl tracking-wide">{point.title}</h3>
-                <p className="mt-3 text-muted">{point.description}</p>
+              <GlassCard variant="pressed">
+                <h3 className="display-heading text-2xl text-text">{point.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted">{point.description}</p>
               </GlassCard>
             </motion.div>
           ))}

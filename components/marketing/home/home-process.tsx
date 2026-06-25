@@ -5,13 +5,14 @@ import { siteConfig } from "@/lib/site-config"
 import { SectionHeading } from "@/components/marketing/section-heading"
 import { GlassCard } from "@/components/marketing/glass-card"
 import { WorkflowDiagram } from "@/components/marketing/workflow-diagram"
+import { staggerDelay } from "@/components/marketing/motion"
 
 export function HomeProcess() {
   const processNodes = siteConfig.process.map((step) => step.title)
 
   return (
-    <section className="border-b border-white/10 py-24 md:py-32">
-      <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
+    <section className="border-b border-white/8 py-24 md:py-32 paper-grain">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.process.label}
           title={siteConfig.homeSections.process.title}
@@ -29,12 +30,12 @@ export function HomeProcess() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              transition={staggerDelay(i)}
             >
-              <GlassCard variant="steel" className="h-full">
-                <span className="font-mono text-sm text-purple">{step.step}</span>
-                <h3 className="mt-2 font-display text-2xl tracking-wide">{step.title}</h3>
-                <p className="mt-2 text-sm text-muted">{step.description}</p>
+              <GlassCard variant="pressed" className="h-full">
+                <span className="text-label text-purple">{step.step}</span>
+                <h3 className="mt-2 display-heading text-2xl text-text">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
               </GlassCard>
             </motion.div>
           ))}

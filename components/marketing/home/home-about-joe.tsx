@@ -6,52 +6,45 @@ import { siteConfig } from "@/lib/site-config"
 import { SectionHeading } from "@/components/marketing/section-heading"
 import { GlassCard } from "@/components/marketing/glass-card"
 import { PortraitImage } from "@/components/marketing/portrait-image"
+import { Stamp } from "@/components/marketing/stamp"
+import { slideInLeft, staggerDelay } from "@/components/marketing/motion"
 
 export function HomeAboutJoe() {
   const bioParagraphs = siteConfig.aboutJoe.bio.split("\n\n").filter(Boolean)
 
   return (
-    <section id="about-joe" className="border-b border-white/10 py-24 md:py-32">
-      <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 md:px-12">
+    <section id="about-joe" className="border-b border-white/8 py-24 md:py-32 paper-grain">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <SectionHeading
           label={siteConfig.homeSections.aboutJoe.label}
           title={siteConfig.homeSections.aboutJoe.title}
         />
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(280px,360px)_1fr] lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bracket-frame"
-          >
+          <motion.div {...slideInLeft} className="bracket-frame">
             <PortraitImage />
             <ul className="mt-6 flex flex-wrap gap-2">
               {siteConfig.aboutJoe.backgroundAreas.map((area) => (
-                <li
-                  key={area}
-                  className="rounded-full border border-purple/20 bg-purple/5 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-muted"
-                >
-                  {area}
+                <li key={area}>
+                  <Stamp rotate={area.length % 2 === 0 ? "left" : "right"}>{area}</Stamp>
                 </li>
               ))}
             </ul>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={staggerDelay(1)}
           >
-            <GlassCard variant="steel" className="mb-8 border-l-4 border-l-purple">
-              <p className="font-display text-xl leading-snug tracking-wide text-text md:text-2xl">
+            <GlassCard variant="pressed" className="mb-8 border-l-2 border-l-purple">
+              <p className="font-quote text-xl leading-snug text-text md:text-2xl">
                 &ldquo;{siteConfig.aboutJoe.pullQuote}&rdquo;
               </p>
             </GlassCard>
 
-            <div className="space-y-4 text-muted leading-relaxed">
+            <div className="space-y-4 leading-relaxed text-muted">
               {bioParagraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
               ))}
@@ -60,7 +53,7 @@ export function HomeAboutJoe() {
             <div className="mt-10">
               <Link
                 href={siteConfig.primaryCtaHref}
-                className="inline-block rounded-md bg-parlor-accent px-8 py-3 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
+                className="inline-block rounded-sm bg-parlor-accent px-8 py-3 text-base font-semibold text-text transition-colors hover:bg-parlor-accent/85"
               >
                 {siteConfig.primaryCta}
               </Link>
