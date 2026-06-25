@@ -1,5 +1,8 @@
 /** Top entities for footer and cross-linking — Wisconsin-first, then national */
 export const footerCollections = [
+  { label: "Custom Software", href: "/custom-software" },
+  { label: "AI Automation", href: "/ai-automation" },
+  { label: "Web Design", href: "/web-design" },
   { label: "Services", href: "/services" },
   { label: "Wisconsin", href: "/wisconsin" },
   { label: "Locations", href: "/locations" },
@@ -29,9 +32,9 @@ export const footerTopIndustries = [
 ] as const
 
 export const footerTopServices = [
-  { label: "Web Development", href: "/services/web-development" },
-  { label: "Business Automation", href: "/services/business-automation" },
-  { label: "E-commerce & Booking", href: "/services/ecommerce-booking" },
+  { label: "Custom Software", href: "/custom-software" },
+  { label: "AI Automation", href: "/ai-automation" },
+  { label: "Web Design", href: "/web-design" },
 ] as const
 
 /** Wisconsin cities for cross-linking blocks */

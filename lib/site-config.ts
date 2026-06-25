@@ -20,6 +20,33 @@ export const siteConfig = {
       { label: "Standard", value: "Performance-First" },
       { label: "Built-In", value: "A11y + SEO" },
     ],
+    values: [
+      {
+        title: "Systems Over Templates",
+        description: "We don't reskin WordPress themes. We engineer custom software, automation, and websites built for your exact workflow.",
+      },
+      {
+        title: "Engineering Discipline",
+        description: "TypeScript, Next.js, PostgreSQL, and modern DevOps — the same stack we'd use for our own products.",
+      },
+      {
+        title: "Real-World Focus",
+        description: "We work with contractors, service businesses, dealerships, restaurants, and manufacturers — not enterprise procurement cycles.",
+      },
+      {
+        title: "Wisconsin Roots, National Reach",
+        description: "Based in Milwaukee, serving businesses across Wisconsin and nationwide. Remote-first with local accountability.",
+      },
+    ],
+    whoWeWorkWith: [
+      "Small business owners",
+      "Contractors & service businesses",
+      "Dealerships & event companies",
+      "Restaurants & hospitality",
+      "Manufacturing companies",
+      "Local retailers",
+      "Teams outgrowing spreadsheets",
+    ],
   },
   marqueePhrases: [
     "CUSTOM SOFTWARE",
@@ -66,7 +93,7 @@ export const siteConfig = {
       title: "Professional Websites",
       description:
         "Business websites, e-commerce, SEO foundations, landing pages, performance optimization, and redesigns engineered for conversion and long-term growth.",
-      href: "/services/web-development",
+      href: "/web-design",
       examples: [
         "Business Websites",
         "E-Commerce",
@@ -390,6 +417,7 @@ export const siteConfig = {
   navLinks: [
     { label: "Services", href: "/#services" },
     { label: "Work", href: "/work" },
+    { label: "About", href: "/about" },
     { label: "Case Studies", href: "/case-studies" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },

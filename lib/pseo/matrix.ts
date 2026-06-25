@@ -56,7 +56,7 @@ export function buildMatrixPages(
         },
         {
           q: `Why choose SuchGrime over a local ${parentLabelText} agency?`,
-          a: "We ship on modern Next.js stacks with automation and programmatic SEO built in — not as afterthoughts. You get agency-grade craft with engineering discipline.",
+          a: "We engineer custom business systems, automation, and high-performance web platforms — not template sites. You get systems-thinking with engineering discipline, built to scale as your business grows.",
         },
       ]
 
@@ -80,9 +80,9 @@ export function buildMatrixPages(
         isMatrix: true,
         title: `${serviceLabel} in ${parentLabelText}${wiSuffix}`,
         headline: `${serviceLabel} for ${parentLabelText}${wiSuffix} Businesses`,
-        description: `${serviceLabel} for ${parentLabelText}${wiSuffix} businesses — custom Next.js websites, workflow automation, and SEO from SuchGrime.`,
-        intro: `We help ${parentLabelText}${wiSuffix} businesses with ${serviceLower} — from discovery and design to launch-ready builds, structured SEO, and automation that reduces manual work.`,
-        body: `${parentLabelText}${wiSuffix} operators face unique market pressure — visibility, speed, and operational efficiency matter. Our ${serviceLower} engagements for ${parentLabelText} combine conversion-focused UX with technical SEO foundations: fast Next.js architecture, schema markup, internal linking, and CMS-ready content structures.${wiBodyExtra} ${parent.intro.slice(0, 180)}${parent.intro.length > 180 ? "…" : ""} We scope every project around measurable outcomes — more qualified leads, fewer manual tasks, and pages built to rank for ${parentLabelText} + ${serviceLower} searches.`,
+        description: `${serviceLabel} for ${parentLabelText}${wiSuffix} businesses — custom software, business systems, automation, and high-performance websites from SuchGrime.`,
+        intro: `We help ${parentLabelText}${wiSuffix} businesses with ${serviceLower} — custom applications, workflow automation, internal dashboards, and web systems built around how you actually operate.`,
+        body: `${parentLabelText}${wiSuffix} operators face unique market pressure — visibility, operational efficiency, and systems that scale without adding headcount. Our ${serviceLower} engagements combine custom engineering with technical SEO foundations: fast Next.js architecture, schema markup, internal linking, and automation that eliminates manual work.${wiBodyExtra} ${parent.intro.slice(0, 180)}${parent.intro.length > 180 ? "…" : ""} We scope every project around measurable outcomes — fewer spreadsheet hours, faster lead response, and systems built to rank for ${parentLabelText} + ${serviceLower} searches.`,
         features: [
           ...((service.features ?? []).slice(0, 3)),
           `${parentLabelText}${wiSuffix}-specific positioning`,

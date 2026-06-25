@@ -10,9 +10,9 @@ import { getWisconsinLocations } from "@/lib/pseo/content/locations"
 import { getAllPagesForCollection } from "@/lib/pseo/registry"
 
 export const metadata = buildMetadata({
-  title: "Solutions",
+  title: "Solutions — Custom Software, Automation & Web Systems",
   description:
-    "Explore SuchGrime solutions by industry, location, and service — web development, automation, and booking systems.",
+    "Explore SuchGrime solutions by industry, location, and service — custom software, AI automation, web development, and business systems.",
   path: "/solutions",
 })
 
@@ -36,7 +36,7 @@ export default async function SolutionsPage() {
           <JsonLd
             data={webPageSchema(
               "Solutions",
-              "Explore SuchGrime solutions by industry, location, and service.",
+              "Explore SuchGrime solutions by industry, location, and service — custom software, automation, and web systems.",
               "/solutions",
             )}
           />
@@ -44,7 +44,7 @@ export default async function SolutionsPage() {
           <p className="text-label mb-2">Solutions hub</p>
           <h1 className="font-display text-6xl tracking-wide md:text-8xl">FIND YOUR FIT</h1>
           <p className="mt-4 max-w-2xl text-muted">
-            Browse services, industries, and markets — then dive into programmatic landing pages built for search intent.
+            Browse custom software, automation, and web services by industry and market — then dive into landing pages built for search intent.
           </p>
 
           <section className="mt-16">

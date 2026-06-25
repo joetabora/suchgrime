@@ -7,12 +7,20 @@ import { siteConfig } from "@/lib/site-config"
 import { buildMetadata } from "@/lib/seo/metadata"
 import { localBusinessSchema } from "@/lib/seo/schemas/organization"
 import { JsonLd } from "@/components/seo/json-ld"
-import { Mail } from "lucide-react"
+import { Mail, Phone } from "lucide-react"
 
 export const metadata = buildMetadata({
-  title: "Contact",
-  description: `Start a project with ${siteConfig.name}. Web development and business automation inquiries welcome.`,
+  title: "Book A Strategy Call — Contact SuchGrime",
+  description:
+    "Book a strategy call with SuchGrime. Tell us about your workflows, pain points, and goals — we'll outline what custom software, automation, or web systems could look like for your business.",
   path: "/contact",
+  keywords: [
+    "book strategy call",
+    "custom software consultation",
+    "business automation wisconsin",
+    "milwaukee software development",
+    siteConfig.name,
+  ],
 })
 
 export default function ContactPage() {
@@ -28,20 +36,31 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2">
             <div className="border-t border-white/10 p-6 md:p-12 lg:border-r">
               <p className="text-label mb-4">{siteConfig.contact.note}</p>
-              <h1 className="font-display text-5xl leading-[0.9] tracking-wide md:text-7xl lg:text-8xl">
-                START
-                <br />A PROJECT
+              <h1 className="font-display text-5xl leading-[0.9] tracking-wide md:text-7xl">
+                {siteConfig.primaryCta.toUpperCase()}
               </h1>
               <p className="mt-6 max-w-md text-muted">
-                Tell us about your brand, your goals, and the systems you need built.
+                Tell us about your workflows, manual bottlenecks, and goals. We&apos;ll map what custom software, automation, or web systems could look like for your business — no obligation.
               </p>
-              <a
-                href={`mailto:${siteConfig.contact.email}`}
-                className="mt-8 inline-flex items-center gap-2 font-mono text-sm text-parlor-accent transition-colors hover:text-parlor-accent/80"
-              >
-                <Mail className="h-4 w-4" />
-                {siteConfig.contact.email}
-              </a>
+              <div className="mt-8 space-y-4">
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="flex items-center gap-2 font-mono text-sm text-tech transition-colors hover:text-tech/80"
+                >
+                  <Mail className="h-4 w-4" />
+                  {siteConfig.contact.email}
+                </a>
+                <a
+                  href={`tel:${siteConfig.contact.phone}`}
+                  className="flex items-center gap-2 font-mono text-sm text-muted transition-colors hover:text-text"
+                >
+                  <Phone className="h-4 w-4" />
+                  {siteConfig.contact.phone}
+                </a>
+              </div>
+              <p className="mt-8 font-mono text-[10px] uppercase tracking-widest text-muted">
+                Built in Wisconsin · Serving nationwide
+              </p>
             </div>
             <div className="border-t border-white/10 p-6 md:p-12">
               <ContactForm idPrefix="contact-page" />

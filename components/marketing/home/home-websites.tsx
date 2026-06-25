@@ -32,7 +32,7 @@ export function HomeWebsites() {
 
         <div className="mt-10">
           <Link
-            href="/services/web-development"
+            href="/web-design"
             className="inline-flex items-center gap-2 text-tech hover:underline"
           >
             Explore web development services →

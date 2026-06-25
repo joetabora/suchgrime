@@ -5,15 +5,25 @@ import { SiteShell } from "@/components/layout/site-shell"
 import { ParlorNavbar } from "@/components/agency/parlor-navbar"
 import { ParlorFooter } from "@/components/agency/parlor-footer"
 import { Breadcrumbs } from "@/components/seo/breadcrumbs"
+import { GlassCard } from "@/components/marketing/glass-card"
+import { SectionHeading } from "@/components/marketing/section-heading"
 import { siteConfig } from "@/lib/site-config"
 import { buildMetadata } from "@/lib/seo/metadata"
 import { collectionPageSchema } from "@/lib/seo/schemas/application"
 import { JsonLd } from "@/components/seo/json-ld"
 
 export const metadata = buildMetadata({
-  title: "Work",
-  description: "Portfolio of web development and business automation projects by SuchGrime.",
+  title: "Work — Custom Software, Automation & Web Projects",
+  description:
+    "Portfolio of custom business applications, internal dashboards, automation systems, and high-performance websites built by SuchGrime.",
   path: "/work",
+  keywords: [
+    "custom software portfolio",
+    "business automation projects",
+    "internal dashboard examples",
+    "web development portfolio",
+    siteConfig.name,
+  ],
 })
 
 export default function WorkPage() {
@@ -27,45 +37,63 @@ export default function WorkPage() {
           <JsonLd
             data={collectionPageSchema(
               "Portfolio",
-              "Web development and automation projects by SuchGrime.",
+              "Custom software, automation, and web projects by SuchGrime.",
               "/work",
             )}
           />
-          <div className="border-b border-white/10 px-6 py-12 md:px-12">
-            <div className="mx-auto max-w-[1400px]">
-              <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Work", path: "/work" }]} />
-              <p className="text-label mb-2">Portfolio</p>
-              <h1 className="font-display text-6xl tracking-wide md:text-8xl">FROM THE STUDIO</h1>
-            </div>
+          <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 py-16 md:px-12">
+            <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Work", path: "/work" }]} />
+            <SectionHeading
+              label="Portfolio"
+              title="Systems We've Built"
+              description="Custom apps, internal dashboards, business websites, and automation — live demos and real capabilities."
+              className="mt-8"
+            />
           </div>
 
-          {liveProjects.map((project, i) => (
-            <article key={project.slug} className="border-b border-white/10">
-              <div className="mx-auto max-w-[1400px] border-x border-white/10">
-                <div className="flex items-end gap-4 border-b border-white/10 p-6 md:p-8">
-                  <span className="font-display text-7xl leading-none text-parlor-accent md:text-9xl">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h2 className="font-display text-4xl tracking-wide md:text-6xl">{project.title.toUpperCase()}</h2>
-                </div>
-                {project.image && (
-                  <div className="relative aspect-[21/9] border-b border-white/10">
-                    <Image src={project.image} alt={project.title} fill className="object-cover" sizes="1400px" />
+          <div className="mx-auto max-w-[1400px] border-x border-white/10 px-6 pb-16 md:px-12">
+            <div className="grid gap-6 md:grid-cols-2">
+              {liveProjects.map((project) => (
+                <GlassCard key={project.slug} hover className="overflow-hidden p-0">
+                  {project.image && (
+                    <div className="relative aspect-[16/9] border-b border-white/10">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-tech">
+                      {"kind" in project && project.kind === "app" ? "Custom Application" : "Business Website"}
+                    </p>
+                    <h2 className="mt-1 font-display text-2xl tracking-wide md:text-3xl">{project.title}</h2>
+                    <p className="mt-3 text-muted">{project.description}</p>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <li
+                          key={tag}
+                          className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted"
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={project.href}
+                      className="mt-6 inline-flex items-center gap-2 text-sm text-tech hover:underline"
+                    >
+                      {"kind" in project && project.kind === "app" ? "Open live demo" : "View live demo"}
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
                   </div>
-                )}
-                <div className="flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:p-8">
-                  <p className="max-w-2xl text-muted">{project.description}</p>
-                  <Link
-                    href={project.href}
-                    className="inline-flex shrink-0 items-center gap-2 bg-parlor-accent px-8 py-4 font-display text-xl tracking-wider text-text transition-colors hover:bg-parlor-accent/80"
-                  >
-                    {"kind" in project && project.kind === "app" ? "OPEN APP" : "LIVE DEMO"}
-                    <ArrowUpRight className="h-5 w-5" />
-                  </Link>
-                </div>
-              </div>
-            </article>
-          ))}
+                </GlassCard>
+              ))}
+            </div>
+          </div>
         </main>
         <ParlorFooter />
       </div>
