@@ -59,26 +59,34 @@ Shop features included:
 - Order records in admin
 - Inventory decrement on successful payment
 
-## Vercel / production database
+## Vercel / Neon Postgres
 
-SQLite (`file:./dev.db`) works locally only. On Vercel you need Postgres:
+The app uses Postgres via Neon. Set these in **Vercel → Project → Settings → Environment Variables**:
 
-1. Create a Neon or Vercel Postgres database.
-2. In `prisma/schema.prisma`, change:
+| Variable | Use |
+|---|---|
+| `DATABASE_URL` | Neon **pooled** connection string |
+| `DATABASE_URL_UNPOOLED` | Neon **direct** (non-pooler) connection string |
+| `ADMIN_PASSWORD` | Password for `/admin` |
+| `AUTH_SECRET` | Long random string (`openssl rand -base64 32`) |
+| `NEXT_PUBLIC_SITE_URL` | `https://your-domain.vercel.app` |
 
-```prisma
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-```
+Optional Stripe keys as listed above.
 
-3. Set `DATABASE_URL`, `ADMIN_PASSWORD`, `AUTH_SECRET`, and Stripe keys in Vercel project env vars.
-4. Run against production:
+Create / reset tables and seed from your machine:
 
 ```bash
 npx prisma db push
 npm run db:seed
 ```
 
-5. Point Stripe webhook to `https://your-domain.com/api/webhooks/stripe` for `checkout.session.completed`.
+To wipe an old Neon database and start clean:
+
+```bash
+npx prisma db push --force-reset
+npm run db:seed
+```
+
+Then redeploy on Vercel. Admin: `https://your-site.vercel.app/admin`
+
+Point Stripe webhook to `https://your-domain.com/api/webhooks/stripe` for `checkout.session.completed`.
