@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Feature {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String
+  body        String   @default("")
+  type        String   @default("Feature")
+  location    String?
+  imageUrl    String?
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Build {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  stage     String
+  builder   String
+  excerpt   String
+  body      String   @default("")
+  imageUrl  String?
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  location    String
+  eventDate   DateTime
+  status      String   @default("Upcoming")
+  description String   @default("")
+  imageUrl    String?
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Product {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  category        String
+  description     String
+  priceCents      Int
+  imageUrl        String?
+  inventory       Int      @default(0)
+  status          String   @default("available") // available | coming_soon | sold_out
+  active          Boolean  @default(true)
+  stripePriceId   String?
+  stripeProductId String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  orderItems      OrderItem[]
+}
+
+model Order {
+  id                    String      @id @default(cuid())
+  email                 String
+  status                String      @default("pending") // pending | paid | fulfilled | cancelled | refunded
+  totalCents            Int
+  currency              String      @default("usd")
+  stripeSessionId       String?     @unique
+  stripePaymentIntentId String?
+  shippingName          String?
+  shippingAddress       String?
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+  items                 OrderItem[]
+}
+
+model OrderItem {
+  id         String  @id @default(cuid())
+  orderId    String
+  productId  String
+  title      String
+  quantity   Int
+  priceCents Int
+  order      Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product    Product @relation(fields: [productId], references: [id])
+}

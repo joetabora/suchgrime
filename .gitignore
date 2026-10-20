@@ -24,6 +24,12 @@
 .DS_Store
 *.pem
 
+# prisma CLI skill sync artifacts
+.agents/
+.claude/
+.cursor/skills/
+.devin/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -32,6 +38,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# sqlite
+prisma/dev.db
+prisma/dev.db-journal
+*.db
+*.db-journal
 
 # vercel
 .vercel

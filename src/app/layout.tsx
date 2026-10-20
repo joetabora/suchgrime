@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Oswald, Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import { CartProvider } from "@/components/shop/CartProvider";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -33,7 +32,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "SUCHGRIME | Milwaukee Custom Motorcycle Culture",
-  description: "The people. The builds. The grime. Milwaukee's custom motorcycle culture, choppers, bobbers, and garage-built machines.",
+  description:
+    "The people. The builds. The grime. Milwaukee's custom motorcycle culture, choppers, bobbers, and garage-built machines.",
 };
 
 export default function RootLayout({
@@ -46,13 +46,9 @@ export default function RootLayout({
       lang="en"
       className={`${bebasNeue.variable} ${oswald.variable} ${playfairDisplay.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-brand-black text-brand-chrome font-inter selection:bg-zinc-800 selection:text-white">
+      <body className="flex min-h-full flex-col bg-brand-black font-inter text-brand-chrome selection:bg-zinc-800 selection:text-white">
         <div className="texture-overlay" />
-        <Navbar />
-        <main className="flex-grow pt-24 md:pt-32">
-          {children}
-        </main>
-        <Footer />
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

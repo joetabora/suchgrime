@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { CartButton } from "@/components/shop/CartDrawer";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -82,16 +83,19 @@ export default function Navbar() {
             >
               Submit
             </Link>
+            <CartButton />
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden relative z-50 text-brand-chrome hover:text-white"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-4 md:hidden relative z-50">
+            <CartButton />
+            <button
+              className="text-brand-chrome hover:text-white"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
