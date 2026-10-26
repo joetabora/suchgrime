@@ -31,7 +31,8 @@ export default async function AdminOrdersPage() {
             <ul className="mt-3 space-y-1">
               {order.items.map((item) => (
                 <li key={item.id} className="font-inter text-sm text-brand-chrome">
-                  {item.quantity}× {item.title} — {formatMoney(item.priceCents * item.quantity)}
+                  {item.quantity}× {item.title}
+                  {item.size ? ` (${item.size})` : ""} — {formatMoney(item.priceCents * item.quantity)}
                 </li>
               ))}
             </ul>

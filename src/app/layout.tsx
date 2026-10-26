@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Oswald, Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
+import { Bebas_Neue, Oswald, Inter, JetBrains_Mono, Pirata_One } from "next/font/google";
 import { CartProvider } from "@/components/shop/CartProvider";
 import "./globals.css";
+
+const pirataOne = Pirata_One({
+  weight: "400",
+  variable: "--font-pirata-one",
+  subsets: ["latin"],
+});
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -12,12 +18,6 @@ const bebasNeue = Bebas_Neue({
 const oswald = Oswald({
   variable: "--font-oswald",
   subsets: ["latin"],
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
 });
 
 const inter = Inter({
@@ -31,9 +31,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SUCHGRIME | Milwaukee Custom Motorcycle Culture",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  title: {
+    default: "SuchGrime | Choppers, Flash & Filth — Milwaukee",
+    template: "%s | SuchGrime",
+  },
   description:
-    "The people. The builds. The grime. Milwaukee's custom motorcycle culture, choppers, bobbers, and garage-built machines.",
+    "Milwaukee chopper culture. Apparel and parts mixing old iron, American traditional tattoo flash, and gothic horror.",
+  openGraph: {
+    siteName: "SuchGrime",
+    type: "website",
+    images: ["/IMG_1688_2.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -44,10 +53,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebasNeue.variable} ${oswald.variable} ${playfairDisplay.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${pirataOne.variable} ${bebasNeue.variable} ${oswald.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-brand-black font-inter text-brand-chrome selection:bg-zinc-800 selection:text-white">
-        <div className="texture-overlay" />
+      <body className="flex min-h-full flex-col font-inter">
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

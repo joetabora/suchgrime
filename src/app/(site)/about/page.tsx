@@ -1,44 +1,52 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = {
-  title: "About | SUCHGRIME",
+  title: "About",
 };
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 md:px-8 max-w-screen-2xl py-12">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div className="mx-auto max-w-screen-2xl px-4 pb-24 pt-10 md:px-8">
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <span className="font-mono text-xs tracking-widest uppercase text-brand-rust mb-4 block">Our Story</span>
-          <h1 className="font-bebas text-7xl md:text-9xl tracking-tight text-white uppercase mb-8">About SuchGrime</h1>
-          
-          <div className="space-y-6 font-inter text-brand-chrome text-lg max-w-xl">
-            <p className="font-playfair italic text-2xl text-white mb-8 border-l-2 border-brand-rust pl-4">
-              "We didn't see our culture represented in the glossy magazines. So we started documenting it ourselves."
+          <span className="ribbon">Our story</span>
+          <h1 className="mt-4 font-goth text-6xl leading-none md:text-8xl">About SuchGrime</h1>
+          <div className="mt-8 max-w-xl space-y-5 text-lg text-ink-soft">
+            <p className="border-l-4 border-blood pl-4 font-display text-2xl uppercase leading-snug text-ink">
+              We didn&apos;t see our culture in the glossy magazines, so we started documenting it ourselves.
             </p>
             <p>
-              SuchGrime was born out of the garages of Milwaukee. It started as a way to take photos of friends' bikes and document the late-night struggles of building a chopper from a pile of old parts.
+              SuchGrime came out of Milwaukee garages. It started as a way to shoot friends&apos; bikes and document the
+              late-night grind of building a chopper from a pile of old parts.
             </p>
             <p>
-              Today, it's an independent publication and media brand dedicated to the custom motorcycle culture in the Midwest. We care about the process, the grease, the mistakes, and the obsession it takes to build a machine with your own two hands.
+              Now it&apos;s an independent media brand and shop for Midwest custom motorcycle culture. We care about the
+              process, the grease, the mistakes, and the obsession it takes to build a machine with your own hands.
             </p>
             <p>
-              We aren't interested in generic baggers bought off a showroom floor. We're interested in the rusty Ironhead that someone brought back to life, the hardtailed Evo built in a cramped shed, and the people who ride them.
+              The goods follow the same code: chopper iron, American traditional flash, and a heavy dose of gothic
+              horror, made in small runs.
             </p>
+          </div>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link href="/shop" className="btn-blood">
+              Shop the goods
+            </Link>
+            <Link href="/features" className="btn-outline">
+              Read the features
+            </Link>
           </div>
         </div>
-        
-        <div className="relative aspect-[3/4] bg-brand-graphite border-[12px] border-white/5">
+
+        <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-paper-deep">
           <Image
-            src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1200&auto=format&fit=crop"
-            alt="SuchGrime Garage"
-            fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover grayscale"
+            src="/IMG_1688_2.jpg"
+            alt="Custom chopper"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
           />
-          <div className="absolute -bottom-8 -left-8 bg-brand-black text-white p-6 border border-white/10 max-w-xs hidden md:block">
-            <p className="font-mono text-xs tracking-widest uppercase text-brand-steel mb-2">Est. 2026</p>
-            <p className="font-oswald text-xl uppercase">Documenting the underground motorcycle scene of Milwaukee.</p>
-          </div>
         </div>
       </div>
     </div>

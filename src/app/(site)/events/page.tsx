@@ -1,59 +1,54 @@
 import { prisma } from "@/lib/db";
+import { safeQuery } from "@/lib/safe-query";
+import { EmptyState, PageHeader } from "@/components/layout/PageHeader";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Events | SUCHGRIME",
+  title: "Events",
 };
 
 export default async function EventsPage() {
-  const events = await prisma.event.findMany({
-    where: { published: true },
-    orderBy: { eventDate: "desc" },
-  });
+  const events = await safeQuery(
+    () => prisma.event.findMany({ where: { published: true }, orderBy: { eventDate: "desc" } }),
+    []
+  );
 
   return (
-    <div className="container mx-auto max-w-screen-2xl px-4 py-12 md:px-8">
-      <header className="mb-20">
-        <h1 className="mb-4 font-bebas text-7xl uppercase tracking-tight text-white md:text-9xl">
-          Events
-        </h1>
-        <p className="max-w-2xl font-playfair text-xl italic text-brand-steel md:text-2xl">
-          Rides, shows, swap meets, and late-night garage hangouts in and around Milwaukee.
-        </p>
-      </header>
+    <div className="mx-auto max-w-screen-xl px-4 pb-24 pt-10 md:px-8">
+      <PageHeader
+        kicker="Out & about"
+        title="Events"
+        text="Rides, shows, swap meets, and late-night garage hangouts in and around Milwaukee."
+      />
 
-      <div className="flex flex-col gap-8">
-        {events.map((event) => (
-          <article
-            key={event.id}
-            className="group flex flex-col justify-between gap-4 border-b border-white/10 pb-8 transition-colors hover:border-brand-rust md:flex-row md:items-center"
-          >
-            <div className="flex items-center gap-8 md:gap-16">
-              <div className="w-24 font-bebas text-4xl text-brand-steel transition-colors group-hover:text-white md:text-5xl">
-                {event.eventDate.toLocaleDateString("en-US", { month: "short", day: "2-digit" })}
+      {events.length > 0 ? (
+        <div className="flex flex-col gap-4">
+          {events.map((event) => (
+            <article
+              key={event.id}
+              id={event.slug}
+              className="flex flex-col gap-5 rounded-2xl border border-line bg-card p-6 md:flex-row md:items-center md:gap-10"
+            >
+              <div className="w-24 shrink-0 text-center">
+                <p className="label text-blood">{event.eventDate.toLocaleDateString("en-US", { month: "short" })}</p>
+                <p className="font-goth text-6xl leading-none">
+                  {event.eventDate.toLocaleDateString("en-US", { day: "2-digit" })}
+                </p>
               </div>
-              <div>
-                <h3 className="font-oswald text-3xl uppercase text-white transition-colors group-hover:text-brand-chrome">
-                  {event.title}
-                </h3>
-                <span className="font-mono text-xs uppercase tracking-widest text-brand-rust">
-                  {event.location}
-                </span>
-                {event.description && (
-                  <p className="mt-2 max-w-xl font-inter text-sm text-brand-chrome">{event.description}</p>
-                )}
+              <div className="flex-1">
+                <h2 className="font-display text-2xl uppercase">{event.title}</h2>
+                <p className="label mt-1 text-[0.65rem] text-ink-soft">{event.location}</p>
+                {event.description && <p className="mt-2 max-w-2xl text-ink-soft">{event.description}</p>}
               </div>
-            </div>
-            <div className="self-start border border-white/20 px-3 py-1 font-mono text-[10px] uppercase tracking-widest transition-colors group-hover:border-brand-rust group-hover:text-brand-rust md:self-center">
-              {event.status}
-            </div>
-          </article>
-        ))}
-      </div>
-
-      {events.length === 0 && (
-        <p className="font-inter text-brand-steel">No events published yet.</p>
+              <span className="label self-start rounded-full border border-ink px-4 py-1.5 text-[0.65rem] md:self-center">
+                {event.status}
+              </span>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <EmptyState title="Nothing on the calendar" text="Check back soon for rides and shows." />
       )}
     </div>
   );

@@ -11,6 +11,7 @@ import {
   verifyAdminPassword,
 } from "@/lib/auth";
 import { slugify } from "@/lib/slug";
+import { parseGallery, parseSizes } from "@/lib/products";
 
 async function requireAdmin() {
   if (!(await isAdminAuthenticated())) {
@@ -212,42 +213,52 @@ const productSchema = z.object({
   category: z.string().min(1),
   description: z.string().min(1),
   priceCents: z.coerce.number().int().positive(),
+  compareAtCents: z.number().int().positive().nullable(),
   inventory: z.coerce.number().int().min(0),
-  status: z.string().min(1),
+  status: z.enum(["available", "coming_soon", "sold_out"]),
   imageUrl: z.string().optional(),
+  gallery: z.string(),
+  sizes: z.string(),
+  featured: z.boolean(),
   active: z.boolean(),
   slug: z.string().optional(),
 });
 
+function dollarsToCents(value: FormDataEntryValue | null) {
+  const dollars = Number(value || 0);
+  return Number.isFinite(dollars) && dollars > 0 ? Math.round(dollars * 100) : null;
+}
+
 export async function upsertProduct(formData: FormData) {
   await requireAdmin();
   const id = String(formData.get("id") || "");
-  const priceDollars = Number(formData.get("price") || 0);
   const parsed = productSchema.parse({
     title: formData.get("title"),
-    category: formData.get("category"),
+    category: String(formData.get("category") || "").trim(),
     description: formData.get("description"),
-    priceCents: Math.round(priceDollars * 100),
+    priceCents: dollarsToCents(formData.get("price")) ?? 0,
+    compareAtCents: dollarsToCents(formData.get("compareAt")),
     inventory: formData.get("inventory") || 0,
     status: formData.get("status") || "available",
-    imageUrl: formData.get("imageUrl") || "",
+    imageUrl: String(formData.get("imageUrl") || "").trim(),
+    gallery: parseGallery(String(formData.get("gallery") || "")).join("\n"),
+    sizes: parseSizes(String(formData.get("sizes") || "")).join(", "),
+    featured: boolFromForm(formData.get("featured")),
     active: boolFromForm(formData.get("active")),
     slug: formData.get("slug") || undefined,
   });
   const slug = parsed.slug?.trim() || slugify(parsed.title);
+  const data = { ...parsed, slug, imageUrl: parsed.imageUrl || null };
 
   if (id) {
-    await prisma.product.update({
-      where: { id },
-      data: { ...parsed, slug, imageUrl: parsed.imageUrl || null },
-    });
+    await prisma.product.update({ where: { id }, data });
   } else {
-    await prisma.product.create({
-      data: { ...parsed, slug, imageUrl: parsed.imageUrl || null },
-    });
+    await prisma.product.create({ data });
   }
 
+  revalidatePath("/");
   revalidatePath("/shop");
+  revalidatePath(`/shop/${slug}`);
   revalidatePath("/admin/products");
   redirect("/admin/products");
 }

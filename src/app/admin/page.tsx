@@ -5,13 +5,14 @@ import { isStripeConfigured } from "@/lib/stripe";
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  const [features, builds, events, products, orders, paidOrders] = await Promise.all([
+  const [features, builds, events, products, orders, paidOrders, subscribers] = await Promise.all([
     prisma.feature.count(),
     prisma.build.count(),
     prisma.event.count(),
     prisma.product.count({ where: { active: true } }),
     prisma.order.count(),
     prisma.order.count({ where: { status: "paid" } }),
+    prisma.subscriber.count(),
   ]);
 
   const cards = [
@@ -21,6 +22,7 @@ export default async function AdminDashboard() {
     { label: "Products", count: products, href: "/admin/products" },
     { label: "Orders", count: orders, href: "/admin/orders" },
     { label: "Paid orders", count: paidOrders, href: "/admin/orders" },
+    { label: "Mailing list", count: subscribers, href: "/admin/subscribers" },
   ];
 
   return (

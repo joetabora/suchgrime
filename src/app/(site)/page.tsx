@@ -1,323 +1,257 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import type { Product } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { safeQuery } from "@/lib/safe-query";
+import { categorySlug, productImages } from "@/lib/products";
+import { HeroSlider, type HeroSlide } from "@/components/home/HeroSlider";
+import { ProductGrid } from "@/components/shop/ProductCard";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 export const dynamic = "force-dynamic";
 
+const PILLARS = [
+  { title: "Chopper Iron", text: "Rigid frames, long forks, kicked-out rakes. The machines come first." },
+  { title: "Traditional Flash", text: "Bold lines, a handful of colors, nothing wasted. Old-school tattoo flash, redrawn." },
+  { title: "Gothic Horror", text: "Skulls, coffins, and graveyard fog. A little dread to go with the gasoline." },
+];
+
 export default async function Home() {
-  const [features, builds] = await Promise.all([
-    prisma.feature.findMany({
-      where: { published: true },
-      orderBy: { publishedAt: "desc" },
-      take: 3,
-    }),
-    prisma.build.findMany({
-      where: { published: true },
-      orderBy: { updatedAt: "desc" },
-      take: 3,
-    }),
+  const [features, builds, products] = await Promise.all([
+    safeQuery(
+      () => prisma.feature.findMany({ where: { published: true }, orderBy: { publishedAt: "desc" }, take: 4 }),
+      []
+    ),
+    safeQuery(
+      () => prisma.build.findMany({ where: { published: true }, orderBy: { updatedAt: "desc" }, take: 3 }),
+      []
+    ),
+    safeQuery(
+      () =>
+        prisma.product.findMany({
+          where: { active: true },
+          orderBy: [{ featured: "desc" }, { createdAt: "desc" }],
+        }),
+      []
+    ),
   ]);
 
-  const [mainFeature, ...sideFeatures] = features;
+  const slides: HeroSlide[] = [
+    {
+      image: "/IMG_1688_2.jpg",
+      kicker: "Milwaukee chopper culture",
+      title: "Ride Ugly. Die Pretty.",
+      text: "Stories from the garage, and goods for the ones who live there.",
+      href: "/features",
+      cta: "Read the features",
+    },
+    ...features
+      .filter((f) => f.imageUrl)
+      .slice(0, 3)
+      .map((f) => ({
+        image: f.imageUrl!,
+        kicker: f.type,
+        title: f.title,
+        text: f.excerpt,
+        href: "/features",
+        cta: "Read the story",
+      })),
+  ];
+
+  const newDrop = products.slice(0, 8);
+  const categories = buildCategoryTiles(products);
+  const parts = products.filter((p) => categorySlug(p.category) === "parts").slice(0, 4);
 
   return (
-    <div className="flex w-full flex-col">
-      <section className="relative flex h-[85vh] min-h-[600px] w-full items-end pb-12 md:pb-24">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 z-10 bg-black/40 mix-blend-multiply" />
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent" />
-          <Image
-            src="/IMG_1688_2.jpg"
-            alt="Custom chopper on an open road"
-            fill
-            sizes="100vw"
-            className="object-cover object-center grayscale-[0.3]"
-            priority
-          />
-        </div>
+    <div className="flex flex-col">
+      <div className="px-3 pt-3 md:px-6 md:pt-5">
+        <HeroSlider slides={slides} />
+      </div>
 
-        <div className="relative z-20 container mx-auto max-w-screen-2xl px-4 md:px-8">
-          <div className="max-w-4xl">
-            <div className="mb-6 flex items-center gap-3">
-              <span className="inline-block h-[1px] w-12 bg-brand-rust" />
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-rust">
-                Vol. 01 / Issue 01
-              </span>
-            </div>
-            <h1 className="mb-6 font-bebas text-7xl uppercase leading-[0.85] tracking-tight text-white drop-shadow-lg md:text-9xl lg:text-[11rem]">
-              Built Here.
-              <br />
-              <span className="bg-gradient-to-r from-white to-brand-steel bg-clip-text text-transparent">
-                Ridden Everywhere.
-              </span>
-            </h1>
-            <p className="mb-8 max-w-xl font-playfair text-xl italic text-brand-chrome md:text-2xl">
-              The people. The builds. The grime. Documenting Milwaukee&apos;s independent motorcycle culture, one garage at a time.
-            </p>
-            <Link
-              href="/features"
-              className="inline-flex items-center gap-2 bg-white px-8 py-4 font-mono text-sm uppercase tracking-widest text-brand-black transition-colors hover:bg-brand-chrome"
-            >
-              Read the Features <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative bg-brand-black py-24">
-        <div className="container mx-auto max-w-screen-2xl px-4 md:px-8">
-          <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <h2 className="font-bebas text-5xl uppercase tracking-tight text-white md:text-7xl">
-                Featured Iron
-              </h2>
-              <p className="mt-2 font-mono text-xs uppercase tracking-widest text-brand-steel">
-                Latest editorial stories
-              </p>
-            </div>
-            <Link
-              href="/features"
-              className="flex items-center gap-1 font-mono text-xs uppercase tracking-widest text-brand-rust transition-colors hover:text-white"
-            >
-              View All <ArrowRight size={14} />
-            </Link>
-          </div>
-
-          {mainFeature ? (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-4 lg:gap-8">
+      {categories.length > 0 && (
+        <section className="mx-auto w-full max-w-screen-2xl px-4 pt-20 md:px-8">
+          <SectionHeading kicker="The Goods" title="Shop by Category" href="/shop" linkLabel="Shop all" />
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {categories.map((c) => (
               <Link
-                href="/features"
-                className="group relative col-span-1 flex h-[600px] flex-col justify-end overflow-hidden md:col-span-8"
+                key={c.slug}
+                href={`/shop?category=${c.slug}`}
+                className="group relative aspect-square overflow-hidden rounded-2xl border border-line bg-card"
               >
-                <div className="absolute inset-0 z-0 bg-brand-graphite">
-                  {mainFeature.imageUrl && (
-                    <Image
-                      src={mainFeature.imageUrl}
-                      alt={mainFeature.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 66vw"
-                      className="object-cover opacity-80 grayscale-[0.2] transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent" />
-                </div>
-                <div className="relative z-10 p-8 md:p-12">
-                  <div className="mb-4 flex items-center gap-2">
-                    <span className="bg-brand-rust px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-white">
-                      {mainFeature.type}
-                    </span>
-                    {mainFeature.location && (
-                      <span className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-brand-chrome">
-                        <MapPin size={10} /> {mainFeature.location}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="mb-4 font-oswald text-4xl uppercase leading-none text-white transition-colors group-hover:text-brand-chrome md:text-5xl lg:text-6xl">
-                    {mainFeature.title}
-                  </h3>
-                  <p className="hidden max-w-lg font-playfair text-lg italic text-brand-chrome md:block">
-                    {mainFeature.excerpt}
-                  </p>
-                </div>
+                {c.image && (
+                  <Image
+                    src={c.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+                <span className="absolute bottom-4 left-4 font-goth text-3xl text-paper md:text-4xl">{c.name}</span>
               </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
-              <div className="col-span-1 flex flex-col gap-8 md:col-span-4 md:gap-4 lg:gap-8">
-                {sideFeatures[0] && (
-                  <Link
-                    href="/features"
-                    className="group relative flex h-[284px] flex-col justify-end overflow-hidden"
-                  >
-                    <div className="absolute inset-0 z-0 bg-brand-graphite">
-                      {sideFeatures[0].imageUrl && (
-                        <Image
-                          src={sideFeatures[0].imageUrl}
-                          alt={sideFeatures[0].title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-cover opacity-80 transition-transform duration-700 ease-out group-hover:scale-105"
-                        />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent" />
-                    </div>
-                    <div className="relative z-10 p-6">
-                      <h3 className="mb-2 font-oswald text-2xl uppercase leading-tight text-white transition-colors group-hover:text-brand-chrome">
-                        {sideFeatures[0].title}
-                      </h3>
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-brand-steel">
-                        {sideFeatures[0].type}
-                      </span>
-                    </div>
-                  </Link>
-                )}
+      <section className="mx-auto w-full max-w-screen-2xl px-4 pt-20 md:px-8">
+        <SectionHeading kicker="Fresh off the press" title="New Drop" href="/shop" linkLabel="View all" />
+        {newDrop.length > 0 ? (
+          <ProductGrid products={newDrop} />
+        ) : (
+          <div className="rounded-2xl border border-dashed border-line py-16 text-center">
+            <p className="font-goth text-4xl">First drop coming soon</p>
+            <p className="mt-2 text-ink-soft">Sign up below to get it before anyone else.</p>
+          </div>
+        )}
+      </section>
 
-                {sideFeatures[1] && (
-                  <Link
-                    href="/features"
-                    className="group relative flex h-[284px] flex-col justify-end overflow-hidden border border-white/5 bg-brand-graphite p-6 transition-colors hover:bg-white/5"
-                  >
-                    <div className="mb-auto flex items-start justify-between">
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-brand-steel">
-                        {sideFeatures[1].type}
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="mb-3 font-playfair text-2xl italic text-white transition-colors group-hover:text-brand-chrome">
-                        {sideFeatures[1].excerpt}
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-widest text-brand-steel">
-                        {sideFeatures[1].title}
-                      </p>
-                    </div>
-                  </Link>
-                )}
+      <section className="mt-24 bg-ink py-20 text-paper">
+        <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+          <p className="label text-center text-mustard">What we put on cloth</p>
+          <h2 className="mt-3 text-center font-goth text-5xl md:text-7xl">Iron ✦ Ink ✦ Dread</h2>
+          <div className="mt-14 grid gap-10 md:grid-cols-3">
+            {PILLARS.map((p, i) => (
+              <div key={p.title} className="border-t border-paper/20 pt-6 text-center">
+                <span className="font-goth text-5xl text-blood">{["I", "II", "III"][i]}</span>
+                <h3 className="mt-2 font-display text-2xl uppercase">{p.title}</h3>
+                <p className="mx-auto mt-3 max-w-xs text-paper/70">{p.text}</p>
               </div>
-            </div>
-          ) : (
-            <p className="font-inter text-brand-steel">
-              No features yet — add some in{" "}
-              <Link href="/admin" className="text-brand-rust underline">
-                admin
-              </Link>
-              .
-            </p>
-          )}
+            ))}
+          </div>
+          <div className="mt-14 text-center">
+            <Link href="/shop" className="btn-mustard">
+              Shop the collection
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="relative border-y border-brand-steel/20 bg-brand-offwhite py-24 text-brand-black">
-        <div className="texture-overlay opacity-[0.05]" />
-        <div className="relative z-10 container mx-auto max-w-screen-2xl px-4 md:px-8">
-          <div className="mb-16 flex flex-col items-center text-center">
-            <span className="mb-4 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-brand-rust">
-              <span className="h-[1px] w-8 bg-brand-rust" /> Work In Progress{" "}
-              <span className="h-[1px] w-8 bg-brand-rust" />
-            </span>
-            <h2 className="font-bebas text-6xl uppercase tracking-tight md:text-8xl">The Garage</h2>
-            <p className="mt-6 max-w-2xl font-inter text-brand-graphite">
-              Celebrating the unfinished, the imperfect, and the obsessive. These are the build journals of Milwaukee&apos;s late-night fabricators.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-            {builds.map((build) => (
-              <Link href="/builds" key={build.id} className="group flex flex-col">
-                <div className="relative mb-6 aspect-[4/5] overflow-hidden bg-brand-graphite">
-                  {build.imageUrl && (
+      {features.length > 0 && (
+        <section className="mx-auto w-full max-w-screen-2xl px-4 pt-24 md:px-8">
+          <SectionHeading kicker="Media" title="Latest Stories" href="/features" linkLabel="All features" />
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {features.map((f) => (
+              <Link key={f.id} href="/features" className="group flex flex-col">
+                <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-paper-deep">
+                  {f.imageUrl && (
                     <Image
-                      src={build.imageUrl}
-                      alt={build.title}
+                      src={f.imageUrl}
+                      alt={f.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   )}
-                  <div className="absolute left-4 top-4 bg-brand-black px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-white">
-                    Status: {build.stage}
-                  </div>
                 </div>
-                <div className="border-t-2 border-brand-black pt-4">
-                  <h3 className="mb-2 font-oswald text-3xl uppercase transition-colors group-hover:text-brand-rust">
-                    {build.title}
-                  </h3>
-                  <p className="mb-4 font-playfair text-brand-graphite">{build.excerpt}</p>
-                  <span className="flex items-center gap-1 font-mono text-xs font-bold uppercase tracking-widest">
-                    View Journal <ArrowRight size={14} />
-                  </span>
+                <p className="label text-[0.65rem] text-blood">{f.type}</p>
+                <h3 className="mt-1 font-display text-xl uppercase leading-tight group-hover:text-blood">{f.title}</h3>
+                <p className="mt-2 line-clamp-2 text-sm text-ink-soft">{f.excerpt}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {parts.length > 0 && (
+        <section className="mx-auto w-full max-w-screen-2xl px-4 pt-24 md:px-8">
+          <SectionHeading kicker="Hardware" title="Parts & Iron" href="/shop?category=parts" linkLabel="All parts" />
+          <ProductGrid products={parts} />
+        </section>
+      )}
+
+      {builds.length > 0 && (
+        <section className="mx-auto w-full max-w-screen-2xl px-4 pt-24 md:px-8">
+          <SectionHeading kicker="Work in progress" title="The Garage" href="/builds" linkLabel="All builds" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {builds.map((b) => (
+              <Link
+                key={b.id}
+                href="/builds"
+                className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl bg-ink p-6 text-paper"
+              >
+                {b.imageUrl && (
+                  <Image
+                    src={b.imageUrl}
+                    alt={b.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+                <div className="relative">
+                  <span className="ribbon">{b.stage}</span>
+                  <h3 className="mt-3 font-goth text-4xl leading-none">{b.title}</h3>
+                  <p className="mt-2 text-sm text-paper/75">by {b.builder}</p>
                 </div>
               </Link>
             ))}
           </div>
+        </section>
+      )}
 
-          <div className="mt-16 text-center">
-            <Link
-              href="/builds"
-              className="inline-block border-2 border-brand-black px-8 py-4 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-brand-black hover:text-white"
-            >
-              Enter The Garage
+      <section className="mx-auto mt-24 w-full max-w-screen-2xl px-4 md:px-8">
+        <div className="grid items-center gap-8 rounded-[2rem] bg-blood px-6 py-14 text-paper md:grid-cols-2 md:px-14">
+          <div>
+            <h2 className="font-goth text-5xl md:text-6xl">Got a build?</h2>
+            <p className="mt-3 max-w-md text-paper/85">
+              Finished showpiece or a pile of parts on a greasy floor, we want to see it.
+            </p>
+          </div>
+          <div className="md:justify-self-end">
+            <Link href="/submit" className="btn-mustard">
+              Submit your bike <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-brand-black py-24">
-        <div className="pointer-events-none absolute left-1/2 top-1/2 flex h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 items-center justify-center opacity-5">
-          <span className="select-none whitespace-nowrap font-bebas text-[30vw] leading-none text-white">
-            MKE WI
-          </span>
-        </div>
-
-        <div className="relative z-10 container mx-auto max-w-screen-2xl px-4 md:px-8">
-          <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-            <div className="order-2 lg:order-1">
-              <div className="relative mx-auto aspect-square w-full max-w-lg border-[12px] border-white/5 bg-brand-graphite lg:ml-0">
-                <Image
-                  src="https://images.unsplash.com/photo-1558981420-c532902e58b4?q=80&w=1200&auto=format&fit=crop"
-                  alt="Milwaukee riders"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-                <div className="absolute -bottom-8 -right-8 flex h-48 w-48 rotate-3 flex-col items-center justify-center bg-brand-rust/90 p-6 text-white">
-                  <span className="mb-2 w-full border-b border-white/30 pb-2 text-center font-mono text-xs uppercase tracking-widest">
-                    Location
-                  </span>
-                  <span className="mt-2 text-center font-bebas text-4xl leading-none">
-                    MILWAUKEE
-                    <br />
-                    WISCONSIN
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <h2 className="mb-8 font-oswald text-5xl uppercase text-white md:text-7xl">
-                This Is Our City
-              </h2>
-              <div className="space-y-6 font-inter text-lg text-brand-chrome">
-                <p>
-                  SuchGrime isn&apos;t just about the machines. It&apos;s about the people who build them, the streets they ride on, and the culture that binds them together.
-                </p>
-                <p>
-                  From the industrial ruins of the Menomonee Valley to the late-night garage sessions in Riverwest, this city is built on steel and oil. We&apos;re here to document the independent builders, the local clubs, and the riders keeping the chopper scene alive in the Midwest.
-                </p>
-              </div>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  href="/people"
-                  className="border border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-brand-black"
-                >
-                  Meet the People
-                </Link>
-                <Link
-                  href="/events"
-                  className="border border-transparent px-6 py-3 font-mono text-xs uppercase tracking-widest text-brand-steel transition-colors hover:text-white"
-                >
-                  Local Events
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative bg-brand-rust py-32 text-center">
-        <div className="relative z-10 container mx-auto px-4">
-          <h2 className="mb-6 font-bebas text-6xl uppercase tracking-tight text-white drop-shadow-xl md:text-9xl">
-            Got a Build?
-          </h2>
-          <p className="mx-auto mb-10 max-w-2xl font-playfair text-xl italic text-white/90 md:text-2xl">
-            Whether it&apos;s a finished showpiece or a pile of parts on a greasy floor. We want to see what you&apos;re working on.
-          </p>
-          <Link
-            href="/submit"
-            className="inline-block bg-brand-black px-12 py-5 font-oswald text-2xl uppercase text-white shadow-2xl transition-colors hover:bg-white hover:text-brand-black"
-          >
-            Submit Your Story
-          </Link>
+      <section className="mx-auto w-full max-w-screen-2xl px-4 py-24 text-center md:px-8">
+        <p className="label text-blood">The mailing list</p>
+        <h2 className="mt-2 font-goth text-5xl md:text-6xl">First dibs on every drop</h2>
+        <p className="mx-auto mt-3 max-w-md text-ink-soft">New designs, restocks, and stories. No spam.</p>
+        <div className="mt-8 flex justify-center">
+          <NewsletterForm />
         </div>
       </section>
     </div>
   );
+}
+
+function SectionHeading({
+  kicker,
+  title,
+  href,
+  linkLabel,
+}: {
+  kicker: string;
+  title: string;
+  href: string;
+  linkLabel: string;
+}) {
+  return (
+    <div className="mb-8 flex items-end justify-between gap-4 border-b border-line pb-4">
+      <div>
+        <p className="label text-blood">{kicker}</p>
+        <h2 className="mt-1 font-goth text-4xl md:text-6xl">{title}</h2>
+      </div>
+      <Link href={href} className="label flex shrink-0 items-center gap-1 hover:text-blood">
+        {linkLabel} <ArrowRight size={14} />
+      </Link>
+    </div>
+  );
+}
+
+function buildCategoryTiles(products: Product[]) {
+  const map = new Map<string, { name: string; slug: string; image?: string }>();
+  for (const p of products) {
+    const slug = categorySlug(p.category);
+    const existing = map.get(slug);
+    if (!existing) map.set(slug, { name: p.category, slug, image: productImages(p)[0] });
+    else if (!existing.image) existing.image = productImages(p)[0];
+  }
+  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name)).slice(0, 4);
 }

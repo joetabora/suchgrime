@@ -57,9 +57,13 @@ model Product {
   category        String
   description     String
   priceCents      Int
+  compareAtCents  Int?
   imageUrl        String?
+  gallery         String   @default("") // one image URL per line
+  sizes           String   @default("") // comma-separated, e.g. "S,M,L,XL"
   inventory       Int      @default(0)
   status          String   @default("available") // available | coming_soon | sold_out
+  featured        Boolean  @default(false)
   active          Boolean  @default(true)
   stripePriceId   String?
   stripeProductId String?
@@ -88,8 +92,15 @@ model OrderItem {
   orderId    String
   productId  String
   title      String
+  size       String?
   quantity   Int
   priceCents Int
   order      Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
   product    Product @relation(fields: [productId], references: [id])
+}
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
 }

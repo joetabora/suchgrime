@@ -2,12 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
+    // Product/feature images are pasted as URLs in /admin, so any https host is allowed.
+    remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
 };
 
