@@ -12,7 +12,7 @@ export function ProductCard({ product }: { product: Product }) {
   const badge = status ? status : product.featured ? "Limited" : onSale ? "Sale" : null;
 
   return (
-    <Link href={`/shop/${product.slug}`} className="group relative flex flex-col bg-base">
+    <Link href={`/shop/${product.slug}`} className="group flex flex-col bg-surface">
       <div className="relative aspect-[3/4] overflow-hidden bg-elevated">
         {primary ? (
           <>
@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
               alt={product.title}
               fill
               sizes="(max-width: 768px) 50vw, 25vw"
-              className={`object-cover contrast-125 transition-transform duration-500 group-hover:scale-[1.03] ${
+              className={`object-cover transition-transform duration-500 group-hover:scale-[1.03] ${
                 secondary ? "group-hover:opacity-0" : ""
               }`}
             />
@@ -31,46 +31,39 @@ export function ProductCard({ product }: { product: Product }) {
                 alt=""
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
-                className="object-cover opacity-0 contrast-125 transition-opacity duration-500 group-hover:opacity-100"
+                className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               />
             )}
           </>
         ) : (
-          <div className="flex h-full items-center justify-center bg-surface">
+          <div className="flex h-full items-center justify-center">
             <span className="font-bebas text-5xl tracking-wide text-line">SG</span>
           </div>
         )}
-        <span aria-hidden className="absolute left-0 top-0 h-full w-0.5 bg-blood" />
         {badge && (
-          <span
-            className={`absolute left-3 top-3 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
-              badge === "Limited"
-                ? "bg-gold text-base"
-                : badge === "Sale"
-                  ? "bg-blood text-primary"
-                  : "bg-chrome text-base"
-            }`}
-          >
+          <span className="absolute left-3 top-3 bg-gold px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-base)]">
             {badge}
           </span>
         )}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-base via-base/80 to-transparent px-3 pb-3 pt-14">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-chrome">{product.category}</p>
-          <div className="mt-1 flex items-end justify-between gap-2">
-            <h3 className="font-bebas text-[1.7rem] leading-[0.85] tracking-tight group-hover:text-blood md:text-3xl">
-              {product.title}
-            </h3>
-            <p className="shrink-0 text-right font-display text-sm leading-none">
-              <span className={onSale ? "text-blood" : "text-primary"}>{formatMoney(product.priceCents)}</span>
-              {onSale && (
-                <span className="mt-1 block text-[11px] text-secondary line-through">
-                  {formatMoney(product.compareAtCents!)}
-                </span>
-              )}
-            </p>
-          </div>
+      </div>
+      <div className="flex flex-1 flex-col justify-between gap-2 bg-primary px-3 py-3 text-[var(--color-base)]">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--color-base)_62%,transparent)]">
+            {product.category}
+          </p>
+          <h3 className="mt-1 font-bebas text-2xl leading-[0.9] tracking-tight md:text-3xl">{product.title}</h3>
+        </div>
+        <div>
+          <p className="font-display text-sm leading-none">
+            {formatMoney(product.priceCents)}
+            {onSale && (
+              <span className="ml-2 text-xs text-[color-mix(in_srgb,var(--color-base)_50%,transparent)] line-through">
+                {formatMoney(product.compareAtCents!)}
+              </span>
+            )}
+          </p>
           {low && (
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-blood">
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--color-base)_70%,transparent)]">
               {product.inventory} left
             </p>
           )}
@@ -82,7 +75,7 @@ export function ProductCard({ product }: { product: Product }) {
 
 export function ProductGrid({ products }: { products: Product[] }) {
   return (
-    <div className="grid grid-cols-2 gap-px bg-line md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

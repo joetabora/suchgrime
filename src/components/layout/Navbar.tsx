@@ -45,7 +45,7 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-4 py-3 md:px-8">
           <Link
             href="/"
-            className="font-bebas text-[1.85rem] leading-none tracking-[0.04em] text-primary transition-colors hover:text-blood"
+            className="font-bebas text-[1.85rem] leading-none tracking-[0.04em] text-primary transition-colors hover:text-gold"
           >
             SUCHGRIME
           </Link>
@@ -59,7 +59,7 @@ export default function Navbar() {
                   href={link.href}
                   aria-current={active ? "page" : undefined}
                   className={`font-display text-[0.72rem] uppercase tracking-[0.2em] transition-colors hover:text-primary ${
-                    active ? "text-blood" : "text-secondary"
+                    active ? "text-gold" : "text-secondary"
                   }`}
                 >
                   {link.label}

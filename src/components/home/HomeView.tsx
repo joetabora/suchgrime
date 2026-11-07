@@ -6,32 +6,26 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const STRIP = ["Small run", "Flash sheets", "Long forks", "Milwaukee", "No reorders"];
+const STRIP = ["Small runs", "Long forks", "Garage days", "Milwaukee"];
 
 const BUILDS = [
   {
-    index: "01",
-    stamp: "Not done",
-    when: "04.12",
+    when: "Thursday",
     where: "South Side",
     title: "Rigid Panhead",
-    note: "Neck rake still wrong. Forks on the floor. Don't touch the paint.",
+    note: "Forks are still on the floor. Paint can wait until she actually runs.",
   },
   {
-    index: "02",
-    stamp: "On the bench",
-    when: "03.28",
+    when: "Last week",
     where: "Bay View",
     title: "Shovelhead",
-    note: "Cases open. Missing a cam bushing. Again. Parts in a coffee can.",
+    note: "Cases are open. Pretty sure the bushing is in a coffee can.",
   },
   {
-    index: "03",
-    stamp: "In the jig",
-    when: "02.02",
+    when: "February",
     where: "Walker's Point",
     title: "Ironhead",
-    note: "New neck in. Old sins still in the frame. Welds ground, not pretty.",
+    note: "New neck's in. The frame kept its dents. That's fine.",
   },
 ];
 
@@ -100,70 +94,49 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
   return (
     <div className="overflow-x-hidden">
       <motion.section
-        className="grit relative flex min-h-[calc(100svh-3.5rem)] flex-col"
+        className="flex min-h-[78svh] flex-col justify-center px-4 py-16 md:px-8 md:py-20"
         initial="hidden"
         animate="show"
         variants={{
           show: { transition: { staggerChildren: reduce ? 0 : 0.07 } },
         }}
       >
-        <CropMarks />
-        <motion.div
+        <motion.p
           variants={fade(reduce)}
-          className="relative z-10 flex items-start justify-between gap-6 px-4 pt-6 md:px-8"
+          className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold"
         >
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-secondary">
-            Milwaukee · Wis
-          </p>
-          <p className="hidden font-mono text-[10px] uppercase tracking-[0.24em] text-secondary sm:block">
-            Not a show bike
-          </p>
-        </motion.div>
-
-        <div className="relative z-10 flex flex-1 flex-col justify-end px-4 pb-6 md:px-8">
-          <motion.p
-            variants={fade(reduce)}
-            className="font-goth text-4xl text-blood md:text-5xl"
-          >
-            Such
-          </motion.p>
-          <motion.h1
-            variants={fade(reduce)}
-            className="font-bebas text-[clamp(4.4rem,14vw,9.25rem)] leading-[0.8] tracking-tight"
-          >
-            RIDE UGLY.
-            <span className="mt-1 block text-blood md:pl-[14vw]">DIE PRETTY.</span>
-          </motion.h1>
-          <motion.p
-            variants={fade(reduce)}
-            className="mt-5 max-w-md border-l-2 border-blood pl-4 text-base leading-snug text-primary md:text-lg"
-          >
-            South Side stand. Milk crates for a seat. She fired on Thursday. That&apos;s enough.
-          </motion.p>
-          <motion.div variants={fade(reduce)} className="mt-6 flex flex-wrap items-center gap-6">
-            <Link href="/shop" className="btn-blood">
-              Shop the drop
-            </Link>
-            <Link
-              href="/builds"
-              className="font-display text-xs uppercase tracking-[0.2em] text-chrome hover:text-blood"
-            >
-              The stand
-            </Link>
-          </motion.div>
-        </div>
-
-        <motion.div
+          Milwaukee · Wis
+        </motion.p>
+        <motion.h1
           variants={fade(reduce)}
-          className="relative z-10 flex flex-wrap gap-x-4 gap-y-1 border-t border-line px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-secondary md:px-8"
+          className="mt-4 font-bebas text-[clamp(4.4rem,13vw,8.5rem)] leading-[0.84] tracking-tight"
         >
-          {STRIP.map((word, index) => (
-            <span key={word} className="inline-flex items-center gap-4">
-              {index > 0 && <span className="text-blood">/</span>}
-              {word}
-            </span>
-          ))}
+          RIDE UGLY.
+          <span className="mt-1 block text-gold">DIE PRETTY.</span>
+        </motion.h1>
+        <motion.p
+          variants={fade(reduce)}
+          className="mt-6 max-w-md text-base leading-relaxed text-secondary md:text-lg"
+        >
+          Been out back on milk crates all week. She fired up Thursday. Figured that was enough for a ride.
+        </motion.p>
+        <motion.div variants={fade(reduce)} className="mt-8 flex flex-wrap items-center gap-6">
+          <Link href="/shop" className="btn-blood">
+            Shop the drop
+          </Link>
+          <Link
+            href="/builds"
+            className="font-display text-xs uppercase tracking-[0.18em] text-chrome hover:text-gold"
+          >
+            See the bikes
+          </Link>
         </motion.div>
+        <motion.p
+          variants={fade(reduce)}
+          className="mt-12 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary"
+        >
+          {STRIP.join("  ·  ")}
+        </motion.p>
       </motion.section>
 
       <section className="border-t border-line bg-base">
@@ -172,7 +145,7 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">Limited drop</p>
             <h2 className="mt-2 font-bebas text-[clamp(4.5rem,8vw,7.5rem)] leading-[0.78] tracking-tight">
               DROP
-              <span className="text-blood"> 01</span>
+              <span className="text-gold"> 01</span>
             </h2>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">
               Small run. When it&apos;s gone, it&apos;s gone.
@@ -192,38 +165,29 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
         </div>
       </section>
 
-      <section className="grit border-t border-line">
-        <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-14">
-          <Reveal className="mb-6 flex items-end justify-between gap-4 border-b border-line pb-4">
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-[1440px] px-4 py-14 md:px-8 md:py-16">
+          <Reveal className="mb-8 flex items-end justify-between gap-4">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">The stand</p>
-              <h2 className="mt-1 font-bebas text-5xl leading-[0.85] tracking-tight md:text-7xl">Builds</h2>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">In the garage</p>
+              <h2 className="mt-2 font-bebas text-5xl leading-[0.85] tracking-tight md:text-7xl">Builds</h2>
             </div>
             <Link
               href="/builds"
-              className="font-display text-xs uppercase tracking-[0.2em] text-chrome hover:text-blood"
+              className="font-display text-xs uppercase tracking-[0.18em] text-chrome hover:text-gold"
             >
-              All notes
+              All the notes
             </Link>
           </Reveal>
-          <div className="grid gap-px bg-line md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {BUILDS.map((build, index) => (
-              <Reveal key={build.index} delay={index * 0.05} className="bg-base">
-                <Link href="/builds" className="flex h-full flex-col px-4 py-5 transition-colors hover:bg-surface md:px-5">
-                  <div className="flex items-center justify-between gap-3 border-b border-dashed border-line pb-3">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
-                      Job {build.index}
-                    </span>
-                    <span className="border border-blood px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-blood">
-                      {build.stamp}
-                    </span>
-                  </div>
-                  <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-gold">
+              <Reveal key={build.title} delay={index * 0.05}>
+                <Link href="/builds" className="flex h-full flex-col bg-surface px-5 py-6 transition-colors hover:bg-elevated">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-gold">
                     {build.when} · {build.where}
                   </p>
-                  <h3 className="mt-2 font-bebas text-4xl leading-none tracking-tight md:text-5xl">{build.title}</h3>
-                  <p className="mt-3 border-l-2 border-blood pl-3 text-sm leading-relaxed text-secondary">{build.note}</p>
-                  <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.16em] text-chrome">Open the notes</p>
+                  <h3 className="mt-4 font-bebas text-4xl leading-none tracking-tight">{build.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-secondary">{build.note}</p>
                 </Link>
               </Reveal>
             ))}
@@ -239,9 +203,9 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
           </Reveal>
           <div className="lg:col-span-8">
             {EVENTS.map((event, index) => (
-              <Reveal key={event.date} delay={index * 0.05} className={index === 1 ? "md:ml-12" : ""}>
+              <Reveal key={event.date} delay={index * 0.05}>
                 <article className="grid items-end gap-4 border-t border-line py-6 sm:grid-cols-[auto_1fr_auto] sm:gap-8">
-                  <p className="font-bebas text-6xl leading-none text-blood">{event.date}</p>
+                  <p className="font-bebas text-5xl leading-none text-gold md:text-6xl">{event.date}</p>
                   <div>
                     <h3 className="font-display text-2xl uppercase tracking-wide">{event.title}</h3>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
@@ -262,51 +226,34 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
 }
 
 function DropCard({ piece }: { piece: DropPiece }) {
-  const limited = piece.badge === "Limited";
   return (
-    <Link href={piece.href} className="group relative block min-h-[320px] bg-base sm:min-h-[420px]">
-      <div className="absolute inset-0">
+    <Link href={piece.href} className="group flex h-full flex-col bg-surface">
+      <div className="relative aspect-[4/5] overflow-hidden bg-elevated">
         {piece.image ? (
           <Image
             src={piece.image}
             alt={piece.title}
             fill
             sizes="(max-width: 1024px) 100vw, 34vw"
-            className="object-cover contrast-125 transition-transform duration-500 group-hover:scale-[1.03]"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
           <FlashPlate />
         )}
+        <span className="absolute left-3 top-3 bg-gold px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-base)]">
+          {piece.badge}
+        </span>
       </div>
-      <span
-        className={`absolute left-3 top-3 z-10 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
-          limited ? "bg-gold text-base" : "bg-blood text-primary"
-        }`}
-      >
-        {piece.badge}
-      </span>
-      <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-base via-base/75 to-transparent px-4 pb-4 pt-16">
-        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-chrome">{piece.detail}</p>
-        <div className="mt-1 flex items-end justify-between gap-3">
-          <h3 className="font-bebas text-3xl leading-[0.85] tracking-tight group-hover:text-blood md:text-4xl">
-            {piece.title}
-          </h3>
-          <p className="shrink-0 font-display text-sm">{piece.price}</p>
+      <div className="flex items-end justify-between gap-3 bg-primary px-4 py-3 text-[var(--color-base)]">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--color-base)_62%,transparent)]">
+            {piece.detail}
+          </p>
+          <h3 className="mt-1 font-bebas text-3xl leading-none tracking-tight">{piece.title}</h3>
         </div>
+        <p className="shrink-0 font-display text-sm">{piece.price}</p>
       </div>
     </Link>
-  );
-}
-
-function CropMarks() {
-  const arm = "absolute z-10 h-4 w-4 border-chrome";
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-3 md:inset-5">
-      <span className={`${arm} left-0 top-0 border-l border-t`} />
-      <span className={`${arm} right-0 top-0 border-r border-t`} />
-      <span className={`${arm} bottom-10 left-0 border-b border-l`} />
-      <span className={`${arm} bottom-10 right-0 border-r border-b`} />
-    </div>
   );
 }
 

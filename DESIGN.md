@@ -51,19 +51,34 @@ Scale aggressively. Headlines can be huge. Mix weights and sizes for editorial t
 ## Voice
 
 Direct, confident, no fluff. “Ride Ugly. Die Pretty.” energy. Garage real, not corporate.  
-  
-  
-  
+
 ## Aesthetic Reference Direction
+
+
+
+## Mood Adjustment
+
+Light-hearted, laid-back chopper/builder lifestyle. Warm garage energy, not gothic.
+
+- Softer darks (charcoal / warm black) instead of pure #0A0A0A where possible
+
+- Bone / cream text as the primary, with muted gold or faded yellow as secondary accents
+
+- Blood red used sparingly for small stamps and CTAs only
+
+- Copy should sound like a rider talking, not a manifesto
+
+- Reduce heavy decorative marks (crop marks, heavy grain) — use them lightly or not at all
+
+- Keep strong type and product focus, but let the overall feeling stay relaxed and human
+
+
 
 Hybrid of [actuallyitsaxel.com](http://actuallyitsaxel.com) (raw, personal, rider-owned brand energy) and [toxico.co.uk](http://toxico.co.uk) (bold graphic streetwear, high-impact merch visuals, tattoo/lowbrow edge).
 
 - Product and merch should feel front-and-center, not secondary.
-
 - Imagery treatment: high-contrast, slightly gritty, strong graphic overlays.
-
 - Layout can be denser in shop and product areas; keep editorial breathing room on features and builds.
-
 - Allow controlled chaos: overlapping elements, tight type, occasional flash-style decorative marks.
-
 - Avoid generic luxury or corporate motorcycle aesthetics.
+

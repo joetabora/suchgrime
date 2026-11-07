@@ -34,7 +34,7 @@ export default async function ShopPage({
     <div className="mx-auto max-w-[1440px] px-4 pb-20 pt-8 md:px-8">
       <header className="mb-6 flex flex-col gap-5 border-b border-line pb-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-blood">The sheet</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">The sheet</p>
           <h1 className="mt-2 font-bebas text-6xl leading-[0.8] tracking-tight md:text-8xl">
             {activeName ?? "Shop"}
           </h1>
@@ -43,7 +43,7 @@ export default async function ShopPage({
           )}
         </div>
         <p className="max-w-xs text-sm leading-relaxed text-secondary md:text-right">
-          Small runs. If it&apos;s on the sheet, it&apos;s actually in the shop.
+          Small runs, made to actually get worn. If it&apos;s on the sheet, it&apos;s in the shop.
         </p>
       </header>
 
@@ -84,7 +84,7 @@ function CategoryTab({ href, active, children }: { href: string; active: boolean
       href={href}
       aria-current={active ? "page" : undefined}
       className={`shrink-0 border px-3 py-2 font-display text-[0.72rem] uppercase tracking-[0.16em] transition-colors ${
-        active ? "border-blood bg-blood text-primary" : "border-line text-secondary hover:border-chrome hover:text-primary"
+        active ? "border-gold bg-gold text-[var(--color-base)]" : "border-line text-secondary hover:border-gold hover:text-primary"
       }`}
     >
       {children}
@@ -94,30 +94,21 @@ function CategoryTab({ href, active, children }: { href: string; active: boolean
 
 function EmptySheet({ filtered, name }: { filtered: boolean; name?: string }) {
   return (
-    <div className="relative overflow-hidden border border-line bg-surface px-5 py-14 md:px-10 md:py-20">
-      <span aria-hidden className="absolute left-0 top-0 h-16 w-16 border-l border-t border-blood" />
-      <span aria-hidden className="absolute bottom-0 right-0 h-16 w-16 border-b border-r border-chrome" />
-      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">Drop 01</p>
-      <h2 className="mt-3 max-w-xl font-bebas text-6xl leading-[0.82] tracking-tight md:text-8xl">
-        {filtered ? "Not this run" : "Nothing on the sheet"}
+    <div className="max-w-xl bg-surface px-6 py-12 md:px-8">
+      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">Drop 01</p>
+      <h2 className="mt-3 font-bebas text-5xl leading-[0.85] tracking-tight md:text-7xl">
+        {filtered ? "Not this run" : "Nothing on the sheet yet"}
       </h2>
       <p className="mt-4 max-w-md text-secondary">
         {filtered
-          ? `${name ?? "That"} isn't in this drop. The rest of the sheet is still up.`
-          : "First cloth is still on the bench. When it hits the sheet, it won't sit long."}
+          ? `${name ?? "That"} isn't in this drop. The rest of the shop is still up.`
+          : "First pieces are still on the bench. They'll show up here when they're ready to leave the garage."}
       </p>
-      <div className="mt-8 flex flex-wrap items-center gap-6">
-        <span aria-hidden className="h-px w-16 bg-blood" />
-        {filtered ? (
-          <Link href="/shop" className="btn-blood">
-            Back to the sheet
-          </Link>
-        ) : (
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-chrome">
-            List&apos;s at the bottom of the page
-          </p>
-        )}
-      </div>
+      {filtered && (
+        <Link href="/shop" className="btn-outline mt-8">
+          Back to the shop
+        </Link>
+      )}
     </div>
   );
 }

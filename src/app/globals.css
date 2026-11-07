@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* SuchGrime — see DESIGN.md */
-  --color-base: #0a0a0a;
-  --color-surface: #141414;
-  --color-elevated: #1c1c1c;
-  --color-primary: #f5f5f0;
-  --color-secondary: #a3a3a3;
+  /* SuchGrime — warm charcoal, bone, muted gold. Blood stays for stamps and CTAs. */
+  --color-base: #1c1814;
+  --color-surface: #26211c;
+  --color-elevated: #322c26;
+  --color-primary: #f4efe6;
+  --color-secondary: #b7aa9a;
   --color-blood: #c41e3a;
-  --color-chrome: #e8e8e8;
-  --color-gold: #d4af37;
+  --color-chrome: #e7e0d4;
+  --color-gold: #c6a35a;
   --color-flash: #ff2e2e;
-  --color-line: #2a2a2a;
+  --color-line: #3f372f;
 
-  /* Legacy names, pointed at the dark system so older pages stay readable. */
-  --color-paper: #0a0a0a;
-  --color-paper-deep: #141414;
-  --color-card: #1c1c1c;
-  --color-ink: #f5f5f0;
-  --color-ink-soft: #a3a3a3;
+  /* Legacy names follow the warmer public palette. */
+  --color-paper: #1c1814;
+  --color-paper-deep: #26211c;
+  --color-card: #322c26;
+  --color-ink: #f4efe6;
+  --color-ink-soft: #b7aa9a;
   --color-blood-deep: #ff2e2e;
-  --color-mustard: #d4af37;
+  --color-mustard: #c6a35a;
 
   /* Admin palette */
   --color-brand-black: #050505;
@@ -107,31 +107,13 @@
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-blood);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: var(--color-blood);
-  color: var(--color-primary);
-}
-
-/* Print grain behind type. Multiply disappears on the dark base; overlay reads on it. */
-.texture-overlay,
-.grit::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.1;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.grit {
-  position: relative;
-  isolation: isolate;
+  background: var(--color-gold);
+  color: var(--color-base);
 }
 
 .no-scrollbar::-webkit-scrollbar {
