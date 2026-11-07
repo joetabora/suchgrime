@@ -6,32 +6,52 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const STRIP = ["Small runs", "Long forks", "Garage days", "Milwaukee"];
-
 const BUILDS = [
   {
     when: "Thursday",
     where: "South Side",
     title: "Rigid Panhead",
     note: "Forks are still on the floor. Paint can wait until she actually runs.",
+    next: "Kick the rake this weekend and see if she tracks.",
   },
   {
     when: "Last week",
     where: "Bay View",
     title: "Shovelhead",
     note: "Cases are open. Pretty sure the bushing is in a coffee can.",
+    next: "Dig through the bench before ordering another one.",
   },
   {
     when: "February",
     where: "Walker's Point",
     title: "Ironhead",
     note: "New neck's in. The frame kept its dents. That's fine.",
+    next: "Wheels on, then a slow loop around the block.",
   },
 ];
 
-const EVENTS = [
-  { date: "06.13", title: "Lakeshore Run", place: "Milwaukee lakefront" },
-  { date: "08.07", title: "Garage Night", place: "Walker's Point" },
+const HAPPENING = [
+  {
+    kicker: "Next ride",
+    title: "Lakeshore Run",
+    text: "Jun 13 · Milwaukee lakefront",
+    href: "/events",
+    action: "I'm rolling",
+  },
+  {
+    kicker: "On the bench",
+    title: "Panhead forks",
+    text: "Still on the floor in the South Side stand.",
+    href: "/builds",
+    action: "Read the note",
+  },
+  {
+    kicker: "Out of the garage",
+    title: "Instagram",
+    text: "Photos when we're actually out riding.",
+    href: null,
+    action: "Soon",
+  },
 ];
 
 const FALLBACK_DROP: DropPiece[] = [
@@ -48,7 +68,7 @@ const FALLBACK_DROP: DropPiece[] = [
     title: "Next off the press",
     price: "Soon",
     image: null,
-    badge: "Drop 01",
+    badge: "Drop",
     detail: "Small run",
   },
 ];
@@ -94,7 +114,7 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
   return (
     <div className="overflow-x-hidden">
       <motion.section
-        className="flex min-h-[78svh] flex-col justify-center px-4 py-16 md:px-8 md:py-20"
+        className="mx-auto flex max-w-[1440px] flex-col justify-center px-4 py-12 md:px-8 md:py-16"
         initial="hidden"
         animate="show"
         variants={{
@@ -109,55 +129,55 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
         </motion.p>
         <motion.h1
           variants={fade(reduce)}
-          className="mt-4 font-bebas text-[clamp(4.4rem,13vw,8.5rem)] leading-[0.84] tracking-tight"
+          className="mt-3 font-bebas text-[clamp(4.2rem,11vw,7.75rem)] leading-[0.82] tracking-tight"
         >
           RIDE UGLY.
-          <span className="mt-1 block text-gold">DIE PRETTY.</span>
+          <span className="mt-1 block text-[0.78em] leading-none text-gold">DIE PRETTY.</span>
         </motion.h1>
-        <motion.p
+        <motion.div
           variants={fade(reduce)}
-          className="mt-6 max-w-md text-base leading-relaxed text-secondary md:text-lg"
+          className="mt-6 flex flex-col gap-5 border-t border-line pt-5 sm:flex-row sm:items-end sm:justify-between"
         >
-          Been out back on milk crates all week. She fired up Thursday. Figured that was enough for a ride.
-        </motion.p>
-        <motion.div variants={fade(reduce)} className="mt-8 flex flex-wrap items-center gap-6">
-          <Link href="/shop" className="btn-blood">
-            Shop the drop
-          </Link>
-          <Link
-            href="/builds"
-            className="font-display text-xs uppercase tracking-[0.18em] text-chrome hover:text-gold"
-          >
-            See the bikes
-          </Link>
-        </motion.div>
-        <motion.p
-          variants={fade(reduce)}
-          className="mt-12 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary"
-        >
-          {STRIP.join("  ·  ")}
-        </motion.p>
-      </motion.section>
-
-      <section className="border-t border-line bg-base">
-        <div className="grid lg:grid-cols-[minmax(16rem,0.7fr)_1.5fr]">
-          <Reveal className="flex flex-col border-b border-line px-4 py-8 md:px-8 lg:border-r lg:border-b-0 lg:py-10">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">Limited drop</p>
-            <h2 className="mt-2 font-bebas text-[clamp(4.5rem,8vw,7.5rem)] leading-[0.78] tracking-tight">
-              DROP
-              <span className="text-gold"> 01</span>
-            </h2>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">
-              Small run. When it&apos;s gone, it&apos;s gone.
-            </p>
-            <Link href="/shop" className="btn-blood mt-8 w-fit">
+          <p className="max-w-sm text-base leading-relaxed text-secondary">
+            Been out back on milk crates all week. She fired up Thursday. Figured that was enough for a ride.
+          </p>
+          <div className="flex flex-wrap items-center gap-5">
+            <Link href="/shop" className="btn-blood">
               Shop the drop
             </Link>
-          </Reveal>
+            <Link
+              href="/builds"
+              className="font-display text-xs uppercase tracking-[0.18em] text-chrome hover:text-gold"
+            >
+              See the bikes
+            </Link>
+          </div>
+        </motion.div>
+      </motion.section>
 
-          <div className={`grid gap-px bg-line ${pieces.length > 1 ? "sm:grid-cols-2" : ""} ${pieces.length > 2 ? "xl:grid-cols-3" : ""}`}>
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-12">
+          <Reveal className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">Limited drop</p>
+              <h2 className="mt-1 font-bebas text-6xl leading-[0.82] tracking-tight md:text-7xl">
+                Drop <span className="text-gold">01</span>
+              </h2>
+            </div>
+            <div className="flex flex-wrap items-center gap-5">
+              <p className="max-w-xs text-sm leading-relaxed text-secondary">
+                Small run. When it&apos;s gone, it&apos;s gone.
+              </p>
+              <Link href="/shop" className="btn-blood">
+                Shop the drop
+              </Link>
+            </div>
+          </Reveal>
+          <div
+            className={`grid gap-4 ${pieces.length > 1 ? "sm:grid-cols-2" : ""} ${pieces.length > 2 ? "lg:grid-cols-3" : ""}`}
+          >
             {pieces.map((piece, index) => (
-              <Reveal key={`${piece.href}-${piece.title}`} delay={index * 0.05} className="min-h-0 bg-base">
+              <Reveal key={`${piece.href}-${piece.title}`} delay={index * 0.05}>
                 <DropCard piece={piece} />
               </Reveal>
             ))}
@@ -166,11 +186,11 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
       </section>
 
       <section className="border-t border-line">
-        <div className="mx-auto max-w-[1440px] px-4 py-14 md:px-8 md:py-16">
-          <Reveal className="mb-8 flex items-end justify-between gap-4">
+        <div className="mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-12">
+          <Reveal className="mb-6 flex items-end justify-between gap-4">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">In the garage</p>
-              <h2 className="mt-2 font-bebas text-5xl leading-[0.85] tracking-tight md:text-7xl">Builds</h2>
+              <h2 className="mt-1 font-bebas text-6xl leading-[0.82] tracking-tight md:text-7xl">Builds</h2>
             </div>
             <Link
               href="/builds"
@@ -181,13 +201,18 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
           </Reveal>
           <div className="grid gap-4 md:grid-cols-3">
             {BUILDS.map((build, index) => (
-              <Reveal key={build.title} delay={index * 0.05}>
-                <Link href="/builds" className="flex h-full flex-col bg-surface px-5 py-6 transition-colors hover:bg-elevated">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-gold">
-                    {build.when} · {build.where}
-                  </p>
-                  <h3 className="mt-4 font-bebas text-4xl leading-none tracking-tight">{build.title}</h3>
+              <Reveal key={build.title} delay={index * 0.05} className="h-full">
+                <Link
+                  href="/builds"
+                  className="flex h-full flex-col border border-line bg-surface px-5 py-5 transition-colors hover:bg-elevated md:px-6 md:py-6"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-gold">{build.when}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-secondary">{build.where}</p>
+                  </div>
+                  <h3 className="mt-5 font-bebas text-4xl leading-none tracking-tight md:text-5xl">{build.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-secondary">{build.note}</p>
+                  <p className="mt-5 border-t border-line pt-4 text-sm leading-relaxed text-primary">{build.next}</p>
                 </Link>
               </Reveal>
             ))}
@@ -195,27 +220,16 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
         </div>
       </section>
 
-      <section className="border-t border-line bg-surface">
-        <div className="mx-auto grid max-w-[1440px] gap-8 px-4 py-10 md:px-8 md:py-14 lg:grid-cols-12">
-          <Reveal className="lg:col-span-4">
-            <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-secondary">On the road</p>
-            <h2 className="mt-2 font-bebas text-6xl leading-[0.82] md:text-7xl">Upcoming</h2>
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-12">
+          <Reveal className="mb-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">What&apos;s happening</p>
+            <h2 className="mt-1 font-bebas text-5xl leading-none tracking-tight md:text-6xl">Around the shop</h2>
           </Reveal>
-          <div className="lg:col-span-8">
-            {EVENTS.map((event, index) => (
-              <Reveal key={event.date} delay={index * 0.05}>
-                <article className="grid items-end gap-4 border-t border-line py-6 sm:grid-cols-[auto_1fr_auto] sm:gap-8">
-                  <p className="font-bebas text-5xl leading-none text-gold md:text-6xl">{event.date}</p>
-                  <div>
-                    <h3 className="font-display text-2xl uppercase tracking-wide">{event.title}</h3>
-                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
-                      {event.place}
-                    </p>
-                  </div>
-                  <Link href="/events" className="btn-outline justify-self-start sm:justify-self-end">
-                    I&apos;m Rolling
-                  </Link>
-                </article>
+          <div className="grid gap-4 md:grid-cols-3">
+            {HAPPENING.map((item, index) => (
+              <Reveal key={item.title} delay={index * 0.05} className="h-full">
+                <HappeningCard item={item} />
               </Reveal>
             ))}
           </div>
@@ -226,33 +240,68 @@ export function HomeView({ drop }: { drop: DropPiece[] }) {
 }
 
 function DropCard({ piece }: { piece: DropPiece }) {
+  const label =
+    piece.badge === "Limited" || piece.badge === "Sold out" || piece.badge === "Coming soon"
+      ? piece.badge
+      : "Drop";
+  const limited = label === "Limited";
+
   return (
-    <Link href={piece.href} className="group flex h-full flex-col bg-surface">
+    <Link href={piece.href} className="group flex h-full flex-col border border-line bg-surface">
       <div className="relative aspect-[4/5] overflow-hidden bg-elevated">
         {piece.image ? (
           <Image
             src={piece.image}
             alt={piece.title}
             fill
-            sizes="(max-width: 1024px) 100vw, 34vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
           <FlashPlate />
         )}
-        <span className="absolute left-3 top-3 bg-gold px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-base)]">
-          {piece.badge}
+        <span
+          className={`absolute left-3 top-3 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
+            limited ? "bg-gold text-[var(--color-base)]" : "bg-primary text-[var(--color-base)]"
+          }`}
+        >
+          {label}
         </span>
       </div>
-      <div className="flex items-end justify-between gap-3 bg-primary px-4 py-3 text-[var(--color-base)]">
-        <div>
+      <div className="flex items-end justify-between gap-4 border-t border-line bg-primary px-4 py-3.5 text-[var(--color-base)]">
+        <div className="min-w-0">
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--color-base)_62%,transparent)]">
             {piece.detail}
           </p>
-          <h3 className="mt-1 font-bebas text-3xl leading-none tracking-tight">{piece.title}</h3>
+          <h3 className="mt-1 font-bebas text-[1.7rem] leading-[0.9] tracking-tight md:text-3xl">{piece.title}</h3>
         </div>
-        <p className="shrink-0 font-display text-sm">{piece.price}</p>
+        <p className="shrink-0 font-display text-base tracking-wide">{piece.price}</p>
       </div>
+    </Link>
+  );
+}
+
+function HappeningCard({
+  item,
+}: {
+  item: { kicker: string; title: string; text: string; href: string | null; action: string };
+}) {
+  const body = (
+    <>
+      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-gold">{item.kicker}</p>
+      <h3 className="mt-3 font-bebas text-4xl leading-none tracking-tight">{item.title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-secondary">{item.text}</p>
+      <p className="mt-4 font-display text-xs uppercase tracking-[0.16em] text-chrome">{item.action}</p>
+    </>
+  );
+
+  if (!item.href) {
+    return <div className="flex h-full flex-col border border-line bg-surface px-5 py-5">{body}</div>;
+  }
+
+  return (
+    <Link href={item.href} className="flex h-full flex-col border border-line bg-surface px-5 py-5 transition-colors hover:bg-elevated">
+      {body}
     </Link>
   );
 }
@@ -267,11 +316,11 @@ function fade(reduce: boolean | null) {
 function FlashPlate() {
   return (
     <svg viewBox="0 0 240 320" className="h-full w-full" aria-hidden>
-      <rect width="240" height="320" fill="#141414" />
-      <path d="M28 58 H212 L196 92 H44 Z" fill="#C41E3A" />
-      <path d="M108 104 L120 268 L132 104 Z" fill="#E8E8E8" />
-      <rect x="62" y="96" width="116" height="14" fill="#D4AF37" />
-      <rect x="104" y="110" width="32" height="28" fill="#D4AF37" />
+      <rect width="240" height="320" fill="#322C26" />
+      <path d="M28 58 H212 L196 92 H44 Z" fill="#C6A35A" />
+      <path d="M108 104 L120 268 L132 104 Z" fill="#E7E0D4" />
+      <rect x="62" y="96" width="116" height="14" fill="#F4EFE6" />
+      <rect x="104" y="110" width="32" height="28" fill="#C6A35A" />
     </svg>
   );
 }
