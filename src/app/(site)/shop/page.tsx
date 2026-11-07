@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Shop",
-  description: "SuchGrime apparel, accessories, and custom parts.",
+  description: "SuchGrime apparel, accessories, and custom parts. Small runs.",
 };
 
 export default async function ShopPage({
@@ -31,38 +31,48 @@ export default async function ShopPage({
   const activeName = categories.find((c) => categorySlug(c) === category);
 
   return (
-    <div className="mx-auto max-w-screen-2xl px-4 pb-24 pt-10 md:px-8">
-      <header className="mb-10 text-center">
-        <span className="ribbon">The Goods</span>
-        <h1 className="mt-4 font-goth text-6xl md:text-8xl">{activeName ?? "Shop All"}</h1>
-        <p className="mx-auto mt-3 max-w-xl text-ink-soft">
-          Chopper iron, tattoo flash, and graveyard dread — printed, stitched, and machined in small runs.
+    <div className="mx-auto max-w-[1440px] px-4 pb-20 pt-8 md:px-8">
+      <header className="mb-6 flex flex-col gap-5 border-b border-line pb-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-blood">The sheet</p>
+          <h1 className="mt-2 font-bebas text-6xl leading-[0.8] tracking-tight md:text-8xl">
+            {activeName ?? "Shop"}
+          </h1>
+          {cancelled && (
+            <p className="mt-4 text-sm text-blood">Checkout cancelled. Your cart is still saved.</p>
+          )}
+        </div>
+        <p className="max-w-xs text-sm leading-relaxed text-secondary md:text-right">
+          Small runs. If it&apos;s on the sheet, it&apos;s actually in the shop.
         </p>
-        {cancelled && (
-          <p className="mt-4 text-sm text-blood">Checkout cancelled. Your cart is still saved.</p>
-        )}
       </header>
 
       {categories.length > 1 && (
-        <nav className="no-scrollbar mb-10 flex justify-start gap-2 overflow-x-auto md:justify-center" aria-label="Categories">
-          <CategoryTab href="/shop" active={!category}>
-            All
-          </CategoryTab>
-          {categories.map((c) => (
-            <CategoryTab key={c} href={`/shop?category=${categorySlug(c)}`} active={category === categorySlug(c)}>
-              {c}
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <nav className="no-scrollbar flex gap-2 overflow-x-auto" aria-label="Categories">
+            <CategoryTab href="/shop" active={!category}>
+              All
             </CategoryTab>
-          ))}
-        </nav>
+            {categories.map((name) => (
+              <CategoryTab
+                key={name}
+                href={`/shop?category=${categorySlug(name)}`}
+                active={category === categorySlug(name)}
+              >
+                {name}
+              </CategoryTab>
+            ))}
+          </nav>
+          <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
+            {visible.length} on the sheet
+          </p>
+        </div>
       )}
 
       {visible.length > 0 ? (
         <ProductGrid products={visible} />
       ) : (
-        <div className="rounded-2xl border border-dashed border-line py-20 text-center">
-          <p className="font-goth text-4xl">Nothing here yet</p>
-          <p className="mt-2 text-ink-soft">The first drop is being inked. Sign up below to hear when it lands.</p>
-        </div>
+        <EmptySheet filtered={Boolean(category)} name={activeName ?? category} />
       )}
     </div>
   );
@@ -73,11 +83,41 @@ function CategoryTab({ href, active, children }: { href: string; active: boolean
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`label shrink-0 rounded-full border px-5 py-2 transition-colors ${
-        active ? "border-ink bg-ink text-paper" : "border-line hover:border-ink"
+      className={`shrink-0 border px-3 py-2 font-display text-[0.72rem] uppercase tracking-[0.16em] transition-colors ${
+        active ? "border-blood bg-blood text-primary" : "border-line text-secondary hover:border-chrome hover:text-primary"
       }`}
     >
       {children}
     </Link>
+  );
+}
+
+function EmptySheet({ filtered, name }: { filtered: boolean; name?: string }) {
+  return (
+    <div className="relative overflow-hidden border border-line bg-surface px-5 py-14 md:px-10 md:py-20">
+      <span aria-hidden className="absolute left-0 top-0 h-16 w-16 border-l border-t border-blood" />
+      <span aria-hidden className="absolute bottom-0 right-0 h-16 w-16 border-b border-r border-chrome" />
+      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">Drop 01</p>
+      <h2 className="mt-3 max-w-xl font-bebas text-6xl leading-[0.82] tracking-tight md:text-8xl">
+        {filtered ? "Not this run" : "Nothing on the sheet"}
+      </h2>
+      <p className="mt-4 max-w-md text-secondary">
+        {filtered
+          ? `${name ?? "That"} isn't in this drop. The rest of the sheet is still up.`
+          : "First cloth is still on the bench. When it hits the sheet, it won't sit long."}
+      </p>
+      <div className="mt-8 flex flex-wrap items-center gap-6">
+        <span aria-hidden className="h-px w-16 bg-blood" />
+        {filtered ? (
+          <Link href="/shop" className="btn-blood">
+            Back to the sheet
+          </Link>
+        ) : (
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-chrome">
+            List&apos;s at the bottom of the page
+          </p>
+        )}
+      </div>
+    </div>
   );
 }

@@ -1,31 +1,37 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+const STRIP = ["Small run", "Flash sheets", "Long forks", "Milwaukee", "No reorders"];
+
 const BUILDS = [
   {
     index: "01",
-    stage: "Mock-up",
+    stamp: "Not done",
+    when: "04.12",
+    where: "South Side",
     title: "Rigid Panhead",
-    text: "Forks kicked out. Paint still wet. South Side stand.",
-    accent: "blood" as const,
+    note: "Neck rake still wrong. Forks on the floor. Don't touch the paint.",
   },
   {
     index: "02",
-    stage: "Teardown",
+    stamp: "On the bench",
+    when: "03.28",
+    where: "Bay View",
     title: "Shovelhead",
-    text: "Cases split on the bench. Bay View.",
-    accent: "chrome" as const,
+    note: "Cases open. Missing a cam bushing. Again. Parts in a coffee can.",
   },
   {
     index: "03",
-    stage: "Fabrication",
+    stamp: "In the jig",
+    when: "02.02",
+    where: "Walker's Point",
     title: "Ironhead",
-    text: "New neck. Old sins. Walker's Point.",
-    accent: "gold" as const,
+    note: "New neck in. Old sins still in the frame. Welds ground, not pretty.",
   },
 ];
 
@@ -33,6 +39,34 @@ const EVENTS = [
   { date: "06.13", title: "Lakeshore Run", place: "Milwaukee lakefront" },
   { date: "08.07", title: "Garage Night", place: "Walker's Point" },
 ];
+
+const FALLBACK_DROP: DropPiece[] = [
+  {
+    href: "/shop",
+    title: "Flash Tee",
+    price: "Soon",
+    image: null,
+    badge: "Limited",
+    detail: "Chest hit",
+  },
+  {
+    href: "/shop",
+    title: "Next off the press",
+    price: "Soon",
+    image: null,
+    badge: "Drop 01",
+    detail: "Small run",
+  },
+];
+
+export type DropPiece = {
+  href: string;
+  title: string;
+  price: string;
+  image: string | null;
+  badge: string;
+  detail: string;
+};
 
 function Reveal({
   children,
@@ -59,55 +93,54 @@ function Reveal({
   );
 }
 
-export function HomeView() {
+export function HomeView({ drop }: { drop: DropPiece[] }) {
   const reduce = useReducedMotion();
+  const pieces = drop.length > 0 ? drop : FALLBACK_DROP;
 
   return (
     <div className="overflow-x-hidden">
       <motion.section
-        className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-between px-4 pb-8 pt-8 md:px-8 md:pb-10 md:pt-12"
+        className="grit relative flex min-h-[calc(100svh-3.5rem)] flex-col"
         initial="hidden"
         animate="show"
         variants={{
           show: { transition: { staggerChildren: reduce ? 0 : 0.07 } },
         }}
       >
+        <CropMarks />
         <motion.div
           variants={fade(reduce)}
-          className="flex items-start justify-between gap-6"
+          className="relative z-10 flex items-start justify-between gap-6 px-4 pt-6 md:px-8"
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-secondary">
             Milwaukee · Wis
           </p>
           <p className="hidden font-mono text-[10px] uppercase tracking-[0.24em] text-secondary sm:block">
-            Chopper / Flash / Iron
+            Not a show bike
           </p>
         </motion.div>
 
-        <div className="relative">
+        <div className="relative z-10 flex flex-1 flex-col justify-end px-4 pb-6 md:px-8">
           <motion.p
             variants={fade(reduce)}
-            className="pointer-events-none absolute -top-6 right-[8%] hidden font-goth text-6xl text-blood lg:block"
+            className="font-goth text-4xl text-blood md:text-5xl"
           >
             Such
           </motion.p>
           <motion.h1
             variants={fade(reduce)}
-            className="font-bebas text-[clamp(4.6rem,15vw,9.75rem)] leading-[0.8] tracking-tight"
+            className="font-bebas text-[clamp(4.4rem,14vw,9.25rem)] leading-[0.8] tracking-tight"
           >
             RIDE UGLY.
-            <span className="mt-1 block text-blood md:pl-[16vw]">DIE PRETTY.</span>
+            <span className="mt-1 block text-blood md:pl-[14vw]">DIE PRETTY.</span>
           </motion.h1>
-        </div>
-
-        <motion.div
-          variants={fade(reduce)}
-          className="mt-10 grid items-end gap-8 border-t border-line pt-6 md:grid-cols-[1fr_auto]"
-        >
-          <p className="max-w-md text-base leading-relaxed text-secondary md:text-lg">
-            Long forks, short fuse, and flash sheets drawn for the people who stay in the garage until it runs.
-          </p>
-          <div className="flex flex-wrap items-center gap-6">
+          <motion.p
+            variants={fade(reduce)}
+            className="mt-5 max-w-md border-l-2 border-blood pl-4 text-base leading-snug text-primary md:text-lg"
+          >
+            South Side stand. Milk crates for a seat. She fired on Thursday. That&apos;s enough.
+          </motion.p>
+          <motion.div variants={fade(reduce)} className="mt-6 flex flex-wrap items-center gap-6">
             <Link href="/shop" className="btn-blood">
               Shop the drop
             </Link>
@@ -115,53 +148,82 @@ export function HomeView() {
               href="/builds"
               className="font-display text-xs uppercase tracking-[0.2em] text-chrome hover:text-blood"
             >
-              See the builds
+              The stand
             </Link>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
-        <span
-          aria-hidden
-          className="pointer-events-none absolute bottom-28 right-0 hidden h-28 w-px bg-gold lg:block"
-        />
+        <motion.div
+          variants={fade(reduce)}
+          className="relative z-10 flex flex-wrap gap-x-4 gap-y-1 border-t border-line px-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-secondary md:px-8"
+        >
+          {STRIP.map((word, index) => (
+            <span key={word} className="inline-flex items-center gap-4">
+              {index > 0 && <span className="text-blood">/</span>}
+              {word}
+            </span>
+          ))}
+        </motion.div>
       </motion.section>
 
-      <section className="border-t border-line">
-        <div className="mx-auto grid max-w-[1440px] gap-8 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-12">
-          <Reveal className="lg:col-span-4 lg:pt-6">
-            <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold">The garage</p>
-            <h2 className="mt-3 font-bebas text-7xl leading-[0.82] tracking-tight md:text-8xl">
-              Featured
-              <span className="block">Builds</span>
+      <section className="border-t border-line bg-base">
+        <div className="grid lg:grid-cols-[minmax(16rem,0.7fr)_1.5fr]">
+          <Reveal className="flex flex-col border-b border-line px-4 py-8 md:px-8 lg:border-r lg:border-b-0 lg:py-10">
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">Limited drop</p>
+            <h2 className="mt-2 font-bebas text-[clamp(4.5rem,8vw,7.5rem)] leading-[0.78] tracking-tight">
+              DROP
+              <span className="text-blood"> 01</span>
             </h2>
-            <Link
-              href="/builds"
-              className="mt-8 inline-block font-display text-xs uppercase tracking-[0.2em] text-chrome hover:text-blood"
-            >
-              All builds
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary">
+              Small run. When it&apos;s gone, it&apos;s gone.
+            </p>
+            <Link href="/shop" className="btn-blood mt-8 w-fit">
+              Shop the drop
             </Link>
           </Reveal>
 
-          <div className="grid gap-4 lg:col-span-8 lg:grid-cols-2">
-            {BUILDS.map((build, i) => (
-              <Reveal key={build.index} delay={i * 0.06} className={i === 0 ? "lg:col-span-2" : ""}>
-                <Link
-                  href="/builds"
-                  className="group flex min-h-[280px] flex-col justify-between border border-line bg-surface p-5 transition-colors hover:border-chrome md:p-7"
-                >
-                  <div className="flex items-start justify-between">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-secondary">
-                      {build.stage}
+          <div className={`grid gap-px bg-line ${pieces.length > 1 ? "sm:grid-cols-2" : ""} ${pieces.length > 2 ? "xl:grid-cols-3" : ""}`}>
+            {pieces.map((piece, index) => (
+              <Reveal key={`${piece.href}-${piece.title}`} delay={index * 0.05} className="min-h-0 bg-base">
+                <DropCard piece={piece} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="grit border-t border-line">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-14">
+          <Reveal className="mb-6 flex items-end justify-between gap-4 border-b border-line pb-4">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">The stand</p>
+              <h2 className="mt-1 font-bebas text-5xl leading-[0.85] tracking-tight md:text-7xl">Builds</h2>
+            </div>
+            <Link
+              href="/builds"
+              className="font-display text-xs uppercase tracking-[0.2em] text-chrome hover:text-blood"
+            >
+              All notes
+            </Link>
+          </Reveal>
+          <div className="grid gap-px bg-line md:grid-cols-3">
+            {BUILDS.map((build, index) => (
+              <Reveal key={build.index} delay={index * 0.05} className="bg-base">
+                <Link href="/builds" className="flex h-full flex-col px-4 py-5 transition-colors hover:bg-surface md:px-5">
+                  <div className="flex items-center justify-between gap-3 border-b border-dashed border-line pb-3">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
+                      Job {build.index}
                     </span>
-                    <span className="font-bebas text-5xl leading-none text-chrome/25">{build.index}</span>
+                    <span className="border border-blood px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-blood">
+                      {build.stamp}
+                    </span>
                   </div>
-                  <ForkMark accent={build.accent} large={i === 0} />
-                  <div>
-                    <h3 className="font-bebas text-5xl leading-none tracking-tight md:text-6xl">
-                      {build.title}
-                    </h3>
-                    <p className="mt-3 max-w-xs text-sm leading-relaxed text-secondary">{build.text}</p>
-                  </div>
+                  <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-gold">
+                    {build.when} · {build.where}
+                  </p>
+                  <h3 className="mt-2 font-bebas text-4xl leading-none tracking-tight md:text-5xl">{build.title}</h3>
+                  <p className="mt-3 border-l-2 border-blood pl-3 text-sm leading-relaxed text-secondary">{build.note}</p>
+                  <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.16em] text-chrome">Open the notes</p>
                 </Link>
               </Reveal>
             ))}
@@ -170,16 +232,16 @@ export function HomeView() {
       </section>
 
       <section className="border-t border-line bg-surface">
-        <div className="mx-auto grid max-w-[1440px] gap-12 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-12">
+        <div className="mx-auto grid max-w-[1440px] gap-8 px-4 py-10 md:px-8 md:py-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-secondary">On the road</p>
-            <h2 className="mt-3 font-bebas text-7xl leading-[0.82] md:text-8xl">Upcoming</h2>
+            <h2 className="mt-2 font-bebas text-6xl leading-[0.82] md:text-7xl">Upcoming</h2>
           </Reveal>
-          <div className="lg:col-span-8 lg:pt-10">
-            {EVENTS.map((event, i) => (
-              <Reveal key={event.date} delay={i * 0.05} className={i === 1 ? "md:ml-16" : ""}>
-                <article className="grid items-end gap-4 border-t border-line py-7 sm:grid-cols-[auto_1fr_auto] sm:gap-8">
-                  <p className="font-bebas text-6xl leading-none text-blood md:text-7xl">{event.date}</p>
+          <div className="lg:col-span-8">
+            {EVENTS.map((event, index) => (
+              <Reveal key={event.date} delay={index * 0.05} className={index === 1 ? "md:ml-12" : ""}>
+                <article className="grid items-end gap-4 border-t border-line py-6 sm:grid-cols-[auto_1fr_auto] sm:gap-8">
+                  <p className="font-bebas text-6xl leading-none text-blood">{event.date}</p>
                   <div>
                     <h3 className="font-display text-2xl uppercase tracking-wide">{event.title}</h3>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">
@@ -195,46 +257,55 @@ export function HomeView() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
 
-      <section className="border-t border-line">
-        <div className="grid lg:grid-cols-12">
-          <Reveal className="relative overflow-hidden border-b border-line px-4 py-16 md:px-8 lg:col-span-7 lg:border-r lg:border-b-0 lg:py-24">
-            <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold">Shop</p>
-            <h2 className="mt-2 font-bebas text-[clamp(6rem,16vw,13rem)] leading-[0.74] tracking-tight">
-              DROP
-              <span className="block text-blood">01</span>
-            </h2>
-            <p className="mt-6 max-w-sm text-secondary">
-              First cloth off the sheet. Small run. When it&apos;s gone, it&apos;s gone.
-            </p>
-          </Reveal>
+function DropCard({ piece }: { piece: DropPiece }) {
+  const limited = piece.badge === "Limited";
+  return (
+    <Link href={piece.href} className="group relative block min-h-[320px] bg-base sm:min-h-[420px]">
+      <div className="absolute inset-0">
+        {piece.image ? (
+          <Image
+            src={piece.image}
+            alt={piece.title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 34vw"
+            className="object-cover contrast-125 transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <FlashPlate />
+        )}
+      </div>
+      <span
+        className={`absolute left-3 top-3 z-10 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
+          limited ? "bg-gold text-base" : "bg-blood text-primary"
+        }`}
+      >
+        {piece.badge}
+      </span>
+      <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-base via-base/75 to-transparent px-4 pb-4 pt-16">
+        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-chrome">{piece.detail}</p>
+        <div className="mt-1 flex items-end justify-between gap-3">
+          <h3 className="font-bebas text-3xl leading-[0.85] tracking-tight group-hover:text-blood md:text-4xl">
+            {piece.title}
+          </h3>
+          <p className="shrink-0 font-display text-sm">{piece.price}</p>
+        </div>
+      </div>
+    </Link>
+  );
+}
 
-          <Reveal delay={0.08} className="flex items-stretch bg-elevated p-4 md:p-8 lg:col-span-5">
-            <article className="flex w-full flex-col border border-line bg-base">
-              <div className="relative aspect-[4/5] border-b border-line">
-                <FlashPlate />
-                <span className="absolute left-4 top-4 bg-gold px-2 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-base">
-                  Limited
-                </span>
-              </div>
-              <div className="flex items-end justify-between gap-4 p-5">
-                <div>
-                  <h3 className="font-bebas text-4xl leading-none">Flash Tee</h3>
-                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-secondary">
-                    Black / chest hit
-                  </p>
-                </div>
-                <p className="font-display text-lg tracking-wide">$48</p>
-              </div>
-            </article>
-          </Reveal>
-        </div>
-        <div className="flex justify-end border-t border-line px-4 py-5 md:px-8">
-          <Link href="/shop" className="btn-blood">
-            Shop the drop
-          </Link>
-        </div>
-      </section>
+function CropMarks() {
+  const arm = "absolute z-10 h-4 w-4 border-chrome";
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-3 md:inset-5">
+      <span className={`${arm} left-0 top-0 border-l border-t`} />
+      <span className={`${arm} right-0 top-0 border-r border-t`} />
+      <span className={`${arm} bottom-10 left-0 border-b border-l`} />
+      <span className={`${arm} bottom-10 right-0 border-r border-b`} />
     </div>
   );
 }
@@ -246,31 +317,10 @@ function fade(reduce: boolean | null) {
   };
 }
 
-function ForkMark({
-  accent,
-  large,
-}: {
-  accent: "blood" | "chrome" | "gold";
-  large?: boolean;
-}) {
-  const stroke = accent === "blood" ? "#C41E3A" : accent === "gold" ? "#D4AF37" : "#E8E8E8";
-  return (
-    <svg
-      viewBox="0 0 160 48"
-      className={large ? "my-8 h-12 w-40" : "my-6 h-8 w-28"}
-      aria-hidden
-    >
-      <circle cx="24" cy="24" r="14" fill="none" stroke={stroke} strokeWidth="3" />
-      <circle cx="24" cy="24" r="3" fill="#E8E8E8" />
-      <rect x="42" y="21" width="118" height="6" fill="#E8E8E8" />
-    </svg>
-  );
-}
-
 function FlashPlate() {
   return (
     <svg viewBox="0 0 240 320" className="h-full w-full" aria-hidden>
-      <rect width="240" height="320" fill="#0A0A0A" />
+      <rect width="240" height="320" fill="#141414" />
       <path d="M28 58 H212 L196 92 H44 Z" fill="#C41E3A" />
       <path d="M108 104 L120 268 L132 104 Z" fill="#E8E8E8" />
       <rect x="62" y="96" width="116" height="14" fill="#D4AF37" />
