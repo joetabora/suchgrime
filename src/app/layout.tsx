@@ -55,7 +55,7 @@ export default function RootLayout({
       lang="en"
       className={`${pirataOne.variable} ${bebasNeue.variable} ${oswald.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col font-inter">
+      <body className="flex min-h-full flex-col bg-base font-inter text-primary antialiased">
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

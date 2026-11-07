@@ -14,12 +14,12 @@ export function CartButton() {
     <button
       type="button"
       onClick={open}
-      className="relative text-ink transition-colors hover:text-blood"
+      className="relative text-primary transition-colors hover:text-blood"
       aria-label={`Open cart (${count} items)`}
     >
       <ShoppingBag size={20} />
       {count > 0 && (
-        <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-blood px-1 font-mono text-[9px] text-paper">
+        <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-sm bg-blood px-1 font-mono text-[9px] text-primary">
           {count}
         </span>
       )}
@@ -64,10 +64,10 @@ export function CartDrawer() {
 
   return (
     <div className="fixed inset-0 z-[60] flex justify-end" role="dialog" aria-modal="true" aria-label="Cart">
-      <button type="button" className="absolute inset-0 bg-ink/50" onClick={close} aria-label="Close cart" />
-      <aside className="relative z-10 flex h-full w-full max-w-md flex-col bg-paper text-ink shadow-2xl">
+      <button type="button" className="absolute inset-0 bg-base/80" onClick={close} aria-label="Close cart" />
+      <aside className="relative z-10 flex h-full w-full max-w-md flex-col border-l border-line bg-surface text-primary">
         <div className="flex items-center justify-between border-b border-line px-6 py-5">
-          <h2 className="font-goth text-3xl">Your Cart</h2>
+          <h2 className="font-bebas text-4xl tracking-wide">Your Cart</h2>
           <button type="button" onClick={close} className="hover:text-blood" aria-label="Close cart">
             <X size={22} />
           </button>

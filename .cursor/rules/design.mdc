@@ -1,0 +1,7 @@
+Follow DESIGN.md for all visual and brand decisions. 
+The site is SuchGrime — Milwaukee chopper / VICLA / custom Harley culture. 
+Aesthetic: stunning, unique, high-contrast, traditional flash + long-fork grit. 
+Use the defined colors, typography (Bebas Neue for display, Oswald, Inter, JetBrains Mono), and voice. 
+Prefer dramatic editorial layouts over generic templates. 
+Tech: Next.js App Router, Tailwind CSS 4, existing Prisma/Stripe/Printify stack. 
+Do not invent new colors or fonts unless explicitly asked.

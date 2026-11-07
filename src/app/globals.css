@@ -1,17 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* Site palette: bone paper, tattoo-flash red & mustard, ink */
-  --color-paper: #f2ebdf;
-  --color-paper-deep: #e6dccb;
-  --color-card: #faf6ef;
-  --color-ink: #1d1a16;
-  --color-ink-soft: #625a4f;
-  --color-line: #d5c9b5;
-  --color-blood: #a3261b;
-  --color-blood-deep: #7d1b13;
-  --color-mustard: #d9a23a;
-  --color-teal: #2e5c56;
+  /* SuchGrime — see DESIGN.md */
+  --color-base: #0a0a0a;
+  --color-surface: #141414;
+  --color-elevated: #1c1c1c;
+  --color-primary: #f5f5f0;
+  --color-secondary: #a3a3a3;
+  --color-blood: #c41e3a;
+  --color-chrome: #e8e8e8;
+  --color-gold: #d4af37;
+  --color-flash: #ff2e2e;
+  --color-line: #2a2a2a;
+
+  /* Legacy names, pointed at the dark system so older pages stay readable. */
+  --color-paper: #0a0a0a;
+  --color-paper-deep: #141414;
+  --color-card: #1c1c1c;
+  --color-ink: #f5f5f0;
+  --color-ink-soft: #a3a3a3;
+  --color-blood-deep: #ff2e2e;
+  --color-mustard: #d4af37;
 
   /* Admin palette */
   --color-brand-black: #050505;
@@ -45,48 +54,49 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 9999px;
-    padding: 0.85rem 1.75rem;
-    font-family: var(--font-display);
-    font-size: 0.875rem;
-    letter-spacing: 0.12em;
+    border-radius: 2px;
+    padding: 0.9rem 1.5rem;
+    font-family: var(--font-oswald);
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     transition: background-color 150ms, color 150ms, border-color 150ms;
   }
   .btn-ink {
-    background: var(--color-ink);
-    color: var(--color-paper);
+    background: var(--color-chrome);
+    color: var(--color-base);
   }
   .btn-ink:hover {
-    background: var(--color-blood);
+    background: var(--color-primary);
   }
   .btn-blood {
     background: var(--color-blood);
-    color: var(--color-paper);
+    color: var(--color-primary);
   }
   .btn-blood:hover:not(:disabled) {
-    background: var(--color-blood-deep);
+    background: var(--color-flash);
   }
   .btn-mustard {
-    background: var(--color-mustard);
-    color: var(--color-ink);
+    background: var(--color-gold);
+    color: var(--color-base);
   }
   .btn-mustard:hover {
-    background: var(--color-paper);
+    background: var(--color-chrome);
   }
   .btn-outline {
-    border: 1px solid currentColor;
+    border: 1px solid var(--color-chrome);
+    color: var(--color-chrome);
   }
   .btn-outline:hover {
-    background: var(--color-ink);
-    color: var(--color-paper);
+    background: var(--color-chrome);
+    color: var(--color-base);
   }
 
   /* Tattoo-flash ribbon label */
   .ribbon {
     display: inline-block;
     background: var(--color-blood);
-    color: var(--color-paper);
+    color: var(--color-primary);
     font-family: var(--font-display);
     font-size: 0.7rem;
     letter-spacing: 0.16em;
@@ -99,6 +109,11 @@
 :focus-visible {
   outline: 2px solid var(--color-blood);
   outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-blood);
+  color: var(--color-primary);
 }
 
 /* Subtle print grain */
